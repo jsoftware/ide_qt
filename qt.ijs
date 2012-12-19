@@ -12,6 +12,8 @@ if. IFQT do.
   case. 'Win' do. S=. BINPATH,'/libjqt.dll'
   end.
   wd_z_=: ('"',S,'" wd >',(IFWIN#'+'),' i *c *c') cd (;18!:5@(''"_))
+  wdqhwndp_z_=: ('"',S,'" wdqhwndp >',(IFWIN#'+'),' x')&cd bind ''
+  wdqhwndc_z_=: ('"',S,'" wdqhwndp >',(IFWIN#'+'),' x *c') cd <
 end.
 EMPTY
 )

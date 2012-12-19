@@ -6,7 +6,7 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: ''
+VERSION=: '1.0.0'
 
 FILES=: 0 : 0
 qt.ijs
