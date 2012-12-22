@@ -9,7 +9,7 @@ if. IFQT do.
   case. 'Linux' do. S=. BINPATH,'/libjqt.so'
   case. 'Android' do. S=. BINPATH,'/libjqt.so'
   case. 'Darwin' do. S=. BINPATH,'/libjqt.dylib'
-  case. 'Win' do. S=. BINPATH,'/libjqt.dll'
+  case. 'Win' do. S=. BINPATH,'/jqt.dll'
   end.
   wd_z_=: ('"',S,'" wd >',(IFWIN#'+'),' i *c *c') cd (;18!:5@(''"_))
   wdqhwndp_z_=: ('"',S,'" wdqhwndp >',(IFWIN#'+'),' x')&cd bind ''
