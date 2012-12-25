@@ -3,3 +3,5 @@ ide/qt - change history
 == 1.0.0/2 ==
  * initial release
 
+== 1.0.03 ==
+ * cover verb for wd query cmds
