@@ -4,17 +4,11 @@ require 'project'
 
 coclass 'jqtide'
 
-3 : 0''
-select. UNAME
-case. 'Linux' do. libjqt_z_=. BINPATH,'/libjqt.so'
-case. 'Android' do. libjqt_z_=. BINPATH,'/libjqt.so'
-case. 'Darwin' do. libjqt_z_=. BINPATH,'/libjqt.dylib'
-case. 'Win' do. libjqt_z_=. BINPATH,'/jqt.dll'
-end.
-EMPTY
-)
-
 Debugwd=: 0
+
+wdinfo=: smoutput @ >@{: @ boxopen
+cocurrent 'z'
+
 showevents=: 3 : 0
 select. {. y,1
 case. 0 do.
@@ -26,6 +20,7 @@ case. 2 do.
 end.
 EMPTY
 )
+cocurrent 'z'
 wd=: 3 : 0
 'r c p n b'=: wd1 ,&.>y;2;0;18!:5''
 select. r
@@ -67,5 +62,23 @@ if. 3 > wd_ndx do.
 end.
 i.0 0
 )
+wdclippaste=: (wd bind 'clippaste') :: (''"_)
+wdqq=: (wd bind 'q') :: (''"_)
+wdqchildxywh=: (0 ". [: wd 'qchildxywh ' , ]) :: (0 0 0 0"_)
+wdqchildxywhx=: (0 ". [: wd 'qchildxywhx ' , ] ) :: (0 0 0 0"_)
+wdqcolor=: (0 ". [: wd 'qcolor ' , ":) :: ( 0 0 0"_)
+wdqd=: (wd bind 'qd') :: (''"_)
+wdqer=: (wd bind 'qer') :: (''"_)
+wdqformx=: (0 ". wd bind 'qformx') :: (0 0 800 600"_)
+wdqhinst=: (0 ". wd bind 'qhinst') :: 0:
+wdqhwndc=: (0 ". [: wd 'qhwndc ' , ]) :: 0:
+wdqhwndp=: (0 ". wd bind 'qhwndp') :: 0:
+wdqhwndx=: (0 ". wd bind 'qhwndx') :: 0:
+wdqm=: (0 ". wd bind 'qm') :: (800 600 8 16 1 1 3 3 4 4 19 19 0 0 800 570"_)
+wdqp=: (wd bind 'qp') :: (''"_)
+wdqprinters=: (wd bind 'qprinters') :: (''"_)
+wdqpx=: (wd bind 'qpx') :: (''"_)
+wdqscreen=: (0 ". wd bind 'qscreen') :: (264 211 800 600 96 96 32 1 _1 36 36 51"_)
+wdqwd=: (wd bind 'qwd')
 
 cocurrent 'base'
