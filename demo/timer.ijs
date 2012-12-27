@@ -15,8 +15,8 @@ EMPTY
 
 NB. =========================================================
 smoutput 0 : 0
-start, e.g. every second:
-   timer 1000
+start, e.g. every two seconds:
+   timer 2000
 
 stop:
    timer 0

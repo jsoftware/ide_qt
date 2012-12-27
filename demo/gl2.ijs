@@ -14,7 +14,7 @@ EMPTY
 )
 
 FORM=: 0 : 0
-pc demo closeok;pn "demo";
+pc demo closeok;pn "gl2 demo";
 cc gs isigraph;
 )
 
