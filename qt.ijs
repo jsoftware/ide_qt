@@ -2,13 +2,11 @@ NB. J qtide
 
 require 'project'
 
-coclass 'jqtide'
+coclass 'z'
 
 Debugwd=: 0
 
 wdinfo=: smoutput @ >@{: @ boxopen
-cocurrent 'z'
-
 showevents=: 3 : 0
 select. {. y,1
 case. 0 do.
@@ -34,6 +32,8 @@ case. do.
   ('wd error: ',":r) (13!:8) 3
 end.
 )
+
+wd1=: ('"',libjqt,'" wd ', (IFWIN#'+ '),'i *c * *i *c') & cd
 wdhandler=: 3 : 0
 wdq=: wd 'q'
 wd_val=. {:"1 wdq
