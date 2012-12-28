@@ -1,6 +1,6 @@
 NB. util.ijs
 
-wd 'notacommand'
+wd 'notacommand'  NB. error
 wd 'qer'
 
 wd 'pc abc'
