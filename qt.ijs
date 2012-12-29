@@ -2,11 +2,11 @@ NB. J qtide
 
 require 'project'
 
-coclass 'z'
+coclass 'jqtide'
 
 Debugwd=: 0
 
-wdinfo=: smoutput @ >@{: @ boxopen
+cocurrent 'z'
 showevents=: 3 : 0
 select. {. y,1
 case. 0 do.
@@ -18,7 +18,6 @@ case. 2 do.
 end.
 EMPTY
 )
-cocurrent 'z'
 wd=: 3 : 0
 'r c p n b'=: wd1 ,&.>y;2;0;18!:5''
 select. r
@@ -79,6 +78,20 @@ wdqp=: (wd bind 'qp') :: (''"_)
 wdqprinters=: (wd bind 'qprinters') :: (''"_)
 wdqpx=: (wd bind 'qpx') :: (''"_)
 wdqscreen=: (0 ". wd bind 'qscreen') :: (264 211 800 600 96 96 32 1 _1 36 36 51"_)
-wdqwd=: (wd bind 'qwd')
+wdqwd=: (wd bind 'qwd') :: ('jqt'"_)
+IFJAVA=: 0
+
+wdinfo=: smoutput @ >@{: @ boxopen
+wdisparent=: ('"',libjqt,'" wdisparent >',(IFWIN#'+'),' i *c') cd <@,
+wdishandle=: ('"',libjqt,'" wdisparent >',(IFWIN#'+'),' i *c') cd <@":
+
+wdgetparentid=: 3 : 0
+z=. ''
+if. r=. ('"',libjqt,'" wdgetparentid >',(IFWIN#'+'),' x x') cd y do. z=. memr r, 0 _1 2 end.
+z
+)
+
+wdfit=: 0:
+
 
 cocurrent 'base'
