@@ -80,6 +80,26 @@ wdqpx=: (wd bind 'qpx') :: (''"_)
 wdqscreen=: (0 ". wd bind 'qscreen') :: (264 211 800 600 96 96 32 1 _1 36 36 51"_)
 wdqwd=: (wd bind 'qwd') :: ('jqt'"_)
 IFJAVA=: 0
+wde=: [:
+wdbox=: [:
+wdcenter=: [:
+wdclipread=: [:
+wdclipwrite=: [:
+wdfit=: [:
+wdforms=: [:
+wdget=: [:
+wdinfo=: [:
+wdishandle=: [:
+wdisparent=: [:
+wdmove=: [:
+wdpclose=: [:
+wdqshow=: [:
+wdquery=: [:
+wdreset=: [:
+wdstatus=: [:
+mbopen=: [:
+mbsave=: [:
+wdformedit=: [:
 
 wdinfo=: smoutput @ >@{: @ boxopen
 wdisparent=: ('"',libjqt,'" wdisparent >',(IFWIN#'+'),' i *c') cd <@,
@@ -93,5 +113,6 @@ z
 
 wdfit=: 0:
 
+wdpclose=: [: wd :: empty 'psel ' , ';pclose' ,~ ":
 
 cocurrent 'base'
