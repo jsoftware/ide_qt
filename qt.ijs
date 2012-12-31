@@ -28,7 +28,7 @@ case. _1 do.
 case. _2 do.
  _2 [\ <;._2 memr p,0,n
 case. do.
-  ('wd error: ',":r) (13!:8) 3
+  (wd ::(''"_) 'qer') (13!:8) 3
 end.
 )
 
