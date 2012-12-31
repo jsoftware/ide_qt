@@ -3,7 +3,7 @@ NB.
 NB. !!! this is experimental and *will* change...
 NB.
 NB. cover for the QTableWidget
-NB. initially, just provides a a multi-column listbox for pacman
+NB. initially, just provides a grid for pacman
 NB. data types so far:
 NB.  0 text
 NB.  1 checkbox
