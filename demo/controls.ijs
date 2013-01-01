@@ -11,7 +11,7 @@ cc boxed radiobutton group
 cn "view boxed"
 cc tree radiobutton group
 cn "view tree"
-bin vz
+bin zv
 cc gross radiobutton
 cn "gross"
 cc net radiobutton group
