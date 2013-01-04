@@ -18,7 +18,7 @@ case. 2 do.
 end.
 EMPTY
 )
-wd=: 3 : 0
+wd=: 3 : 0"1
 'r c p n b'=: wd1 ,&.>y;2;0;18!:5''
 select. r
 case. 0 do. 
@@ -106,6 +106,8 @@ wdformedit=: [:
 wdinfo=: smoutput @ >@{: @ boxopen
 wdisparent=: ('"',libjqt,'" wdisparent >',(IFWIN#'+'),' i *c') cd <@,
 wdishandle=: ('"',libjqt,'" wdisparent >',(IFWIN#'+'),' i *c') cd <@":
+wdreadimg=: ('"',libjqt,'" wdreadimg >',(IFWIN#'+'),' x *c *i')&cd
+wdclearreadimg=: ('"',libjqt,'" wdclearreadimg >',(IFWIN#'+'),' n')&cd
 
 wdgetparentid=: 3 : 0
 z=. ''
@@ -116,5 +118,16 @@ z
 wdfit=: 0:
 
 wdpclose=: [: wd :: empty 'psel ' , ';pclose' ,~ ":
+wdcenter=: 0:
+
+readimg_jqtide_=: 3 : 0
+if. m=. wdreadimg (utf8 ,y);wh=. 2$2-2 do.
+  d=. _2 ic memr m,0,(*/wh,4),2
+  wdreadimg 2#<<0
+  (|.wh)$d
+else.
+  0 0$2-2
+end.
+)
 
 cocurrent 'base'
