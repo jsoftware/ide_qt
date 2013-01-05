@@ -107,7 +107,7 @@ wdinfo=: smoutput @ >@{: @ boxopen
 wdisparent=: ('"',libjqt,'" wdisparent >',(IFWIN#'+'),' i *c') cd <@,
 wdishandle=: ('"',libjqt,'" wdisparent >',(IFWIN#'+'),' i *c') cd <@":
 wdreadimg=: ('"',libjqt,'" wdreadimg >',(IFWIN#'+'),' x *c *i')&cd
-wdclearreadimg=: ('"',libjqt,'" wdclearreadimg >',(IFWIN#'+'),' n')&cd
+wdquery=: 0:
 
 wdgetparentid=: 3 : 0
 z=. ''
