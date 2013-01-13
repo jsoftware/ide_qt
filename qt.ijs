@@ -81,6 +81,9 @@ wdqscreen=: (0 ". wd bind 'qscreen') :: (264 211 800 600 96 96 32 1 _1 36 36 51"
 wdqwd=: (wd bind 'qwd') :: ('jqt'"_)
 s=. '"',libjqt,'" dirmatch ', (IFWIN#'+ '),'> n *c *c'
 dirmatch=: [: empty s cd [: ,each 2 {. boxopen
+
+s=. '"',libjqt,'" android_exec_host ', (IFWIN#'+ '),'> n *c *c *c'
+android_exec_host =: [: empty s cd ]
 IFJAVA=: 0
 wde=: [:
 wdbox=: [:
