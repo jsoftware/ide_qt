@@ -7,17 +7,6 @@ coclass 'jqtide'
 Debugwd=: 0
 
 cocurrent 'z'
-showevents=: 3 : 0
-select. {. y,1
-case. 0 do.
-  4!:55 <'wdhandler_debug_z_'
-case. 1 do.
-  wdhandler_debug_z_=: 3 : 'smoutput sysevent'
-case. 2 do.
-  wdhandler_debug_z_=: 3 : 'smoutput wdq'
-end.
-EMPTY
-)
 wd=: 3 : 0"1
 'r c p n b'=: wd1 ,&.>y;2;0;18!:5''
 select. r
@@ -82,14 +71,11 @@ wdqwd=: (wd bind 'qwd') :: ('jqt'"_)
 s=. '"',libjqt,'" dirmatch ', (IFWIN#'+ '),'> n *c *c'
 dirmatch=: [: empty s cd [: ,each 2 {. boxopen
 
-s=. '"',libjqt,'" android_exec_host ', (IFWIN#'+ '),'> n *c *c *c'
-android_exec_host =: [: empty s cd ]
+4!:55<'s'
 IFJAVA=: 0
 wde=: [:
 wdbox=: [:
 wdcenter=: [:
-wdclipread=: [:
-wdclipwrite=: [:
 wdfit=: [:
 wdforms=: [:
 wdget=: [:
@@ -110,6 +96,9 @@ wdinfo=: smoutput @ >@{: @ boxopen
 wdisparent=: ('"',libjqt,'" wdisparent >',(IFWIN#'+'),' i *c') cd <@,
 wdishandle=: ('"',libjqt,'" wdisparent >',(IFWIN#'+'),' i *c') cd <@":
 wdreadimg=: ('"',libjqt,'" wdreadimg >',(IFWIN#'+'),' x *c *i')&cd
+wdgetimg=: ('"',libjqt,'" wdgetimg >',(IFWIN#'+'),' x *c i *i')&cd
+wdwriteimg=: ('"',libjqt,'" wdwriteimg >',(IFWIN#'+'),' i *c *i *c *c i')&cd
+wdputimg=: ('"',libjqt,'" wdputimg >',(IFWIN#'+'),' x *c *i *i *c i')&cd
 wdquery=: 0:
 
 wdgetparentid=: 3 : 0
@@ -123,13 +112,102 @@ wdfit=: 0:
 wdpclose=: [: wd :: empty 'psel ' , ';pclose' ,~ ":
 wdcenter=: 0:
 
-readimg_jqtide_=: 3 : 0
+wdclipwrite=: ('"',libjqt,'" wdclipwrite >',(IFWIN#'+'),' i *c') cd <@,
+wdclipread=: 3 : 0
+if. m=. ('"',libjqt,'" wdclipread >',(IFWIN#'+'),' x *i')&cd <l=. ,_1 do.
+  z=. memr m, 0, l, 2
+  ('"',libjqt,'" wdclipread >',(IFWIN#'+'),' x *i')&cd <<0
+  z
+else.
+  ''
+end.
+)
+coclass 'jqtide'
+
+showevents=: 3 : 0
+select. {. y,1
+case. 0 do.
+  4!:55 <'wdhandler_debug_z_'
+case. 1 do.
+  wdhandler_debug_z_=: 3 : 'smoutput sysevent'
+case. 2 do.
+  wdhandler_debug_z_=: 3 : 'smoutput wdq'
+end.
+EMPTY
+)
+
+s=. '"',libjqt,'" android_exec_host ', (IFWIN#'+ '),'> n *c *c *c'
+android_exec_host=: [: empty s cd ]
+
+4!:55<'s'
+readimg=: 3 : 0
 if. m=. wdreadimg (utf8 ,y);wh=. 2$2-2 do.
   d=. _2 ic memr m,0,(*/wh,4),2
   wdreadimg 2#<<0
   (|.wh)$d
 else.
   0 0$2-2
+end.
+)
+getimg=: 3 : 0
+if. m=. wdgetimg y;(#y);wh=. 2$2-2 do.
+  d=. _2 ic memr m,0,(*/wh,4),2
+  wdreadimg 2#<<0
+  (|.wh)$d
+else.
+  0 0$2-2
+end.
+)
+writeimg=: 4 : 0
+'h w'=. $x
+d=. ,x
+if. 2> #y=. boxopen y do.
+  f=. >@{.y
+  type=. }. (}.~ i:&'.') f
+  opt=. ''
+elseif. 2= #y do.
+  f=. >@{.y
+  type=. >1{y
+  opt=. ''
+elseif. do.
+  f=. utf8 >@{.y
+  type=. >1{y
+  opt=. 2{.2}.y
+  opt=. (":&.>1{opt) 1}opt
+end.
+if. 'jpg'-:type do. type=. 'jpeg'
+elseif. 'tif'-:type do. type=. 'tiff'
+end.
+type=. toupper type
+if. ''-:opt do. quality=. _1 else. quality=. <. {. 0&".opt end.
+d=. fliprgb^:(-.RGBSEQ_j_) d
+r=. wdwriteimg (2 ic d); (w,h); f; type; quality
+EMPTY
+)
+putimg=: 4 : 0
+'h w'=. $x
+d=. ,x
+if. 2> #y=. boxopen y do.
+  type=. >@{.y
+  opt=. ''
+elseif. do.
+  type=. >@{.y
+  opt=. 2{.}.y
+  opt=. (":&.>1{opt) 1}opt
+end.
+if. 'jpg'-:type do. type=. 'jpeg'
+elseif. 'tif'-:type do. type=. 'tiff'
+end.
+type=. toupper type
+if. ''-:opt do. quality=. _1 else. quality=. <. {. 0&".opt end.
+d=. fliprgb^:(-.RGBSEQ_j_) d
+m=. wdputimg (2 ic d); (w,h); (len=. ,_1); type; quality
+if. m do.
+  z=. memr m,0,len,2
+  wdputimg (4#(<<0)),<0
+  z
+else.
+  ''
 end.
 )
 
