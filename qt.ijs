@@ -75,15 +75,8 @@ dirmatch=: [: empty s cd [: ,each 2 {. boxopen
 IFJAVA=: 0
 wde=: [:
 wdbox=: [:
-wdcenter=: [:
-wdfit=: [:
 wdforms=: [:
-wdget=: [:
-wdinfo=: [:
-wdishandle=: [:
-wdisparent=: [:
 wdmove=: [:
-wdpclose=: [:
 wdqshow=: [:
 wdquery=: [:
 wdreset=: [:
@@ -108,6 +101,13 @@ z
 )
 
 wdfit=: 0:
+wdget=: 4 : 0
+nms=. {."1 y
+vls=. {:"1 y
+if. L. x do. vls {~ nms i. ,&.>x
+else. > vls {~ nms i. <,x
+end.
+)
 
 wdpclose=: [: wd :: empty 'psel ' , ';pclose' ,~ ":
 wdcenter=: 0:
