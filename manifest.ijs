@@ -6,7 +6,7 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.0.23'
+VERSION=: '1.0.24'
 
 FILES=: 0 : 0
 qt.ijs
@@ -14,4 +14,4 @@ config/
 demo/
 )
 
-RELEASE=: 'j701'
+RELEASE=: 'j801'
