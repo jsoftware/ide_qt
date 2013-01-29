@@ -1,4 +1,13 @@
 ide/qt - change history
 
-== 1.0.0/24 ==
+== 1.0.0/3 ==
  * initial release
+
+== 1.0.4/23 ==
+ * cleanup winlib
+
+== 1.0.24 ==
+ * move to j801
+
+== 1.0.25 ==
+ * opengl
