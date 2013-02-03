@@ -1,7 +1,6 @@
 NB. J qtide
 
 require 'project'
-require PPScript_jp_
 
 coclass 'jqtide'
 
@@ -101,7 +100,6 @@ s=. '"',libjqt,'" dirmatch ', (IFWIN#'+ '),'> n *c *c'
 dirmatch=: [: empty s cd [: ,each 2 {. boxopen
 
 4!:55<'s'
-IFJAVA=: 0
 wde=: [:
 wdbox=: [:
 wdforms=: [:
