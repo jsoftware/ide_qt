@@ -1,6 +1,7 @@
 NB. J qtide
 
 require 'project'
+require PPScript_jp_
 
 coclass 'jqtide'
 
