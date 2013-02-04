@@ -1,5 +1,5 @@
-require 'gl3'
-coinsert 'jgl3'
+require 'api/gles'
+coinsert 'jgles'
 
 A=: 0 : 0
 pc a;
@@ -14,24 +14,47 @@ wd 'pshow'
 
 
 a_g_initialize=: 3 : 0
-glClearColor 0; 0; 1; 0
-sl=: glsl vsrc;fsrc
-assert. _1~:sl
-vertexAttr=: glsl_attributeLocation sl;'vertex'
+wglARB''
+
+sprog=: 0
+'err vshader'=. GL_VERTEX_SHADER gl_makeshader vsrc
+if. #err do. assert. 0[smoutput err end.
+'err fshader'=. GL_FRAGMENT_SHADER gl_makeshader fsrc
+if. #err do. assert. 0[smoutput err end.
+'err program'=. gl_makeprogram vshader,fshader
+if. #err do. assert. 0[smoutput err end.
+glDeleteShader"0 vshader,fshader
+sprog=: program
+
+vertexAttr=: glGetAttribLocation program;'vertex'
 assert. 0 <: vertexAttr
+
+glClearColor 0; 0; 1; 0
+
 )
 
 a_g_paint=: 3 : 0
 wh=. gl_qwh''
 glClearColor 0 0 0.5 0
 glClear GL_COLOR_BUFFER_BIT + GL_DEPTH_BUFFER_BIT
-r=. glsl_bind sl
-assert. 0~:r
-glsl_setAttributeArray sl;vertexAttr;(symdat <'vertexData');3;0
-glsl_enableAttributeArray sl;vertexAttr
+
+if. 0=sprog do. return. end.
+glUseProgram sprog
+
+glGenBuffers 1; vbo=. ,_1
+glBindBuffer GL_ARRAY_BUFFER; {.vbo
+glBufferData GL_ARRAY_BUFFER; (#vertexData); (symdat <'vertexData'); GL_STATIC_DRAW
+
+glEnableVertexAttribArray vertexAttr
+glVertexAttribPointer vertexAttr; 3; GL_FLOAT; 0; 0; 0
+
 glDrawArrays GL_TRIANGLES; 0; 6
-glsl_disableAttributeArray sl;vertexAttr
-glsl_release sl
+
+glDisableVertexAttribArray vertexAttr
+glBindBuffer GL_ARRAY_BUFFER; 0
+
+glUseProgram 0
+
 )
 
 vsrc=: 0 : 0
