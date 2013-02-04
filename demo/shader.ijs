@@ -3,13 +3,12 @@ coinsert 'jgl3'
 
 A=: 0 : 0
 pc a;
-xywh 0 0 150 150;cc g opengl;
+wh 300 300;cc g opengl;
 rem form end;
 )
 
 a_run=: 3 : 0
 wd A
-SPHERE=: 2
 wd 'pshow'
 )
 
