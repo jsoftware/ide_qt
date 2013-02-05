@@ -1,7 +1,4 @@
 ide/qt - change history
 
-== 1.0.0/24 ==
+== 1.0.0/28 ==
  * initial release
-
-== 1.0.25/27 ==
- * opengl

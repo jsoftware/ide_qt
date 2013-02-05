@@ -14,8 +14,8 @@ wd 'pshow'
 
 
 a_g_initialize=: 3 : 0
+smoutput memr 0 _1 2,~ glGetString GL_VERSION
 wglARB''
-
 sprog=: 0
 'err vshader'=. GL_VERTEX_SHADER gl_makeshader vsrc
 if. #err do. assert. 0[smoutput err end.
