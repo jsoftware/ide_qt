@@ -10,6 +10,7 @@ run=: 3 : 0
 wd FORM
 wd 'pmovex 0 0 450 350'
 wd 'pshow'
+glpaintx''
 EMPTY
 )
 

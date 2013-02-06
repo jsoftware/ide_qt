@@ -83,19 +83,6 @@ wh=. 2#2-2
 ('"',libjqt,'" gl_qwh >',(IFWIN#'+'),' i *i') cd <wh
 wh
 )
-
-glsl=: ('"',libjqt,'" glsl >',(IFWIN#'+'),' x *c *c')&cd
-glsl_bind=: ('"',libjqt,'" glsl_bind >',(IFWIN#'+'),' i x')&cd
-glsl_release=: ('"',libjqt,'" glsl_release >',(IFWIN#'+'),' n x')&cd
-glsl_setUniformValue_f=: ('"',libjqt,'" glsl_setUniformValue_f >',(IFWIN#'+'),' n x i f')&cd
-glsl_setUniformValue_f22=: ('"',libjqt,'" glsl_setUniformValue_f22 >',(IFWIN#'+'),' n x i *f')&cd
-glsl_setUniformValue_f33=: ('"',libjqt,'" glsl_setUniformValue_f33 >',(IFWIN#'+'),' n x i *f')&cd
-glsl_setUniformValue_f44=: ('"',libjqt,'" glsl_setUniformValue_f44 >',(IFWIN#'+'),' n x i *f')&cd
-glsl_enableAttributeArray=: ('"',libjqt,'" glsl_enableAttributeArray >',(IFWIN#'+'),' n x i')&cd
-glsl_disableAttributeArray=: ('"',libjqt,'" glsl_disableAttributeArray >',(IFWIN#'+'),' n x i')&cd
-glsl_setAttributeArray=: ('"',libjqt,'" glsl_setAttributeArray >',(IFWIN#'+'),' n x i x i i')&cd
-glsl_attributeLocation=: ('"',libjqt,'" glsl_attributeLocation >',(IFWIN#'+'),' i x *c')&cd
-glsl_uniformLocation=: ('"',libjqt,'" glsl_uniformLocation >',(IFWIN#'+'),' i x *c')&cd
 s=. '"',libjqt,'" dirmatch ', (IFWIN#'+ '),'> n *c *c'
 dirmatch=: [: empty s cd [: ,each 2 {. boxopen
 
