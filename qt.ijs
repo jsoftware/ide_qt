@@ -68,11 +68,45 @@ wdqprinters=: (wd bind 'qprinters') :: (''"_)
 wdqpx=: (wd bind 'qpx') :: (''"_)
 wdqscreen=: (0 ". wd bind 'qscreen') :: (264 211 800 600 96 96 32 1 _1 36 36 51"_)
 wdqwd=: (wd bind 'qwd') :: ('jqt'"_)
-gl_setlocale=: ('"',libjqt,'" gl_setlocale >',(IFWIN#'+'),' i *c') cd <@,@>
+NB gl2 overlay on opengl
+rpcinfinity=: 3 : 0
+<. 0 (I.(_=y)+.__=y)}y
+)
+gl_arc=: ('"',libjqt,'" gl_arc >',(IFWIN#'+'),' i *i') cd <
+gl_brush=: ('"',libjqt,'" gl_brush >',(IFWIN#'+'),' i')&cd bind ''
+gl_brushnull=: ('"',libjqt,'" gl_brushnull >',(IFWIN#'+'),' i')&cd bind ''
+gl_capture=: ('"',libjqt,'" gl_capture >',(IFWIN#'+'),' i i')&cd
+gl_caret=: ('"',libjqt,'" gl_caret >',(IFWIN#'+'),' i *i') cd <
+gl_clear=: ('"',libjqt,'" gl_clear >',(IFWIN#'+'),' i')&cd bind ''
+gl_clip=: ('"',libjqt,'" gl_clip >',(IFWIN#'+'),' i *i') cd <
+gl_clipreset=: ('"',libjqt,'" gl_clipreset >',(IFWIN#'+'),' i')&cd bind ''
+gl_cmds=: ('"',libjqt,'" gl_cmds >',(IFWIN#'+'),' i *i i') cd (;#)@:rpcinfinity
+gl_cursor=: ('"',libjqt,'" gl_cursor >',(IFWIN#'+'),' i i')&cd
+gl_ellipse=: ('"',libjqt,'" gl_ellipse >',(IFWIN#'+'),' i *i') cd <@:<.
+gl_font=: ('"',libjqt,'" gl_font >',(IFWIN#'+'),' i *c') cd <@,
+gl_font2=: ('"',libjqt,'" gl_font2 >',(IFWIN#'+'),' i *i i') cd (;#)@:<.
+gl_fontangle=: ('"',libjqt,'" gl_fontangle >',(IFWIN#'+'),' i i')&cd
+gl_lines=: ('"',libjqt,'" gl_lines >',(IFWIN#'+'),' i *i i') cd (;#)
+gl_nodblbuf=: ('"',libjqt,'" gl_nodblbuf >',(IFWIN#'+'),' i i') cd {.@(,&0)
 gl_paint=: ('"',libjqt,'" gl_paint >',(IFWIN#'+'),' i')&cd bind ''
 gl_paintx=: ('"',libjqt,'" gl_paintx >',(IFWIN#'+'),' i')&cd bind ''
+gl_pen=: ('"',libjqt,'" gl_pen >',(IFWIN#'+'),' i *i') cd <@:(2&{.)
+gl_pie=: ('"',libjqt,'" gl_pie >',(IFWIN#'+'),' i *i') cd <
+gl_pixel=: ('"',libjqt,'" gl_pixel >',(IFWIN#'+'),' i *i') cd <
+gl_pixels=: ('"',libjqt,'" gl_pixels >',(IFWIN#'+'),' i *i i') cd (;#)@:<.
+gl_pixelsx=: ('"',libjqt,'" gl_pixelsx >',(IFWIN#'+'),' i *i') cd <@:<.
+gl_polygon=: ('"',libjqt,'" gl_polygon >',(IFWIN#'+'),' i *i i') cd (;#)@:<.
+gl_rect=: ('"',libjqt,'" gl_rect >',(IFWIN#'+'),' i *i') cd <@:rpcinfinity
+gl_rgb=: ('"',libjqt,'" gl_rgb >',(IFWIN#'+'),' i *i') cd <@:<.
 gl_sel=: ('"',libjqt,'" gl_sel >',(IFWIN#'+'),' i x')&cd
 gl_sel2=: ('"',libjqt,'" gl_sel2 >',(IFWIN#'+'),' i *c') cd <@,
+gl_text=: ('"',libjqt,'" gl_text >',(IFWIN#'+'),' i *c') cd <@,
+gl_textcolor=: ('"',libjqt,'" gl_textcolor >',(IFWIN#'+'),' i')&cd bind ''
+gl_textxy=: ('"',libjqt,'" gl_textxy >',(IFWIN#'+'),' i *i') cd <@:<.
+gl_windoworg=: ('"',libjqt,'" gl_windoworg >',(IFWIN#'+'),' i *i') cd <@:<.
+gl_updategl=: ('"',libjqt,'" gl_updategl >',(IFWIN#'+'),' i x')&cd
+
+gl_setlocale=: ('"',libjqt,'" gl_setlocale >',(IFWIN#'+'),' i *c') cd <@,@>
 gl_qhandles=: 3 : 0"1
 hs=. 3#2-2
 ('"',libjqt,'" gl_qhandles >',(IFWIN#'+'),' i *x') cd <hs
@@ -82,6 +116,28 @@ gl_qwh=: 3 : 0"1
 wh=. 2#2-2
 ('"',libjqt,'" gl_qwh >',(IFWIN#'+'),' i *i') cd <wh
 wh
+)
+gl_qpixels=: 3 : 0"1
+n=. */ 2{.2}.y
+pix=. n#2-2
+('"',libjqt,'" gl_qpixels >',(IFWIN#'+'),' i *i *i') cd y;pix
+pix
+)
+gl_qextent=: 3 : 0"1
+wh=. 2#2-2
+('"',libjqt,'" gl_qextent >',(IFWIN#'+'),' i *c *i') cd (,y);wh
+wh
+)
+gl_qextentw=: 3 : 0"1
+y=. y,(LF~:{:y)#LF [ y=. ,y
+w=. (+/LF=y)#2-2
+('"',libjqt,'" gl_qextentw >',(IFWIN#'+'),' i *c *i') cd y;w
+w
+)
+gl_qtextmetrics=: 3 : 0"1
+tm=. 7#2-2
+('"',libjqt,'" gl_qtextmetrics >',(IFWIN#'+'),' i *i') cd tm
+tm
 )
 s=. '"',libjqt,'" dirmatch ', (IFWIN#'+ '),'> n *c *c'
 dirmatch=: [: empty s cd [: ,each 2 {. boxopen

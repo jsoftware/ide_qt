@@ -1,4 +1,6 @@
 require 'api/gles'
+
+cocurrent 'base'
 coinsert 'jgles'
 
 sprog=: 0
@@ -10,13 +12,21 @@ rem form end;
 )
 
 a_run=: 3 : 0
+hgl=: 0
+angle=: _90
 wd A
 wd 'pshow'
 )
 
 a_g_initialize=: 3 : 0
 if. p=. glGetString GL_VERSION do. smoutput 'GL_VERSION: ', memr 0 _1 2,~ p end.
+if. 0=p do. smoutput 'cannot retrieve GL_VERSION' return. end.
+if. p=. glGetString GL_VENDOR do. smoutput 'GL_VENDOR: ', memr 0 _1 2,~ p end.
+if. p=. glGetString GL_RENDERER do. smoutput 'GL_RENDERER: ', memr 0 _1 2,~ p end.
 if. p=. glGetString GL_SHADING_LANGUAGE_VERSION do. smoutput 'GL_SHADING_LANGUAGE_VERSION: ', memr 0 _1 2,~ p end.
+
+hgl=: {.gl_qhandles''
+
 wglPROC''
 sprog=: 0
 'err program'=. gl_makeprogram vsrc;fsrc
@@ -45,7 +55,6 @@ glClear GL_COLOR_BUFFER_BIT + GL_DEPTH_BUFFER_BIT
 glUseProgram sprog
 
 tx=. 0.5 0.5 0
-angle=. 90
 
 NB. matrix convention: current matrix on the left
 
@@ -79,6 +88,15 @@ glDisableVertexAttribArray vertexAttr
 
 glUseProgram 0
 
+)
+
+a_g_paintz=: 3 : 0
+wh=. gl_qwh''
+gl_textxy <. wh%6 3
+gl_rgb 255 0 0
+gl_textcolor ''
+gl_font 'sans 24 italic'
+gl_text 'shader demo'
 )
 
 a_cancel=: a_close
