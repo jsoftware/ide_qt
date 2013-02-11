@@ -1,6 +1,6 @@
 require 'api/gles'
 
-cocurrent 'base'
+cocurrent 'demoshader'
 coinsert 'jgles'
 
 mp=: +/ . *
