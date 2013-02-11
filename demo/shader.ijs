@@ -1,4 +1,4 @@
-require 'api/gles'
+require 'gles'
 
 cocurrent 'demoshader'
 coinsert 'jgles'
@@ -67,7 +67,7 @@ glEnable GL_CULL_FACE
 NB. matrix convention: current matrix on the left
 mvp=: (gl_Rotate (0{R), 1 0 0 ) mp (gl_Rotate (1{R), 0 1 0) mp (gl_Rotate (2{R), 0 0 1) mp (gl_Scale STEPS%100) mp gl_Translate 0 0 _8
 
-mvp=: mvp mp glu_Perspective 30, (%/wh),1 10
+mvp=: mvp mp gl_Perspective 30, (%/wh),1 10
 
 glGenBuffers 2;vbo=. 2#_1
 glBindBuffer GL_ARRAY_BUFFER; {.vbo
@@ -100,6 +100,7 @@ glUseProgram 0
 )
 
 a_g_paintz=: 3 : 0
+gl_clear ''
 gl_rgb 255 255 255
 gl_textcolor ''
 gl_textxy 10 30
