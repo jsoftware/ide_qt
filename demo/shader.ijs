@@ -1,8 +1,9 @@
 require 'api/gles'
 
-cocurrent 'demoshader'
+cocurrent 'base'
 coinsert 'jgles'
 
+mp=: +/ . *
 sprog=: 0
 
 A=: 0 : 0
@@ -12,8 +13,9 @@ rem form end;
 )
 
 a_run=: 3 : 0
-hgl=: 0
-angle=: _90
+k=. 0{sysdata
+STEPS=: 100
+R=: 20 30 0
 wd A
 wd 'pshow'
 )
@@ -25,8 +27,6 @@ if. p=. glGetString GL_VENDOR do. smoutput 'GL_VENDOR: ', memr 0 _1 2,~ p end.
 if. p=. glGetString GL_RENDERER do. smoutput 'GL_RENDERER: ', memr 0 _1 2,~ p end.
 if. p=. glGetString GL_SHADING_LANGUAGE_VERSION do. smoutput 'GL_SHADING_LANGUAGE_VERSION: ', memr 0 _1 2,~ p end.
 
-hgl=: {.gl_qhandles''
-
 wglPROC''
 sprog=: 0
 'err program'=. gl_makeprogram vsrc;fsrc
@@ -36,32 +36,38 @@ vertexAttr=: glGetAttribLocation program;'vertex'
 assert. _1~: vertexAttr
 colorAttr=: glGetAttribLocation program;'color'
 assert. _1~: colorAttr
-xfUni=: glGetUniformLocation program;'xf'
-assert. _1~: xfUni
+mvpUni=: glGetUniformLocation program;'mvp'
+assert. _1~: mvpUni
 
 sprog=: program
 
 glClearColor 0; 0; 1; 0
+)
 
+a_g_char=: verb define
+R=: 360 | R + 2 * 'xyz' = 0 { sysdata
+k=. 0{sysdata
+STEPS=: 200 <. STEPS + 's' = k
+STEPS=: 3 >. STEPS - 'a' = k
+F
+gl_paintx''
 )
 
 a_g_paint=: 3 : 0
 if. 0=sprog do. return. end.
 
 wh=. gl_qwh''
-glClearColor 1 1 1 0
+glClearColor 0 0 0 0
 glClear GL_COLOR_BUFFER_BIT + GL_DEPTH_BUFFER_BIT
 
 glUseProgram sprog
-
-tx=. 0.5 0.5 0
+glEnable GL_DEPTH_TEST
+glEnable GL_CULL_FACE
 
 NB. matrix convention: current matrix on the left
+mvp=: (gl_Rotate (0{R), 1 0 0 ) mp (gl_Rotate (1{R), 0 1 0) mp (gl_Rotate (2{R), 0 0 1) mp (gl_Scale STEPS%100) mp gl_Translate 0 0 _8
 
-NB. first translate then rotate
-xf=: (gl_Translate tx) (+/ . *) gl_Rotate angle, 0 0 1
-NB. or use dyad form
-NB. xf=: (gl_Translate tx) gl_Rotate angle, 0 0 1
+mvp=: mvp mp glu_Perspective 30, (%/wh),1 10
 
 glGenBuffers 2;vbo=. 2#_1
 glBindBuffer GL_ARRAY_BUFFER; {.vbo
@@ -70,7 +76,7 @@ glBindBuffer GL_ARRAY_BUFFER; {:vbo
 glBufferData GL_ARRAY_BUFFER; (#colorData); (<symdat <'colorData'); GL_STATIC_DRAW
 glBindBuffer GL_ARRAY_BUFFER; 0
 
-glUniformMatrix4fv xfUni; 1; GL_FALSE; xf
+glUniformMatrix4fv mvpUni; 1; GL_FALSE; mvp
 
 glBindBuffer GL_ARRAY_BUFFER; {.vbo
 glEnableVertexAttribArray vertexAttr
@@ -80,23 +86,28 @@ glBindBuffer GL_ARRAY_BUFFER; {:vbo
 glEnableVertexAttribArray colorAttr
 glVertexAttribPointer colorAttr; 3; GL_FLOAT; 0; 0; <<0
 
-glDrawArrays GL_TRIANGLES; 0; 3
+glDrawArrays GL_TRIANGLES; 0; 36
 
 glBindBuffer GL_ARRAY_BUFFER; 0
 glDisableVertexAttribArray colorAttr
 glDisableVertexAttribArray vertexAttr
+
+glDisable GL_DEPTH_TEST
+glDisable GL_CULL_FACE
 
 glUseProgram 0
 
 )
 
 a_g_paintz=: 3 : 0
-wh=. gl_qwh''
-gl_textxy <. wh%6 3
-gl_rgb 255 0 0
+gl_rgb 255 255 255
 gl_textcolor ''
-gl_font 'sans 24 italic'
-gl_text 'shader demo'
+gl_textxy 10 30
+gl_text 'keys: x y z a s'
+gl_textxy 10 50
+gl_text 'scale: ',":STEPS%100
+gl_textxy 10 70
+gl_text 'angle: ',":R
 )
 
 a_cancel=: a_close
@@ -106,17 +117,47 @@ glDeleteProgram sprog
 wd 'pclose'
 )
 
-vertexData=: 1&fc , 0&".@(-.&',') ;._2 [ 0 : 0
- 0.0,  0.5, 0.0
--0.5, -0.5, 0.0
- 0.5, -0.5, 0.0
+vertexData=: 1&fc , 0 1 2 2 1 3&{"2 ] 6 4 3$ , 0&".@(-.&',') ;._2 [ 0 : 0
+_1 _1  1
+ 1 _1  1
+_1  1  1
+ 1  1  1 ,
+ 1 _1  1
+ 1 _1 _1
+ 1  1  1
+ 1  1 _1 ,
+ 1 _1 _1
+_1 _1 _1
+ 1  1 _1
+_1  1 _1 ,
+_1 _1 _1
+_1 _1  1
+_1  1 _1
+_1  1  1 ,
+_1 _1 _1
+ 1 _1 _1
+_1 _1  1
+ 1 _1  1 ,
+_1  1  1
+ 1  1  1
+_1  1 _1
+ 1  1 _1 ,
 )
- 
+
 NB. rgb for each vertex
-colorData=: 1&fc ,  0&".@(-.&',') ;._2 [ 0 : 0
+colorData=: 1&fc , 0 1 1 1 1 0&{"2 ] 6 2 3$ , 0&". ;._2 [ 0 : 0
 1 0 0
 0 1 0
+0 1 0
 0 0 1
+1 0 0
+0 0 1
+1 1 0
+0 0 1
+0 1 1
+1 0 0
+1 0 1
+0 1 0
 )
 
 NB. =========================================================
@@ -124,10 +165,10 @@ vsrc=: 0 : 0
 attribute highp vec3 vertex;
 attribute lowp vec3 color;
 varying lowp vec4 v_color;
-uniform mat4 xf;
+uniform mat4 mvp;
 void main(void)
 {
-  gl_Position = xf * vec4(vertex,1.0);
+  gl_Position = mvp * vec4(vertex,1.0);
   v_color = vec4(color,1.0);
 }
 )
