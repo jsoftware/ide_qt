@@ -16,6 +16,9 @@ a_run=: 3 : 0
 k=. 0{sysdata
 STEPS=: 100
 R=: 20 30 0
+EYE=: 0 0 1
+LR=: UD=: IO=: 0
+UP=: 0 1 0
 wd A
 wd 'pshow'
 )
@@ -39,17 +42,25 @@ assert. _1~: colorAttr
 mvpUni=: glGetUniformLocation program;'mvp'
 assert. _1~: mvpUni
 
+glGenBuffers 2;vbo=: 2#_1
+glBindBuffer GL_ARRAY_BUFFER; {.vbo
+glBufferData GL_ARRAY_BUFFER; (#vertexData); (<symdat <'vertexData'); GL_STATIC_DRAW
+glBindBuffer GL_ARRAY_BUFFER; {:vbo
+glBufferData GL_ARRAY_BUFFER; (#colorData); (<symdat <'colorData'); GL_STATIC_DRAW
+glBindBuffer GL_ARRAY_BUFFER; 0
+
 sprog=: program
 
 glClearColor 0; 0; 1; 0
 )
 
-a_g_char=: verb define
+a_g_char=: 3 : 0
 R=: 360 | R + 2 * 'xyz' = 0 { sysdata
 k=. 0{sysdata
 STEPS=: 200 <. STEPS + 's' = k
 STEPS=: 3 >. STEPS - 'a' = k
-F
+LR=: LR + 0.01*'l'=k
+LR=: LR - 0.01*'r'=k
 gl_paintx''
 )
 
@@ -65,17 +76,15 @@ glEnable GL_DEPTH_TEST
 glEnable GL_CULL_FACE
 
 NB. matrix convention: current matrix on the left
-mvp=: (gl_Rotate (0{R), 1 0 0 ) mp (gl_Rotate (1{R), 0 1 0) mp (gl_Rotate (2{R), 0 0 1) mp (gl_Scale STEPS%100) mp gl_Translate 0 0 _8
+NB. note pre-multiplication
 
+NB. model-view
+mvp=: (gl_Rotate (0{R), 1 0 0 ) mp (gl_Rotate (1{R), 0 1 0) mp (gl_Rotate (2{R), 0 0 1) mp (gl_Scale STEPS%100) mp (gl_Translate 0 0 _8) mp glu_LookAt EYE,LR,UD,IO,UP
+
+NB. projection
 mvp=: mvp mp gl_Perspective 30, (%/wh),1 10
 
-glGenBuffers 2;vbo=. 2#_1
-glBindBuffer GL_ARRAY_BUFFER; {.vbo
-glBufferData GL_ARRAY_BUFFER; (#vertexData); (<symdat <'vertexData'); GL_STATIC_DRAW
-glBindBuffer GL_ARRAY_BUFFER; {:vbo
-glBufferData GL_ARRAY_BUFFER; (#colorData); (<symdat <'colorData'); GL_STATIC_DRAW
-glBindBuffer GL_ARRAY_BUFFER; 0
-
+NB. note GL_FALSE, no transpose
 glUniformMatrix4fv mvpUni; 1; GL_FALSE; mvp
 
 glBindBuffer GL_ARRAY_BUFFER; {.vbo
@@ -104,11 +113,17 @@ gl_clear ''
 gl_rgb 255 255 255
 gl_textcolor ''
 gl_textxy 10 30
-gl_text 'keys: x y z a s'
+gl_text 'keys: x y z a s l r'
 gl_textxy 10 50
 gl_text 'scale: ',":STEPS%100
 gl_textxy 10 70
 gl_text 'angle: ',":R
+gl_textxy 10 90
+gl_text 'matrix:'
+for_i. i.4 do.
+  gl_textxy 10, 105+i*15
+  gl_text 6j2": i{mvp
+end.
 )
 
 a_cancel=: a_close
