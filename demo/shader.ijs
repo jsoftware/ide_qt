@@ -119,6 +119,7 @@ gl_text 'scale: ',":STEPS%100
 gl_textxy 10 70
 gl_text 'angle: ',":R
 gl_textxy 10 90
+if. 0=sprog do. return. end.
 gl_text 'matrix:'
 for_i. i.4 do.
   gl_textxy 10, 105+i*15
@@ -129,7 +130,7 @@ end.
 a_cancel=: a_close
 
 a_close=: 3 : 0
-glDeleteProgram sprog
+glDeleteProgram ::0: sprog
 wd 'pclose'
 )
 
