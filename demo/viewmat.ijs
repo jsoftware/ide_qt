@@ -4,6 +4,7 @@ require 'viewmat'
 NB. =========================================================
 test1=: 3 : 0
 viewmat i.5 5
+wd 'pmovex 50 50 400 400'
 viewmat (] +./ .*. |:) 3&#. inverse i.243
 )
 

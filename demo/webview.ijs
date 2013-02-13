@@ -11,6 +11,7 @@ NB.  setp c html text
 NB. =========================================================
 webview=: 3 : 0
 wd 'pc webview'
+wd 'cc e edit'
 wd 'cc w1 webview'
 wd 'set w1 *http://www.yahoo.com'
 wd 'cc w2 webview'
@@ -18,6 +19,11 @@ wd 'setp w2 baseurl *http://www.jsoftware.com'
 wd 'setp w2 html *<html><body><img src=''./zippy.gif'' /></body></html>'
 wd 'pmovex 100 10 600 250'
 wd 'pshow'
+)
+
+NB. =========================================================
+webview_e_button=: 3 : 0
+wd 'set w1 *',e
 )
 
 NB. =========================================================
