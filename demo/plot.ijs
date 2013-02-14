@@ -1,6 +1,8 @@
 
 require 'plot numeric trig'
 
+coclass 'qtdemo'
+
 pd 'reset'
 pd 'title sin(exp) vs cos(exp)'
 pd 'color red,green'

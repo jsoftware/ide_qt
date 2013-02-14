@@ -8,13 +8,14 @@ coinsert 'jgl2'
 NB. =========================================================
 run=: 3 : 0
 wd FORM
-wd 'pmovex 0 0 450 350'
 wd 'pshow'
+glpaint''  NB. Android bug
 EMPTY
 )
 
 FORM=: 0 : 0
 pc demo closeok;pn "gl2 demo";
+wh 450 350;
 cc gs isigraph;
 )
 

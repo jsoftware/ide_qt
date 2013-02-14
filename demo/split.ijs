@@ -10,6 +10,8 @@ NB. splitz     finishes split
 
 NB. splith 1 2 200 200;
 
+coclass 'qtdemo'
+
 NB. =========================================================
 Splitter=: 0 : 0
 pc splitter escclose;
@@ -42,6 +44,7 @@ wd 'pshow'
 NB. =========================================================
 splitter_close=: 3 : 0
 wd 'pclose'
+showevents_jqtide_ 0
 )
 
 showevents_jqtide_ 2

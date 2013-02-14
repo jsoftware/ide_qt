@@ -3,6 +3,8 @@ NB. also:
 NB. pc controls closeok
 NB. pc controls escclose
 
+coclass 'qtdemo'
+
 Controls=: 0 : 0
 pc controls;
 rem make nested vertical, horizontal, vertical bins:;

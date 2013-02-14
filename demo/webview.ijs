@@ -8,6 +8,8 @@ NB.  set c url
 NB.  setp c baseurl url
 NB.  setp c html text
 
+coclass 'qtdemo'
+
 NB. =========================================================
 webview=: 3 : 0
 wd 'pc webview'

@@ -2,6 +2,8 @@ NB. timer
 NB.
 NB. argument is milliseconds
 
+coclass 'qtdemo'
+
 timer=: 3 : 0
 if. y do.
   sys_timer_z_=: 3 : 'smoutput 6!:0$0'

@@ -8,6 +8,8 @@ NB. data types so far:
 NB.  0 text
 NB.  1 checkbox
 
+coclass 'qtdemo'
+
 NB. =========================================================
 Dat=: 0 : 0
 0 api/expat 1.0.0 1.0.0 libexpat

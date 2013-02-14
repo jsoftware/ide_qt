@@ -1,4 +1,4 @@
 ide/qt - change history
 
-== 1.0.0/40 ==
+== 1.0.0/41 ==
  * initial release

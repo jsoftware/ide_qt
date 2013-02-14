@@ -1,6 +1,8 @@
 require 'gl3'
 coinsert 'jgl3'
 
+coclass 'qtdemo'
+
 A=: 0 : 0
 pc a;
 xywh 0 0 150 150;cc g opengl;

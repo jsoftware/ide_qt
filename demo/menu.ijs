@@ -1,5 +1,7 @@
 NB. menu demo
 
+coclass 'qtdemo'
+
 test=: 3 : 0
 wd 'pc test'
 wd 'menupop "&File"'

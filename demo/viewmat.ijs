@@ -1,11 +1,18 @@
 
 require 'viewmat'
 
+coclass 'qtdemo'
+
 NB. =========================================================
 test1=: 3 : 0
-viewmat i.5 5
-wd 'pmovex 50 50 400 400'
+if. -. 'Android'-:UNAME do.
+  viewmat i.5 5
+  wd 'pmovex ', ":(n=. ?100 100), _1 _1
+end.
 viewmat (] +./ .*. |:) 3&#. inverse i.243
+if. -. 'Android'-:UNAME do.
+  wd 'pmovex ', ":(50+n), _1 _1
+end.
 )
 
 NB. =========================================================
