@@ -12,17 +12,21 @@ NB. =========================================================
 webview=: 3 : 0
 wd 'pc webview'
 wd 'cc e edit'
+wd 'splitv 1 1 250 250'
 wd 'cc w1 webview'
-wd 'set w1 *http://www.yahoo.com'
+wd 'splitsep'
 wd 'cc w2 webview'
+wd 'splitend'
+wd 'pshow'
+wd 'set e *http://www.yahoo.com'
+wd 'set w1 *http://www.yahoo.com'
 wd 'setp w2 baseurl *http://www.jsoftware.com'
 wd 'setp w2 html *<html><body><img src=''./zippy.gif'' /></body></html>'
-wd 'pmovex 100 10 600 250'
-wd 'pshow'
 )
 
 NB. =========================================================
 webview_e_button=: 3 : 0
+smoutput e
 wd 'set w1 *',e
 )
 
