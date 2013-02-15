@@ -5,7 +5,7 @@ coclass 'qtdemo'
 
 A=: 0 : 0
 pc a;
-xywh 0 0 150 150;cc g opengl;
+wh 300 300;cc g opengl compatibility;
 rem form end;
 )
 
@@ -15,10 +15,22 @@ SPHERE=: 2
 wd 'pshow'
 )
 
+a_g_initialize=: 3 : 0
+if. p=. >@{. glGetString GL_VERSION do. smoutput 'GL_VERSION: ', memr 0 _1 2,~ p end.
+if. 0=p do. smoutput 'cannot retrieve GL_VERSION' return. end.
+if. p=. >@{. glGetString GL_VENDOR do. smoutput 'GL_VENDOR: ', memr 0 _1 2,~ p end.
+if. p=. >@{. glGetString GL_RENDERER do. smoutput 'GL_RENDERER: ', memr 0 _1 2,~ p end.
+if. p=. >@{. glGetString 16b8b8c do. smoutput 'GL_SHADING_LANGUAGE_VERSION: ', memr 0 _1 2,~ p end.
+)
+
 a_g_paint=: 3 : 0
 wh=. gl_qwh''
 glViewport 0 0,wh
-glMatrixMode GL_PROJECTION
+try.
+  glMatrixMode GL_PROJECTION
+catch.
+  smoutput 'not supported' return.
+end.
 glLoadIdentity''
 gluPerspective 30, (%/wh),1 10
 glClearColor 0 0 0 0
