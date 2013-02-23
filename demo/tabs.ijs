@@ -2,7 +2,12 @@ NB. tabdemo
 NB.
 NB. this is the controls demo in 3 tabs
 NB.
-NB. cc id tab        start a tabs control
+NB. cc id tab     - start a tabs control with keywords:
+NB.   closable         tab can be closed
+NB.   documentmode     (default off)
+NB.   east|south|west  (default north)
+NB.   movable          (default fixed)
+NB.
 NB. tabnew id        start a single tab 
 NB. ...
 NB. tabend           end tabs control
@@ -13,7 +18,8 @@ pc tabdemo escclose;
 
 rem cc static button;
 
-cc prefs tab;
+cc prefs tab closable movable;
+rem cc prefs tab east documentmode;
 
 tabnew View;
 cc linear radiobutton;
@@ -31,7 +37,7 @@ cc paid checkbox;
 bin z s1 z;
 cc names combobox;
 
-tabnew Notes;
+tabnew Dummy;
 cc list listbox;
 cc entry edit;
 cc ted editm;
@@ -55,6 +61,8 @@ NB. =========================================================
 tabdemo_run=: 3 : 0
 wd Tabdemo
 wd 'set ted *How grand to be a Toucan',LF,'Just think what Toucan do.'
+wd 'setp prefs active 1'
+wd 'setp prefs label 2 Notes'
 wd 'pmovex 400 10 400 200'
 wd 'pshow'
 )
