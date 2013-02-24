@@ -8,14 +8,19 @@ fexist=: 1:@(1!:4)@boxopen ::0:
 
 TITLES=: maketitle 0 : 0
 controls dcontrols
+edit dedit
 gl2 dgl2
+mbox dmbox
+mbdialog dmbdialog
 menu dmenu
 plot dplot
 shader dshader
 sphere dsphere
 split dsplit
 table dtable
+tabs dtabs
 timer dtimer
+toolbar dtoolbar
 viewmat dviewmat
 webview dwebview
 )
@@ -61,14 +66,19 @@ qtdemo_cancel_button=: qtdemo_close
 
 NB. =========================================================
 dcontrols=: load bind (jpath '~addons/ide/qt/demo/controls.ijs')
+dedit=: load bind (jpath '~addons/ide/qt/demo/edit.ijs')
 dgl2=: load bind (jpath '~addons/ide/qt/demo/gl2.ijs')
+dmbox=: load bind (jpath '~addons/ide/qt/demo/mbox.ijs')
+dmbdialog=: load bind (jpath '~addons/ide/qt/demo/mbdialog.ijs')
 dmenu=: load bind (jpath '~addons/ide/qt/demo/menu.ijs')
 dplot=: load bind (jpath '~addons/ide/qt/demo/plot.ijs')
 dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs') ^:(-.'Android'-:UNAME)
 dsphere=: load bind (jpath '~addons/ide/qt/demo/sphere.ijs') ^:(-.'Android'-:UNAME)
 dsplit=: load bind (jpath '~addons/ide/qt/demo/split.ijs')
 dtable=: load bind (jpath '~addons/ide/qt/demo/table.ijs')
+dtabs=: load bind (jpath '~addons/ide/qt/demo/tabs.ijs')
 dtimer=: load bind (jpath '~addons/ide/qt/demo/timer.ijs') ^:(-.'Android'-:UNAME)
+dtoolbar=: load bind (jpath '~addons/ide/qt/demo/toolbar.ijs')
 dviewmat=: load bind (jpath '~addons/ide/qt/demo/viewmat.ijs')
 dwebview=: load bind (jpath '~addons/ide/qt/demo/webview.ijs')
 

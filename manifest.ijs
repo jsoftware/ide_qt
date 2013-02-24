@@ -6,12 +6,13 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.0.47'
+VERSION=: '1.0.48'
 
 FILES=: 0 : 0
 qt.ijs
 config/
 demo/
+images/
 )
 
 RELEASE=: 'j801'

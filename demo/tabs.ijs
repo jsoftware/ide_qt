@@ -85,6 +85,7 @@ wd 'setp prefs tabclose ',prefs_select
 NB. =========================================================
 tabdemo_close=: 3 : 0
 wd 'pclose'
+showevents_jqtide_ 0
 )
 
 showevents_jqtide_ 2
