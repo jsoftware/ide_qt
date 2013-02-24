@@ -1,4 +1,9 @@
 NB. mb dialogs demo
+NB.
+NB. mb font     - get a font
+NB. mb open     - get name of file to open
+NB. mb dir      - get directory name
+NB. mb save     - get name of file to save
 
 coclass 'qtdemo'
 
@@ -19,12 +24,23 @@ wd 'mb save "Save Script" "',(jpath '~install'),'" "',p,'"'
 )
 
 NB. =========================================================
-NB. wd 'mb font'
-NB. wd 'mb font family size [bold] [italic]'
+NB. mb dir title directory filter
+NB. note use of ;; in filter
 demo3=: 3 : 0
-wd 'mb font monospace 10 bold'
+wd 'mb dir "Existing Directory" "',(jpath '~install'),'"'
 )
 
-smoutput demo1''
-smoutput demo2''
-smoutput demo3''
+NB. =========================================================
+NB. wd 'mb font'
+NB. wd 'mb font family size [bold] [italic]'
+demo4=: 3 : 0
+wd 'mb font monospace 10 bold underline'
+)
+
+smoutput demo4''
+
+NB. smoutput demo1''
+NB. smoutput demo2''
+NB. smoutput demo3''
+NB. smoutput demo4''
+NB.
