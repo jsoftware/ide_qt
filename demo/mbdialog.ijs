@@ -37,10 +37,8 @@ demo4=: 3 : 0
 wd 'mb font monospace 10 bold underline'
 )
 
+smoutput demo1''
+smoutput demo2''
+smoutput demo3''
 smoutput demo4''
 
-NB. smoutput demo1''
-NB. smoutput demo2''
-NB. smoutput demo3''
-NB. smoutput demo4''
-NB.
