@@ -148,21 +148,38 @@ wdbox=: [:
 wdforms=: [:
 wdmove=: [:
 wdqshow=: [:
-wdquery=: [:
-wdreset=: [:
+wdreset=: wd bind 'reset'
 wdstatus=: [:
-mbopen=: [:
-mbsave=: [:
 wdformedit=: [:
+wdinfo=: 3 : 0
+'a b'=. _2{. boxopen y
+if. 2=#$b=. ":b do. b=. }.,LF,.b end.
+f=. 8 u: DEL&, @ (,&DEL) @ -.&(0 127{a.)
+empty wd 'mb info ',(f a),' ',(f b)
+)
+wdquery=: 3 : 0
+0 3 wdquery y
+:
+msg=. ' mb_'&,&.> res=. ;:'ok cancel yes no save discard'
+t=. x [ 'a b'=. _2{. boxopen y
+if. 2=#$b=. ":b do. b=. }.,LF,.b end.
+f=. 8 u: DEL&, @ (,&DEL) @ -.&(0 127{a.)
+m=. 'mb query', (;t{msg), ' ', (f a),' ',(f b)
+res i. <wd m
+)
+mbopen=: 3 : 0
+jpathsep wd 8 u: 'mb open ',y
+)
+mbsave=: 3 : 0
+jpathsep wd 8 u: 'mb save ',y
+)
 
-wdinfo=: smoutput @ >@{: @ boxopen
 wdisparent=: ('"',libjqt,'" wdisparent >',(IFWIN#'+'),' i *c') cd <@,
 wdishandle=: ('"',libjqt,'" wdisparent >',(IFWIN#'+'),' i *c') cd <@":
 wdreadimg=: ('"',libjqt,'" wdreadimg >',(IFWIN#'+'),' x *c *i')&cd
 wdgetimg=: ('"',libjqt,'" wdgetimg >',(IFWIN#'+'),' x *c i *i')&cd
 wdwriteimg=: ('"',libjqt,'" wdwriteimg >',(IFWIN#'+'),' i *c *i *c *c i')&cd
 wdputimg=: ('"',libjqt,'" wdputimg >',(IFWIN#'+'),' x *c *i *i *c i')&cd
-wdquery=: 0:
 
 wdgetparentid=: 3 : 0
 z=. ''
