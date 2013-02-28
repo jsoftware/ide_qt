@@ -29,7 +29,7 @@ cc list listbox;
 set list one "two turtle doves" three "four colly birds" five six seven;
 cc entry edit;
 set entry 盛大 abc 巨嘴鸟;
-cc ted editm;
+cc ted editm readonly;
 rem demonstrate bin and child stretch:;
 bin h s2;
 cc ok button;cn "Push Me";
@@ -40,6 +40,7 @@ setp ok stretch 1;
 NB. =========================================================
 controls_run=: 3 : 0
 wd Controls
+wd 'setp ted stylesheet *background-color:#eeeeee'
 wd 'set ted *How grand to be a Toucan',LF,'Just think what Toucan do.'
 wd 'pmovex 400 10 300 300'
 wd 'pshow'
