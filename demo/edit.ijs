@@ -27,6 +27,9 @@ wd 'set e5 *readonly'
 wd 'set l1 *left'
 wd 'set l2 *center'
 wd 'set l3 *right'
+wd 'pstylesheet *QLineEdit{color:blue} QLabel{color:green;background-color:yellow}'
+wd 'setp e4 stylesheet *color:red'
+wd 'setp e5 stylesheet *background-color:#bbbbbb'
 )
 
 NB. =========================================================
