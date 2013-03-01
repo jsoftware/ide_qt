@@ -20,7 +20,7 @@ coclass 'qtdemo'
 
 NB. =========================================================
 SBdemo=: 0 : 0
-pc sbdemo closeok escclose;
+pc sbdemo escclose;
 cc list listbox;
 set list one two three;
 cc sbar statusbar;
