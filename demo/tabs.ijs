@@ -12,6 +12,8 @@ NB. tabnew id        start a single tab
 NB. ...
 NB. tabend           end tabs control
 
+coclass 'qtdemo'
+
 NB. =========================================================
 Tabdemo=: 0 : 0
 pc tabdemo escclose;

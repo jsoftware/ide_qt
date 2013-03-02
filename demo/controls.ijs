@@ -9,18 +9,26 @@ Controls=: 0 : 0
 pc controls;
 rem make nested vertical, horizontal, vertical bins:;
 bin vhv;
+
+groupbox Display;
 cc linear radiobutton;
 cn "view linear";
 cc boxed radiobutton group;
 cn "view boxed";
 cc tree radiobutton group;
 cn "view tree";
+groupboxend;
+
 bin zv;
+
+groupbox Expense Type;
 cc gross radiobutton;
 cc net radiobutton group;
 cc paid checkbox;
 set boxed 1;
 set net 1;
+groupboxend;
+
 bin z s1 z;
 cc names combobox;
 set names Bressoud Frye Rosen Wagon;
