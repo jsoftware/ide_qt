@@ -1,34 +1,57 @@
 NB. parent styles demo
-NB. 
 
 coclass 'qtdemo'
 
+PSmsg=: 0 : 0
+<p>Select one or more form styles, then create the form.</p>
+
+<p>Normal forms show close, min and max buttons by default,<br>
+and are resizable. The form close button triggers an event.<p>
+
+<table>
+<tr><td>dialog</td><td>display window decorations as a dialog</td></tr>
+<tr><td>popup</td><td>a popup window with no window decorations</td></tr>
+<tr><td>closeok</td><td>form close button closes the form with no event</td></tr>
+<tr><td>escclose</td><td>pressing Esc closes the form</td></tr>
+<tr><td>nosize</td><td>the form may not be resized</td></tr>
+<tr><td>ptop</td><td>the form stays on top</td></tr>
+<tr><td>closebutton</td><td>show form close button</td></tr>
+<tr><td>minbutton</td><td>show form minimize button</td></tr>
+<tr><td>maxbutton</td><td>show form maximize button</td></tr>
+</table>
+<p>
+Styles <i>dialog</i> and <i>popup</i> are alternatives.<br/>
+Style <i>escclose</i> automatically selects <i>closeok</i>.<br/>
+Others are independent.
+)
+
 NB. =========================================================
 PSdemo=: 0 : 0
-pc psdemo escclose;
+pc psdemo escclose nosize;
+pn "Form Styles";
 cc lab static;
-bin p8hv;
+bin p12hv;
 cc dialog checkbox;
 cc popup checkbox;
+bin szv;
+cc closeok checkbox;
+cc escclose checkbox;
+bin szv;
+cc nosize checkbox;
 cc ptop checkbox;
-bin s1 zv;
+bin szv;
+cc closebutton checkbox;
 cc minbutton checkbox;
 cc maxbutton checkbox;
-cc closebutton checkbox;
-bin s1 zv;
+bin szv;
 cc ok button;cn "Create Form";
-bin s z;
+bin sz;
 )
 
 NB. =========================================================
 psdemo_run=: 3 : 0
 wd PSdemo
-msg=. '<p>Select one or more form styles, then<br/>create the form.</p>'
-msg=. msg,'<p>Styles dialog and popup are alternatives.<br/>'
-msg=. msg,'Others are independent.</p>'
-
-
-wd 'set lab ',msg
+wd 'set lab ',PSmsg
 wd 'pmovex 50 50 0 0'
 wd 'pshow'
 )
@@ -46,10 +69,20 @@ end.
 )
 
 NB. =========================================================
+psdemo_escclose_button=: 3 : 0
+if. 0 ". escclose do.
+  wd 'set closeok 1'
+end.
+)
+
+NB. =========================================================
 psdemo_ok_button=: 3 : 0
-r=. 'pc stylesdemo escclose'
-m=. 0 ".&> dialog;popup;ptop;minbutton;maxbutton;closebutton
-r=. r,;' ',each m#;:'dialog popup ptop minbutton maxbutton closebutton'
+s=. 'closeok dialog escclose nosize popup ptop'
+s=. s,' closebutton minbutton maxbutton'
+s=. ;: s
+r=. 'pc stylesdemo'
+m=. (0 ". ".) &> s
+r=. r,;' ',each m#s
 wd r
 wd 'cc ted editm'
 wd 'set ted *How grand to be a Toucan',LF,'Just think what Toucan do.'
@@ -64,7 +97,14 @@ end.
 )
 
 NB. =========================================================
+stylesdemo_close=: 3 : 0
+smoutput 'stylesdemo_close called'
+wd 'pclose'
+)
+
+NB. =========================================================
 stylesdemo_close_button=: 3 : 0
+smoutput 'stylesdemo_close_button called'
 wd 'pclose'
 )
 
