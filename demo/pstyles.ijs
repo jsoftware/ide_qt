@@ -10,6 +10,7 @@ and are resizable. The form close button triggers an event.<p>
 
 <table>
 <tr><td>dialog</td><td>display window decorations as a dialog</td></tr>
+<tr><td>owner</td><td>the form is modal to a single window hierarchy</td></tr>
 <tr><td>popup</td><td>a popup window with no window decorations</td></tr>
 <tr><td>closeok</td><td>form close button closes the form with no event</td></tr>
 <tr><td>escclose</td><td>pressing Esc closes the form</td></tr>
@@ -32,6 +33,7 @@ pn "Form Styles";
 cc lab static;
 bin p12hv;
 cc dialog checkbox;
+cc owner checkbox;
 cc popup checkbox;
 bin szv;
 cc closeok checkbox;
@@ -77,7 +79,7 @@ end.
 
 NB. =========================================================
 psdemo_ok_button=: 3 : 0
-s=. 'closeok dialog escclose nosize popup ptop'
+s=. 'closeok dialog owner escclose nosize popup ptop'
 s=. s,' closebutton minbutton maxbutton'
 s=. ;: s
 r=. 'pc stylesdemo'
