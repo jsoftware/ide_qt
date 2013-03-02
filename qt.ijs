@@ -145,12 +145,14 @@ dirmatch=: [: empty s cd [: ,each 2 {. boxopen
 4!:55<'s'
 wde=: [:
 wdbox=: [:
-wdforms=: [:
 wdmove=: [:
 wdqshow=: [:
 wdreset=: wd bind 'reset'
 wdstatus=: [:
 wdformedit=: [:
+wdforms=: <;._2;._2 @ wd bind 'qpx'
+wdisparent=: (boxopen e. 0: {"1 wdforms) ::0:
+wdishandle=: (boxopen e. 1: {"1 wdforms) ::0:
 wdinfo=: 3 : 0
 'a b'=. _2{. boxopen y
 if. 2=#$b=. ":b do. b=. }.,LF,.b end.
@@ -174,8 +176,6 @@ mbsave=: 3 : 0
 jpathsep wd 8 u: 'mb save ',y
 )
 
-wdisparent=: ('"',libjqt,'" wdisparent >',(IFWIN#'+'),' i *c') cd <@,
-wdishandle=: ('"',libjqt,'" wdisparent >',(IFWIN#'+'),' i *c') cd <@":
 wdreadimg=: ('"',libjqt,'" wdreadimg >',(IFWIN#'+'),' x *c *i')&cd
 wdgetimg=: ('"',libjqt,'" wdgetimg >',(IFWIN#'+'),' x *c i *i')&cd
 wdwriteimg=: ('"',libjqt,'" wdwriteimg >',(IFWIN#'+'),' i *c *i *c *c i')&cd

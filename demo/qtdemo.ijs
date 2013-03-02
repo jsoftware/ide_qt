@@ -14,9 +14,11 @@ mbox dmbox
 mbdialog dmbdialog
 menu dmenu
 plot dplot
+pstyles dpstyles
 shader dshader
 sphere dsphere
 split dsplit
+statusbar dstatusbar
 table dtable
 tabs dtabs
 timer dtimer
@@ -72,9 +74,11 @@ dmbox=: load bind (jpath '~addons/ide/qt/demo/mbox.ijs')
 dmbdialog=: load bind (jpath '~addons/ide/qt/demo/mbdialog.ijs')
 dmenu=: load bind (jpath '~addons/ide/qt/demo/menu.ijs')
 dplot=: load bind (jpath '~addons/ide/qt/demo/plot.ijs')
+dpstyles=: load bind (jpath '~addons/ide/qt/demo/pstyles.ijs')
 dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs') ^:(-.'Android'-:UNAME)
 dsphere=: load bind (jpath '~addons/ide/qt/demo/sphere.ijs') ^:(-.'Android'-:UNAME)
 dsplit=: load bind (jpath '~addons/ide/qt/demo/split.ijs')
+dstatusbar=: load bind (jpath '~addons/ide/qt/demo/statusbar.ijs')
 dtable=: load bind (jpath '~addons/ide/qt/demo/table.ijs')
 dtabs=: load bind (jpath '~addons/ide/qt/demo/tabs.ijs')
 dtimer=: load bind (jpath '~addons/ide/qt/demo/timer.ijs') ^:(-.'Android'-:UNAME)
