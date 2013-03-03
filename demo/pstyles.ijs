@@ -94,7 +94,7 @@ r=. r,;' ',each m#s
 wd r
 wd 'cc ted editm'
 wd 'set ted *How grand to be a Toucan',LF,'Just think what Toucan do.'
-wd 'cc close button;pmovex 400 10 300 200;pshow'
+wd 'cc close button;pmovex 600 100 300 200;pshow'
 )
 
 NB. =========================================================

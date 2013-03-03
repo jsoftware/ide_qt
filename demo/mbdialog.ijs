@@ -3,8 +3,9 @@ NB.
 NB. mb color    - get an RGB color
 NB. mb font     - get a font
 NB. mb open     - get name of file to open
-NB. mb dir      - get directory name
 NB. mb save     - get name of file to save
+NB. mb dir      - get directory name
+NB. mb print    - print with dialog
 
 coclass 'qtdemo'
 
@@ -43,8 +44,22 @@ demo5=: 3 : 0
 wd 'mb font monospace 10 bold underline'
 )
 
+NB. =========================================================
+NB. print with dialog
+NB. wd 'mb print filename'
+NB. wd 'mb print *',text
+demo6=: 3 : 0
+wd 'mb print *just testing'
+)
+
+demo7=: 3 : 0
+wd 'mb print "',(jpath '~install/bin/profile.ijs'),'"'
+)
+
 smoutput demo1''
 smoutput demo2''
 smoutput demo3''
 smoutput demo4''
 smoutput demo5''
+demo6''
+demo7''
