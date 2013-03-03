@@ -297,5 +297,150 @@ else.
   ''
 end.
 )
+coclass 'qtprinter'
+
+NB gl2 on printer
+rpcinfinity=: 3 : 0
+<. 0 (I.(_=y)+.__=y)}y
+)
+glzarc=: ('"',libjqt,'" glzarc >',(IFWIN#'+'),' i *i') cd <
+glzbrush=: ('"',libjqt,'" glzbrush >',(IFWIN#'+'),' i')&cd bind ''
+glzbrushnull=: ('"',libjqt,'" glzbrushnull >',(IFWIN#'+'),' i')&cd bind ''
+glzclear=: ('"',libjqt,'" glzclear >',(IFWIN#'+'),' i')&cd bind ''
+glzclip=: ('"',libjqt,'" glzclip >',(IFWIN#'+'),' i *i') cd <
+glzclipreset=: ('"',libjqt,'" glzclipreset >',(IFWIN#'+'),' i')&cd bind ''
+glzcmds=: ('"',libjqt,'" glzcmds >',(IFWIN#'+'),' i *i i') cd (;#)@:rpcinfinity
+glzellipse=: ('"',libjqt,'" glzellipse >',(IFWIN#'+'),' i *i') cd <@:<.
+glzfont=: ('"',libjqt,'" glzfont >',(IFWIN#'+'),' i *c') cd <@,
+glzfont2=: ('"',libjqt,'" glzfont2 >',(IFWIN#'+'),' i *i i') cd (;#)@:<.
+glzfontangle=: ('"',libjqt,'" glzfontangle >',(IFWIN#'+'),' i i')&cd
+glzlines=: ('"',libjqt,'" glzlines >',(IFWIN#'+'),' i *i i') cd (;#)
+glznodblbuf=: ('"',libjqt,'" glznodblbuf >',(IFWIN#'+'),' i i') cd {.@(,&0)
+glzpen=: ('"',libjqt,'" glzpen >',(IFWIN#'+'),' i *i') cd <@:(2&{.)
+glzpie=: ('"',libjqt,'" glzpie >',(IFWIN#'+'),' i *i') cd <
+glzpixel=: ('"',libjqt,'" glzpixel >',(IFWIN#'+'),' i *i') cd <
+glzpixels=: ('"',libjqt,'" glzpixels >',(IFWIN#'+'),' i *i i') cd (;#)@:<.
+glzpixelsx=: ('"',libjqt,'" glzpixelsx >',(IFWIN#'+'),' i *i') cd <@:<.
+glzpolygon=: ('"',libjqt,'" glzpolygon >',(IFWIN#'+'),' i *i i') cd (;#)@:<.
+glzrect=: ('"',libjqt,'" glzrect >',(IFWIN#'+'),' i *i') cd <@:rpcinfinity
+glzrgb=: ('"',libjqt,'" glzrgb >',(IFWIN#'+'),' i *i') cd <@:<.
+glztext=: ('"',libjqt,'" glztext >',(IFWIN#'+'),' i *c') cd <@,
+glztextcolor=: ('"',libjqt,'" glztextcolor >',(IFWIN#'+'),' i')&cd bind ''
+glztextxy=: ('"',libjqt,'" glztextxy >',(IFWIN#'+'),' i *i') cd <@:<.
+glzwindoworg=: ('"',libjqt,'" glzwindoworg >',(IFWIN#'+'),' i *i') cd <@:<.
+
+glzqresolution=: ('"',libjqt,'" glzqresolution >',(IFWIN#'+'),' i')&cd bind ''
+glzcolormode=: ('"',libjqt,'" glzcolormode >',(IFWIN#'+'),' i')&cd bind ''
+glzduplexmode=: ('"',libjqt,'" glzduplexmode >',(IFWIN#'+'),' i')&cd bind ''
+glzorientation=: ('"',libjqt,'" glzorientation >',(IFWIN#'+'),' i')&cd bind ''
+glzoutputformat=: ('"',libjqt,'" glzoutputformat >',(IFWIN#'+'),' i')&cd bind ''
+glzpageorder=: ('"',libjqt,'" glzpageorder >',(IFWIN#'+'),' i')&cd bind ''
+glzpapersize=: ('"',libjqt,'" glzpapersize >',(IFWIN#'+'),' i')&cd bind ''
+glzpapersource=: ('"',libjqt,'" glzpapersource >',(IFWIN#'+'),' i')&cd bind ''
+
+glzresolution=: ('"',libjqt,'" glzresolution >',(IFWIN#'+'),' i i')&cd
+glzcolormode=: ('"',libjqt,'" glzcolormode >',(IFWIN#'+'),' i i')&cd
+glzduplexmode=: ('"',libjqt,'" glzduplexmode >',(IFWIN#'+'),' i i')&cd
+glzorientation=: ('"',libjqt,'" glzorientation >',(IFWIN#'+'),' i i')&cd
+glzoutputformat=: ('"',libjqt,'" glzoutputformat >',(IFWIN#'+'),' i i')&cd
+glzpageorder=: ('"',libjqt,'" glzpageorder >',(IFWIN#'+'),' i i')&cd
+glzpapersize=: ('"',libjqt,'" glzpapersize >',(IFWIN#'+'),' i i')&cd
+glzpapersource=: ('"',libjqt,'" glzpapersource >',(IFWIN#'+'),' i i')&cd
+
+glzscale=: ('"',libjqt,'" glzscale >',(IFWIN#'+'),' i *f') cd <
+
+glzabortdoc=: ('"',libjqt,'" glzabortdoc >',(IFWIN#'+'),' i')&cd bind ''
+glzenddoc=: ('"',libjqt,'" glzenddoc >',(IFWIN#'+'),' i')&cd bind ''
+glznewpage=: ('"',libjqt,'" glznewpage >',(IFWIN#'+'),' i')&cd bind ''
+glzprinter=: ('"',libjqt,'" glzprinter >',(IFWIN#'+'),' i *c') cd <@,
+glzstartdoc=: ('"',libjqt,'" glzstartdoc >',(IFWIN#'+'),' i *c *c') cd 2: {. boxopen
+glzqwh=: 3 : 0"1
+wh=. 2#1.1-1.1
+('"',libjqt,'" glzqwh >',(IFWIN#'+'),' i *f i') cd wh;y
+wh
+)
+glzqextent=: 3 : 0"1
+wh=. 2#2-2
+('"',libjqt,'" glzqextent >',(IFWIN#'+'),' i *c *i') cd (,y);wh
+wh
+)
+glzqextentw=: 3 : 0"1
+y=. y,(LF~:{:y)#LF [ y=. ,y
+w=. (+/LF=y)#2-2
+('"',libjqt,'" glzqextentw >',(IFWIN#'+'),' i *c *i') cd y;w
+w
+)
+glzqtextmetrics=: 3 : 0"1
+tm=. 7#2-2
+('"',libjqt,'" glzqtextmetrics >',(IFWIN#'+'),' i *i') cd tm
+tm
+)
+QPrinter_Color=: 1
+QPrinter_GrayScale=: 0
+QPrinter_DuplexNone=: 0
+QPrinter_DuplexAuto=: 1
+QPrinter_DuplexLongSide=: 2
+QPrinter_DuplexShortSide=: 3
+QPrinter_Portrait=: 0
+QPrinter_Landscape=: 1
+QPrinter_NativeFormat=: 0
+QPrinter_PdfFormat=: 1
+QPrinter_PostScriptFormat=: 2
+
+QPrinter_FirstPageFirst=: 0
+QPrinter_LastPageFirst=: 1
+QPrinter_A0=: 5
+QPrinter_A1=: 6
+QPrinter_A2=: 7
+QPrinter_A3=: 8
+QPrinter_A4=: 0
+QPrinter_A5=: 9
+QPrinter_A6=: 10
+QPrinter_A7=: 11
+QPrinter_A8=: 12
+QPrinter_A9=: 13
+QPrinter_B0=: 14
+QPrinter_B1=: 15
+QPrinter_B2=: 17
+QPrinter_B3=: 18
+QPrinter_B4=: 19
+QPrinter_B5=: 1
+QPrinter_B6=: 20
+QPrinter_B7=: 21
+QPrinter_B8=: 22
+QPrinter_B9=: 23
+QPrinter_B10=: 16
+QPrinter_C5E=: 24
+QPrinter_Comm10E=: 25
+QPrinter_DLE=: 26
+QPrinter_Executive=: 4
+QPrinter_Folio=: 27
+QPrinter_Ledger=: 28
+QPrinter_Legal=: 3
+QPrinter_Letter=: 2
+QPrinter_Tabloid=: 29
+QPrinter_Custom=: 30
+QPrinter_Auto=: 6
+QPrinter_Cassette=: 11
+QPrinter_Envelope=: 4
+QPrinter_EnvelopeManual=: 5
+QPrinter_FormSource=: 12
+QPrinter_LargeCapacity=: 10
+QPrinter_LargeFormat=: 9
+QPrinter_Lower=: 1
+QPrinter_MaxPageSource=: 13
+QPrinter_Middle=: 2
+QPrinter_Manual=: 3
+QPrinter_OnlyOne=: 0
+QPrinter_Tractor=: 7
+QPrinter_SmallFormat=: 8
+QPrinter_Millimeter=: 0
+QPrinter_Point=: 1
+QPrinter_Inch=: 2
+QPrinter_Pica=: 3
+QPrinter_Didot=: 4
+QPrinter_Cicero=: 5
+QPrinter_DevicePixel=: 6
+
 
 cocurrent 'base'

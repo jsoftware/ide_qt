@@ -10,12 +10,15 @@ TITLES=: maketitle 0 : 0
 controls dcontrols
 edit dedit
 gl2 dgl2
+image dimage
 mbox dmbox
 mbdialog dmbdialog
 menu dmenu
 plot dplot
+printer dprinter
 pstyles dpstyles
 shader dshader
+slider dslider
 sphere dsphere
 split dsplit
 statusbar dstatusbar
@@ -70,12 +73,15 @@ NB. =========================================================
 dcontrols=: load bind (jpath '~addons/ide/qt/demo/controls.ijs')
 dedit=: load bind (jpath '~addons/ide/qt/demo/edit.ijs')
 dgl2=: load bind (jpath '~addons/ide/qt/demo/gl2.ijs')
+dimage=: load bind (jpath '~addons/ide/qt/demo/image.ijs')
 dmbox=: load bind (jpath '~addons/ide/qt/demo/mbox.ijs')
 dmbdialog=: load bind (jpath '~addons/ide/qt/demo/mbdialog.ijs')
 dmenu=: load bind (jpath '~addons/ide/qt/demo/menu.ijs')
 dplot=: load bind (jpath '~addons/ide/qt/demo/plot.ijs')
+dprinter=: load bind (jpath '~addons/ide/qt/demo/printer.ijs') ^:(-.'Android'-:UNAME)
 dpstyles=: load bind (jpath '~addons/ide/qt/demo/pstyles.ijs')
 dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs') ^:(-.'Android'-:UNAME)
+dslider=: load bind (jpath '~addons/ide/qt/demo/slider.ijs')
 dsphere=: load bind (jpath '~addons/ide/qt/demo/sphere.ijs') ^:(-.'Android'-:UNAME)
 dsplit=: load bind (jpath '~addons/ide/qt/demo/split.ijs')
 dstatusbar=: load bind (jpath '~addons/ide/qt/demo/statusbar.ijs')

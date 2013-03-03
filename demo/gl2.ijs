@@ -2,7 +2,7 @@ NB. run
 
 require 'gl2'
 
-coclass 'm2'
+coclass 'qtdemo'
 coinsert 'jgl2'
 
 NB. =========================================================
@@ -87,5 +87,5 @@ glpixels 20 200 40 40,data
 )
 
 cocurrent 'base'
-run_m2_''
+run_qtdemo_''
 
