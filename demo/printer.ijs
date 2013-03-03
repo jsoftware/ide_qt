@@ -8,9 +8,13 @@ coclass 'qtdemo'
 coinsert 'qtprinter'
 
 NB. =========================================================
-run=: 3 : 0
-smoutput wd 'mb printer'
-smoutput 'dpi: ', ":dpi=: glzresolution 96
+printer_run=: 3 : 0
+if. 0= #p=. wd 'mb printer' do.
+  smoutput 'cancel printing'
+  EMPTY return.
+end.
+smoutput 'printer: ', p
+smoutput 'dpi: ', ":dpi=: glzresolution 300
 smoutput 'wh(inch):', ":glzqwh QPrinter_Inch
 smoutput 'wh(pixel):', ":<.glzqwh QPrinter_DevicePixel
 glzstartdoc ''
@@ -24,7 +28,7 @@ EMPTY
 NB. =========================================================
 NB. eric's demo
 paint=: 3 : 0
-'w h'=: <. glzqwh 6  NB. pixel
+'w h'=: <.glzqwh QPrinter_DevicePixel
 NB. draw grid
 glzrgb 128 128 18
 glzpen 0 0
@@ -86,6 +90,6 @@ b=. readbmp jpath'~addons/graphics/bmp/toucan.bmp'
 glzpixels 100 300 200 144,,b
 )
 
-cocurrent 'base'
-run_qtdemo_''
+printer_run''
+
 

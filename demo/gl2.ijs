@@ -6,7 +6,7 @@ coclass 'qtdemo'
 coinsert 'jgl2'
 
 NB. =========================================================
-run=: 3 : 0
+gl2_run=: 3 : 0
 wd FORM
 wd 'pshow'
 glpaint''  NB. Android bug
@@ -86,6 +86,5 @@ smoutput 10{.data
 glpixels 20 200 40 40,data
 )
 
-cocurrent 'base'
-run_qtdemo_''
+gl2_run''
 
