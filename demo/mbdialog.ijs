@@ -56,10 +56,23 @@ demo7=: 3 : 0
 wd 'mb print "',(jpath '~install/bin/profile.ijs'),'"'
 )
 
-smoutput demo1''
-smoutput demo2''
-smoutput demo3''
-smoutput demo4''
-smoutput demo5''
-demo6''
-demo7''
+NB. =========================================================
+NB. print with no dialog
+demo8=: 3 : 0
+wd 'mb printx "',(jpath '~install/bin/profile.ijs'),'"'
+)
+
+NB. =========================================================
+smoutput 0 : 0
+Dialog demos:
+   smoutput demo1''
+   smoutput demo2''
+   smoutput demo3''
+   smoutput demo4''
+   smoutput demo5''
+
+Printing demos:
+  demo6''
+  demo7''
+  demo8''
+)
