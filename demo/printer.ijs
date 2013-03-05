@@ -9,7 +9,13 @@ coinsert 'qtprinter'
 
 NB. =========================================================
 printer_run=: 3 : 0
-if. 0= #p=. wd 'mb print' do.
+if. 0= #y do.
+  p=. wd 'mb print'
+else.
+  p=. y
+  glzprinter ({.~ i.&':') p
+end.
+if. 0= #p do.
   smoutput 'cancel printing'
   EMPTY return.
 end.
@@ -99,5 +105,9 @@ glzpixels 100 300 200 144,,b
 )
 
 printer_run''
+smoutput 0 : 0
+Try:
+  printer_run_qtdemo_ 'PDF'  NB. or name of your prniter
+)
 
 
