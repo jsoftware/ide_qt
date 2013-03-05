@@ -9,7 +9,7 @@ coinsert 'qtprinter'
 
 NB. =========================================================
 printer_run=: 3 : 0
-if. 0= #p=. wd 'mb printer' do.
+if. 0= #p=. wd 'mb print' do.
   smoutput 'cancel printing'
   EMPTY return.
 end.
@@ -17,11 +17,19 @@ smoutput 'printer: ', p
 smoutput 'dpi: ', ":dpi=: glzresolution 300
 smoutput 'wh(inch):', ":glzqwh QPrinter_Inch
 smoutput 'wh(pixel):', ":<.glzqwh QPrinter_DevicePixel
-glzstartdoc ''
+if. '_'={.p do.
+  glzstartdoc '' ; f=. }.(}.~ i.&':') p
+else.
+  glzstartdoc ''
+end.
 glzscale 2#dpi%96
 paint''
 glzenddoc''
-smoutput 'finish. see printer paper output'
+if. '_'={.p do.
+  smoutput 'finish. see file: ',f
+else.
+  smoutput 'finish. see printer paper output'
+end.
 EMPTY
 )
 
