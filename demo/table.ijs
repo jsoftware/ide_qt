@@ -3,31 +3,59 @@ NB.
 NB. !!! this is experimental and *will* change...
 NB.
 NB. cover for the QTableWidget
-NB. initially, just provides a grid for pacman
-NB. data types so far:
-NB.  0 text
-NB.  1 checkbox
+NB.
+NB. rows, cols are the data size
+NB. headers do not include the top left cell
+NB.
+NB. cell types:
+NB.  0   text
+NB.  100 checkbox
+NB.
+NB. cell align:
+NB.  0 left
+NB.  1 center
+NB.  2 right
+NB.
+NB. set parameters:
+NB.   data                 - ravelled data
+NB.   hdr                  - column headers
+NB.   lab                  - row labels
+NB.   cell row col value   - cell value
+NB.   block row col rows cols values  - block values
+NB.
+NB. following are singleton or one per column:
+NB.   hdralign  - column header align (make header first)
+NB.
+NB. following are singleton, one per column, or one per ravelled data:
+NB.   align - alignment   (default left)
+NB.   edit  - if editable (default 1)
+NB.   type  - cell type   (default 0)
+NB.
+NB. set size parameter - this resets the table:
+NB.   size rows cols
 
 coclass 'qtdemo'
 
 NB. =========================================================
 Dat=: 0 : 0
-0 api/expat 1.0.0 1.0.0 libexpat
-0 api/glx 1.0.2 1.0.2 "OpenGL GLX API"
-1 "base library" 7.1.78 7.1.80 "base library scripts"
-0 "data/jdb" 1.0.24 1.0.25 JDB
-0 "debug/dissect" "" 1.03 "Run a sentence and produce a grid display of results"
-0 "debug/lint" 1.10.0 1.10.0 "Load a script and check its syntax"
+0 11 8 19 "USA"
+0 6 9 15 "Japan"
+1 2 7 9 "Germany"
+0 5 12 17 "France"
 )
 
 NB. =========================================================
 table=: 3 : 0
 wd 'pc table'
-wd 'cc pac table'
-wd 'setp pac coltypes 1 0 0 0 0'
-wd 'setp pac colnames "" Package Installed Latest Caption'
-wd 'set pac *',Dat
-wd 'pmovex 100 10 600 250'
+wd 'cc pac table 4 5'
+wd 'set pac hdr Select Hire Lease Total Origin'
+wd 'set pac hdralign 1 1 1 1 0'
+wd 'set pac type 100 0 0 0 0'
+wd 'set pac align 1 2 2 2 0'
+wd 'set pac edit 1 1 1 0 0'
+wd 'set pac lab Ford Toyota "Mercedes Benz" Peugot'
+wd 'set pac data *',Dat
+wd 'pmovex 100 10 500 200'
 wd 'pshow'
 )
 

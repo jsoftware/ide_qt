@@ -1,5 +1,5 @@
 NB. slider demo
-NB. 
+NB.
 NB. cc track slider [v] [numeric options]
 NB.
 NB. numeric options are:
@@ -44,6 +44,6 @@ showevents_jqtide_ 2
 sliderdemo_run''
 smoutput 0 : 0
 Try:
-  wd 'set track 11'
+  wd 'set track pos 11'
   wd 'setp track max 30'
 )

@@ -47,9 +47,9 @@ rem form end;
 NB. =========================================================
 qtdemo_run=: 3 : 0
 wd QTDEMO
-wd 'set static1 *Select a Qt demo from the list below:'
-wd 'set listbox ',;DEL,each ({."1 TITLES),each DEL
-wd 'setselect listbox 0'
+wd 'set static1 text *Select a Qt demo from the list below:'
+wd 'set listbox items ',;DEL,each ({."1 TITLES),each DEL
+wd 'set listbox select 0'
 wd 'setfocus listbox'
 wd 'pshow;'
 )

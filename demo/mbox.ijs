@@ -9,11 +9,11 @@ NB.  warn      (default OK button)
 NB.  critical  (default OK button)
 NB.  query     (requires two or three buttons, default is first given)
 NB.             note - display order is platform-dependent
-NB. 
-NB. if 1 buttons, there is no result, 
+NB.
+NB. if 1 buttons, there is no result,
 NB. otherwise the result is the button numeric value
 NB.
-NB. buttons (with numeric values) are from the set: 
+NB. buttons (with numeric values) are from the set:
 NB.  0 mb_ok
 NB.  1 mb_cancel
 NB.  2 mb_yes

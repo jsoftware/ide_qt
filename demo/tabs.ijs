@@ -50,48 +50,48 @@ bin h s2;
 cc ok button;cn "Push Me";
 cc cancel button;cn "Cancel";
 
-set boxed 1;
-set net 1;
-set names Bressoud Frye Rosen Wagon;
-setselect names 2;
-set entry 盛大 abc 巨嘴鸟;
-set list one "two turtle doves" three "four colly birds" five six seven;
+set boxed value 1;
+set net value 1;
+set names items Bressoud Frye Rosen Wagon;
+set names select 2;
+set entry text 盛大 abc 巨嘴鸟;
+set list items one "two turtle doves" three "four colly birds" five six seven;
 
 )
 
 NB. =========================================================
 tabdemo_run=: 3 : 0
 wd Tabdemo
-wd 'set ted *How grand to be a Toucan',LF,'Just think what Toucan do.'
-wd 'setp prefs active 1'
-wd 'setp prefs label 2 Notes'
+wd 'set ted text *How grand to be a Toucan',LF,'Just think what Toucan do.'
+wd 'set prefs active 1'
+wd 'set prefs label 2 Notes'
 wd 'pmovex 400 10 400 200'
 wd 'pshow'
 )
 
 NB. =========================================================
 tabdemo_prefs_tabclose=: 3 : 0
-wd 'setp prefs tabclose ',prefs_select
+wd 'set prefs tabclose ',prefs_select
 )
 
 NB. =========================================================
 tabdemo_prefs_tabclose=: 3 : 0
-wd 'setp prefs tabclose ',prefs_select
+wd 'set prefs tabclose ',prefs_select
 )
 
 NB. =========================================================
 tabdemo_prefs_tabclose=: 3 : 0
-wd 'setp prefs tabclose ',prefs_select
+wd 'set prefs tabclose ',prefs_select
 )
 
 NB. =========================================================
 tabdemo_prefs_tabclose=: 3 : 0
-wd 'setp prefs tabclose ',prefs_select
+wd 'set prefs tabclose ',prefs_select
 )
 
 NB. =========================================================
 tabdemo_prefs_tabclose=: 3 : 0
-wd 'setp prefs tabclose ',prefs_select
+wd 'set prefs tabclose ',prefs_select
 )
 
 NB. =========================================================

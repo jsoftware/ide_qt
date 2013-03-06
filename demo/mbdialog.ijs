@@ -72,7 +72,7 @@ Dialog demos:
    smoutput demo5''
 
 Printing demos:
-  demo6''
-  demo7''
-  demo8''
+   demo6''
+   demo7''
+   demo8''
 )

@@ -1,5 +1,5 @@
 NB. progressbar demo
-NB. 
+NB.
 NB. cc prog progressbar [v] [min] [max] [value];
 NB.
 NB. min,max,value should be integers
@@ -24,6 +24,6 @@ NB. =========================================================
 pbdemo_run''
 smoutput 0 : 0
 Try:
-  wd 'set prog 11'
-  wd 'setp prog max 30'
+  wd 'set prog pos 11'
+  wd 'set prog max 30'
 )

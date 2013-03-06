@@ -1,5 +1,5 @@
 NB. toolbar demo
-NB. 
+NB.
 NB. force maximum size as widthxheight, e.g.
 NB. cc tools toolbar 16x16;
 
@@ -10,19 +10,19 @@ TBdemo=: 0 : 0
 pc tbdemo;
 cc tools toolbar;
 cc list listbox;
-set list one two three;
+set list items one two three;
 )
 
 NB. =========================================================
 tbdemo_run=: 3 : 0
 P=. jpath '~addons/ide/qt/images/'
 wd TBdemo
-wd 'setp tools add home "Go Home" "',P,'home.png"'
-wd 'setp tools add refresh "Refresh" "',P,'refresh.png"'
-wd 'setp tools addsep'
-wd 'setp tools add cut Cut "',P,'cut.png"'
-wd 'setp tools add copy Copy "',P,'copy.png"'
-wd 'setp tools add paste Paste "',P,'paste.png"'
+wd 'set tools add home "Go Home" "',P,'home.png"'
+wd 'set tools add refresh "Refresh" "',P,'refresh.png"'
+wd 'set tools addsep'
+wd 'set tools add cut Cut "',P,'cut.png"'
+wd 'set tools add copy Copy "',P,'copy.png"'
+wd 'set tools add paste Paste "',P,'paste.png"'
 wd 'pmovex 700 10 300 200'
 wd 'pshow'
 )

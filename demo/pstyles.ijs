@@ -59,7 +59,7 @@ bin sz;
 NB. =========================================================
 psdemo_run=: 3 : 0
 wd PSdemo
-wd 'set lab ',PSmsg
+wd 'set lab text ',PSmsg
 wd 'pmovex 50 50 0 0'
 wd 'pshow'
 )
@@ -72,14 +72,14 @@ wd 'pclose'
 NB. =========================================================
 psdemo_dialog_button=: 3 : 0
 if. 0 ". dialog do.
-  wd 'set popup 0'
+  wd 'set popup value 0'
 end.
 )
 
 NB. =========================================================
 psdemo_escclose_button=: 3 : 0
 if. 0 ". escclose do.
-  wd 'set closeok 1'
+  wd 'set closeok value 1'
 end.
 )
 
@@ -100,7 +100,7 @@ wd 'cc close button;pmovex 600 100 300 200;pshow'
 NB. =========================================================
 psdemo_popup_button=: 3 : 0
 if. 0 ". popup do.
-  wd 'set dialog 0'
+  wd 'set dialog value 0'
 end.
 )
 

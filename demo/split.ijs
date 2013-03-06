@@ -4,7 +4,7 @@ NB. splith f1 f2 s1 s2
 NB.   - horizontal split (also splitv)
 NB.   - f = stretch factors
 NB.   - s  = initial sizes (optional)
-NB. 
+NB.
 NB. splitsep   separates control panels
 NB. splitz     finishes split
 
@@ -33,10 +33,10 @@ splitend;
 NB. =========================================================
 splitter_run=: 3 : 0
 wd Splitter
-wd 'set ed1 *pane 1'
-wd 'set ed2 *pane 2'
-wd 'set ed3 *pane 3'
-wd 'set ed4 *pane 4'
+wd 'set ed1 text *pane 1'
+wd 'set ed2 text *pane 2'
+wd 'set ed3 text *pane 3'
+wd 'set ed4 text *pane 4'
 wd 'pmovex 400 10 400 300'
 wd 'pshow'
 )

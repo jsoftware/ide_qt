@@ -8,13 +8,13 @@ NB. =========================================================
 imdemo_run=: 3 : 0
 wd 'pc imdemo escclose'
 wd 'cc pic image'
-wd 'set pic *',jpath '~addons/graphics/bmp/toucan.bmp'
+wd 'set pic image *',jpath '~addons/graphics/bmp/toucan.bmp'
 wd 'pshow'
 )
 
 NB. =========================================================
 demo1=: 3 : 0
-wd 'set pic *',jpath '~addons/format/publish/demo/map.jpg'
+wd 'set pic image *',jpath '~addons/format/publish/demo/map.jpg'
 )
 
 imdemo_run''

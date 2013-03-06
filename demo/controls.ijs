@@ -25,31 +25,31 @@ groupbox Expense Type;
 cc gross radiobutton;
 cc net radiobutton group;
 cc paid checkbox;
-set boxed 1;
-set net 1;
+set boxed value 1;
+set net value 1;
 groupboxend;
 
 bin z s1 z;
 cc names combobox;
-set names Bressoud Frye Rosen Wagon;
-setselect names 2;
+set names items Bressoud Frye Rosen Wagon;
+set names select 2;
 cc list listbox;
-set list one "two turtle doves" three "four colly birds" five six seven;
+set list items one "two turtle doves" three "four colly birds" five six seven;
 cc entry edit;
-set entry 盛大 abc 巨嘴鸟;
+set entry text 盛大 abc 巨嘴鸟;
 cc ted editm readonly;
 rem demonstrate bin and child stretch:;
 bin h s2;
 cc ok button;cn "Push Me";
 cc cancel button;cn "Cancel";
-setp ok stretch 1;
+set ok stretch 1;
 )
 
 NB. =========================================================
 controls_run=: 3 : 0
 wd Controls
-wd 'setp ted stylesheet *background-color:#eeeeee'
-wd 'set ted *How grand to be a Toucan',LF,'Just think what Toucan do.'
+ wd 'set ted stylesheet *background-color:#eeeeee'
+wd 'set ted text *How grand to be a Toucan',LF,'Just think what Toucan do.'
 wd 'pmovex 400 10 300 300'
 wd 'pshow'
 )
