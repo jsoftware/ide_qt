@@ -104,6 +104,8 @@ b=. readbmp jpath'~addons/graphics/bmp/toucan.bmp'
 glzpixels 100 300 200 144,,b
 )
 
+smoutput 'available printers:'
+smoutput wd 'qprinters'
 printer_run''
 smoutput 0 : 0
 Try:
