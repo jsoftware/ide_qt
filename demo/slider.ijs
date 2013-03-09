@@ -45,5 +45,5 @@ sliderdemo_run''
 smoutput 0 : 0
 Try:
   wd 'set track pos 11'
-  wd 'setp track max 30'
+  wd 'set track max 30'
 )
