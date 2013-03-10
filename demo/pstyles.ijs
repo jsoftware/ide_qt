@@ -93,7 +93,7 @@ m=. (0 ". ".) &> s
 r=. r,;' ',each m#s
 wd r
 wd 'cc ted editm'
-wd 'set ted *How grand to be a Toucan',LF,'Just think what Toucan do.'
+wd 'set ted text *How grand to be a Toucan',LF,'Just think what Toucan do.'
 wd 'cc close button;pmovex 600 100 300 200;pshow'
 )
 

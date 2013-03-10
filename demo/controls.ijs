@@ -48,11 +48,14 @@ set ok stretch 1;
 NB. =========================================================
 controls_run=: 3 : 0
 wd Controls
- wd 'set ted stylesheet *background-color:#eeeeee'
+wd 'set ted stylesheet *background-color:#eeeeee'
 wd 'set ted text *How grand to be a Toucan',LF,'Just think what Toucan do.'
 wd 'pmovex 400 10 300 300'
 wd 'pshow'
 )
+
+NB. print editm to default printer:
+NB. wd 'cmd ted print'
 
 NB. =========================================================
 controls_close=: 3 : 0
