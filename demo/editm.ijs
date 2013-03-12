@@ -93,14 +93,14 @@ wd 'cc close button;cn Close'
 wd 'pmovex 100 10 700 500'
 wd 'pshow'
 NB. call these after the pshow:
-wd 'set ted select 1581 1763'
+wd 'set ted select 1580 1763'
 wd 'set ted scroll 15'
 )
 
 NB. print editm to default printer:
 NB. wd 'cmd ted print'
 
-NB. set line wrap off: 
+NB. set line wrap off:
 NB. wd 'set ted wrap 0'
 
 NB. =========================================================

@@ -54,9 +54,6 @@ wd 'pmovex 400 10 300 300'
 wd 'pshow'
 )
 
-NB. print editm to default printer:
-NB. wd 'cmd ted print'
-
 NB. =========================================================
 controls_close=: 3 : 0
 wd 'pclose'

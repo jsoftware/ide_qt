@@ -9,7 +9,7 @@ wd 'pc def'
 [def=: wd 'qhwndp'
 
 wd 'psel'
-wd 'qhwndp'     NB. error
+wd 'qhwndp'       NB. error
 wd 'qer'
 wd 'psel def'
 def -: wd 'qhwndp'

@@ -6,9 +6,10 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.0.68'
+VERSION=: '1.0.69'
 
 FILES=: 0 : 0
+pacman.ijs
 qt.ijs
 config/
 demo/

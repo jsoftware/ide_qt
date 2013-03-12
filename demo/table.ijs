@@ -37,11 +37,19 @@ NB.   size rows cols
 coclass 'qtdemo'
 
 NB. =========================================================
-Dat=: 0 : 0
-0 11 8 19 "USA"
-0 6 9 15 "Japan"
-1 2 7 9 "Germany"
-0 5 12 17 "France"
+fmt1=: 3 : 0
+if. 2=3!:0 y do. ' "',y,'"' else. ' ',,8!:2 y end.
+)
+
+NB. =========================================================
+Tab=: _2 [\ 11 8 6 9 23 6
+Sel=: 0 0 1
+
+NB. =========================================================
+makedata=: 3 : 0
+t=. <&>t,+/t=. Tab,.+/"1 Tab
+dat=. ((<&>Sel),<''),.t,.;:'USA Japan Germany All'
+;fmt1 each ,dat
 )
 
 NB. =========================================================
@@ -50,13 +58,25 @@ wd 'pc table'
 wd 'cc pac table 4 5'
 wd 'set pac hdr Select Hire Lease Total Origin'
 wd 'set pac hdralign 1 1 1 1 0'
-wd 'set pac type 100 0 0 0 0'
+wd 'set pac type ',":20{.15$100 0 0 0 0
 wd 'set pac align 1 2 2 2 0'
-wd 'set pac edit 1 1 1 0 0'
-wd 'set pac lab Ford Toyota "Mercedes Benz" Peugot'
-wd 'set pac data *',Dat
+wd 'set pac edit ',":20{.15$1 1 1 0 0
+wd 'set pac lab Ford Toyota "Mercedes Benz" Total'
+wd 'set pac data *',makedata''
 wd 'pmovex 100 10 500 200'
 wd 'pshow'
+)
+
+NB. =========================================================
+table_pac_change=: 3 : 0
+'row col'=. 0 ". pac_cell
+new=. 0 ". pac
+if. col=0 do.
+  Sel=: new row} Sel
+else.
+  Tab=: new (<row,col-1)} Tab
+  wd 'set pac data *',makedata''
+end.
 )
 
 NB. =========================================================
