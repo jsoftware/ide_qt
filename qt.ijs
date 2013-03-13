@@ -142,6 +142,9 @@ tm
 s=. '"',libjqt,'" dirmatch ', (IFWIN#'+ '),'> n *c *c'
 dirmatch=: [: empty s cd [: ,each 2 {. boxopen
 
+s=. '"',libjqt,'" openj ', (IFWIN#'+ '),'> n *c'
+open=: [: empty s cd fboxname
+
 4!:55<'s'
 wde=: [:
 wdbox=: [:
