@@ -447,7 +447,7 @@ QPrinter_DevicePixel=: 6
 
 coclass 'jqtide'
 
-ContextHelp=: ,'j'
+ContextHelp=: ,'jb'
 helpcontext=: 3 : 0
 ndx=. 2 { I. ' ' = 40 {. y
 'class bgn end'=. 0 ". ndx {. y
@@ -539,6 +539,14 @@ else.
   smoutput r
   smoutput ''
 end.
+)
+htmlhelpbaselib=: 3 : 0
+  if. fexist f=. jpath '~.Main/', y do.
+    open f
+  else.
+    browse_j_ 'http://www.jsoftware.com/wsvn/base8/trunk/', y
+  end.
+''
 )
 helperror=: 3 : 0
 0 return.
@@ -706,5 +714,11 @@ _9: dconsf
 n=. j i.&> ' '
 DICT=: n {.each j
 DICTX=: (n+1) }.each j
+coclass 'jbaselibtag'
+coinsert 'ctag'
+
+absolutepath=: 0
+Tags=: '~addons/ide/qt/baselibtags'
+cleartags''
 
 cocurrent 'base'

@@ -6,9 +6,10 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.0.73'
+VERSION=: '1.0.74'
 
 FILES=: 0 : 0
+baselibtags
 pacman.ijs
 qt.ijs
 config/
