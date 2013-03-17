@@ -41,6 +41,7 @@ wh 200 400;cc listbox listbox;
 bin v;
 cc ok button;cn "OK";
 cc cancel button;cn "Cancel";
+cc view button;cn "View Source";
 bin szzz;
 rem form end;
 )
@@ -93,6 +94,26 @@ dtimer=: load bind (jpath '~addons/ide/qt/demo/timer.ijs') ^:(-.'Android'-:UNAME
 dtoolbar=: load bind (jpath '~addons/ide/qt/demo/toolbar.ijs')
 dviewmat=: load bind (jpath '~addons/ide/qt/demo/viewmat.ijs')
 dwebview=: load bind (jpath '~addons/ide/qt/demo/webview.ijs')
+
+NB. =========================================================
+QTVIEW=: 0 : 0
+pc qtview closeok;pn "View Source";
+wh 400 400;cc m editm readonly;
+rem form end;
+)
+
+NB. =========================================================
+qtdemo_view_button=: 3 : 0
+if. 0~: 4!:0 <'FIXFONT_z_' do. font=: (('Linux';'Darwin';'Android';'Win') i. <UNAME){:: 'mono 10' ; 'Monaco 10' ; (IFQT{::'monospace 10';'"Droid Sans Mono" 10') ; '"Lucida Console" 10' else. font=: FIXFONT_z_ end.
+f=. }. > {: (".listbox_select) { TITLES
+wd QTVIEW
+wd 'pn ', f
+wd 'setfont m ', font
+wd 'set m wrap 0'
+wd 'set m stylesheet *background-color:#ffefd5'
+wd 'set m text *', fread jpath '~addons/ide/qt/demo/',f,'.ijs'
+wd 'pshow'
+)
 
 NB. =========================================================
 qtdemo_run''
