@@ -11,12 +11,14 @@ controls dcontrols
 edit dedit
 editm deditm
 gl2 dgl2
+ide dide
 image dimage
 mbox dmbox
 mbdialog dmbdialog
 menu dmenu
 plot dplot
 printer dprinter
+progressbar dprogressbar
 pstyles dpstyles
 shader dshader
 slider dslider
@@ -76,12 +78,14 @@ dcontrols=: load bind (jpath '~addons/ide/qt/demo/controls.ijs')
 dedit=: load bind (jpath '~addons/ide/qt/demo/edit.ijs')
 deditm=: load bind (jpath '~addons/ide/qt/demo/editm.ijs')
 dgl2=: load bind (jpath '~addons/ide/qt/demo/gl2.ijs')
+dide=: load bind (jpath '~addons/ide/qt/demo/ide.ijs')
 dimage=: load bind (jpath '~addons/ide/qt/demo/image.ijs')
 dmbox=: load bind (jpath '~addons/ide/qt/demo/mbox.ijs')
 dmbdialog=: load bind (jpath '~addons/ide/qt/demo/mbdialog.ijs')
 dmenu=: load bind (jpath '~addons/ide/qt/demo/menu.ijs')
 dplot=: load bind (jpath '~addons/ide/qt/demo/plot.ijs')
 dprinter=: load bind (jpath '~addons/ide/qt/demo/printer.ijs') ^:(-.'Android'-:UNAME)
+dprogressbar=: load bind (jpath '~addons/ide/qt/demo/progressbar.ijs')
 dpstyles=: load bind (jpath '~addons/ide/qt/demo/pstyles.ijs')
 dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs') ^:(-.'Android'-:UNAME)
 dslider=: load bind (jpath '~addons/ide/qt/demo/slider.ijs')

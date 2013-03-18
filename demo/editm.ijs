@@ -103,6 +103,9 @@ NB. wd 'cmd ted print'
 NB. set line wrap off:
 NB. wd 'set ted wrap 0'
 
+NB. set readonly:
+NB. wd 'set ted readonly 1'
+
 NB. =========================================================
 editmdemo_close=: 3 : 0
 wd 'pclose'
