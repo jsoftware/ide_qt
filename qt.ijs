@@ -21,7 +21,7 @@ case. do.
 end.
 )
 
-wd1=: ('"',libjqt,'" wd ', (IFWIN#'+ '),'i *c * *i *c') & cd
+wd1=: ('"',libjqt,'" wd ', (IFWIN#'+'),' i *c * *i *c') & cd
 wdhandler=: 3 : 0
 wdq=: wd 'q'
 wd_val=. {:"1 wdq
@@ -139,10 +139,10 @@ tm=. 7#2-2
 ('"',libjqt,'" gl_qtextmetrics >',(IFWIN#'+'),' i *i') cd tm
 tm
 )
-s=. '"',libjqt,'" dirmatch ', (IFWIN#'+ '),'> n *c *c'
+s=. '"',libjqt,'" dirmatch >', (IFWIN#'+'),' n *c *c'
 dirmatch=: [: empty s cd [: ,each 2 {. boxopen
 
-s=. '"',libjqt,'" openj ', (IFWIN#'+ '),'> n *c'
+s=. '"',libjqt,'" openj >', (IFWIN#'+'),' n *c'
 open=: [: empty s cd fboxname
 
 4!:55<'s'
@@ -226,7 +226,7 @@ end.
 EMPTY
 )
 
-s=. '"',libjqt,'" android_exec_host ', (IFWIN#'+ '),'> n *c *c *c'
+s=. '"',libjqt,'" android_exec_host >', (IFWIN#'+'),' n *c *c *c'
 android_exec_host=: [: empty s cd ]
 
 4!:55<'s'
