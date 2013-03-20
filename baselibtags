@@ -701,6 +701,7 @@ dbctx	./main/main/debug.ijs	1
 dberm	./main/main/debug.ijs	1
 dberr	./main/main/debug.ijs	1
 dbg	./main/main/debug.ijs	1
+dbhelp	./main/main/debug.ijs	1
 dbjmp	./main/main/debug.ijs	1
 dblocals	./main/main/debug.ijs	1
 dblxq	./main/main/debug.ijs	1
