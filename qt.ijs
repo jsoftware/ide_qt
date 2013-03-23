@@ -98,6 +98,7 @@ gl_pixelsx=: ('"',libjqt,'" gl_pixelsx >',(IFWIN#'+'),' i *i') cd <@:<.
 gl_polygon=: ('"',libjqt,'" gl_polygon >',(IFWIN#'+'),' i *i i') cd (;#)@:<.
 gl_rect=: ('"',libjqt,'" gl_rect >',(IFWIN#'+'),' i *i') cd <@:rpcinfinity
 gl_rgb=: ('"',libjqt,'" gl_rgb >',(IFWIN#'+'),' i *i') cd <@:<.
+gl_rgba=: ('"',libjqt,'" gl_rgba >',(IFWIN#'+'),' i *i') cd <@:<.
 gl_sel=: ('"',libjqt,'" gl_sel >',(IFWIN#'+'),' i x')&cd
 gl_sel2=: ('"',libjqt,'" gl_sel2 >',(IFWIN#'+'),' i *c') cd <@,
 gl_text=: ('"',libjqt,'" gl_text >',(IFWIN#'+'),' i *c') cd <@,
@@ -146,6 +147,8 @@ s=. '"',libjqt,'" openj >', (IFWIN#'+'),' n *c'
 open=: [: empty s cd fboxname
 
 4!:55<'s'
+alpha27=: (27 b.) & 16bffffff
+alpha17=: (17 b.) & 16bffffff
 wde=: [:
 wdbox=: [:
 wdmove=: [:
@@ -327,6 +330,7 @@ glzpixelsx=: ('"',libjqt,'" glzpixelsx >',(IFWIN#'+'),' i *i') cd <@:<.
 glzpolygon=: ('"',libjqt,'" glzpolygon >',(IFWIN#'+'),' i *i i') cd (;#)@:<.
 glzrect=: ('"',libjqt,'" glzrect >',(IFWIN#'+'),' i *i') cd <@:rpcinfinity
 glzrgb=: ('"',libjqt,'" glzrgb >',(IFWIN#'+'),' i *i') cd <@:<.
+glzrgba=: ('"',libjqt,'" glzrgba >',(IFWIN#'+'),' i *i') cd <@:<.
 glztext=: ('"',libjqt,'" glztext >',(IFWIN#'+'),' i *c') cd <@,
 glztextcolor=: ('"',libjqt,'" glztextcolor >',(IFWIN#'+'),' i')&cd bind ''
 glztextxy=: ('"',libjqt,'" glztextxy >',(IFWIN#'+'),' i *i') cd <@:<.

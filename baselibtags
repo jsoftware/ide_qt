@@ -1199,6 +1199,7 @@ projssource	./main/project/util.ijs	1
 projwrite	./main/project/migrate.ijs	1
 projwritenew	./main/project/files.ijs	1
 ptr	./main/task/util.ijs	1
+qtdemo	./main/config/boot.ijs	1
 quote	./main/main/strings.ijs	1
 quote	./main/regex/regjbld.ijs	1
 re_nsub_off	./main/defs/hostdefs_android.ijs	1

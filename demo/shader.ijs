@@ -55,6 +55,7 @@ glClearColor 0; 0; 1; 0
 )
 
 a_g_char=: 3 : 0
+if. 0=#sysdata do. return. end.
 R=: 360 | R + 2 * 'xyz' = 0 { sysdata
 k=. 0{sysdata
 STEPS=: 200 <. STEPS + 's' = k

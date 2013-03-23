@@ -72,7 +72,7 @@ glfontangle 450
 gltext 'how now'
 
 NB. polygon
-glrgb 0 255 0
+glrgba 0 255 0 128
 glpen 1 0
 glbrush''
 glpolygon 250 200 300 300 400 100 300 150
