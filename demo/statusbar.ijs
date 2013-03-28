@@ -37,7 +37,7 @@ wd SBdemo
 wd 'set sbar setlabel row "line 5"'
 wd 'set sbar setlabel col "column 20"'
 wd 'set sbar setlabel name "tools/util.ijs"'
-wd 'pmovex 700 10 400 200'
+wd 'pmove 700 10 400 200'
 wd 'pshow'
 )
 

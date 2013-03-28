@@ -302,7 +302,7 @@ wd 'pn *',SYSNAME
 wd 'set pac shape 0 5'
 wd 'set pac type 100 0 0 0 0'
 wd 'set pac hdr "     " Package Installed Latest Caption'
-wd 'pmovex 100 10 900 700'
+wd 'pmove 100 10 900 700'
 wd 'pshow'
 window=: 1
 )

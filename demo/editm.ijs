@@ -90,7 +90,7 @@ wd 'set ted text *',Text
 wd 'bin zhs'
 wd 'cc ok button;cn OK'
 wd 'cc close button;cn Close'
-wd 'pmovex 100 10 700 500'
+wd 'pmove 100 10 700 500'
 wd 'pshow'
 NB. call these after the pshow:
 wd 'set ted select 1580 1763'

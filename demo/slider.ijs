@@ -35,7 +35,7 @@ NB. =========================================================
 sliderdemo_run=: 3 : 0
 P=. jpath '~addons/ide/qt/images/'
 wd SLdemo
-wd 'pmovex 700 10 400 200'
+wd 'pmove 700 10 400 200'
 wd 'pshow'
 )
 

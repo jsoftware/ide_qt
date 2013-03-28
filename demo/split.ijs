@@ -37,7 +37,7 @@ wd 'set ed1 text *pane 1'
 wd 'set ed2 text *pane 2'
 wd 'set ed3 text *pane 3'
 wd 'set ed4 text *pane 4'
-wd 'pmovex 400 10 400 300'
+wd 'pmove 400 10 400 300'
 wd 'pshow'
 )
 

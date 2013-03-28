@@ -16,7 +16,7 @@ idemo_run=: 3 : 0
 IShow=: 0
 wd 'ide hide'
 wd Idemo
-wd 'pmovex 400 100 300 50'
+wd 'pmove 400 100 300 50'
 wd 'pshow'
 )
 

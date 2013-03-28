@@ -50,7 +50,7 @@ controls_run=: 3 : 0
 wd Controls
 wd 'set ted stylesheet *background-color:#eeeeee'
 wd 'set ted text *How grand to be a Toucan',LF,'Just think what Toucan do.'
-wd 'pmovex 400 10 300 300'
+wd 'pmove 400 10 300 300'
 wd 'pshow'
 )
 

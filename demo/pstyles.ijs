@@ -60,7 +60,7 @@ NB. =========================================================
 psdemo_run=: 3 : 0
 wd PSdemo
 wd 'set lab text ',PSmsg
-wd 'pmovex 50 50 0 0'
+wd 'pmove 50 50 0 0'
 wd 'pshow'
 )
 
@@ -94,7 +94,7 @@ r=. r,;' ',each m#s
 wd r
 wd 'cc ted editm'
 wd 'set ted text *How grand to be a Toucan',LF,'Just think what Toucan do.'
-wd 'cc close button;pmovex 600 100 300 200;pshow'
+wd 'cc close button;pmove 600 100 300 200;pshow'
 )
 
 NB. =========================================================

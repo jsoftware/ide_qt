@@ -28,7 +28,7 @@ wd 'set sidebar checked 1'
 wd 'setenable font 0'
 wd 'cc list listbox'
 wd 'set list items one two three'
-wd 'pmovex 700 10 300 200'
+wd 'pmove 700 10 300 200'
 wd 'pshow'
 )
 

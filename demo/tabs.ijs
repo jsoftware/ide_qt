@@ -65,7 +65,7 @@ wd Tabdemo
 wd 'set ted text *How grand to be a Toucan',LF,'Just think what Toucan do.'
 wd 'set prefs active 1'
 wd 'set prefs label 2 Notes'
-wd 'pmovex 400 10 400 200'
+wd 'pmove 400 10 400 200'
 wd 'pshow'
 )
 

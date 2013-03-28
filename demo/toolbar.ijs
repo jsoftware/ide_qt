@@ -23,7 +23,7 @@ wd 'set tools addsep'
 wd 'set tools add cut Cut "',P,'cut.png"'
 wd 'set tools add copy Copy "',P,'copy.png"'
 wd 'set tools add paste Paste "',P,'paste.png"'
-wd 'pmovex 700 10 300 200'
+wd 'pmove 700 10 300 200'
 wd 'pshow'
 )
 

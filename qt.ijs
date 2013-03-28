@@ -53,11 +53,11 @@ i.0 0
 wdclippaste=: (wd bind 'clippaste') :: (''"_)
 wdqq=: (wd bind 'q') :: (''"_)
 wdqchildxywh=: (0 ". [: wd 'qchildxywh ' , ]) :: (0 0 0 0"_)
-wdqchildxywhx=: (0 ". [: wd 'qchildxywhx ' , ] ) :: (0 0 0 0"_)
+wdqchildxywh=: (0 ". [: wd 'qchildxywh ' , ] ) :: (0 0 0 0"_)
 wdqcolor=: (0 ". [: wd 'qcolor ' , ":) :: ( 0 0 0"_)
 wdqd=: (wd bind 'qd') :: (''"_)
 wdqer=: (wd bind 'qer') :: (''"_)
-wdqformx=: (0 ". wd bind 'qformx') :: (0 0 800 600"_)
+wdqform=: (0 ". wd bind 'qform') :: (0 0 800 600"_)
 wdqhinst=: (0 ". wd bind 'qhinst') :: 0:
 wdqhwndc=: (0 ". [: wd 'qhwndc ' , ]) :: 0:
 wdqhwndp=: (0 ". wd bind 'qhwndp') :: 0:

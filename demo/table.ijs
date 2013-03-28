@@ -63,7 +63,7 @@ wd 'set pac align 1 2 2 2 0'
 wd 'set pac edit ',":20{.15$1 1 1 0 0
 wd 'set pac lab Ford Toyota "Mercedes Benz" Total'
 wd 'set pac data *',makedata''
-wd 'pmovex 100 10 500 200'
+wd 'pmove 100 10 500 200'
 wd 'pshow'
 )
 
