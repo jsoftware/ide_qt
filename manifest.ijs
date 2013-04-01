@@ -6,11 +6,13 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.0.80'
+VERSION=: '1.0.81'
 
 FILES=: 0 : 0
 baselibtags
 pacman.ijs
+dbview.ijs
+debugs.ijs
 qt.ijs
 config/
 demo/

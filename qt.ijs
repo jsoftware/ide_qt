@@ -146,6 +146,9 @@ dirmatch=: [: empty s cd [: ,each 2 {. boxopen
 s=. '"',libjqt,'" openj >', (IFWIN#'+'),' n *c'
 open=: [: empty s cd fboxname
 
+s=. '"',libjqt,'" immexj >', (IFWIN#'+'),' n *c'
+immexj=: [: empty s cd <@,
+
 4!:55<'s'
 alpha27=: (27 b.) & 16bffffff
 alpha17=: (17 b.) & 16bffffff
@@ -301,6 +304,16 @@ if. m do.
   z
 else.
   ''
+end.
+)
+dbjqt=: 3 : 0
+if. y do.
+  if. _1 = 4!:0 <'jdb_open_jdebug_' do.
+    0!:0 <jpath '~addons/ide/qt/debugs.ijs'
+  end.
+  jdb_open_jdebug_''
+else.
+  jdb_close_jdebug_ :: ] ''
 end.
 )
 Qt_Key_Escape                 =: 16b00f800
