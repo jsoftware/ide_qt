@@ -316,6 +316,25 @@ else.
   jdb_close_jdebug_ :: ] ''
 end.
 )
+labs_run=: 3 : 0
+smfocus_jijs_=: 0:
+closewindows_jijs_=: 0:
+smclose_jijs_=: 0:
+smopen_jijs_=: open
+smsel_jijs_=: 0:
+smselout_jijs_=: 0:
+smsetsaved_jijs_=: 0:
+smwrite_jijs_=: 0:
+tile_jijs_=: 0:
+coinsert_jijs_ (,copath) coname''
+
+if. -.fexist jpath '~addons/labs/labs/lab.ijs' do.
+  sminfo 'Labs';lab_msg
+  return.
+end.
+require '~addons/labs/labs/lab.ijs'
+lab_jlab_ y
+)
 Qt_Key_Escape                 =: 16b00f800
 Qt_Key_Tab                    =: 16b00f801
 Qt_Key_Backtab                =: 16b00f802
