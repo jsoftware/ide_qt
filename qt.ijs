@@ -149,6 +149,9 @@ open=: [: empty s cd fboxname
 s=. '"',libjqt,'" immexj >', (IFWIN#'+'),' n *c'
 immexj=: [: empty s cd <@,
 
+s=. '"',libjqt,'" smact >', (IFWIN#'+'),' n'
+smact=: [: empty (s&cd bind '')
+
 4!:55<'s'
 alpha27=: (27 b.) & 16bffffff
 alpha17=: (17 b.) & 16bffffff

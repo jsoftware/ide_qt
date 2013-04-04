@@ -377,7 +377,7 @@ if. 1 >: # 13!:13'' do. jdb_clear'' end.
 empty''
 )
 jdb_inactive=: 3 : '0 e. #NAME'
-jdb_selact=: empty
+jdb_selact=: smact
 jdb_clear=: 3 : 0
 hx=. HWNDPX
 jdb_debugreset''
@@ -1097,7 +1097,7 @@ end.
 jdebug_wctrl_fkey=: 3 : 0
 jdb_lxsoff''
 smprompt_jijs_ '   ',jdb_dlb MOVELINE >@{ LINES
-smfocus_jijs_ smselact_jijs_ ''
+smact''
 jdb_lxson''
 )
 jdebug_tctrl_fkey=: 3 : 0
