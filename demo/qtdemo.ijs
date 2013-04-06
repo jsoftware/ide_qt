@@ -8,6 +8,7 @@ fexist=: 1:@(1!:4)@boxopen ::0:
 
 TITLES=: maketitle 0 : 0
 controls dcontrols
+datetime ddatetime
 edit dedit
 editm deditm
 gl2 dgl2
@@ -77,6 +78,7 @@ qtdemo_cancel_button=: qtdemo_close
 
 NB. =========================================================
 dcontrols=: load bind (jpath '~addons/ide/qt/demo/controls.ijs')
+ddatetime=: load bind (jpath '~addons/ide/qt/demo/datetime.ijs')
 dedit=: load bind (jpath '~addons/ide/qt/demo/edit.ijs')
 deditm=: load bind (jpath '~addons/ide/qt/demo/editm.ijs')
 dgl2=: load bind (jpath '~addons/ide/qt/demo/gl2.ijs')

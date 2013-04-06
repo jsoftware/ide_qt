@@ -1,52 +1,43 @@
-NB. spinbox demo
+NB. dspinbox demo
 NB.
-NB. cc int spinbox [numeric options]
+NB. cc track dspinbox [numeric options]
 NB.
 NB. numeric options are:
 NB. minimum
 NB. single step
 NB. maximum
 NB. value
+
 NB.
-NB. cc double dspinbox [numeric options]
-NB.
-NB. numeric options are:
-NB. decimal places
-NB. minimum
-NB. single step
-NB. maximum
-NB. value
+NB. all numeric options should be integers
 
 coclass 'qtdemo'
 
 NB. =========================================================
-SPdemo=: 0 : 0
-pc spinboxdemo;
-cc int spinbox _20 1 20 7;
-cc double dspinbox 2 _200 10.5 200 7;
+DSPdemo=: 0 : 0
+pc dspinboxdemo;
+cc track dspinbox _20 0.5 20 7.5;
 )
 
 NB. =========================================================
-spinboxdemo_close=: 3 : 0
+dspinboxdemo_close=: 3 : 0
 wd 'pclose'
 showevents_jqtide_ 0
 )
 
 NB. =========================================================
-spinboxdemo_run=: 3 : 0
+dspinboxdemo_run=: 3 : 0
 P=. jpath '~addons/ide/qt/images/'
-wd SPdemo
+wd DSPdemo
 wd 'pmove 700 10 400 200'
 wd 'pshow'
 )
 
 NB. =========================================================
 showevents_jqtide_ 2
-spinboxdemo_run''
+dspinboxdemo_run''
 smoutput 0 : 0
 Try:
-  wd 'set int value 11'
-  wd 'set int max 30'
-  wd 'set double value 11'
-  wd 'set double max 30'
+  wd 'set track value 11'
+  wd 'set track max 30'
 )
