@@ -23,6 +23,7 @@ progressbar dprogressbar
 pstyles dpstyles
 shader dshader
 slider dslider
+spinbox dspinbox
 sphere dsphere
 split dsplit
 statusbar dstatusbar
@@ -91,6 +92,7 @@ dprogressbar=: load bind (jpath '~addons/ide/qt/demo/progressbar.ijs')
 dpstyles=: load bind (jpath '~addons/ide/qt/demo/pstyles.ijs')
 dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs')
 dslider=: load bind (jpath '~addons/ide/qt/demo/slider.ijs')
+dspinbox=: load bind (jpath '~addons/ide/qt/demo/spinbox.ijs')
 dsphere=: load bind (jpath '~addons/ide/qt/demo/sphere.ijs') ^:(-.'Android'-:UNAME)
 dsplit=: load bind (jpath '~addons/ide/qt/demo/split.ijs')
 dstatusbar=: load bind (jpath '~addons/ide/qt/demo/statusbar.ijs')
