@@ -213,6 +213,7 @@ HWNDP	./main/pacman/init.ijs	1
 HWNDP	./main/regex/regdemo.ijs	1
 IFDEF	./main/main/sysenv.ijs	1
 IFIOS	./main/main/sysenv.ijs	1
+IFJCDROID	./main/main/sysenv.ijs	1
 IFJHS	./main/main/sysenv.ijs	1
 IFQT	./main/main/sysenv.ijs	1
 IFWINE	./main/main/sysenv.ijs	1
@@ -772,6 +773,7 @@ dropafter	./main/main/strings.ijs	1
 dropto	./main/main/strings.ijs	1
 dtb	./main/main/strings.ijs	1
 dtbs	./main/main/strings.ijs	1
+dwdemo	./main/config/boot.ijs	1
 each	./main/main/stdlib.ijs	1
 echo	./main/main/stdlib.ijs	1
 empty	./main/main/stdlib.ijs	1
