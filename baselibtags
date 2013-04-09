@@ -773,6 +773,7 @@ dropafter	./main/main/strings.ijs	1
 dropto	./main/main/strings.ijs	1
 dtb	./main/main/strings.ijs	1
 dtbs	./main/main/strings.ijs	1
+dver	./main/config/boot.ijs	1
 dwdemo	./main/config/boot.ijs	1
 each	./main/main/stdlib.ijs	1
 echo	./main/main/stdlib.ijs	1
