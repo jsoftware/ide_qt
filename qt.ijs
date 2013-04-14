@@ -699,13 +699,13 @@ glztextxy=: ('"',libjqt,'" glztextxy >',(IFWIN#'+'),' i *i') cd <@:<.
 glzwindoworg=: ('"',libjqt,'" glzwindoworg >',(IFWIN#'+'),' i *i') cd <@:<.
 
 glzqresolution=: ('"',libjqt,'" glzqresolution >',(IFWIN#'+'),' i')&cd bind ''
-glzcolormode=: ('"',libjqt,'" glzcolormode >',(IFWIN#'+'),' i')&cd bind ''
-glzduplexmode=: ('"',libjqt,'" glzduplexmode >',(IFWIN#'+'),' i')&cd bind ''
-glzorientation=: ('"',libjqt,'" glzorientation >',(IFWIN#'+'),' i')&cd bind ''
-glzoutputformat=: ('"',libjqt,'" glzoutputformat >',(IFWIN#'+'),' i')&cd bind ''
-glzpageorder=: ('"',libjqt,'" glzpageorder >',(IFWIN#'+'),' i')&cd bind ''
-glzpapersize=: ('"',libjqt,'" glzpapersize >',(IFWIN#'+'),' i')&cd bind ''
-glzpapersource=: ('"',libjqt,'" glzpapersource >',(IFWIN#'+'),' i')&cd bind ''
+glzqcolormode=: ('"',libjqt,'" glzqcolormode >',(IFWIN#'+'),' i')&cd bind ''
+glzqduplexmode=: ('"',libjqt,'" glzqduplexmode >',(IFWIN#'+'),' i')&cd bind ''
+glzqorientation=: ('"',libjqt,'" glzqorientation >',(IFWIN#'+'),' i')&cd bind ''
+glzqoutputformat=: ('"',libjqt,'" glzqoutputformat >',(IFWIN#'+'),' i')&cd bind ''
+glzqpageorder=: ('"',libjqt,'" glzqpageorder >',(IFWIN#'+'),' i')&cd bind ''
+glzqpapersize=: ('"',libjqt,'" glzqpapersize >',(IFWIN#'+'),' i')&cd bind ''
+glzqpapersource=: ('"',libjqt,'" glzqpapersource >',(IFWIN#'+'),' i')&cd bind ''
 
 glzresolution=: ('"',libjqt,'" glzresolution >',(IFWIN#'+'),' i i')&cd
 glzcolormode=: ('"',libjqt,'" glzcolormode >',(IFWIN#'+'),' i i')&cd
@@ -723,10 +723,17 @@ glzenddoc=: ('"',libjqt,'" glzenddoc >',(IFWIN#'+'),' i')&cd bind ''
 glznewpage=: ('"',libjqt,'" glznewpage >',(IFWIN#'+'),' i')&cd bind ''
 glzprinter=: ('"',libjqt,'" glzprinter >',(IFWIN#'+'),' i *c') cd <@,
 glzstartdoc=: ('"',libjqt,'" glzstartdoc >',(IFWIN#'+'),' i *c *c') cd 2: {. boxopen
+
+glzinitprinter=: ('"',libjqt,'" glzinitprinter >',(IFWIN#'+'),' i')&cd bind ''
 glzqwh=: 3 : 0"1
 wh=. 2#1.1-1.1
 ('"',libjqt,'" glzqwh >',(IFWIN#'+'),' i *f i') cd wh;y
 wh
+)
+glzqmargins=: 3 : 0"1
+ltrb=. 4#1.1-1.1
+('"',libjqt,'" glzqmargins >',(IFWIN#'+'),' i *f i') cd ltrb;y
+ltrb
 )
 glzqextent=: 3 : 0"1
 wh=. 2#2-2
@@ -741,7 +748,7 @@ w
 )
 glzqtextmetrics=: 3 : 0"1
 tm=. 7#2-2
-('"',libjqt,'" glzqtextmetrics >',(IFWIN#'+'),' i *i') cd tm
+('"',libjqt,'" glzqtextmetrics >',(IFWIN#'+'),' i *i') cd <tm
 tm
 )
 QPrinter_Color=: 1
@@ -811,6 +818,7 @@ QPrinter_Didot=: 4
 QPrinter_Cicero=: 5
 QPrinter_DevicePixel=: 6
 
+glzinitprinter ::0:''
 coclass 'jqtide'
 
 ContextHelp=: ,'jb'
