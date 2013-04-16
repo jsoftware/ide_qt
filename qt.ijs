@@ -183,7 +183,7 @@ m=. 'mb query', (;t{msg), ' ', (f a),' ',(f b)
 res i. <wd m
 )
 mbopen=: 3 : 0
-jpathsep wd 8 u: 'mb open ',y
+jpathsep wd 8 u: 'mb open1 ',y
 )
 mbsave=: 3 : 0
 jpathsep wd 8 u: 'mb save ',y

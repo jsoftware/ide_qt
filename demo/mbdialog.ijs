@@ -3,6 +3,7 @@ NB.
 NB. mb color    - get an RGB color
 NB. mb font     - get a font
 NB. mb open     - get name of file to open
+NB. mb open1    - get name of file to open
 NB. mb save     - get name of file to save
 NB. mb dir      - get directory name
 NB. mb print    - print with dialog
@@ -13,7 +14,14 @@ NB. =========================================================
 NB. mb open title directory filter
 demo1=: 3 : 0
 p=. 'Scripts (*.ijs)|All Files (*.*)'
-wd 'mb open "Open Script" "',(jpath '~system/util'),'" "',p,'"'
+wd 'mb open "Open Multiple Script" "',(jpath '~system/util'),'" "',p,'"'
+)
+
+NB. =========================================================
+NB. mb open1 title directory filter
+demo1a=: 3 : 0
+p=. 'Scripts (*.ijs)|All Files (*.*)'
+wd 'mb open1 "Open Single Script" "',(jpath '~system/util'),'" "',p,'"'
 )
 
 NB. =========================================================
@@ -66,6 +74,7 @@ NB. =========================================================
 smoutput 0 : 0
 Dialog demos:
    smoutput demo1''
+   smoutput demo1a''
    smoutput demo2''
    smoutput demo3''
    smoutput demo4''
