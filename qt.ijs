@@ -7,7 +7,6 @@ coclass 'jqtide'
 Debugwd=: 0
 
 cocurrent 'z'
-IFJCDROID=: 0
 wd=: 3 : 0"1
 'r c p n b'=. wd1 ,&.>y;2;0;18!:5''
 select. r

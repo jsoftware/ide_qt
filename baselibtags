@@ -365,6 +365,7 @@ P	./main/compare/test0.ijs	1
 PARTIAL	./main/regex/opts.ijs	1
 PATH	./main/main/breaker.ijs	1
 PATHJSEP	./main/main/sysenv.ijs	1
+PATHSEP	./main/project/standalone.ijs	1
 PF_APPLETALK	./main/defs/netdefs_android.ijs	1
 PF_APPLETALK	./main/defs/netdefs_linux.ijs	1
 PF_DECnet	./main/defs/netdefs_android.ijs	1
@@ -511,6 +512,7 @@ SO_SNDTIMEO	./main/defs/netdefs_linux.ijs	1
 SO_TYPE	./main/defs/netdefs_android.ijs	1
 SO_TYPE	./main/defs/netdefs_linux.ijs	1
 SPACETEXT	./main/pm/format.ijs	1
+STANDALONE	./main/project/standalone.ijs	1
 STARTF_USESHOWWINDOW	./main/task/util.ijs	1
 STARTF_USESTDHANDLES	./main/task/util.ijs	1
 STARTUPINFO	./main/task/util.ijs	1
@@ -904,6 +906,7 @@ gethostbyaddrJ	./main/socket/sockapi.ijs	1
 gethostbynameJ	./main/socket/sockapi.ijs	1
 gethostnameJ	./main/socket/sockapi.ijs	1
 getintro	./main/pacman/util.ijs	1
+getlibs	./main/project/standalone.ijs	1
 getmatchindex	./main/pm/util.ijs	1
 getnameloc	./main/pm/names.ijs	1
 getnames	./main/pacman/util.ijs	1
@@ -925,6 +928,7 @@ getserver	./main/pacman/check.ijs	1
 getshortname	./main/pm/names.ijs	1
 getsocknameJ	./main/socket/sockapi.ijs	1
 getsockoptJ	./main/socket/sockapi.ijs	1
+getstdenv	./main/project/standalone.ijs	1
 gettdetail	./main/pm/detail.ijs	1
 gettotal	./main/pm/total.ijs	1
 gettotals	./main/pm/total.ijs	1
@@ -1012,10 +1016,12 @@ istempscript	./main/jade/util.ijs	1
 items	./main/main/stdlib.ijs	1
 jcwdpath	./main/main/sysenv.ijs	1
 jdefs	./main/config/configure.ijs	1
+jhostpath	./main/project/standalone.ijs	1
 join	./main/pm/util.ijs	1
 joinstring	./main/main/strings.ijs	1
 jpath	./main/jade/folders.ijs	1
 jpath	./main/jade/zdefcon.ijs	1
+jpath	./main/project/standalone.ijs	1
 jpathsep	./main/main/sysenv.ijs	1
 jpathsep	./main/config/profile.ijs	1
 jpkg	./main/pacman/runs.ijs	1
@@ -1027,6 +1033,7 @@ jregexec	./main/regex/defs.ijs	1
 jregfree	./main/regex/defs.ijs	1
 jshowconsole	./main/jade/util.ijs	1
 jsystemdefs	./main/main/sysenv.ijs	1
+jsystemdefs	./main/project/standalone.ijs	1
 l_len_off	./main/defs/hostdefs_android.ijs	1
 l_len_off	./main/defs/hostdefs_linux.ijs	1
 l_len_sz	./main/defs/hostdefs_android.ijs	1
@@ -1070,6 +1077,7 @@ list	./main/main/stdlib.ijs	1
 listenJ	./main/socket/sockapi.ijs	1
 ljust	./main/main/strings.ijs	1
 load	./main/jade/zdefcon.ijs	1
+load	./main/project/standalone.ijs	1
 loadd	./main/jade/zdefcon.ijs	1
 loadtags	./main/ctag/defs.ijs	1
 loadtest	./main/pm/testutil.ijs	1
