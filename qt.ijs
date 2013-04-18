@@ -153,8 +153,6 @@ s=. '"',libjqt,'" smact >', (IFWIN#'+'),' n'
 smact=: [: empty (s&cd bind '')
 
 4!:55<'s'
-alpha27=: (27 b.) & 16bffffff
-alpha17=: (17 b.) & 16bffffff
 wde=: [:
 wdbox=: [:
 wdmove=: [:
