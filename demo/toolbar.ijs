@@ -9,6 +9,8 @@ NB. =========================================================
 TBdemo=: 0 : 0
 pc tbdemo;
 cc tools toolbar;
+cc enable button;
+cc disable button;
 cc list listbox;
 set list items one two three;
 )
@@ -31,6 +33,14 @@ wd 'set tools checked refresh'  NB. ignored
 wd 'set tools enable cut 0'
 wd 'set tools enable cut 1'
 wd 'set tools enable paste 0'
+)
+
+tbdemo_disable_button=: 3 : 0
+wd 'set tools enable 0'
+)
+
+tbdemo_enable_button=: 3 : 0
+wd 'set tools enable'
 )
 
 NB. =========================================================
