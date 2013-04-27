@@ -25,6 +25,12 @@ wd 'set tools add copy Copy "',P,'copy.png"'
 wd 'set tools add paste Paste "',P,'paste.png"'
 wd 'pmove 700 10 300 200'
 wd 'pshow'
+wd 'set tools checkable home'
+wd 'set tools checked home'
+wd 'set tools checked refresh'  NB. ignored
+wd 'set tools enable cut 0'
+wd 'set tools enable cut 1'
+wd 'set tools enable paste 0'
 )
 
 NB. =========================================================

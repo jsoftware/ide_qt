@@ -18,8 +18,8 @@ EMPTY
 NB. =========================================================
 smoutput 0 : 0
 start, e.g. every two seconds:
-   timer 2000
+   timer_qtdemo_ 2000
 
 stop:
-   timer 0
+   timer_qtdemo_ 0
 )

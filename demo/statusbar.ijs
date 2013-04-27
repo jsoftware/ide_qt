@@ -58,6 +58,6 @@ sbdemo_run''
 NB. =========================================================
 smoutput 0 : 0
 To demo temporary messages, try:
-   demo1''
-   demo2''
+   demo1_qtdemo_''
+   demo2_qtdemo_''
 )

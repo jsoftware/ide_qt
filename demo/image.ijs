@@ -21,5 +21,5 @@ imdemo_run''
 
 smoutput 0 : 0
 Try:
-   demo1''
+   demo1_qtdemo_''
 )

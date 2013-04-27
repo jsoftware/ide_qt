@@ -73,15 +73,15 @@ wd 'mb printx "',(jpath '~install/bin/profile.ijs'),'"'
 NB. =========================================================
 smoutput 0 : 0
 Dialog demos:
-   smoutput demo1''
-   smoutput demo1a''
-   smoutput demo2''
-   smoutput demo3''
-   smoutput demo4''
-   smoutput demo5''
+   smoutput demo1_qtdemo_''
+   smoutput demo1a_qtdemo_''
+   smoutput demo2_qtdemo_''
+   smoutput demo3_qtdemo_''
+   smoutput demo4_qtdemo_''
+   smoutput demo5_qtdemo_''
 
 Printing demos:
-   demo6''
-   demo7''
-   demo8''
+   demo6_qtdemo_''
+   demo7_qtdemo_''
+   demo8_qtdemo_''
 )
