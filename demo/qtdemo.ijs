@@ -12,6 +12,7 @@ datetime ddatetime
 edit dedit
 editm deditm
 gl2 dgl2
+grid dgrid
 ide dide
 image dimage
 mbox dmbox
@@ -82,6 +83,7 @@ ddatetime=: load bind (jpath '~addons/ide/qt/demo/datetime.ijs')
 dedit=: load bind (jpath '~addons/ide/qt/demo/edit.ijs')
 deditm=: load bind (jpath '~addons/ide/qt/demo/editm.ijs')
 dgl2=: load bind (jpath '~addons/ide/qt/demo/gl2.ijs')
+dgrid=: load bind (jpath '~addons/ide/qt/demo/grid.ijs')
 dide=: load bind (jpath '~addons/ide/qt/demo/ide.ijs') ^:(-.'Android'-:UNAME)
 dimage=: load bind (jpath '~addons/ide/qt/demo/image.ijs')
 dmbox=: load bind (jpath '~addons/ide/qt/demo/mbox.ijs')

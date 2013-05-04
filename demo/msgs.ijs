@@ -14,8 +14,10 @@ wd 'pshow'
 
 NB. =========================================================
 msgs_bu_button=: 3 : 0
+closef=: 0
 usemsgs=. 0 ". ms
 for_i. i.11 do.
+  if. closef do. break. end.
   wd 'set prog pos ', ":10-i
   smoutput 10-i
   wd^:usemsgs 'msgs'
@@ -25,6 +27,7 @@ end.
 
 NB. =========================================================
 msgs_close=: 3 : 0
+closef=: 1
 wd 'pclose'
 )
 
