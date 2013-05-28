@@ -10,6 +10,7 @@ TITLES=: maketitle 0 : 0
 controls dcontrols
 datetime ddatetime
 edit dedit
+edith dedith
 editm deditm
 gl2 dgl2
 grid dgrid
@@ -81,6 +82,7 @@ NB. =========================================================
 dcontrols=: load bind (jpath '~addons/ide/qt/demo/controls.ijs')
 ddatetime=: load bind (jpath '~addons/ide/qt/demo/datetime.ijs')
 dedit=: load bind (jpath '~addons/ide/qt/demo/edit.ijs')
+dedith=: load bind (jpath '~addons/ide/qt/demo/edith.ijs')
 deditm=: load bind (jpath '~addons/ide/qt/demo/editm.ijs')
 dgl2=: load bind (jpath '~addons/ide/qt/demo/gl2.ijs')
 dgrid=: load bind (jpath '~addons/ide/qt/demo/grid.ijs')
