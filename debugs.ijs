@@ -1031,7 +1031,7 @@ set tbar addsep;
 set tbar add stack "View stack" "DEBUGPATH/spreadsheet.png";
 set tbar addsep;
 set tbar add clear "Clear" "DEBUGPATH/clear.png";
-wh 530 1;cc tabs tab nobar;
+minwh 530 1;cc tabs tab nobar;
 pas 0 0;pcenter;
 rem form end;
 )
@@ -1700,7 +1700,7 @@ jdebug_runcursor_button=: immexj bind 'jdebug_runcursor_run_jdebug_$0'
 jdebug_run_button=: immexj bind 'jdebug_run_run_jdebug_$0'
 JDBVIEW=: 0 : 0
 pc jdbview closeok owner;cn "View";
-wh 470 300;cc e0 editm readonly;
+minwh 470 300;cc e0 editm readonly;
 pas 0 0;pcenter;
 rem form end;
 )

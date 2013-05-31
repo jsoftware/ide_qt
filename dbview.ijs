@@ -253,7 +253,7 @@ CSTACK=: reps 4 }"0 1 STACK
 )
 JDBVIEW=: 0 : 0
 pc jdbview;pn "Stack";
-wh 800 600;cc grid isigraph;
+minwh 800 600;cc grid isigraph;
 pas 0 0;pcenter;
 rem form end;
 )
