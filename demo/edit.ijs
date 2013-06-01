@@ -6,7 +6,7 @@ coclass 'qtdemo'
 NB. =========================================================
 edit=: 3 : 0
 wd 'pc edit'
-wd 'wh 150 20'
+wd 'minwh 150 20'
 wd 'cc e0 edit'
 wd 'cc e1 edit left'
 wd 'cc e2 edit center'
