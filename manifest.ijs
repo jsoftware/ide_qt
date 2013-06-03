@@ -6,7 +6,7 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.0.98'
+VERSION=: '1.0.100'
 
 FILES=: 0 : 0
 baselibtags
@@ -16,6 +16,7 @@ debugs.ijs
 help.ijs
 qt.ijs
 config/
+data/
 demo/
 js/
 images/
