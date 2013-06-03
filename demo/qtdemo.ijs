@@ -1,4 +1,5 @@
 
+18!:4 <'base'
 18!:55 <'qtdemo'
 coclass 'qtdemo'
 
@@ -35,6 +36,7 @@ tabs dtabs
 timer dtimer
 toolbar dtoolbar
 viewmat dviewmat
+webd3 dwebd3
 webview dwebview
 )
 
@@ -107,6 +109,7 @@ dtabs=: load bind (jpath '~addons/ide/qt/demo/tabs.ijs')
 dtimer=: load bind (jpath '~addons/ide/qt/demo/timer.ijs') ^:(-.'Android'-:UNAME)
 dtoolbar=: load bind (jpath '~addons/ide/qt/demo/toolbar.ijs')
 dviewmat=: load bind (jpath '~addons/ide/qt/demo/viewmat.ijs')
+dwebd3=: load bind (jpath '~addons/ide/qt/demo/webd3.ijs')
 dwebview=: load bind (jpath '~addons/ide/qt/demo/webview.ijs')
 
 NB. =========================================================
