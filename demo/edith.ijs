@@ -88,23 +88,26 @@ This is a test.
 </pre>
 )
 
+EDIT=: 0
 
 EDITHDEMO=: 0 : 0
 pc edithdemo escclose;pn "Edith Demo";
 menupop "&File";
 menu open "&Open" "Ctrl+O" "" "";
+menu edit "&Edit" "Ctrl+E" "" "";
 menu print "&Print" "Ctrl+P" "" "";
 menusep;
 menu quit "&Quit" "Ctrl+Q" "" "";
 menupopz;
-cc ted edith readonly flush;
+cc ted edith flush;
 )
 
 NB. =========================================================
 edithdemo_run=: 3 : 0
 wd EDITHDEMO
-if. UNAME -: 'Linux' do. f=. 'font: 12pt "DejaVu Serif"' else. f=.'font: 12pt "Georgia";' end.
-wd 'set ted stylesheet *QTextEdit {color:#00007f;background-color:#ffffee;',f,'}'
+if. UNAME -: 'Linux' do. fnt=: 'font: 12pt "DejaVu Serif"' else. fnt=: 'font: 12pt "Georgia";' end.
+if. UNAME -: 'Linux' do. fnte=: 'font: 12pt "DejaVu Mono"' else. fnte=: 'font: 12pt "Courier New";' end.
+wd 'set ted stylesheet *QTextEdit {color:#00007f;background-color:#ffffee;',fnt,'}'
 wd 'set ted text *',Text
 wd 'pmove 100 10 700 500'
 wd 'pshow'
@@ -122,12 +125,28 @@ edithdemo_close_button=: edithdemo_quit_button=: edithdemo_close
 
 edithdemo_open_button=: 3 : 0
 fn=. wd'mb open1 "Open HTML file" "" "HTML file (*.html *.htm)|All files (*.*)"'
-if. 0=#fn do. 
+if. 0=#fn do.
   wd'set ted text *',Text
-  return. 
+  return.
 end.
 txt=. freads fn
 wd'set ted text *',txt
+wd 'set ted stylesheet *QTextEdit {color:#00007f;background-color:#ffffee;',fnt,'}'
+EDIT=: 0
+)
+
+edithdemo_edit_button=: 3 : 0
+if. EDIT do.
+  wd'set ted edit 0'
+  wd'set edit checked 0'
+  wd 'set ted stylesheet *QTextEdit {color:#00007f;background-color:#ffffee;',fnt,'}'
+  EDIT=: 0
+else.
+  wd'set ted edit 1'
+  wd'set edit checked 1'
+  wd 'set ted stylesheet *QTextEdit {color:#000000;background-color:#ffffff;',fnte,'}'
+  EDIT=: 1
+end.
 )
 
 edithdemo_print_button=: 3 : 0
