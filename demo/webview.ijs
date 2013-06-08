@@ -29,7 +29,7 @@ wd 'set w2 html *<html><body><img src=''./zippy.gif'' /></body></html>'
 NB. =========================================================
 webview_e_button=: 3 : 0
 smoutput e
-wd 'set w1 baseurl *',e
+wd 'set w1 url *',e
 )
 
 NB. =========================================================

@@ -35,6 +35,7 @@ table dtable
 tabs dtabs
 timer dtimer
 toolbar dtoolbar
+toolbarv dtoolbarv
 viewmat dviewmat
 webd3 dwebd3
 webview dwebview
@@ -108,6 +109,7 @@ dtable=: load bind (jpath '~addons/ide/qt/demo/table.ijs')
 dtabs=: load bind (jpath '~addons/ide/qt/demo/tabs.ijs')
 dtimer=: load bind (jpath '~addons/ide/qt/demo/timer.ijs') ^:(-.'Android'-:UNAME)
 dtoolbar=: load bind (jpath '~addons/ide/qt/demo/toolbar.ijs')
+dtoolbarv=: load bind (jpath '~addons/ide/qt/demo/toolbarv.ijs')
 dviewmat=: load bind (jpath '~addons/ide/qt/demo/viewmat.ijs')
 dwebd3=: load bind (jpath '~addons/ide/qt/demo/webd3.ijs')
 dwebview=: load bind (jpath '~addons/ide/qt/demo/webview.ijs')
