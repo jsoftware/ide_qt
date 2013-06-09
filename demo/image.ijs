@@ -6,7 +6,7 @@ coclass 'qtdemo'
 
 NB. =========================================================
 imdemo_run=: 3 : 0
-wd 'pc imdemo escclose'
+wd 'pc imdemo closeok escclose'
 wd 'cc pic image'
 wd 'set pic image *',jpath '~addons/graphics/bmp/toucan.bmp'
 wd 'pshow'

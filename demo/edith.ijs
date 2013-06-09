@@ -91,7 +91,7 @@ This is a test.
 EDIT=: 0
 
 EDITHDEMO=: 0 : 0
-pc edithdemo escclose;pn "Edith Demo";
+pc edithdemo closeok escclose;pn "Edith Demo";
 menupop "&File";
 menu open "&Open" "Ctrl+O" "" "";
 menu edit "&Edit" "Ctrl+E" "" "";

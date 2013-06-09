@@ -8,7 +8,7 @@ coclass 'qtdemo'
 
 NB. =========================================================
 PBdemo=: 0 : 0
-pc pbdemo escclose;
+pc pbdemo closeok escclose;
 cc prog progressbar 0 20 7;
 )
 

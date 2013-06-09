@@ -16,7 +16,7 @@ coclass 'qtdemo'
 
 NB. =========================================================
 Tabdemo=: 0 : 0
-pc tabdemo escclose;
+pc tabdemo closeok escclose;
 
 rem cc static button;
 

@@ -14,7 +14,7 @@ coclass 'qtdemo'
 
 NB. =========================================================
 Splitter=: 0 : 0
-pc splitter escclose;
+pc splitter closeok escclose;
 splith 0 1 100 200;
 cc ed1 editm;
 splitsep;
