@@ -22,7 +22,6 @@ and are resizable. The form close button triggers an event.<p>
 </table>
 <p>
 Styles <i>dialog</i> and <i>popup</i> are alternatives.<br/>
-Style <i>escclose</i> automatically selects <i>closeok</i>.<br/>
 Others are independent.
 )
 
@@ -73,13 +72,6 @@ NB. =========================================================
 psdemo_dialog_button=: 3 : 0
 if. 0 ". dialog do.
   wd 'set popup value 0'
-end.
-)
-
-NB. =========================================================
-psdemo_escclose_button=: 3 : 0
-if. 0 ". escclose do.
-  wd 'set closeok value 1'
 end.
 )
 
