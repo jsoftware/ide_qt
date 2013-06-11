@@ -20,6 +20,7 @@ h=. h,'<script type="text/javascript" src="',D3,'"></script>',LF
 h=. h,'<style>',s,'</style>',LF
 h=. h,'</head><body><script type="text/javascript">'
 m=. h,t,'</script></body></html>'
+wd 'set w baseurl *', jpath '~addons'
 wd 'set w html *',m
 wd 'pshow'
 )
