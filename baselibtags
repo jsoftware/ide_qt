@@ -216,6 +216,7 @@ IFIOS	./main/main/sysenv.ijs	1
 IFJCDROID	./main/main/sysenv.ijs	1
 IFJHS	./main/main/sysenv.ijs	1
 IFQT	./main/main/sysenv.ijs	1
+IFRASPI	./main/main/sysenv.ijs	1
 IFWINE	./main/main/sysenv.ijs	1
 IMMX	./main/jade/util.ijs	1
 INADDR_ALLHOSTS_GROUP	./main/defs/netdefs_android.ijs	1

@@ -41,6 +41,36 @@ webd3 dwebd3
 webview dwebview
 )
 
+TITLES2=: maketitle 0 : 0
+controls dcontrols
+datetime ddatetime
+edit dedit
+edith dedith
+editm deditm
+gl2 dgl2
+grid dgrid
+ide dide
+image dimage
+mbox dmbox
+mbdialog dmbdialog
+menu dmenu
+msgs dmsgs
+plot dplot
+printer dprinter
+progressbar dprogressbar
+pstyles dpstyles
+slider dslider
+spinbox dspinbox
+split dsplit
+statusbar dstatusbar
+table dtable
+tabs dtabs
+timer dtimer
+toolbar dtoolbar
+toolbarv dtoolbarv
+viewmat dviewmat
+)
+
 NB. =========================================================
 QTDEMO=: 0 : 0
 pc qtdemo closeok;pn "Demos Select";
@@ -58,6 +88,9 @@ rem form end;
 
 NB. =========================================================
 qtdemo_run=: 3 : 0
+if. 's' = {: wd 'version' do.
+  TITLES=: TITLES2
+end.
 wd QTDEMO
 wd 'set static1 text *Select a Qt demo from the list below:'
 wd 'set listbox items ',;DEL,each ({."1 TITLES),each DEL
