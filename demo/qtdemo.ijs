@@ -32,6 +32,7 @@ sphere dsphere
 split dsplit
 statusbar dstatusbar
 table dtable
+table2 dtable2
 tabs dtabs
 timer dtimer
 toolbar dtoolbar
@@ -64,6 +65,7 @@ spinbox dspinbox
 split dsplit
 statusbar dstatusbar
 table dtable
+table2 dtable2
 tabs dtabs
 timer dtimer
 toolbar dtoolbar
@@ -139,6 +141,7 @@ dsphere=: load bind (jpath '~addons/ide/qt/demo/sphere.ijs') ^:(-.'Android'-:UNA
 dsplit=: load bind (jpath '~addons/ide/qt/demo/split.ijs')
 dstatusbar=: load bind (jpath '~addons/ide/qt/demo/statusbar.ijs')
 dtable=: load bind (jpath '~addons/ide/qt/demo/table.ijs')
+dtable2=: load bind (jpath '~addons/ide/qt/demo/table2.ijs')
 dtabs=: load bind (jpath '~addons/ide/qt/demo/tabs.ijs')
 dtimer=: load bind (jpath '~addons/ide/qt/demo/timer.ijs') ^:(-.'Android'-:UNAME)
 dtoolbar=: load bind (jpath '~addons/ide/qt/demo/toolbar.ijs')
