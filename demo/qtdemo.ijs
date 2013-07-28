@@ -33,6 +33,7 @@ split dsplit
 statusbar dstatusbar
 table dtable
 table2 dtable2
+table3 dtable3
 tabs dtabs
 timer dtimer
 toolbar dtoolbar
@@ -66,6 +67,7 @@ split dsplit
 statusbar dstatusbar
 table dtable
 table2 dtable2
+table3 dtable3
 tabs dtabs
 timer dtimer
 toolbar dtoolbar
@@ -142,6 +144,7 @@ dsplit=: load bind (jpath '~addons/ide/qt/demo/split.ijs')
 dstatusbar=: load bind (jpath '~addons/ide/qt/demo/statusbar.ijs')
 dtable=: load bind (jpath '~addons/ide/qt/demo/table.ijs')
 dtable2=: load bind (jpath '~addons/ide/qt/demo/table2.ijs')
+dtable3=: load bind (jpath '~addons/ide/qt/demo/table3.ijs')
 dtabs=: load bind (jpath '~addons/ide/qt/demo/tabs.ijs')
 dtimer=: load bind (jpath '~addons/ide/qt/demo/timer.ijs') ^:(-.'Android'-:UNAME)
 dtoolbar=: load bind (jpath '~addons/ide/qt/demo/toolbar.ijs')

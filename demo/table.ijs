@@ -32,7 +32,7 @@ NB.   edit  - if editable (default 1)
 NB.   type  - cell type   (default 0)
 NB.
 NB. set size parameter - this resets the table:
-NB.   size rows cols
+NB.   shape rows cols
 
 coclass 'qtdemo'
 
