@@ -19,7 +19,7 @@ NB.  1 center
 NB.  2 right
 NB.
 NB. set parameters:
-NB.   block                - block mode for set (align2|edit2|type2|data2)
+NB.   block                - block mode for set (align2|protect2|type2|data2)
 NB.                          row1 row2 col1 col2, for row2 and col2, _1 means last row or column
 NB.   cell                 - cell data
 NB.   data[2]              - table data
@@ -33,7 +33,7 @@ NB.   hdralign  - column header align (make header first)
 NB.
 NB. following are singleton or one per ravelled data or block:
 NB.   align[2] - alignment   (default left)
-NB.   edit[2]  - if editable (default 1)
+NB.   protect[2]  - if protected (default 0)
 NB.   type[2]  - cell type   (default 0)
 NB.
 NB. set shape parameter - this resets the table:
@@ -62,7 +62,7 @@ wd 'set pac hdr Manufacturer Select Options Hire Lease Type Origin'
 wd 'set pac hdralign 0 1 1 1 1 1 0'
 wd 'set pac block 2 3 1 3'
 wd 'set pac type2 100 200 0 100 200 0'
-wd 'set pac edit2 1 1 0 0 1 1'
+wd 'set pac protect2 0 0 1 1 0 0'
 wd 'set pac data2 *',makedata''
 NB. un-initialised cells default to text
 wd 'set pac cell 0 0 "first cell"'

@@ -187,6 +187,7 @@ VIEWDATA=: y
 dat=. ": each 5 {."1 VIEWDATA
 wd 'set pac shape ',":$dat
 wd 'set pac type 100 0 0 0 0'
+wd 'set pac protect 1 0 0 0 0'
 wd 'set pac data *',toDEL dat
 )
 pmview_showlog=: 3 : 0

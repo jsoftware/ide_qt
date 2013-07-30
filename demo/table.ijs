@@ -28,7 +28,7 @@ NB.   hdralign  - column header align (make header first)
 NB.
 NB. following are singleton, one per column, or one per ravelled data:
 NB.   align - alignment   (default left)
-NB.   edit  - if editable (default 1)
+NB.   protect  - if protected (default 0)
 NB.   type  - cell type   (default 0)
 NB.
 NB. set size parameter - this resets the table:
@@ -60,7 +60,7 @@ wd 'set pac hdr Select Hire Lease Total Origin'
 wd 'set pac hdralign 1 1 1 1 0'
 wd 'set pac type ',":20{.15$100 0 0 0 0
 wd 'set pac align 1 2 2 2 0'
-wd 'set pac edit ',":20{.15$1 1 1 0 0
+wd 'set pac protect ',":20{.15$0 0 0 1 1
 wd 'set pac lab Ford Toyota "Mercedes Benz" Total'
 wd 'set pac data *',makedata''
 wd 'pmove 100 10 500 200'
