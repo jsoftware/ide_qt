@@ -60,7 +60,7 @@ wd 'set pac hdr Select Hire Lease Total Origin'
 wd 'set pac hdralign 1 1 1 1 0'
 wd 'set pac type ',":20{.15$100 0 0 0 0
 wd 'set pac align 1 2 2 2 0'
-wd 'set pac protect ',":20{.15$0 0 0 1 1
+wd 'set pac protect ',":20{.(!.1) 15$0 0 0 1 1
 wd 'set pac lab Ford Toyota "Mercedes Benz" Total'
 wd 'set pac data *',makedata''
 wd 'pmove 100 10 500 200'
