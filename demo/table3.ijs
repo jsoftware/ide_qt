@@ -20,22 +20,22 @@ NB.  1 center
 NB.  2 right
 NB.
 NB. set parameters:
-NB.   block                - block mode for set (align|protect|type|data)
+NB.   align                - alignment    (default left)
+NB.   background           - background color
+NB.   block                - block mode for set (align|background|data|font|foreground|protect|type)
 NB.                          row1 row2 col1 col2, for row2 and col2, _1 means last row or column
 NB.   cell                 - cell data
 NB.   data                 - table data
+NB.   font                 - cell font
+NB.   foreground           - foreground color
 NB.   hdr                  - column headers
 NB.   lab                  - row labels
-NB.   type                 - cell type
+NB.   protect              - if protected (default 0)
+NB.   type                 - cell type    (default 0)
 NB.   sort                 - column [ascending|descending] only applies to type 0
 NB.
 NB. following are singleton or one per column:
 NB.   hdralign  - column header align (make header first)
-NB.
-NB. following are singleton or one per ravelled data or block:
-NB.   align -   alignment   (default left)
-NB.   protect - if protected (default 0)
-NB.   type      - cell type   (default 0)
 NB.
 NB. set shape parameter - this resets the table:
 NB.   shape rows cols
@@ -61,12 +61,13 @@ wd 'pc table'
 wd 'cc pac table 5 7'
 wd 'set pac hdr Manufacturer Select Options Hire Lease Type Origin'
 wd 'set pac hdralign 0 1 1 1 1 1 0'
+wd 'set pac lab zero one two three four'
 wd 'set pac block 2 3 1 3'
 wd 'set pac type 100 200 0 100 200 400'
 wd 'set pac protect 0 0 1 1 0 0'
 wd 'set pac data *',makedata''
 NB. un-initialised cells default to text
-wd 'set pac cell 0 0 "first cell"'
+wd 'set pac cell 0 0 "first cell',LF,'second row"'
 wd 'set pac block 3 4'
 wd 'set pac type 200'
 wd 'set pac cell 3 4 *3 First Second Third Fourth'
@@ -74,9 +75,11 @@ wd 'set pac block 1 2 3 4'
 wd 'set pac type 0 100 100 400'
 wd 'set pac align 0 1 2 0'
 wd 'set pac data mouse 1 0 "black cat"'
+wd 'set pac font mono 24'
 wd 'set pac block 3 3'
 wd 'set pac type 200'
 wd 'set pac cell 3 3 *3 First Second Third Fourth'
+wd 'set pac font sans 30'
 NB. wd 'set pac data "text"'
 wd 'set pac block'
 wd 'set pac background 100 200 0'
