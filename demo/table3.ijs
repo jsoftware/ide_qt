@@ -22,15 +22,18 @@ NB.
 NB. set parameters:
 NB.   align                - alignment    (default left)
 NB.   background           - background color
-NB.   block                - block mode for set (align|background|data|font|foreground|protect|type)
+NB.   block                - block mode for set (align|background|colwidth|data|font|foreground|protect|rowheight|type)
 NB.                          row1 row2 col1 col2, for row2 and col2, _1 means last row or column
+NB.                          row col (one cell only)
 NB.   cell                 - cell data
+NB.   colwidth             - column width in pixels
 NB.   data                 - table data
 NB.   font                 - cell font
 NB.   foreground           - foreground color
 NB.   hdr                  - column headers
 NB.   lab                  - row labels
 NB.   protect              - if protected (default 0)
+NB.   rowheight            - row height in pixels
 NB.   type                 - cell type    (default 0)
 NB.   sort                 - column [ascending|descending] only applies to type 0
 NB.
@@ -84,7 +87,11 @@ NB. wd 'set pac data "text"'
 wd 'set pac block'
 wd 'set pac background 100 200 0'
 wd 'set pac foreground 255 0 0'
-wd 'pmove 100 10 500 200'
+wd 'set pac block 0 0 2 4'
+wd 'set pac colwidth 100'
+wd 'set pac block 0 2 0 0'
+wd 'set pac rowheight 30 40 60'
+wd 'pmove 100 10 700 200'
 wd 'pshow'
 )
 
