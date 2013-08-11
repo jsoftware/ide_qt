@@ -9,6 +9,7 @@ NB. headers do not include the top left cell
 NB.
 NB. cell types:
 NB.  0   text
+NB.  10  multiline text
 NB.  100 checkbox
 NB.  200 combolist 
 NB.  300 combobox
@@ -70,7 +71,13 @@ wd 'set pac type 100 200 0 100 200 400'
 wd 'set pac protect 0 0 1 1 0 0'
 wd 'set pac data *',makedata''
 NB. un-initialised cells default to text
+wd 'set pac block 0 0'
+wd 'set pac protect 1'
 wd 'set pac cell 0 0 "first cell',LF,'second row"'
+NB. multiline edit
+wd 'set pac block 1 0'
+wd 'set pac type 10'
+wd 'set pac data "first cell',LF,'second row',LF,'third row"'
 wd 'set pac block 3 4'
 wd 'set pac type 200'
 wd 'set pac cell 3 4 *3 First Second Third Fourth'
@@ -84,13 +91,15 @@ wd 'set pac type 200'
 wd 'set pac cell 3 3 *3 First Second Third Fourth'
 wd 'set pac font sans 30'
 NB. wd 'set pac data "text"'
+wd 'set pac block 2 3 5 6'
+wd 'set pac data one two'
 wd 'set pac block'
 wd 'set pac background 100 200 0'
 wd 'set pac foreground 255 0 0'
 wd 'set pac block 0 0 2 4'
 wd 'set pac colwidth 100'
 wd 'set pac block 0 2 0 0'
-wd 'set pac rowheight 30 40 60'
+wd 'set pac rowheight 40 60 60'
 wd 'pmove 100 10 700 200'
 wd 'pshow'
 )
