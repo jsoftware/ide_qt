@@ -41,7 +41,7 @@ cc ted editm readonly;
 rem demonstrate bin and child stretch:;
 bin h s2;
 cc ok button;cn "Push Me";
-cc cancel button;cn "Cancel";
+cc cancel button default;cn "Cancel";
 set ok stretch 1;
 )
 
@@ -62,3 +62,5 @@ showevents_jqtide_ 0
 
 showevents_jqtide_ 2
 controls_run''
+
+controls_cancel_button=: controls_close
