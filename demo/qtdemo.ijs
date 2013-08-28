@@ -61,6 +61,7 @@ plot dplot
 printer dprinter
 progressbar dprogressbar
 pstyles dpstyles
+shader dshader
 slider dslider
 spinbox dspinbox
 split dsplit
