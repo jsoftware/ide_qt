@@ -5,7 +5,7 @@ coclass 'qtdemo'
 
 A=: 0 : 0
 pc a;
-minwh 300 300;cc g opengl compatibility;
+minwh 300 300;cc g opengl compatibility flush;
 rem form end;
 )
 

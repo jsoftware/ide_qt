@@ -16,7 +16,7 @@ EMPTY
 FORM=: 0 : 0
 pc demo closeok;pn "gl2 demo";
 minwh 450 350;
-cc gs isigraph;
+cc gs isigraph flush;
 )
 
 NB. =========================================================
