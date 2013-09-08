@@ -1456,6 +1456,7 @@ symdat	./main/main/dll.ijs	1
 symget	./main/main/dll.ijs	1
 symset	./main/main/dll.ijs	1
 szero	./main/task/util.ijs	1
+t	./main/config/boot.ijs	1
 ta	./main/ctag/defs.ijs	1
 table	./main/main/stdlib.ijs	1
 tagcp	./main/ctag/defs.ijs	1

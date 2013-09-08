@@ -61,7 +61,6 @@ plot dplot
 printer dprinter
 progressbar dprogressbar
 pstyles dpstyles
-shader dshader
 slider dslider
 spinbox dspinbox
 split dsplit
@@ -93,7 +92,7 @@ rem form end;
 
 NB. =========================================================
 qtdemo_run=: 3 : 0
-if. 's' = {: wd 'version' do.
+if. 's' e. wd 'version' do.
   TITLES=: TITLES2
 end.
 wd QTDEMO
