@@ -63,8 +63,11 @@ pm_bupdate_button=: 3 : 0
 setshowups 1
 pmview_show''
 )
-pm_close=: 3 : 0
+pm_close=: pm_exit_button=: 3 : 0
 wd 'pclose'
+if. 'Android'-:UNAME do.
+  smact''
+end.
 destroy''
 )
 pm_remove_button=: 3 : 0
@@ -282,6 +285,44 @@ cc binfo button;cn "Wiki";
 splitend;
 splitend;
 )
+PMVIEW_S=: 0 : 0
+pc pm;
+menupop "&File";
+menu exit "&Quit" "Ctrl+Q";
+menupopz;
+menupop "&Tools";
+menu pupcat "&Update Catalog from Server";
+menusep;
+menu prebuild "&Rebuild all Repository Catalogs";
+menusep;
+menu remove "Re&move Selected Packages";
+menupopz;
+bin v;
+cc sel combobox;
+bin h;
+cc bstatus radiobutton;cn "Status";
+cc bsection radiobutton group;cn "Category";
+bin z;
+groupbox Selections;
+bin h;
+cc bclear button flush;cn "Clear All";
+cc bupdate button;cn "Updates";
+cc bnotins button;cn "Not Installed";
+cc bselall button;cn "Select All";
+cc apply button;cn "Install";
+bin z;
+groupboxend;
+cc pac table selectrows;
+cc edlog editm;
+bin h;
+cc bsummary radiobutton flush;cn "Summary";
+cc bhistory radiobutton group;cn "History";
+cc bmanifest radiobutton group;cn "Manifest";
+cc blog radiobutton group;cn "Log";
+cc binfo button;cn "Wiki";
+bin z;
+bin z;
+)
 pmview_edlog=: 3 : 0
 MSGX=: '1' i.~ bsummary,bhistory,bmanifest,blog
 pmview_showlog''
@@ -296,7 +337,12 @@ IFSECTION=: 0 ". bsection
 SELNDX=: (0 ". sel_select) IFSECTION } SELNDX
 )
 pmview_open=: 3 : 0
-wd PMVIEW
+if. 'Android'-:UNAME do.
+  wd PMVIEW_S
+  wd 'set edlog wh _1 40'
+else.
+  wd PMVIEW
+end.
 wd 'set bsummary 1'
 wd 'set bstatus 1'
 wd 'pn *',SYSNAME
