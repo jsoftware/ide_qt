@@ -776,7 +776,6 @@ dropto	./main/main/strings.ijs	1
 dtb	./main/main/strings.ijs	1
 dtbs	./main/main/strings.ijs	1
 dver	./main/config/boot.ijs	1
-dwdemo	./main/config/boot.ijs	1
 each	./main/main/stdlib.ijs	1
 echo	./main/main/stdlib.ijs	1
 empty	./main/main/stdlib.ijs	1
@@ -1455,7 +1454,6 @@ symdat	./main/main/dll.ijs	1
 symget	./main/main/dll.ijs	1
 symset	./main/main/dll.ijs	1
 szero	./main/task/util.ijs	1
-t	./main/config/boot.ijs	1
 ta	./main/ctag/defs.ijs	1
 table	./main/main/stdlib.ijs	1
 tagcp	./main/ctag/defs.ijs	1
@@ -1548,7 +1546,6 @@ verbs	./main/pp/vocab.ijs	1
 viewpdf	./main/jade/pdfreader.ijs	1
 wcdm	./main/socket/sockapi.ijs	1
 wcsize	./main/jade/zdefcon.ijs	1
-wddemo	./main/config/boot.ijs	1
 weekday	./main/main/dates.ijs	1
 weeknumber	./main/main/dates.ijs	1
 weeksinyear	./main/main/dates.ijs	1
