@@ -1002,6 +1002,7 @@ int	./main/task/util.ijs	1
 intersect	./main/project/util.ijs	1
 inv	./main/main/stdlib.ijs	1
 ioctlsocketJ	./main/socket/sockapi.ijs	1
+iospath	./main/main/stdlib.ijs	1
 isatty	./main/main/stdlib.ijs	1
 ischar	./main/pacman/util.ijs	1
 isconfigfile	./main/jade/util.ijs	1
