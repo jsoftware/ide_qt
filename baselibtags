@@ -830,6 +830,7 @@ firstones	./main/pm/util.ijs	1
 firstones	./main/pp/util.ijs	1
 fixNB	./main/project/util.ijs	1
 fixdot	./main/project/util.ijs	1
+fixdotdot	./main/main/stdlib.ijs	1
 fixjal	./main/pacman/util.ijs	1
 fixjsp	./main/pacman/util.ijs	1
 fixlib	./main/pacman/util.ijs	1
@@ -1486,6 +1487,7 @@ tart	./main/tar/main.ijs	1
 tarx	./main/tar/main.ijs	1
 termLF	./main/jade/util.ijs	1
 termLF	./main/pacman/util.ijs	1
+termLF	./main/project/util.ijs	1
 termsep	./main/jade/util.ijs	1
 test	./main/pp/test2.ijs	1
 testaccess	./main/pacman/util.ijs	1
