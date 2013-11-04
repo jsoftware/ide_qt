@@ -173,6 +173,7 @@ FD_SETSIZE	./main/defs/hostdefs_android.ijs	1
 FD_SETSIZE	./main/defs/hostdefs_linux.ijs	1
 FD_SETSIZE	./main/defs/netdefs_android.ijs	1
 FD_SETSIZE	./main/defs/netdefs_linux.ijs	1
+FHS	./main/main/sysenv.ijs	1
 FILES	./main/main/breaker.ijs	1
 FIONBIO	./main/defs/netdefs_android.ijs	1
 FIONBIO	./main/defs/netdefs_linux.ijs	1
