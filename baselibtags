@@ -1276,10 +1276,8 @@ runtest	./main/pp/test3.ijs	1
 rxE	./main/regex/regex.ijs	1
 rxall	./main/regex/regex.ijs	1
 rxapply	./main/regex/regex.ijs	1
-rxcdm	./main/regex/defs.ijs	1
 rxcomp	./main/regex/regex.ijs	1
 rxcut	./main/regex/regex.ijs	1
-rxdll	./main/regex/defs.ijs	1
 rxeq	./main/regex/regex.ijs	1
 rxerror	./main/regex/regex.ijs	1
 rxfirst	./main/regex/regex.ijs	1
