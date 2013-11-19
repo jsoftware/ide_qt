@@ -538,6 +538,7 @@ Source	./main/project/files.ijs	1
 Source	./main/project/migrate.ijs	1
 Source	./main/save/save.ijs	1
 SystemDefs	./main/pp/vocab.ijs	1
+SystemFolders	./main/main/configure.ijs	1
 SystemFolders	./main/config/configure.ijs	1
 SystemFolders	./main/config/profile.ijs	1
 TAGCOMP	./main/ctag/tagss.ijs	1
@@ -1033,7 +1034,6 @@ jregexec	./main/regex/defs.ijs	1
 jregfree	./main/regex/defs.ijs	1
 jshowconsole	./main/jade/util.ijs	1
 jsystemdefs	./main/main/sysenv.ijs	1
-jsystemdefs	./main/project/standalone.ijs	1
 l_len_off	./main/defs/hostdefs_android.ijs	1
 l_len_off	./main/defs/hostdefs_linux.ijs	1
 l_len_sz	./main/defs/hostdefs_android.ijs	1
@@ -1354,6 +1354,7 @@ setbreak	./main/main/break.ijs	1
 setchars	./main/regex/regbuild.ijs	1
 setfiles	./main/pacman/init.ijs	1
 setfolder	./main/jade/util.ijs	1
+setjdefs	./main/main/configure.ijs	1
 setout	./main/regex/regdemo.ijs	1
 setshowall	./main/pacman/select.ijs	1
 setshownew	./main/pacman/select.ijs	1
