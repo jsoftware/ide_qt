@@ -28,7 +28,12 @@ cc ed4 editm;
 splitend;
 splitend;
 splitend;
+cc close button;
 )
+
+NB. =========================================================
+NB. android bug
+splitter_close_button=: splitter_close
 
 NB. =========================================================
 splitter_run=: 3 : 0

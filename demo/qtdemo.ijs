@@ -152,13 +152,13 @@ dtimer=: load bind (jpath '~addons/ide/qt/demo/timer.ijs') ^:(-.'Android'-:UNAME
 dtoolbar=: load bind (jpath '~addons/ide/qt/demo/toolbar.ijs')
 dtoolbarv=: load bind (jpath '~addons/ide/qt/demo/toolbarv.ijs')
 dviewmat=: load bind (jpath '~addons/ide/qt/demo/viewmat.ijs')
-dwebd3=: load bind (jpath '~addons/ide/qt/demo/webd3.ijs')
-dwebview=: load bind (jpath '~addons/ide/qt/demo/webview.ijs')
+dwebd3=: load bind (jpath '~addons/ide/qt/demo/webd3.ijs') ^:(-.'Android'-:UNAME)
+dwebview=: load bind (jpath '~addons/ide/qt/demo/webview.ijs') ^:(-.'Android'-:UNAME)
 
 NB. =========================================================
 qtdemo_view_button=: 3 : 0
 f=. }. > {: (".listbox_select) { TITLES
-open jpath '~addons/ide/qt/demo/',f,'.ijs'
+open`xedit@.('Android'-:UNAME) jpath '~addons/ide/qt/demo/',f,'.ijs'
 )
 
 NB. =========================================================

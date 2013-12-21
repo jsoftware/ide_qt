@@ -34,6 +34,7 @@ AX	./main/compare/comp.ijs	1
 AY	./main/compare/comp.ijs	1
 Alpha	./main/jade/util.ijs	1
 AlphaNum	./main/jade/util.ijs	1
+AndroidLibPath	./main/main/sysenv.ijs	1
 B	./main/compare/test0.ijs	1
 B	./main/regex/test0.ijs	1
 BASELIB	./main/pacman/init.ijs	1
@@ -553,7 +554,6 @@ TerminateProcess	./main/task/util.ijs	1
 UNAME	./main/main/sysenv.ijs	1
 UNGREEDY	./main/regex/opts.ijs	1
 UNXLIB	./main/main/unxlib.ijs	1
-UNZIP	./main/pacman/init.ijs	1
 UserFolders	./main/jade/load.ijs	1
 UserFolders	./main/config/configure.ijs	1
 VERSION	./main/pacman/refresh.ijs	1
@@ -1438,6 +1438,7 @@ ss_state	./main/project/snapshot.ijs	1
 ss_today	./main/project/snapshot.ijs	1
 sset	./main/task/util.ijs	1
 start	./main/pm/defs.ijs	1
+startupandroid	./main/config/boot.ijs	1
 startupconsole	./main/config/boot.ijs	1
 startupide	./main/config/boot.ijs	1
 stats	./main/pm/defs.ijs	1
