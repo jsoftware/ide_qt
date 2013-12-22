@@ -77,6 +77,34 @@ toolbarv dtoolbarv
 viewmat dviewmat
 )
 
+TITLES3=: maketitle 0 : 0
+controls dcontrols
+datetime ddatetime
+edit dedit
+edith dedith
+editm deditm
+gl2 dgl2
+grid dgrid
+image dimage
+mbox dmbox
+menu dmenu
+msgs dmsgs
+plot dplot
+progressbar dprogressbar
+pstyles dpstyles
+slider dslider
+spinbox dspinbox
+split dsplit
+statusbar dstatusbar
+table dtable
+table2 dtable2
+table3 dtable3
+tabs dtabs
+toolbar dtoolbar
+toolbarv dtoolbarv
+viewmat dviewmat
+)
+
 NB. =========================================================
 QTDEMO=: 0 : 0
 pc qtdemo closeok;pn "Demos Select";
@@ -94,7 +122,9 @@ rem form end;
 
 NB. =========================================================
 qtdemo_run=: 3 : 0
-if. 's' e. wd 'version' do.
+if. 'Android'-:UNAME do.
+  TITLES=: TITLES3
+elseif. 's' e. wd 'version' do.
   TITLES=: TITLES2
 end.
 wd QTDEMO

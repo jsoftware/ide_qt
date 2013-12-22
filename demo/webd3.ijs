@@ -8,19 +8,23 @@ NB. creating appropriate d3 commands, then calling Qt webview.
 
 coclass 'qtdemo'
 
-D3=: jpath '~addons/ide/qt/js/d3.v3.min.js'
-F0=: jpath '~addons/ide/qt/data/data.tsv'
+file2url=: 3 : 0
+'file://', (IFWIN#'/'), (' ';'%20';'\';'/') stringreplace y
+)
+
+D3=: file2url jpath '~addons/ide/qt/js/d3.v3.min.js'
+F0=: file2url jpath '~addons/ide/qt/data/data.tsv'
 
 NB. =========================================================
 svgview=: 3 : 0
 's t'=. y
 wd 'pc svgview;cc w webview'
 h=. '<!DOCTYPE html><html><head><meta charset="utf-8"/>',LF
-h=. h,'<script type="text/javascript" src="',D3,'"></script>',LF
+h=. h,'<script type="text/javascript" src="',D3,'" charset="utf-8"></script>',LF
 h=. h,'<style>',s,'</style>',LF
 h=. h,'</head><body><script type="text/javascript">'
 m=. h,t,'</script></body></html>'
-wd 'set w baseurl *', jpath '~addons'
+wd 'set w baseurl *', file2url jpath '~addons'
 wd 'set w html *',m
 wd 'pshow'
 )
