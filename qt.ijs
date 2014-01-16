@@ -143,9 +143,6 @@ tm
 s=. '"',libjqt,'" dirmatch >', (IFWIN#'+'),' n *c *c'
 dirmatch=: [: empty s cd [: ,each 2 {. boxopen
 
-s=. '"',libjqt,'" openj >', (IFWIN#'+'),' n *c'
-open=: [: empty s cd fboxname
-
 s=. '"',libjqt,'" immexj >', (IFWIN#'+'),' n *c'
 immexj=: [: empty s cd <@,
 
@@ -153,6 +150,25 @@ s=. '"',libjqt,'" smact >', (IFWIN#'+'),' n'
 smact=: [: empty (s&cd bind '')
 
 4!:55<'s'
+open=: 3 : 0
+f=. getscripts_j_ y
+if. 0=#f do. EMPTY return. end.
+b=. fexist f
+if. 0 e. b do.
+  j=. (b=0)#f
+  if. 1=#j do.
+    j=. ,>j
+  else.
+    j=. LF,; LF&, each j
+  end.
+  wdinfo 'open';'not found: ',j
+end.
+s=. '"',libjqt,'" openj >', (IFWIN#'+'),' n *c'
+for_fl. b#f do.
+  s cd fl
+end.
+EMPTY
+)
 wde=: [:
 wdbox=: [:
 wdmove=: [:
@@ -341,6 +357,17 @@ end.
 require '~addons/labs/labs/lab.ijs'
 lab_jlab_ y
 )
+textview=: 3 : 0
+'title text'=. _2 {. 'view';y
+wd 'pc view closeok escclose;pn "',title,'"'
+wd 'cc t editm'
+wd 'set t text *',text
+wd 'pmove 0 0 700 500'
+wd 'pcenter'
+wd 'pshow'
+)
+
+textview_z_=: textview_jqtide_
 Qt_Key_Escape                 =: 16b00f800
 Qt_Key_Tab                    =: 16b00f801
 Qt_Key_Backtab                =: 16b00f802
