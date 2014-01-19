@@ -625,6 +625,7 @@ break	./main/main/break.ijs	1
 browse	./main/jade/browser.ijs	1
 browseref	./main/jade/util.ijs	1
 buildpublic	./main/jade/load.ijs	1
+bx	./main/main/stdlib.ijs	1
 by	./main/regex/regbuild.ijs	1
 calendar	./main/main/dates.ijs	1
 cbname	./main/config/configure.ijs	1
@@ -883,9 +884,7 @@ fsize	./main/main/files.ijs	1
 fss	./main/main/files.ijs	1
 fssrplc	./main/main/files.ijs	1
 fstamp	./main/main/files.ijs	1
-fstring	./main/main/files.ijs	1
 fstringreplace	./main/main/strings.ijs	1
-ftostring	./main/main/files.ijs	1
 ftree	./main/tar/util.ijs	1
 ftype	./main/main/files.ijs	1
 fullname	./main/jade/load.ijs	1
