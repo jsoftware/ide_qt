@@ -140,35 +140,10 @@ tm=. 7#2-2
 ('"',libjqt,'" gl_qtextmetrics >',(IFWIN#'+'),' i *i') cd tm
 tm
 )
-s=. '"',libjqt,'" dirmatch >', (IFWIN#'+'),' n *c *c'
-dirmatch=: [: empty s cd [: ,each 2 {. boxopen
-
-s=. '"',libjqt,'" immexj >', (IFWIN#'+'),' n *c'
-immexj=: [: empty s cd <@,
-
-s=. '"',libjqt,'" smact >', (IFWIN#'+'),' n'
-smact=: [: empty (s&cd bind '')
-
-4!:55<'s'
-open=: 3 : 0
-f=. getscripts_j_ y
-if. 0=#f do. EMPTY return. end.
-b=. fexist f
-if. 0 e. b do.
-  j=. (b=0)#f
-  if. 1=#j do.
-    j=. ,>j
-  else.
-    j=. LF,; LF&, each j
-  end.
-  wdinfo 'open';'not found: ',j
-end.
-s=. '"',libjqt,'" openj >', (IFWIN#'+'),' n *c'
-for_fl. b#f do.
-  s cd fl
-end.
-EMPTY
-)
+dirmatch=: 3 : 'wd ''dirmatch '', ; dquote&.> 2 {. boxopen y'
+open=: [: wd 'oepnj *'&,
+immexj=: [: wd 'immexj *'&,
+smact=: wd bind 'smact'
 wde=: [:
 wdbox=: [:
 wdmove=: [:
@@ -206,13 +181,6 @@ wdreadimg=: ('"',libjqt,'" wdreadimg >',(IFWIN#'+'),' x *c *i')&cd
 wdgetimg=: ('"',libjqt,'" wdgetimg >',(IFWIN#'+'),' x *c i *i')&cd
 wdwriteimg=: ('"',libjqt,'" wdwriteimg >',(IFWIN#'+'),' i *c *i *c *c i')&cd
 wdputimg=: ('"',libjqt,'" wdputimg >',(IFWIN#'+'),' x *c *i *i *c i')&cd
-
-wdgetparentid=: 3 : 0
-z=. ''
-if. r=. ('"',libjqt,'" wdgetparentid >',(IFWIN#'+'),' x x') cd y do. z=. memr r, 0 _1 2 end.
-z
-)
-
 wdfit=: 0:
 wdget=: 4 : 0
 nms=. {."1 y
@@ -224,17 +192,6 @@ end.
 
 wdpclose=: [: wd :: empty 'psel ' , ';pclose' ,~ ":
 wdcenter=: 0:
-
-wdclipwrite=: ('"',libjqt,'" wdclipwrite >',(IFWIN#'+'),' i *c') cd <@,
-wdclipread=: 3 : 0
-if. m=. ('"',libjqt,'" wdclipread >',(IFWIN#'+'),' x *i')&cd <l=. ,_1 do.
-  z=. memr m, 0, l, 2
-  ('"',libjqt,'" wdclipread >',(IFWIN#'+'),' x *i')&cd <<0
-  z
-else.
-  ''
-end.
-)
 coclass 'jqtide'
 
 showevents=: 3 : 0
@@ -248,11 +205,6 @@ case. 2 do.
 end.
 EMPTY
 )
-
-s=. '"',libjqt,'" android_exec_host >', (IFWIN#'+'),' n *c *c *c'
-android_exec_host=: [: empty s cd ]
-
-4!:55<'s'
 readimg=: 3 : 0
 if. m=. wdreadimg (utf8 ,y);wh=. 2$2-2 do.
   d=. _2 ic memr m,0,(*/wh,4),2
@@ -357,17 +309,6 @@ end.
 require '~addons/labs/labs/lab.ijs'
 lab_jlab_ y
 )
-textview=: 3 : 0
-'title text'=. _2 {. 'view';y
-wd 'pc view closeok escclose;pn "',title,'"'
-wd 'cc t editm'
-wd 'set t text *',text
-wd 'pmove 0 0 700 500'
-wd 'pcenter'
-wd 'pshow'
-)
-
-textview_z_=: textview_jqtide_
 Qt_Key_Escape                 =: 16b00f800
 Qt_Key_Tab                    =: 16b00f801
 Qt_Key_Backtab                =: 16b00f802

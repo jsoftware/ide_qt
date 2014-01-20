@@ -6,7 +6,7 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.0.128'
+VERSION=: '1.0.129'
 
 FILES=: 0 : 0
 baselibtags
