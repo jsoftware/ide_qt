@@ -2,12 +2,12 @@ NB. websocket
 NB.
 cocurrent 'z'
 
-'JWS_ONOPEN JWS_ONCLOSE JWS_ONMESSAGE JWS_ONERROR'=: i.4
+'JWS_ONOPEN JWS_ONCLOSE JWS_ONMESSAGE JWS_ONERROR JWS_ONSTATECHANGE'=: i.5
 
-websocket_handler=: 3 : 0
+wssvr_handler=: 3 : 0
 'evt sk'=. y
 if. evt = JWS_ONMESSAGE do.
-  ws0_jrx_=: , LF&, "1 ": ".ws0_jrx_
+  wss0_jrx_=: , LF&, "1 ": ".wss0_jrx_
 end.
 EMPTY
 )
@@ -17,7 +17,7 @@ coclass 'qtdemo'
 NB. =========================================================
 smoutput 0 : 0
 also try type in J Term
-  wd 'wsw 0 hello'
+  wd 'wssw 0 hello'
 )
 
 NB. in case file2url is not yet defined in base library
