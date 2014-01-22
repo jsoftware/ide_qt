@@ -141,7 +141,7 @@ tm=. 7#2-2
 tm
 )
 dirmatch=: 3 : 'wd ''dirmatch '', ; dquote&.> 2 {. boxopen y'
-open=: [: wd 'oepnj *'&,
+open=: [: wd 'openj *'&,
 immexj=: [: wd 'immexj *'&,
 smact=: wd bind 'smact'
 wde=: [:

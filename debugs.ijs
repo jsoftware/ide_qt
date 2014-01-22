@@ -54,7 +54,7 @@ jdb_edit=: 3 : 0
 jdb_lxsoff''
 jdb_stopread''
 jdb_dbss''
-if. 0 -: jdb_oepn :: 0: y do.
+if. 0 -: jdb_open :: 0: y do.
   jdb_info 'Unable to open definition of ',":>y
 end.
 jdb_stopwrite''

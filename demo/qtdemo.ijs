@@ -41,7 +41,7 @@ toolbarv dtoolbarv
 viewmat dviewmat
 webd3 dwebd3
 websocket dwebsocket
-websocket_client dwebsocket_client
+websocket_client dwebsocketclient
 webview dwebview
 )
 
@@ -78,7 +78,7 @@ toolbar dtoolbar
 toolbarv dtoolbarv
 viewmat dviewmat
 websocket dwebsocket
-websocket_client dwebsocket_client
+websocket_client dwebsocketclient
 )
 
 TITLES3=: maketitle 0 : 0
@@ -108,7 +108,7 @@ toolbar dtoolbar
 toolbarv dtoolbarv
 viewmat dviewmat
 websocket dwebsocket
-websocket_client dwebsocket_client
+websocket_client dwebsocketclient
 )
 
 NB. =========================================================
@@ -190,7 +190,7 @@ dtoolbarv=: load bind (jpath '~addons/ide/qt/demo/toolbarv.ijs')
 dviewmat=: load bind (jpath '~addons/ide/qt/demo/viewmat.ijs')
 dwebd3=: load bind (jpath '~addons/ide/qt/demo/webd3.ijs') ^:(-.'Android'-:UNAME)
 dwebsocket=: load bind (jpath '~addons/ide/qt/demo/websocket.ijs')
-dwebsocket_client=: load bind (jpath '~addons/ide/qt/demo/websocket_client.ijs')
+dwebsocketclient=: load bind (jpath '~addons/ide/qt/demo/websocketclient.ijs')
 dwebview=: load bind (jpath '~addons/ide/qt/demo/webview.ijs') ^:(-.'Android'-:UNAME)
 
 NB. =========================================================

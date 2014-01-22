@@ -7,7 +7,7 @@ cocurrent 'z'
 wssvr_handler=: 3 : 0
 'evt sk'=. y
 if. evt = JWS_ONMESSAGE do.
-  wss0_jrx_=: , LF&, "1 ": ".wss0_jrx_
+  wd 'wssw ',(":sk),' *', , LF&, "1 ": ".wss0_jrx_
 end.
 EMPTY
 )

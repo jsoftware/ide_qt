@@ -5,58 +5,71 @@ cocurrent 'z'
 
 'JWS_ONOPEN JWS_ONCLOSE JWS_ONMESSAGE JWS_ONERROR JWS_ONSTATECHANGE'=: i.5
 
+coclass 'qtdemo'
+
 wscln_handler=: 3 : 0
 'evt sk'=. y
 if. evt = JWS_ONMESSAGE do.
-  wd 'set m *', wsc0_jrx_
+  wd 'psel ',hwndwsc
+  wscbuffer=: wscbuffer, wsc0_jrx_
+  wd 'set m text *', wscbuffer
 end.
 EMPTY
 )
-
-coclass 'qtdemo'
 
 wsserver=: ''
 
 NB. =========================================================
 websocketclient=: 3 : 0
 wd 'pc websocketclient'
-wd 'bin h'
+wd 'bin vh'
 wd 'cc ipaddr edit'
 wd 'cc connect button'
 wd 'cc disconnect button'
-wd 'bin z'
+wd 'bin zh'
 wd 'cc e edit'
 wd 'cc send button'
 wd 'cc clear button'
 wd 'bin z'
 wd 'cc m editm readonly'
+wd 'bin z'
 wd 'pshow'
-wd 'set e text *ws://echo.websock.org/'
+hwndwsc=: wd 'qhwndp'
+wscbuffer=: ''
+wd 'set ipaddr text ws://echo.websocket.org 80'
+wd 'set e text *hello world'
 )
 
 NB. =========================================================
 websocketclient_connect_button=: 3 : 0
+wd 'wscdis ', wsserver
+wsserver=: ''
 wsserver=: wd 'wsc *', ipaddr
 )
 
 websocketclient_disconnect_button=: 3 : 0
-wd 'wscdis *', wsserver
+wd 'wscdis ', wsserver
+wsserver=: ''
 )
 websocketclient_clear_button=: 3 : 0
-wd 'set m*'
+wscbuffer=: ''
+wd 'set m text *'
 )
 
 websocketclient_send_button=: 3 : 0
-wd 'wscw *', e
+wd 'wscw ',wsserver, ' *',e
 )
 
 websocketclient_e_button=: websocketclient_send_button
 
 NB. =========================================================
 websocketclient_close=: 3 : 0
-wd ::0: 'wscd *', wsserver
+wd 'wscdis ', wsserver
+wsserver=: ''
 wd 'pclose'
 )
+
+wscln_handler_z_=: wscln_handler_qtdemo_
 
 NB. =========================================================
 websocketclient''
