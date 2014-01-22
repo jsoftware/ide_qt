@@ -3,19 +3,19 @@ NB.
 
 cocurrent 'z'
 
-'JWS_ONOPEN JWS_ONCLOSE JWS_ONMESSAGE JWS_ONERROR JWS_ONSTATECHANGE'=: i.5
-
 coclass 'qtdemo'
 
 wscln_handler=: 3 : 0
 'evt sk'=. y
 if. evt = JWS_ONMESSAGE do.
   wd 'psel ',hwndwsc
-  wscbuffer=: wscbuffer, wsc0_jrx_
+  wscbuffer=: LF,~ wscbuffer, wsc0_jrx_
   wd 'set m text *', wscbuffer
 end.
 EMPTY
 )
+
+wscln_handler_z_=: wscln_handler_qtdemo_
 
 wsserver=: ''
 
@@ -57,7 +57,8 @@ wd 'set m text *'
 )
 
 websocketclient_send_button=: 3 : 0
-wd 'wscw ',wsserver, ' *',e
+r=. 0 ". wd 'wscw ',wsserver, ' *',e
+assert. _1 ~: r
 )
 
 websocketclient_e_button=: websocketclient_send_button
@@ -68,8 +69,6 @@ wd 'wscdis ', wsserver
 wsserver=: ''
 wd 'pclose'
 )
-
-wscln_handler_z_=: wscln_handler_qtdemo_
 
 NB. =========================================================
 websocketclient''

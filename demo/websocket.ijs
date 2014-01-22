@@ -2,17 +2,18 @@ NB. websocket
 NB.
 cocurrent 'z'
 
-'JWS_ONOPEN JWS_ONCLOSE JWS_ONMESSAGE JWS_ONERROR JWS_ONSTATECHANGE'=: i.5
+coclass 'qtdemo'
 
 wssvr_handler=: 3 : 0
 'evt sk'=. y
 if. evt = JWS_ONMESSAGE do.
-  wd 'wssw ',(":sk),' *', , LF&, "1 ": ".wss0_jrx_
+  r=. 0 ". wd 'wssw ',(":sk),' *', , LF&, "1 ": ".wss0_jrx_
+  assert. _1 ~: r
 end.
 EMPTY
 )
 
-coclass 'qtdemo'
+wssvr_handler_z_=: wssvr_handler_qtdemo_
 
 NB. =========================================================
 smoutput 0 : 0
