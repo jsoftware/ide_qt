@@ -15,60 +15,105 @@ end.
 EMPTY
 )
 
-wscln_handler_z_=: wscln_handler_qtdemo_
-
-wsserver=: ''
+wsserver1=: wsserver2=: ''
 
 NB. =========================================================
 websocketclient=: 3 : 0
 wd 'pc websocketclient'
+wd 'bin v'
+wd 'groupbox "Echo Server"'
 wd 'bin vh'
-wd 'cc ipaddr edit'
-wd 'cc connect button'
-wd 'cc disconnect button'
+wd 'cc ipaddr1 edit'
+wd 'cc connect1 button'
+wd 'cc disconnect1 button'
 wd 'bin zh'
-wd 'cc e edit'
-wd 'cc send button'
+wd 'cc e1 edit'
+wd 'cc send1 button'
+wd 'bin zz'
+wd 'groupboxend'
+wd 'groupbox "J REPL"'
+wd 'bin vh'
+wd 'cc ipaddr2 edit'
+wd 'cc connect2 button'
+wd 'cc disconnect2 button'
+wd 'bin zh'
+wd 'cc e2 edit'
+wd 'cc send2 button'
+wd 'bin zz'
+wd 'groupboxend'
+wd 'bin h'
 wd 'cc clear button'
-wd 'bin z'
+wd 'bin sz'
 wd 'cc m editm readonly'
 wd 'bin z'
 wd 'pshow'
 hwndwsc=: wd 'qhwndp'
 wscbuffer=: ''
-wd 'set ipaddr text ws://echo.websocket.org 80'
-wd 'set e text *hello world'
+wd 'set ipaddr1 text ws://echo.websocket.org 80'
+wd 'set e1 text *hello world'
+wd 'set ipaddr2 text ws://localhost 3000'
+wd 'set e2 text *i.4 5'
 )
 
 NB. =========================================================
-websocketclient_connect_button=: 3 : 0
-wd 'wscdis ', wsserver
-wsserver=: ''
-wsserver=: wd 'wsc *', ipaddr
+websocketclient_connect1_button=: 3 : 0
+wd 'ws disconnect ', wsserver1
+wsserver1=: ''
+wsserver1=: wd 'ws connect ', ipaddr1
 )
 
-websocketclient_disconnect_button=: 3 : 0
-wd 'wscdis ', wsserver
-wsserver=: ''
+websocketclient_disconnect1_button=: 3 : 0
+wd 'ws disconnect ', wsserver1
+wsserver1=: ''
 )
+
+websocketclient_send1_button=: 3 : 0
+r=. 0 ". wd 'ws write ',wsserver1, ' *',e1
+assert. _1 ~: r
+)
+
+NB. =========================================================
+websocketclient_connect2_button=: 3 : 0
+wd 'ws disconnect ', wsserver2
+wsserver2=: ''
+wsserver2=: wd 'ws connect ', ipaddr2
+)
+
+websocketclient_disconnect2_button=: 3 : 0
+wd 'ws disconnect ', wsserver2
+wsserver2=: ''
+)
+
+websocketclient_send2_button=: 3 : 0
+r=. 0 ". wd 'ws writeb ',wsserver2, ' *',e2  NB. both write or writeb should be ok
+assert. _1 ~: r
+)
+
+NB. =========================================================
 websocketclient_clear_button=: 3 : 0
 wscbuffer=: ''
 wd 'set m text *'
 )
 
-websocketclient_send_button=: 3 : 0
-r=. 0 ". wd 'wscw ',wsserver, ' *',e
-assert. _1 ~: r
-)
-
-websocketclient_e_button=: websocketclient_send_button
+NB. =========================================================
+websocketclient_e1_button=: websocketclient_send1_button
+websocketclient_e2_button=: websocketclient_send2_button
 
 NB. =========================================================
 websocketclient_close=: 3 : 0
-wd 'wscdis ', wsserver
-wsserver=: ''
+wd 'ws disconnect ', wsserver1
+wd 'ws disconnect ', wsserver2
+wsserver1=: wsserver2=: ''
 wd 'pclose'
 )
+
+NB. =========================================================
+smoutput 0 : 0
+needs to start websocket demo
+in order to use use ws://localhost
+)
+
+wscln_handler_z_=: wscln_handler_qtdemo_
 
 NB. =========================================================
 websocketclient''

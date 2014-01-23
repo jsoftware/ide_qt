@@ -7,7 +7,7 @@ coclass 'qtdemo'
 wssvr_handler=: 3 : 0
 'evt sk'=. y
 if. evt = JWS_ONMESSAGE do.
-  r=. 0 ". wd 'wssw ',(":sk),' *', , LF&, "1 ": ".wss0_jrx_
+  r=. 0 ". wd 'ws write ',(":sk),' *', , LF&, "1 ": ".wss0_jrx_
   assert. _1 ~: r
 end.
 EMPTY
@@ -18,7 +18,8 @@ wssvr_handler_z_=: wssvr_handler_qtdemo_
 NB. =========================================================
 smoutput 0 : 0
 also try type in J Term
-  wd 'wssw 0 hello'
+  wd 'ws write 0 hello'
+  wd 'ws write 1 "i.2 2"'
 )
 
 NB. in case file2url is not yet defined in base library
@@ -34,6 +35,6 @@ end.
 )
 
 NB. start websocket server
-wd 'wss 3000'
+wd 'ws listen 3000'
 
 browse_j_ file2url jpath '~addons/ide/qt/demo/websocket.htm'
