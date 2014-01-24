@@ -57,35 +57,35 @@ wd 'set e2 text *i.4 5'
 
 NB. =========================================================
 websocketclient_connect1_button=: 3 : 0
-wd 'ws disconnect ', wsserver1
+wd 'ws close ', wsserver1
 wsserver1=: ''
 wsserver1=: wd 'ws connect ', ipaddr1
 )
 
 websocketclient_disconnect1_button=: 3 : 0
-wd 'ws disconnect ', wsserver1
+wd 'ws close ', wsserver1
 wsserver1=: ''
 )
 
 websocketclient_send1_button=: 3 : 0
-r=. 0 ". wd 'ws write ',wsserver1, ' *',e1
+r=. 0 ". wd 'ws send ',wsserver1, ' *',e1
 assert. _1 ~: r
 )
 
 NB. =========================================================
 websocketclient_connect2_button=: 3 : 0
-wd 'ws disconnect ', wsserver2
+wd 'ws close ', wsserver2
 wsserver2=: ''
 wsserver2=: wd 'ws connect ', ipaddr2
 )
 
 websocketclient_disconnect2_button=: 3 : 0
-wd 'ws disconnect ', wsserver2
+wd 'ws close ', wsserver2
 wsserver2=: ''
 )
 
 websocketclient_send2_button=: 3 : 0
-r=. 0 ". wd 'ws writeb ',wsserver2, ' *',e2  NB. both write or writeb should be ok
+r=. 0 ". wd 'ws sendb ',wsserver2, ' *',e2  NB. both send or sendb should be ok
 assert. _1 ~: r
 )
 
@@ -101,8 +101,8 @@ websocketclient_e2_button=: websocketclient_send2_button
 
 NB. =========================================================
 websocketclient_close=: 3 : 0
-wd 'ws disconnect ', wsserver1
-wd 'ws disconnect ', wsserver2
+wd 'ws close ', wsserver1
+wd 'ws close ', wsserver2
 wsserver1=: wsserver2=: ''
 wd 'pclose'
 )
