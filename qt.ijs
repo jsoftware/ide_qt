@@ -7,7 +7,7 @@ coclass 'jqtide'
 Debugwd=: 0
 
 cocurrent 'z'
-'JWS_ONOPEN JWS_ONCLOSE JWS_ONMESSAGE JWS_ONERROR JWS_ONSTATECHANGE'=: i.5
+'jws_onOpen jws_onClose jws_onMessage jws_onError jws_onStateChange'=: i.5
 wd=: 3 : 0"1
 'r c p n'=. wd1 ,&.>y;2;0
 select. r

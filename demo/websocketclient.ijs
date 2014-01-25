@@ -7,10 +7,16 @@ coclass 'qtdemo'
 
 wscln_handler=: 3 : 0
 'evt sk'=. y
-if. evt = JWS_ONMESSAGE do.
+if. evt = jws_onMessage do.
   wd 'psel ',hwndwsc
   wscbuffer=: LF,~ wscbuffer, wsc0_jrx_
   wd 'set m text *', wscbuffer
+elseif. evt = jws_onOpen do.
+  smoutput 'connected'
+elseif. evt = jws_onClose do.
+  smoutput 'disconnected'
+elseif. evt = jws_onError do.
+  smoutput wsc0_jrx_
 end.
 EMPTY
 )
@@ -58,7 +64,6 @@ wd 'set e2 text *i.4 5'
 NB. =========================================================
 websocketclient_connect1_button=: 3 : 0
 wd 'ws close ', wsserver1
-wsserver1=: ''
 wsserver1=: wd 'ws connect ', ipaddr1
 )
 
@@ -75,7 +80,6 @@ assert. _1 ~: r
 NB. =========================================================
 websocketclient_connect2_button=: 3 : 0
 wd 'ws close ', wsserver2
-wsserver2=: ''
 wsserver2=: wd 'ws connect ', ipaddr2
 )
 
@@ -110,7 +114,7 @@ wd 'pclose'
 NB. =========================================================
 smoutput 0 : 0
 needs to start websocket demo
-in order to use use ws://localhost
+in order to use ws://localhost
 )
 
 wscln_handler_z_=: wscln_handler_qtdemo_

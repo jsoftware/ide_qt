@@ -6,9 +6,15 @@ coclass 'qtdemo'
 
 wssvr_handler=: 3 : 0
 'evt sk'=. y
-if. evt = JWS_ONMESSAGE do.
+if. evt = jws_onMessage do.
   r=. 0 ". wd 'ws send ',(":sk),' *', , LF&, "1 ": ".wss0_jrx_
   assert. _1 ~: r
+elseif. evt = jws_onOpen do.
+  smoutput 'connected'
+elseif. evt = jws_onClose do.
+  smoutput 'disconnected'
+elseif. evt = jws_onError do.
+  smoutput wss0_jrx_
 end.
 EMPTY
 )
