@@ -686,7 +686,6 @@ copath	./main/main/colib.ijs	1
 copathnl	./main/main/coutil.ijs	1
 copathnlx	./main/main/coutil.ijs	1
 coreset	./main/main/colib.ijs	1
-coselect_result	./main/main/coutil.ijs	1
 costate	./main/main/coutil.ijs	1
 counter	./main/pm/defs.ijs	1
 cpath	./main/config/configure.ijs	1
