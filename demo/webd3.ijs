@@ -8,10 +8,6 @@ NB. creating appropriate d3 commands, then calling Qt webview.
 
 coclass 'qtdemo'
 
-file2url=: 3 : 0
-'file://', (IFWIN#'/'), (' ';'%20';'\';'/') stringreplace y
-)
-
 D3=: file2url jpath '~addons/ide/qt/js/d3.v3.min.js'
 F0=: file2url jpath '~addons/ide/qt/data/data.tsv'
 

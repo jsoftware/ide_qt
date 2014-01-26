@@ -28,18 +28,6 @@ also try type in J Term
   wd 'ws send 1 "i.2 2"'
 )
 
-NB. in case file2url is not yet defined in base library
-file2url=: 3 : 0
-y=. (' ';'%20';'\';'/') stringreplace y -. '"'
-if. IFWIN do.
-  if. ':'~:{:2{.y do. ((' ';'%20';'\';'/') stringreplace 1!:43''),'/',y end.
-  'file:///', y
-else.
-  if. '/'~:{.y do. ((' ';'%20') stringreplace 1!:43''),'/',y end.
-  'file://', y
-end.
-)
-
 NB. start websocket server
 wd 'ws listen 3000'
 
