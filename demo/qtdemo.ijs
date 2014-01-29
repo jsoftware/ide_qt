@@ -122,7 +122,9 @@ bin v;
 cc ok button;cn "OK";
 cc cancel button;cn "Cancel";
 cc view button;cn "View Source";
-bin szzz;
+bin s;
+cc addons button;cn "Install addons";
+bin zzz;
 rem form end;
 )
 
@@ -197,6 +199,21 @@ NB. =========================================================
 qtdemo_view_button=: 3 : 0
 f=. }. > {: (".listbox_select) { TITLES
 open jpath '~addons/ide/qt/demo/',f,'.ijs'
+)
+
+NB. =========================================================
+qtdemo_addons_button=: 3 : 0
+require 'pacman'
+'update' jpkg ''
+addons=. 'graphics/afm graphics/bmp graphics/color graphics/gl2 graphics/plot graphics/viewmat general/misc math/misc stat/base '
+gladdons=. 'api/gl3 api/gles graphics/gl1ut '
+wddemos=. 'demos/wd demos/wdplot demos/isigraph games/minesweeper games/nurikabe games/pousse games/solitaire general/scriptdoc graphics/grid graphics/print math/deoptim '
+gldemos=. 'demos/gldemo demos/simple '
+if. 'Android'-:UNAME do.
+  'install' jpkg addons, wddemos
+else.
+  'install' jpkg addons, wddemos, gladdons, gldemos
+end.
 )
 
 NB. =========================================================
