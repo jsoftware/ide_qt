@@ -22,7 +22,7 @@ case. do.
 end.
 )
 
-wd1=: ('"',libjqt,'" wd ', (IFWIN#'+'),' i *c * *i') & cd
+wd1=: ('"',libjqt,'" wd ', (IFWIN#'+'),' i *c * *i') & cd f.
 wdhandler=: 3 : 0
 wdq=: wd 'q'
 wd_val=. {:"1 wdq
@@ -69,6 +69,49 @@ wdqprinters=: (wd bind 'qprinters') :: (''"_)
 wdqpx=: (wd bind 'qpx') :: (''"_)
 wdqscreen=: (0 ". wd bind 'qscreen') :: (264 211 800 600 96 96 32 1 _1 36 36 51"_)
 wdqwd=: (wd bind 'qwd') :: ('jqt'"_)
+wdcenter=: 0:
+wdfit=: 0:
+
+wdreset=: wd bind 'reset'
+wdforms=: <;._2;._2 @ wd bind 'qpx'
+wdisparent=: (boxopen e. 0: {"1 wdforms) ::0:
+wdishandle=: (boxopen e. 1: {"1 wdforms) ::0:
+wdinfo=: 3 : 0
+'a b'=. _2{. boxopen y
+if. 2=#$b=. ":b do. b=. }.,LF,.b end.
+f=. 8 u: DEL&, @ (,&DEL) @ -.&(0 127{a.)
+empty wd 'mb info ',(f a),' ',(f b)
+)
+wdquery=: 3 : 0
+0 3 wdquery y
+:
+msg=. ' mb_'&,&.> res=. ;:'ok cancel yes no save discard'
+t=. x [ 'a b'=. _2{. boxopen y
+if. 2=#$b=. ":b do. b=. }.,LF,.b end.
+f=. 8 u: DEL&, @ (,&DEL) @ -.&(0 127{a.)
+m=. 'mb query', (;t{msg), ' ', (f a),' ',(f b)
+res i. <wd m
+)
+mbopen=: 3 : 0
+jpathsep wd 8 u: 'mb open1 ',y
+)
+mbsave=: 3 : 0
+jpathsep wd 8 u: 'mb save ',y
+)
+
+wdreadimg=: ('"',libjqt,'" wdreadimg >',(IFWIN#'+'),' x *c *i')&cd
+wdgetimg=: ('"',libjqt,'" wdgetimg >',(IFWIN#'+'),' x *c i *i')&cd
+wdwriteimg=: ('"',libjqt,'" wdwriteimg >',(IFWIN#'+'),' i *c *i *c *c i')&cd
+wdputimg=: ('"',libjqt,'" wdputimg >',(IFWIN#'+'),' x *c *i *i *c i')&cd
+wdget=: 4 : 0
+nms=. {."1 y
+vls=. {:"1 y
+if. L. x do. vls {~ nms i. ,&.>x
+else. > vls {~ nms i. <,x
+end.
+)
+
+wdpclose=: [: wd :: empty 'psel ' , ';pclose' ,~ ":
 NB gl2 overlay on opengl
 rpcinfinity=: 3 : 0
 <. 0 (I.(_=y)+.__=y)}y
@@ -145,54 +188,6 @@ dirmatch=: 3 : 'wd ''dirmatch '', ; dquote&.> 2 {. boxopen y'
 open=: [: wd 'openj *'&,
 immexj=: [: wd 'immexj *'&,
 smact=: wd bind 'smact'
-wde=: [:
-wdbox=: [:
-wdmove=: [:
-wdqshow=: [:
-wdreset=: wd bind 'reset'
-wdstatus=: [:
-wdformedit=: [:
-wdforms=: <;._2;._2 @ wd bind 'qpx'
-wdisparent=: (boxopen e. 0: {"1 wdforms) ::0:
-wdishandle=: (boxopen e. 1: {"1 wdforms) ::0:
-wdinfo=: 3 : 0
-'a b'=. _2{. boxopen y
-if. 2=#$b=. ":b do. b=. }.,LF,.b end.
-f=. 8 u: DEL&, @ (,&DEL) @ -.&(0 127{a.)
-empty wd 'mb info ',(f a),' ',(f b)
-)
-wdquery=: 3 : 0
-0 3 wdquery y
-:
-msg=. ' mb_'&,&.> res=. ;:'ok cancel yes no save discard'
-t=. x [ 'a b'=. _2{. boxopen y
-if. 2=#$b=. ":b do. b=. }.,LF,.b end.
-f=. 8 u: DEL&, @ (,&DEL) @ -.&(0 127{a.)
-m=. 'mb query', (;t{msg), ' ', (f a),' ',(f b)
-res i. <wd m
-)
-mbopen=: 3 : 0
-jpathsep wd 8 u: 'mb open1 ',y
-)
-mbsave=: 3 : 0
-jpathsep wd 8 u: 'mb save ',y
-)
-
-wdreadimg=: ('"',libjqt,'" wdreadimg >',(IFWIN#'+'),' x *c *i')&cd
-wdgetimg=: ('"',libjqt,'" wdgetimg >',(IFWIN#'+'),' x *c i *i')&cd
-wdwriteimg=: ('"',libjqt,'" wdwriteimg >',(IFWIN#'+'),' i *c *i *c *c i')&cd
-wdputimg=: ('"',libjqt,'" wdputimg >',(IFWIN#'+'),' x *c *i *i *c i')&cd
-wdfit=: 0:
-wdget=: 4 : 0
-nms=. {."1 y
-vls=. {:"1 y
-if. L. x do. vls {~ nms i. ,&.>x
-else. > vls {~ nms i. <,x
-end.
-)
-
-wdpclose=: [: wd :: empty 'psel ' , ';pclose' ,~ ":
-wdcenter=: 0:
 coclass 'jqtide'
 
 showevents=: 3 : 0
