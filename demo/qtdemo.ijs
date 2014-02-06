@@ -205,7 +205,7 @@ NB. =========================================================
 qtdemo_addons_button=: 3 : 0
 require 'pacman'
 'update' jpkg ''
-addons=. 'graphics/afm graphics/bmp graphics/color graphics/gl2 graphics/plot graphics/viewmat general/misc math/misc stat/base '
+addons=. 'graphics/afm graphics/bmp graphics/color graphics/gl2 graphics/plot graphics/viewmat general/misc gui/wdclass math/misc stats/base '
 gladdons=. 'api/gl3 api/gles graphics/gl1ut '
 wddemos=. 'demos/wd demos/wdplot demos/isigraph games/minesweeper games/nurikabe games/pousse games/solitaire general/scriptdoc graphics/grid graphics/print math/deoptim '
 gldemos=. 'demos/gldemo demos/simple '
