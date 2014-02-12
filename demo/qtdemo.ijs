@@ -207,7 +207,7 @@ require 'pacman'
 'update' jpkg ''
 addons=. 'graphics/afm graphics/bmp graphics/color graphics/gl2 graphics/plot graphics/viewmat general/misc gui/wdclass math/misc stats/base '
 gladdons=. 'api/gl3 api/gles graphics/gl1ut '
-wddemos=. 'demos/wd demos/wdplot demos/isigraph games/minesweeper games/nurikabe games/pousse games/solitaire general/scriptdoc graphics/grid graphics/print math/deoptim '
+wddemos=. 'demos/wd demos/wdplot demos/isigraph games/minesweeper games/nurikabe games/pousse games/solitaire graphics/grid graphics/print math/deoptim '
 gldemos=. 'demos/gldemo demos/simple '
 if. 'Android'-:UNAME do.
   'install' jpkg addons, wddemos
