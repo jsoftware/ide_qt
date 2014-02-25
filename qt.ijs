@@ -9,7 +9,7 @@ Debugwd=: 0
 cocurrent 'z'
 'jws_onOpen jws_onClose jws_onMessage jws_onError jws_onStateChange'=: i.5
 wd=: 3 : 0"1
-'r c p n'=. wd1 ,&.>y;2;0
+'r c l p n'=. wd1 (,y);(#,y);(,2);(,0)
 select. r
 case. 0 do. 
  EMPTY
@@ -22,7 +22,7 @@ case. do.
 end.
 )
 
-wd1=: ('"',libjqt,'" wd ', (IFWIN#'+'),' i *c * *i') & cd f.
+wd1=: ('"',libjqt,'" wd ', (IFWIN#'+'),' i *c i * *i') & cd f.
 wdhandler=: 3 : 0
 wdq=: wd 'q'
 wd_val=. {:"1 wdq
