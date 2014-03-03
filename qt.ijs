@@ -5,24 +5,49 @@ require 'project'
 coclass 'jqtide'
 
 Debugwd=: 0
+Redhat6wd=: (Redhat6wd"_)^:(0=4!:0<'Redhat6wd') (0)
 
 cocurrent 'z'
 'jws_onOpen jws_onClose jws_onMessage jws_onError jws_onStateChange'=: i.5
 wd=: 3 : 0"1
 'r c l p n'=. wd1 (,y);(#,y);(,2);(,0)
 select. r
-case. 0 do. 
- EMPTY
+case. 0 do.
+  EMPTY
 case. _1 do.
- memr p,0,n
+  memr p,0,n
 case. _2 do.
- _2 [\ <;._2 memr p,0,n
+  _2 [\ <;._2 memr p,0,n
 case. do.
   (wd ::(''"_) 'qer') (13!:8) 3
 end.
 )
 
 wd1=: ('"',libjqt,'" wd ', (IFWIN#'+'),' i *c i * *i') & cd f.
+
+wd2=: 3 : 0"1
+'r c p n'=. wd1 ,&.>y;2;0
+select. r
+case. 0 do.
+  EMPTY
+case. _1 do.
+  memr p,0,n
+case. _2 do.
+  _2 [\ <;._2 memr p,0,n
+case. do.
+  (wd ::(''"_) 'qer') (13!:8) 3
+end.
+)
+
+3 : 0''
+if. Redhat6wd_jqtide_ do.
+  wd1=: ('"',libjqt,'" wd ', (IFWIN#'+'),' i *c * *i') & cd f.
+  wd=: wd2
+else.
+  4!:55 <'wd2_z_'
+end.
+EMPTY
+)
 wdhandler=: 3 : 0
 wdq=: wd 'q'
 wd_val=. {:"1 wdq
