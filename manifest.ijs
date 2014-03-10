@@ -11,8 +11,6 @@ VERSION=: '1.0.145'
 FILES=: 0 : 0
 baselibtags
 pacman.ijs
-dbview.ijs
-debugs.ijs
 help.ijs
 qt.ijs
 config/
