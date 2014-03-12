@@ -286,6 +286,13 @@ helpcontext0=: 3 : 0
 require '~addons/ide/qt/help.ijs'
 helpcontext y
 )
+lab_msg=: 0 : 0
+The labs are not yet installed.
+
+To install, select menu Tools|Package Manager
+and install package labs/labs.
+)
+
 labs_run=: 3 : 0
 smfocus_jijs_=: 0:
 closewindows_jijs_=: 0:
