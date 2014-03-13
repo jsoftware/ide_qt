@@ -898,8 +898,6 @@ fwrites	./main/main/files.ijs	1
 getargs	./main/main/stdlib.ijs	1
 getchk	./main/tar/util.ijs	1
 getdate	./main/main/dates.ijs	1
-getdepend	./main/pacman/depend.ijs	1
-getdepend_console	./main/pacman/depend.ijs	1
 getdetail	./main/pm/detail.ijs	1
 getenv	./main/main/stdlib.ijs	1
 getfolderdefs	./main/jade/util.ijs	1
