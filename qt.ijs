@@ -185,9 +185,10 @@ tm=. 7#2-2
 tm
 )
 dirmatch=: 3 : 'wd ''dirmatch '', ; dquote&.> 2 {. boxopen y'
-open=: [: wd 'openj *'&,
+open=: 3 : 'wd ''openj *'' , > fboxname y'
 immexj=: [: wd 'immexj *'&,
 smact=: wd bind 'smact'
+textview=: [: wd 'textview *'&,
 coclass 'jqtide'
 
 showevents=: 3 : 0
