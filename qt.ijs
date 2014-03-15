@@ -185,7 +185,7 @@ tm=. 7#2-2
 tm
 )
 dirmatch=: 3 : 'wd ''dirmatch '', ; dquote&.> 2 {. boxopen y'
-open=: 3 : 'wd ''openj *'' , > fboxname y'
+open=: 3 : 'wd ''openj *'' , > {. getscripts_j_ y'
 immexj=: [: wd 'immexj *'&,
 smact=: wd bind 'smact'
 textview=: [: wd 'textview *'&,
