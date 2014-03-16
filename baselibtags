@@ -259,6 +259,7 @@ IPPROTO_UDP	./main/defs/netdefs_linux.ijs	1
 ISGUI	./main/pacman/init.ijs	1
 Ignore	./main/jade/load.ijs	1
 Ignore	./main/pacman/init.ijs	1
+IgnoreIOS	./main/pacman/init.ijs	1
 JBOXED	./main/main/dll.ijs	1
 JCHAR	./main/main/dll.ijs	1
 JCMPX	./main/main/dll.ijs	1

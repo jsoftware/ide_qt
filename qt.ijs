@@ -188,7 +188,13 @@ dirmatch=: 3 : 'wd ''dirmatch '', ; dquote&.> 2 {. boxopen y'
 open=: 3 : 'wd ''openj *'' , > {. getscripts_j_ y'
 immexj=: [: wd 'immexj *'&,
 smact=: wd bind 'smact'
-textview=: [: wd 'textview *'&,
+textview=: 3 : 0
+if. 2=#p=. boxopen y do.
+  p=. 1 0 1 #^:_1 p
+end.
+'title caption text'=. _3 {. p
+wd 'textview *;',title,';',caption,';',text
+)
 coclass 'jqtide'
 
 showevents=: 3 : 0
