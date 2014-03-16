@@ -198,7 +198,7 @@ dwebview=: load bind (jpath '~addons/ide/qt/demo/webview.ijs') ^:(-.'Android'-:U
 NB. =========================================================
 qtdemo_view_button=: 3 : 0
 f=. }. > {: (".listbox_select) { TITLES
-open jpath '~addons/ide/qt/demo/',f,'.ijs'
+textview f;1!:1 <jpath '~addons/ide/qt/demo/',f,'.ijs'
 )
 
 NB. =========================================================
