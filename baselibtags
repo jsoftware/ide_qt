@@ -310,7 +310,7 @@ LIN	./main/pacman/read.ijs	1
 LOG	./main/pacman/log.ijs	1
 LOGMAX	./main/pacman/log.ijs	1
 Loaded	./main/jade/load.ijs	1
-Loaded	./main/jade/zdefcon.ijs	1
+Loaded	./main/jade/jade.ijs	1
 MAP_FIXED	./main/defs/hostdefs_android.ijs	1
 MAP_FIXED	./main/defs/hostdefs_linux.ijs	1
 MAP_PRIVATE	./main/defs/hostdefs_android.ijs	1
@@ -666,7 +666,7 @@ commasep	./main/compare/test0.ijs	1
 commentline	./main/pp/test3.ijs	1
 commentline	./main/pp/util.ijs	1
 comp	./main/compare/comp.ijs	1
-compare	./main/compare/main.ijs	1
+compare	./main/compare/compare.ijs	1
 compare	./main/compare/zdefs.ijs	1
 compend	./main/compare/end.ijs	1
 complcs	./main/compare/lcs.ijs	1
@@ -802,9 +802,9 @@ fapplylines	./main/main/files.ijs	1
 fboxname	./main/main/files.ijs	1
 fc	./main/main/dll.ijs	1
 fcomp	./main/compare/comp.ijs	1
-fcompare	./main/compare/main.ijs	1
+fcompare	./main/compare/compare.ijs	1
 fcompare	./main/compare/zdefs.ijs	1
-fcompares	./main/compare/main.ijs	1
+fcompares	./main/compare/compare.ijs	1
 fcompares	./main/compare/zdefs.ijs	1
 fcopynew	./main/main/files.ijs	1
 fd_set_sz	./main/defs/hostdefs_android.ijs	1
@@ -1023,7 +1023,7 @@ jdefs	./main/config/configure.ijs	1
 join	./main/pm/util.ijs	1
 joinstring	./main/main/strings.ijs	1
 jpath	./main/jade/folders.ijs	1
-jpath	./main/jade/zdefcon.ijs	1
+jpath	./main/jade/jade.ijs	1
 jpathsep	./main/main/sysenv.ijs	1
 jpathsep	./main/config/profile.ijs	1
 jpkg	./main/pacman/runs.ijs	1
@@ -1077,9 +1077,9 @@ linger_sz	./main/defs/netdefs_linux.ijs	1
 list	./main/main/stdlib.ijs	1
 listenJ	./main/socket/sockapi.ijs	1
 ljust	./main/main/strings.ijs	1
-load	./main/jade/zdefcon.ijs	1
+load	./main/jade/jade.ijs	1
 load	./main/project/standalone.ijs	1
-loadd	./main/jade/zdefcon.ijs	1
+loadd	./main/jade/jade.ijs	1
 loadtags	./main/ctag/defs.ijs	1
 loadtest	./main/pm/testutil.ijs	1
 log	./main/pacman/log.ijs	1
@@ -1255,7 +1255,7 @@ remove_console	./main/pacman/remove.ijs	1
 remove_labs	./main/pacman/remove.ijs	1
 remsep	./main/jade/util.ijs	1
 remspaces	./main/pp/util.ijs	1
-require	./main/jade/zdefcon.ijs	1
+require	./main/jade/jade.ijs	1
 res	./main/socket/sockmain.ijs	1
 res	./main/socket/util.ijs	1
 reset	./main/pm/defs.ijs	1
@@ -1316,8 +1316,8 @@ sa_family_sz	./main/defs/netdefs_linux.ijs	1
 scdm	./main/socket/sockapi.ijs	1
 script	./main/main/stdlib.ijs	1
 scriptd	./main/main/stdlib.ijs	1
+scripts	./main/jade/jade.ijs	1
 scripts	./main/jade/util.ijs	1
-scripts	./main/jade/zdefcon.ijs	1
 sdaccept	./main/socket/sockmain.ijs	1
 sdasync	./main/socket/sockmain.ijs	1
 sdbind	./main/socket/sockmain.ijs	1
@@ -1366,7 +1366,7 @@ sget	./main/task/util.ijs	1
 shell	./main/task/main.ijs	1
 shell	./main/task/zdefs.ijs	1
 shellcmd	./main/pacman/util.ijs	1
-show	./main/jade/zdefcon.ijs	1
+show	./main/jade/jade.ijs	1
 show_console	./main/pacman/show.ijs	1
 showdetail	./main/pm/showdet.ijs	1
 showdetailfmt	./main/pm/showdet.ijs	1
@@ -1550,7 +1550,7 @@ valdate	./main/main/dates.ijs	1
 verbs	./main/pp/vocab.ijs	1
 viewpdf	./main/jade/pdfreader.ijs	1
 wcdm	./main/socket/sockapi.ijs	1
-wcsize	./main/jade/zdefcon.ijs	1
+wcsize	./main/jade/jade.ijs	1
 weekday	./main/main/dates.ijs	1
 weeknumber	./main/main/dates.ijs	1
 weeksinyear	./main/main/dates.ijs	1
@@ -1564,6 +1564,6 @@ writesourcex	./main/project/source.ijs	1
 writetree	./main/pacman/read.ijs	1
 writetreeLIBTREE	./main/pacman/repos.ijs	1
 x_WSAFDIsSetJ	./main/socket/sockapi.ijs	1
+xedit	./main/jade/jade.ijs	1
 xedit	./main/jade/xedit.ijs	1
-xedit	./main/jade/zdefcon.ijs	1
 zipext	./main/pacman/util.ijs	1
