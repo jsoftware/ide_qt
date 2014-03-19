@@ -4,9 +4,7 @@ A	./main/compare/test0.ijs	1
 A	./main/regex/test0.ijs	1
 ADDCFG	./main/pacman/init.ijs	1
 ADDCFGIJS	./main/pacman/init.ijs	1
-ADDINS	./main/pacman/init.ijs	1
 ADDINS	./main/pacman/read.ijs	1
-ADDINS	./main/pacman/depend.ijs	1
 ADDLABS	./main/pacman/install.ijs	1
 ADDLABS	./main/pacman/refresh.ijs	1
 ADDLABS	./main/pacman/remove.ijs	1
@@ -390,7 +388,6 @@ PF_UNSPEC	./main/defs/netdefs_linux.ijs	1
 PKGDATA	./main/pacman/init.ijs	1
 PKGDATA	./main/pacman/runs.ijs	1
 PKGDATA	./main/pacman/select.ijs	1
-PKGDATA	./main/pacman/depend.ijs	1
 PM	./main/pm/defs.ijs	1
 PM	./main/pm/read.ijs	1
 PMDECODE	./main/pm/read.ijs	1
@@ -1015,6 +1012,7 @@ ischar	./main/pacman/util.ijs	1
 isconfigfile	./main/jade/util.ijs	1
 isdir	./main/jade/util.ijs	1
 isdir	./main/project/files.ijs	1
+isfile	./main/jade/util.ijs	1
 isjpkgout	./main/pacman/util.ijs	1
 isotimestamp	./main/main/dates.ijs	1
 isroot	./main/jade/util.ijs	1
