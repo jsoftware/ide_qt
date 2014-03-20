@@ -9,7 +9,6 @@ Qt development
 VERSION=: '1.0.149'
 
 FILES=: 0 : 0
-baselibtags
 pacman.ijs
 help.ijs
 qt.ijs
