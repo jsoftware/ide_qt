@@ -196,7 +196,6 @@ end.
 wd 'textview *;',title,';',caption,';',text
 )
 coclass 'jqtide'
-
 showevents=: 3 : 0
 select. {. y,1
 case. 0 do.
@@ -288,6 +287,24 @@ else.
   jdb_close_jdebug_ :: ] ''
 end.
 )
+JQTREQ=: '1.0.25'
+JQTMSG=: 0 : 0
+The JQt binary needs updating.
+
+To do so, close this session, then load jconsole and run:
+
+   getqtbin''
+
+or browse to the J installation folder and run:
+)
+checkjqtversion=: 3 : 0
+f=. 0 ". ' '(I.@('.'=]))} ]
+req=. f JQTREQ
+act=. f (i.&'/'{.]) wd'version'
+if. req *./ .<: act do. return. end.
+wdinfo 'JQt';JQTMSG,LF,'   updatejqt.',IFWIN pick 'sh';'cmd'
+)
+checkjqtversion''
 
 helpcontext0=: 3 : 0
 require '~addons/ide/qt/help.ijs'

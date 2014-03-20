@@ -768,6 +768,8 @@ dlb	./main/main/strings.ijs	1
 dltb	./main/main/strings.ijs	1
 dltbs	./main/main/strings.ijs	1
 do	./main/main/stdlib.ijs	1
+do_getqtbin	./main/pacman/stdlib.ijs	1
+do_install	./main/pacman/stdlib.ijs	1
 doc	./main/defs/sym2ijs.ijs	1
 dopattern	./main/regex/regdemo.ijs	1
 dquote	./main/jade/browser.ijs	1
