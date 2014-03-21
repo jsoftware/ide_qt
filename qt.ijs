@@ -298,11 +298,18 @@ To do so, close this session, then load jconsole and run:
 or browse to the J installation folder and run:
 )
 checkjqtversion=: 3 : 0
-f=. 0 ". ' '(I.@('.'=]))} ]
+f=. 1000 #. 0 ". ' ' I.@('.'=])} ]
+ver=. wd 'version'
+act=. f (<./ ver i.'/s') {. ver
 req=. f JQTREQ
-act=. f (i.&'/'{.]) wd'version'
-if. req *./ .<: act do. return. end.
-wdinfo 'JQt';JQTMSG,LF,'   updatejqt.',IFWIN pick 'sh';'cmd'
+if. req <: act do. return. end.
+if. 'Android'-:UNAME do.
+  msg=. 'The JQt application needs updating.',LF2
+  msg=. msg,'Please download and install the latest Android apk.'
+else.
+  msg=. JQTMSG,LF,'   updatejqt.',IFWIN pick 'sh';'cmd'
+end.
+wdinfo 'JQt';msg
 )
 checkjqtversion''
 
