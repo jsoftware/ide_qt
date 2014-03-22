@@ -288,7 +288,6 @@ else.
 end.
 )
 JQTREQ=: '1.0.25'
-JQTREQ=: '1.0.30'
 JQTMSG=: 0 : 0
 The JQt binary needs updating.
 
