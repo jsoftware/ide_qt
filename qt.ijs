@@ -288,6 +288,7 @@ else.
 end.
 )
 JQTREQ=: '1.0.25'
+JQTREQ=: '1.0.30'
 JQTMSG=: 0 : 0
 The JQt binary needs updating.
 
@@ -295,7 +296,7 @@ To do so, close this session, then load jconsole and run:
 
    getqtbin''
 
-or browse to the J installation folder and run:
+or run XX in the J installation folder.
 )
 checkjqtversion=: 3 : 0
 f=. 1000 #. 0 ". ' ' I.@('.'=])} ]
@@ -307,7 +308,7 @@ if. 'Android'-:UNAME do.
   msg=. 'The JQt application needs updating.',LF2
   msg=. msg,'Please download and install the latest Android apk.'
 else.
-  msg=. JQTMSG,LF,'   updatejqt.',IFWIN pick 'sh';'cmd'
+  msg=. JQTMSG rplc 'XX';'updatejqt.',IFWIN pick 'sh';'cmd'
 end.
 wdinfo 'JQt';msg
 )
