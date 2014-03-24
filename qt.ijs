@@ -104,7 +104,7 @@ wdgetimg=: ('"',libjqt,'" wdgetimg >',(IFWIN#'+'),' x *c i *i')&cd
 wdwriteimg=: ('"',libjqt,'" wdwriteimg >',(IFWIN#'+'),' i *c *i *c *c i')&cd
 wdputimg=: ('"',libjqt,'" wdputimg >',(IFWIN#'+'),' x *c *i *i *c i')&cd
 
-android_exec_host=: ('"',libjqt,'" android_exec_host >',(IFWIN#'+'),' x *c *c *c i')&cd
+android_exec_host=: ('"',libjqt,'" android_exec_host >',(IFWIN#'+'),' n *c *c *c i')&cd 
 wdget=: 4 : 0
 nms=. {."1 y
 vls=. {:"1 y
