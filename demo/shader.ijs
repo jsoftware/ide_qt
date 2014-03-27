@@ -13,7 +13,6 @@ rem form end;
 )
 
 a_run=: 3 : 0
-k=. 0{sysdata
 STEPS=: 100
 R=: 20 30 0
 EYE=: 0 0 1

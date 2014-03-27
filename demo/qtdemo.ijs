@@ -96,6 +96,7 @@ msgs dmsgs
 plot dplot
 progressbar dprogressbar
 pstyles dpstyles
+shader dshader
 slider dslider
 spinbox dspinbox
 split dsplit
@@ -176,7 +177,7 @@ dplot=: load bind (jpath '~addons/ide/qt/demo/plot.ijs')
 dprinter=: load bind (jpath '~addons/ide/qt/demo/printer.ijs') ^:(-.'Android'-:UNAME)
 dprogressbar=: load bind (jpath '~addons/ide/qt/demo/progressbar.ijs')
 dpstyles=: load bind (jpath '~addons/ide/qt/demo/pstyles.ijs')
-dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs') ^:(-.'Android'-:UNAME)
+dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs')
 dslider=: load bind (jpath '~addons/ide/qt/demo/slider.ijs')
 dspinbox=: load bind (jpath '~addons/ide/qt/demo/spinbox.ijs')
 dsphere=: load bind (jpath '~addons/ide/qt/demo/sphere.ijs') ^:(-.'Android'-:UNAME)
