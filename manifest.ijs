@@ -6,7 +6,7 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.0.154'
+VERSION=: '1.0.155'
 
 FILES=: 0 : 0
 pacman.ijs
@@ -17,6 +17,10 @@ data/
 demo/
 js/
 images/
+)
+
+FILESANDROID=: 0 : 0
+maroon/
 )
 
 RELEASE=: 'j801'
