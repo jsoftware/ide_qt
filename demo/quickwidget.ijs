@@ -1,28 +1,33 @@
-NB. quickview
+NB. quickwidget
 NB.
 NB. !!! this is experimental and *will* change...
 NB.
-NB. cover for the QQuickView
+NB. cover for the QQuickWidgets
+NB. cmd so far:
+NB.  set c source url
+NB.  set c resizemode 0|1
 
 coclass 'qtdemo'
 
 NB. =========================================================
-quickview=: 3 : 0
-wd 'pc quickview'
+quickwidget=: 3 : 0
+wd 'pc quickwidget'
 wd 'cc e edit'
+wd 'minwh 300 300'
+wd 'cc q quickwidget'
 wd 'set e text *', e=. jpath '~addons/ide/qt/demo/quick.qml'
 wd 'pshow'
 )
 
 NB. =========================================================
-quickview_e_button=: 3 : 0
-wd 'quickview qv ", e ,'"'
+quickwidget_e_button=: 3 : 0
+wd 'set q source *',e
 )
 
 NB. =========================================================
-quickview_close=: 3 : 0
+quickwidget_close=: 3 : 0
 wd 'pclose'
 )
 
 NB. =========================================================
-quickview''
+quickwidget''

@@ -25,6 +25,8 @@ plot dplot
 printer dprinter
 progressbar dprogressbar
 pstyles dpstyles
+quickview dquickview
+quickwidget dquickwidget
 shader dshader
 slider dslider
 spinbox dspinbox
@@ -97,6 +99,7 @@ plot dplot
 progressbar dprogressbar
 pstyles dpstyles
 quickview dquickview
+quickwidget dquickwidget
 shader dshader
 slider dslider
 spinbox dspinbox
@@ -132,9 +135,11 @@ rem form end;
 
 NB. =========================================================
 qtdemo_run=: 3 : 0
+ver=. wd 'version'
+qtmajor=: 0 ". ({.~ i.&'.') '/s' -.~ (ver i.'/') }. ver
 if. 'Android'-:UNAME do.
   TITLES=: TITLES3
-elseif. 's' e. wd 'version' do.
+elseif. 's' e. ver do.
   TITLES=: TITLES2
 end.
 wd QTDEMO
@@ -178,7 +183,8 @@ dplot=: load bind (jpath '~addons/ide/qt/demo/plot.ijs')
 dprinter=: load bind (jpath '~addons/ide/qt/demo/printer.ijs') ^:(-.'Android'-:UNAME)
 dprogressbar=: load bind (jpath '~addons/ide/qt/demo/progressbar.ijs')
 dpstyles=: load bind (jpath '~addons/ide/qt/demo/pstyles.ijs')
-dquickview=: load bind (jpath '~addons/ide/qt/demo/quickview.ijs')
+dquickview=: load bind (jpath '~addons/ide/qt/demo/quickview.ijs') ^:(5=qtmajor)
+dquickwidget=: load bind (jpath '~addons/ide/qt/demo/quickwidget.ijs') ^:((5=qtmajor)*.(-.'Android'-:UNAME))
 dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs')
 dslider=: load bind (jpath '~addons/ide/qt/demo/slider.ijs')
 dspinbox=: load bind (jpath '~addons/ide/qt/demo/spinbox.ijs')
@@ -208,7 +214,7 @@ NB. =========================================================
 qtdemo_addons_button=: 3 : 0
 require 'pacman'
 'update' jpkg ''
-'install' jpkg 'api/gles demos/wd'
+'install' jpkg 'api/gles demos/wd', (5=qtmajor)#' demos/quick'
 )
 
 NB. =========================================================
