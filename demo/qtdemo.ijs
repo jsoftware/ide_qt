@@ -133,13 +133,13 @@ bin zzz;
 rem form end;
 )
 
+qtmajor=: 0 ". ({.~ i.&'.') '/s' -.~ (}.~ i.&'/') wd 'version'
+
 NB. =========================================================
 qtdemo_run=: 3 : 0
-ver=. wd 'version'
-qtmajor=: 0 ". ({.~ i.&'.') '/s' -.~ (ver i.'/') }. ver
 if. 'Android'-:UNAME do.
   TITLES=: TITLES3
-elseif. 's' e. ver do.
+elseif. 's' e. wd 'version' do.
   TITLES=: TITLES2
 end.
 wd QTDEMO
