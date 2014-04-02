@@ -6,7 +6,7 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.0.158'
+VERSION=: '1.0.159'
 
 FILES=: 0 : 0
 pacman.ijs

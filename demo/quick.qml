@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import com.jsoftware.qtide.qmljengine 1.0
 
 Rectangle {
     id: root
@@ -15,6 +16,6 @@ Rectangle {
 
     Text {
         anchors.centerIn: parent
-        text: "Qt Quick running in a widget"
+        text: QmlJE.dors("|.JVERSION")
     }
 }
