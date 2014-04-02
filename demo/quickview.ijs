@@ -10,7 +10,7 @@ NB. =========================================================
 quickview=: 3 : 0
 wd 'pc quickview'
 wd 'cc e edit'
-wd 'set e text *', e=. jpath '~addons/ide/qt/demo/quick.qml'
+wd 'set e text *', e=. jpath '~addons/ide/qt/demo/',(5=qtmajor){::'quick.qml';'quick2.qml'
 wd 'pshow'
 )
 

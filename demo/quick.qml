@@ -1,21 +1,29 @@
-import QtQuick 2.0
-import com.jsoftware.qtide.qmljengine 1.0
+import QtQuick 1.0
 
-Rectangle {
-    id: root
+Item {
+    width: 300; height: 300
 
     Rectangle {
-        property int d: 100
-        id: square
-        width: d
-        height: d
-        anchors.centerIn: parent
+        id: rect
+        width: 150; height: 100; anchors.centerIn: parent
         color: "red"
-        NumberAnimation on rotation { from: 0; to: 360; duration: 2000; loops: Animation.Infinite; }
+        smooth: true
+
+        states: State {
+            name: "rotated"
+            PropertyChanges { target: rect; rotation: 180 }
+        }
+
+        transitions: Transition {
+            RotationAnimation { duration: 2000; direction: RotationAnimation.Counterclockwise }
+        }
+        Text {
+        id: helloText
+        text: QmlJE.dors("JVERSION")
+        y: 30
+        font.pointSize: 24; font.bold: true
+        }
     }
 
-    Text {
-        anchors.centerIn: parent
-        text: QmlJE.dors("|.JVERSION")
-    }
+    MouseArea { anchors.fill: parent; onClicked: rect.state = "rotated" }
 }
