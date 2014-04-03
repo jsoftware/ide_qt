@@ -27,6 +27,7 @@ progressbar dprogressbar
 pstyles dpstyles
 quickview dquickview
 quickwidget dquickwidget
+scrollarea dscrollarea
 shader dshader
 slider dslider
 spinbox dspinbox
@@ -65,6 +66,7 @@ plot dplot
 printer dprinter
 progressbar dprogressbar
 pstyles dpstyles
+scrollarea dscrollarea
 shader dshader
 slider dslider
 sphere dsphere
@@ -100,6 +102,7 @@ progressbar dprogressbar
 pstyles dpstyles
 quickview dquickview
 quickwidget dquickwidget
+scrollarea dscrollarea
 shader dshader
 slider dslider
 spinbox dspinbox
@@ -185,6 +188,7 @@ dprogressbar=: load bind (jpath '~addons/ide/qt/demo/progressbar.ijs')
 dpstyles=: load bind (jpath '~addons/ide/qt/demo/pstyles.ijs')
 dquickview=: load bind (jpath '~addons/ide/qt/demo/quickview.ijs')
 dquickwidget=: load bind (jpath '~addons/ide/qt/demo/quickwidget.ijs') ^:((5=qtmajor)*.(-.'Android'-:UNAME))
+dscrollarea=: load bind (jpath '~addons/ide/qt/demo/scrollarea.ijs')
 dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs')
 dslider=: load bind (jpath '~addons/ide/qt/demo/slider.ijs')
 dspinbox=: load bind (jpath '~addons/ide/qt/demo/spinbox.ijs')

@@ -17,11 +17,7 @@ coclass 'qtdemo'
 NB. =========================================================
 Tabdemo=: 0 : 0
 pc tabdemo closeok escclose;
-
-rem cc static button;
-
 cc prefs tab closable movable;
-rem cc prefs tab east documentmode;
 
 tabnew View;
 cc linear radiobutton;
