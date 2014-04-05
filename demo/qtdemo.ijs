@@ -7,6 +7,9 @@ sububar=: I. @(e.&'_')@]}
 maketitle=: ' '&sububar each @ cutopen ;._2
 fexist=: 1:@(1!:4)@boxopen ::0:
 
+qtmajor=: 0 ". ({.~ i.&'.') '/s' -.~ (}.~ i.&'/') wd 'version'
+qtslim=: 's' e. wd 'version'
+
 TITLES=: maketitle 0 : 0
 controls dcontrols
 datetime ddatetime
@@ -48,77 +51,6 @@ websocket_client dwebsocketclient
 webview dwebview
 )
 
-TITLES2=: maketitle 0 : 0
-controls dcontrols
-datetime ddatetime
-edit dedit
-edith dedith
-editm deditm
-gl2 dgl2
-grid dgrid
-ide dide
-image dimage
-mbox dmbox
-mbdialog dmbdialog
-menu dmenu
-msgs dmsgs
-plot dplot
-printer dprinter
-progressbar dprogressbar
-pstyles dpstyles
-scrollarea dscrollarea
-shader dshader
-slider dslider
-sphere dsphere
-spinbox dspinbox
-split dsplit
-statusbar dstatusbar
-table dtable
-table2 dtable2
-table3 dtable3
-tabs dtabs
-timer dtimer
-toolbar dtoolbar
-toolbarv dtoolbarv
-viewmat dviewmat
-websocket dwebsocket
-websocket_client dwebsocketclient
-)
-
-TITLES3=: maketitle 0 : 0
-controls dcontrols
-datetime ddatetime
-edit dedit
-edith dedith
-editm deditm
-gl2 dgl2
-grid dgrid
-image dimage
-mbox dmbox
-menu dmenu
-msgs dmsgs
-plot dplot
-progressbar dprogressbar
-pstyles dpstyles
-quickview dquickview
-quickwidget dquickwidget
-scrollarea dscrollarea
-shader dshader
-slider dslider
-spinbox dspinbox
-split dsplit
-statusbar dstatusbar
-table dtable
-table2 dtable2
-table3 dtable3
-tabs dtabs
-toolbar dtoolbar
-toolbarv dtoolbarv
-viewmat dviewmat
-websocket dwebsocket
-websocket_client dwebsocketclient
-)
-
 NB. =========================================================
 QTDEMO=: 0 : 0
 pc qtdemo closeok;pn "Demos Select";
@@ -136,15 +68,8 @@ bin zzz;
 rem form end;
 )
 
-qtmajor=: 0 ". ({.~ i.&'.') '/s' -.~ (}.~ i.&'/') wd 'version'
-
 NB. =========================================================
 qtdemo_run=: 3 : 0
-if. 'Android'-:UNAME do.
-  TITLES=: TITLES3
-elseif. 's' e. wd 'version' do.
-  TITLES=: TITLES2
-end.
 wd QTDEMO
 wd 'set static1 text *Select a Qt demo from the list below:'
 wd 'set listbox items ',;DEL,each ({."1 TITLES),each DEL
@@ -176,37 +101,37 @@ dedith=: load bind (jpath '~addons/ide/qt/demo/edith.ijs')
 deditm=: load bind (jpath '~addons/ide/qt/demo/editm.ijs')
 dgl2=: load bind (jpath '~addons/ide/qt/demo/gl2.ijs')
 dgrid=: load bind (jpath '~addons/ide/qt/demo/grid.ijs')
-dide=: load bind (jpath '~addons/ide/qt/demo/ide.ijs') ^:(-.'Android'-:UNAME)
+dide=: load bind (jpath '~addons/ide/qt/demo/ide.ijs')`notsupport@.('Android'-:UNAME)
 dimage=: load bind (jpath '~addons/ide/qt/demo/image.ijs')
 dmbox=: load bind (jpath '~addons/ide/qt/demo/mbox.ijs')
-dmbdialog=: load bind (jpath '~addons/ide/qt/demo/mbdialog.ijs') ^:(-.'Android'-:UNAME)
+dmbdialog=: load bind (jpath '~addons/ide/qt/demo/mbdialog.ijs')`notsupport@.('Android'-:UNAME)
 dmenu=: load bind (jpath '~addons/ide/qt/demo/menu.ijs')
 dmsgs=: load bind (jpath '~addons/ide/qt/demo/msgs.ijs')
 dplot=: load bind (jpath '~addons/ide/qt/demo/plot.ijs')
-dprinter=: load bind (jpath '~addons/ide/qt/demo/printer.ijs') ^:(-.'Android'-:UNAME)
+dprinter=: load bind (jpath '~addons/ide/qt/demo/printer.ijs')`notsupport@.('Android'-:UNAME)
 dprogressbar=: load bind (jpath '~addons/ide/qt/demo/progressbar.ijs')
 dpstyles=: load bind (jpath '~addons/ide/qt/demo/pstyles.ijs')
-dquickview=: load bind (jpath '~addons/ide/qt/demo/quickview.ijs')
-dquickwidget=: load bind (jpath '~addons/ide/qt/demo/quickwidget.ijs') ^:((5=qtmajor)*.(-.'Android'-:UNAME))
+dquickview=: load bind (jpath '~addons/ide/qt/demo/quickview.ijs')`notsupport@.qtslim
+dquickwidget=: load bind (jpath '~addons/ide/qt/demo/quickwidget.ijs')`notsupport@.(qtslim+.qtmajor=4)
 dscrollarea=: load bind (jpath '~addons/ide/qt/demo/scrollarea.ijs')
-dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs')
+dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs')`notsupport@.qtslim
 dslider=: load bind (jpath '~addons/ide/qt/demo/slider.ijs')
 dspinbox=: load bind (jpath '~addons/ide/qt/demo/spinbox.ijs')
-dsphere=: load bind (jpath '~addons/ide/qt/demo/sphere.ijs') ^:(-.'Android'-:UNAME)
+dsphere=: load bind (jpath '~addons/ide/qt/demo/sphere.ijs')`notsupport@.(qtslim+.'Android'-:UNAME)
 dsplit=: load bind (jpath '~addons/ide/qt/demo/split.ijs')
 dstatusbar=: load bind (jpath '~addons/ide/qt/demo/statusbar.ijs')
 dtable=: load bind (jpath '~addons/ide/qt/demo/table.ijs')
 dtable2=: load bind (jpath '~addons/ide/qt/demo/table2.ijs')
 dtable3=: load bind (jpath '~addons/ide/qt/demo/table3.ijs')
 dtabs=: load bind (jpath '~addons/ide/qt/demo/tabs.ijs')
-dtimer=: load bind (jpath '~addons/ide/qt/demo/timer.ijs') ^:(-.'Android'-:UNAME)
+dtimer=: load bind (jpath '~addons/ide/qt/demo/timer.ijs')`notsupport@.('Android'-:UNAME)
 dtoolbar=: load bind (jpath '~addons/ide/qt/demo/toolbar.ijs')
 dtoolbarv=: load bind (jpath '~addons/ide/qt/demo/toolbarv.ijs')
 dviewmat=: load bind (jpath '~addons/ide/qt/demo/viewmat.ijs')
-dwebd3=: load bind (jpath '~addons/ide/qt/demo/webd3.ijs') ^:(-.'Android'-:UNAME)
-dwebsocket=: load bind (jpath '~addons/ide/qt/demo/websocket.ijs')
-dwebsocketclient=: load bind (jpath '~addons/ide/qt/demo/websocketclient.ijs')
-dwebview=: load bind (jpath '~addons/ide/qt/demo/webview.ijs') ^:(-.'Android'-:UNAME)
+dwebd3=: load bind (jpath '~addons/ide/qt/demo/webd3.ijs')`notsupport@.(qtslim+.'Android'-:UNAME)
+dwebsocket=: load bind (jpath '~addons/ide/qt/demo/websocket.ijs')`notsupport@.qtslim
+dwebsocketclient=: load bind (jpath '~addons/ide/qt/demo/websocketclient.ijs')`notsupport@.qtslim
+dwebview=: load bind (jpath '~addons/ide/qt/demo/webview.ijs')`notsupport@.(qtslim+.'Android'-:UNAME)
 
 NB. =========================================================
 qtdemo_view_button=: 3 : 0
@@ -218,7 +143,12 @@ NB. =========================================================
 qtdemo_addons_button=: 3 : 0
 require 'pacman'
 'update' jpkg ''
-'install' jpkg 'api/gles demos/wd', (5=qtmajor)#' demos/quick'
+'install' jpkg 'api/gles demos/wd'
+)
+
+NB. =========================================================
+notsupport=: 3 : 0
+sminfo 'This demo is not supported on ', UNAME, ' ', wd 'version'
 )
 
 NB. =========================================================
