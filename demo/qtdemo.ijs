@@ -111,10 +111,10 @@ dplot=: load bind (jpath '~addons/ide/qt/demo/plot.ijs')
 dprinter=: load bind (jpath '~addons/ide/qt/demo/printer.ijs')`notsupport@.('Android'-:UNAME)
 dprogressbar=: load bind (jpath '~addons/ide/qt/demo/progressbar.ijs')
 dpstyles=: load bind (jpath '~addons/ide/qt/demo/pstyles.ijs')
-dquickview=: load bind (jpath '~addons/ide/qt/demo/quickview.ijs')`notsupport@.qtslim
-dquickwidget=: load bind (jpath '~addons/ide/qt/demo/quickwidget.ijs')`notsupport@.(qtslim+.qtmajor=4)
+dquickview=: load bind (jpath '~addons/ide/qt/demo/quickview.ijs')`notsupport@.(qtslim>'Android'-:UNAME)
+dquickwidget=: load bind (jpath '~addons/ide/qt/demo/quickwidget.ijs')`notsupport@.((qtslim+.'Android'-:UNAME)+.qtmajor=4)
 dscrollarea=: load bind (jpath '~addons/ide/qt/demo/scrollarea.ijs')
-dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs')`notsupport@.qtslim
+dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs')`notsupport@.(qtslim>'Android'-:UNAME)
 dslider=: load bind (jpath '~addons/ide/qt/demo/slider.ijs')
 dspinbox=: load bind (jpath '~addons/ide/qt/demo/spinbox.ijs')
 dsphere=: load bind (jpath '~addons/ide/qt/demo/sphere.ijs')`notsupport@.(qtslim+.'Android'-:UNAME)
@@ -129,8 +129,8 @@ dtoolbar=: load bind (jpath '~addons/ide/qt/demo/toolbar.ijs')
 dtoolbarv=: load bind (jpath '~addons/ide/qt/demo/toolbarv.ijs')
 dviewmat=: load bind (jpath '~addons/ide/qt/demo/viewmat.ijs')
 dwebd3=: load bind (jpath '~addons/ide/qt/demo/webd3.ijs')`notsupport@.(qtslim+.'Android'-:UNAME)
-dwebsocket=: load bind (jpath '~addons/ide/qt/demo/websocket.ijs')`notsupport@.qtslim
-dwebsocketclient=: load bind (jpath '~addons/ide/qt/demo/websocketclient.ijs')`notsupport@.qtslim
+dwebsocket=: load bind (jpath '~addons/ide/qt/demo/websocket.ijs')`notsupport@.(qtslim>'Android'-:UNAME)
+dwebsocketclient=: load bind (jpath '~addons/ide/qt/demo/websocketclient.ijs')`notsupport@.(qtslim>'Android'-:UNAME)
 dwebview=: load bind (jpath '~addons/ide/qt/demo/webview.ijs')`notsupport@.(qtslim+.'Android'-:UNAME)
 
 NB. =========================================================
