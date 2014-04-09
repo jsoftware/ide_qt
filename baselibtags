@@ -603,6 +603,7 @@ addfname	./main/jade/util.ijs	1
 adverbs	./main/pp/vocab.ijs	1
 afroms	./main/socket/sockmain.ijs	1
 anddf	./main/main/android.ijs	1
+android_exec_am	./main/main/android.ijs	1
 android_exec_host	./main/main/android.ijs	1
 andunzip	./main/main/android.ijs	1
 andurl	./main/main/android.ijs	1
