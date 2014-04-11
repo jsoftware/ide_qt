@@ -15,7 +15,7 @@ wd 'pc quickwidget'
 wd 'cc e edit'
 wd 'minwh 300 300'
 wd 'cc q quickwidget'
-wd 'set e text *', e=. jpath '~addons/ide/qt/demo/',(5=qtmajor){::'quick.qml';'quick2.qml'
+wd 'set e text *', e=. jpath '~addons/ide/qt/demo/quick2.qml'
 wd 'pshow'
 )
 
