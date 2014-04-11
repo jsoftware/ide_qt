@@ -39,6 +39,7 @@ showevents_jqtide_ 0
 
 NB. =========================================================
 sademo_g_paint=: 3 : 0
+glclear''
 glbrush glrgb 255 0 0
 glrect 50 50 200 200
 gllines 30 30 300 300
