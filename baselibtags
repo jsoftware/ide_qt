@@ -557,6 +557,7 @@ UNGREEDY	./main/regex/opts.ijs	1
 UNXLIB	./main/main/unxlib.ijs	1
 UserFolders	./main/jade/load.ijs	1
 UserFolders	./main/config/configure.ijs	1
+UserNumber	./main/config/boot.ijs	1
 VERSION	./main/pacman/refresh.ijs	1
 WAIT_TIMEOUT	./main/task/util.ijs	1
 WSAAsyncGetHostByAddrJ	./main/socket/sockapi.ijs	1
