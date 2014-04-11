@@ -29,6 +29,7 @@ printer dprinter
 progressbar dprogressbar
 pstyles dpstyles
 quickview dquickview
+quickview1 dquickview1
 quickwidget dquickwidget
 scrollarea dscrollarea
 shader dshader
@@ -111,7 +112,8 @@ dplot=: load bind (jpath '~addons/ide/qt/demo/plot.ijs')
 dprinter=: load bind (jpath '~addons/ide/qt/demo/printer.ijs')`notsupport@.('Android'-:UNAME)
 dprogressbar=: load bind (jpath '~addons/ide/qt/demo/progressbar.ijs')
 dpstyles=: load bind (jpath '~addons/ide/qt/demo/pstyles.ijs')
-dquickview=: load bind (jpath '~addons/ide/qt/demo/quickview.ijs')`notsupport@.(qtslim>'Android'-:UNAME)
+dquickview=: load bind (jpath '~addons/ide/qt/demo/quickview.ijs')`notsupport@.((qtmajor=4)+.qtslim>'Android'-:UNAME)
+dquickview1=: load bind (jpath '~addons/ide/qt/demo/quickview1.ijs')`notsupport@.(qtslim>'Android'-:UNAME)
 dquickwidget=: load bind (jpath '~addons/ide/qt/demo/quickwidget.ijs')`notsupport@.((qtslim+.'Android'-:UNAME)+.qtmajor=4)
 dscrollarea=: load bind (jpath '~addons/ide/qt/demo/scrollarea.ijs')
 dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs')`notsupport@.(qtslim>'Android'-:UNAME)
