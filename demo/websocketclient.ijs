@@ -17,6 +17,8 @@ elseif. evt = jws_onClose do.
   smoutput 'disconnected'
 elseif. evt = jws_onError do.
   smoutput wsc0_jrx_
+elseif. evt = jws_onSslError do.
+  smoutput wsc0_jrx_
 end.
 EMPTY
 )
@@ -55,9 +57,9 @@ wd 'bin z'
 wd 'pshow'
 hwndwsc=: wd 'qhwndp'
 wscbuffer=: ''
-wd 'set ipaddr1 text ws://echo.websocket.org 80'
+wd 'set ipaddr1 text ws://echo.websocket.org:80'
 wd 'set e1 text *hello world'
-wd 'set ipaddr2 text ws://localhost 3000'
+wd 'set ipaddr2 text ws://localhost:3000'
 wd 'set e2 text *i.4 5'
 )
 

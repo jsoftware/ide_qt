@@ -21,6 +21,8 @@ elseif. evt = jws_onClose do.
   smoutput 'disconnected'
 elseif. evt = jws_onError do.
   smoutput wss0_jrx_
+elseif. evt = jws_onSslError do.
+  smoutput wss0_jrx_
 end.
 EMPTY
 )
