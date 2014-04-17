@@ -287,7 +287,7 @@ else.
   jdb_close_jdebug_ :: ] ''
 end.
 )
-JQTREQ=: '1.0.26'
+JQTREQ=: '1.0.27'
 JQTMSG=: 0 : 0
 The JQt binary needs updating.
 
