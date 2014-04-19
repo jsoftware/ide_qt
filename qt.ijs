@@ -112,7 +112,6 @@ end.
 )
 
 wdpclose=: [: wd :: empty 'psel ' , ';pclose' ,~ ":
-NB gl2 overlay on opengl
 rpcinfinity=: 3 : 0
 <. 0 (I.(_=y)+.__=y)}y
 )
@@ -204,6 +203,10 @@ case. 1 do.
   wdhandler_debug_z_=: 3 : 'smoutput sysevent'
 case. 2 do.
   wdhandler_debug_z_=: 3 : 'smoutput wdq'
+case. 3 do.
+  wdhandler_debug_z_=: 3 : 'if. -. ''_mmove''-:_6{.sysevent do. smoutput sysevent end.'
+case. 4 do.
+  wdhandler_debug_z_=: 3 : 'if. -. ''_mmove''-:_6{.sysevent do. smoutput wdq end.'
 end.
 EMPTY
 )
