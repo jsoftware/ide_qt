@@ -31,8 +31,8 @@ pstyles dpstyles
 scrollarea dscrollarea
 shader dshader
 slider dslider
-spinbox dspinbox
 sphere dsphere
+spinbox dspinbox
 split dsplit
 statusbar dstatusbar
 table dtable

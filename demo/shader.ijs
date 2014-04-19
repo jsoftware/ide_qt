@@ -59,8 +59,8 @@ R=: 360 | R + 2 * 'xyz' = 0 { sysdata
 k=. 0{sysdata
 STEPS=: 200 <. STEPS + 's' = k
 STEPS=: 3 >. STEPS - 'a' = k
-LR=: LR + 0.01*'l'=k
-LR=: LR - 0.01*'r'=k
+LR=: LR - 0.01*'l'=k
+LR=: LR + 0.01*'r'=k
 gl_paintx''
 )
 
@@ -106,9 +106,6 @@ glDisable GL_CULL_FACE
 
 glUseProgram 0
 
-)
-
-a_g_paintz=: 3 : 0
 gl_clear ''
 gl_rgb 255 255 255
 gl_textcolor ''
