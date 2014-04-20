@@ -26,8 +26,13 @@ sademo=: 3 : 0
 wd 'pc sademo'
 wd 'cc g isigraph'
 wd 'cc sa scrollarea'
-wd 'set g minwh 400 250'
-wd 'pmove 700 20 300 200'
+if. 'Android'-:UNAME do.
+  scrwh=. 2 3{ ". wd'qscreen'
+  wd 'set g minwh ', ": >. 1.5*scrwh
+else.
+  wd 'set g minwh 400 250'
+  wd 'pmove 700 20 300 200'
+end.
 wd 'pshow'
 )
 
@@ -41,8 +46,14 @@ NB. =========================================================
 sademo_g_paint=: 3 : 0
 glclear''
 glbrush glrgb 255 0 0
-glrect 50 50 200 200
-gllines 30 30 300 300
+if. 'Android'-:UNAME do.
+  scrwh=. 2 3{ ". wd'qscreen'
+  glrect 50 50 , >. 1.1*scrwh
+  gllines 30 30 , >. 1.2*scrwh
+else.
+  glrect 50 50 200 200
+  gllines 30 30 300 300
+end.
 )
 
 NB. =========================================================

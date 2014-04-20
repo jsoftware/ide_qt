@@ -28,6 +28,9 @@ plot dplot
 printer dprinter
 progressbar dprogressbar
 pstyles dpstyles
+quickview1 dquickview1
+quickview2 dquickview2
+quickwidget dquickwidget
 scrollarea dscrollarea
 shader dshader
 slider dslider
