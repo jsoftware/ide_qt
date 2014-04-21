@@ -315,18 +315,28 @@ end.
 wdinfo 'JQt';msg
 )
 checkjqtversion''
-
-helpcontext0=: 3 : 0
-require '~addons/ide/qt/help.ijs'
-helpcontext y
-)
-lab_msg=: 0 : 0
-The labs are not yet installed.
+addons_msg=: 0 : 0
+The XX are not yet installed.
 
 To install, select menu Tools|Package Manager
-and install package labs/labs.
+and install package YY.
 )
-
+addons_missing=: 3 : 0
+'name addon script'=. y
+if. fexist script do. 0 return. end.
+sminfo name;addons_msg rplc 'XX';name;'YY';addon
+1
+)
+demoqt=: 3 : 0
+p=. jpath '~addons/ide/qt/demo/qtdemo.ijs'
+if. addons_missing 'qt demos';'ide/qt';p do. return. end.
+load p
+)
+demowd=: 3 : 0
+p=. jpath '~addons/demos/wd/demos.ijs'
+if. addons_missing 'wd demos';'demos/wd';p do. return. end.
+load p
+)
 labs_run=: 3 : 0
 smfocus_jijs_=: 0:
 closewindows_jijs_=: 0:
@@ -339,12 +349,16 @@ smwrite_jijs_=: 0:
 tile_jijs_=: 0:
 coinsert_jijs_ (,copath) coname''
 
-if. -.fexist jpath '~addons/labs/labs/lab.ijs' do.
-  sminfo 'Labs';lab_msg
-  return.
-end.
-require '~addons/labs/labs/lab.ijs'
+p=. jpath '~addons/labs/labs/lab.ijs'
+if. addons_missing 'labs';'labs/labs';p do. return. end.
+require p
 lab_jlab_ y
+)
+
+
+helpcontext0=: 3 : 0
+require '~addons/ide/qt/help.ijs'
+helpcontext y
 )
 Qt_Key_Escape                 =: 16b00f800
 Qt_Key_Tab                    =: 16b00f801
