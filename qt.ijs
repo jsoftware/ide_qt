@@ -187,6 +187,10 @@ dirmatch=: 3 : 'wd ''dirmatch '', ; dquote&.> 2 {. boxopen y'
 open=: 3 : 'wd ''openj *'' , > {. getscripts_j_ y'
 immexj=: [: wd 'immexj *'&,
 smact=: wd bind 'smact'
+getsha1=: 3 : 0
+'r c p n'=. ('"',libjqt,'" getsha1 ',(IFWIN#'+'),' n *c * *i') cd (,y);(,2);,0
+memr p,0,n
+)
 textview=: 3 : 0
 if. 2=#p=. boxopen y do.
   p=. 1 0 1 #^:_1 p
@@ -290,7 +294,7 @@ else.
   jdb_close_jdebug_ :: ] ''
 end.
 )
-JQTREQ=: '1.0.27'
+JQTREQ=: '1.1.01'
 JQTMSG=: 0 : 0
 The JQt binary needs updating.
 
