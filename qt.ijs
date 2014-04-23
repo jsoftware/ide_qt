@@ -844,11 +844,5 @@ QPrinter_Cicero=: 5
 QPrinter_DevicePixel=: 6
 
 glzinitprinter ::0:''
-coclass 'jbaselibtag'
-coinsert 'ctag'
-
-absolutepath=: 0
-Tags=: '~addons/ide/qt/baselibtags'
-cleartags''
 
 cocurrent 'base'
