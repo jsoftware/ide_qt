@@ -234,6 +234,7 @@ if. window=0 do. return. end.
 wd 'set blog 1'
 MSGX=: 3
 pmview_showlog''
+wd 'msgs'
 )
 pkglater=: 3 : 0
 if. 0=#PKGDATA do. $0 return. end.
