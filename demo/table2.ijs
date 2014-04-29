@@ -10,7 +10,7 @@ NB.
 NB. cell types:
 NB.  0   text
 NB.  100 checkbox
-NB.  200 combolist 
+NB.  200 combolist
 NB.  300 combobox
 NB.
 NB. cell align:
@@ -53,7 +53,7 @@ NB. =========================================================
 Tab=: _2 [\ 11 8 6 9 23 6
 Sel=: 0 0 1
 DEL=: 127{a.
-Types=: 0 100 200 0 0 300 0 
+Types=: 0 100 200 0 0 300 0
 NB. =========================================================
 makedata=: 3 : 0
 a=.  'Ford 0 ',DEL,'"First Item" "Second Item" "Third Item"',DEL,' 11 8 "0 Sedan Coupe Convertible" "USA"'
@@ -102,4 +102,3 @@ Try:
   3 7$ <;._2 wd'get pac table'
   wd'set pac sort 6 descending'
 )
-

@@ -11,7 +11,7 @@ NB. cell types:
 NB.  0   text
 NB.  10  multiline text
 NB.  100 checkbox
-NB.  200 combolist 
+NB.  200 combolist
 NB.  300 combobox
 NB.  400 button
 NB.

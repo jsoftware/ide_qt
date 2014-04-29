@@ -111,5 +111,3 @@ smoutput 0 : 0
 Try:
   printer_run_qtdemo_ 'PDF'  NB. or name of your prniter
 )
-
-

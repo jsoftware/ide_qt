@@ -8,7 +8,7 @@ NB.   documentmode     (default off)
 NB.   east|south|west  (default north)
 NB.   movable          (default fixed)
 NB.
-NB. tabnew id        start a single tab 
+NB. tabnew id        start a single tab
 NB. ...
 NB. tabend           end tabs control
 

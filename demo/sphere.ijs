@@ -1,5 +1,3 @@
-require 'gl3'
-coinsert 'jgl3'
 
 coclass 'qtdemo'
 
@@ -10,6 +8,9 @@ rem form end;
 )
 
 a_run=: 3 : 0
+if. -. checkrequire_qtdemo_ 'gl3';'api/gl3' do. return. end.
+require 'gl3'
+coinsert 'jgl3'
 wd A
 SPHERE=: 2
 wd 'pshow'

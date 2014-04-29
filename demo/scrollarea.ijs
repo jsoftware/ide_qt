@@ -18,11 +18,11 @@ NB. where -1 is ignored
 
 coclass 'qtdemo'
 
-load 'gl2'
-coinsert 'jgl2'
-
 NB. =========================================================
 sademo=: 3 : 0
+if. -. checkrequire 'gl2';'graphics/gl2' do. return. end.
+require 'gl2'
+coinsert 'jgl2'
 wd 'pc sademo'
 wd 'cc g isigraph'
 wd 'cc sa scrollarea'
@@ -34,6 +34,8 @@ else.
   wd 'pmove 700 20 300 200'
 end.
 wd 'pshow'
+smoutput 'Try:',LF,'  wd ''set sa pos 10 100'''
+showevents_jqtide_ 2
 )
 
 NB. =========================================================
@@ -57,10 +59,4 @@ end.
 )
 
 NB. =========================================================
-showevents_jqtide_ 2
 sademo''
-smoutput 0 : 0
-Try:
-  wd 'set sa pos 10 100'
-)
-

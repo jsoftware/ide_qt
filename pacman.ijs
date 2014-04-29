@@ -226,10 +226,6 @@ browse_j_ 'http://www.jsoftware.com/jwiki/',a
 )
 loggui=: 3 : 0
 LOGTXT=: LOGTXT,<;.2 y,LF -. {: y
-del=. (#LOGTXT) - LOGMAX
-if. del > 0 do.
-  LOGTXT=: del }. LOGTXT
-end.
 if. window=0 do. return. end.
 wd 'set blog 1'
 MSGX=: 3

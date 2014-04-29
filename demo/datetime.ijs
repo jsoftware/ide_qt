@@ -17,7 +17,7 @@ NB. value   (hhmmss.zzz)
 NB. display format:
 
 NB. These expressions may be used for the date:
-NB. 
+NB.
 NB. Expression                                           Output
 NB. d          the day as number without a leading zero (1 to 31)
 NB. dd         the day as number with a leading zero (01 to 31)
@@ -29,9 +29,9 @@ NB. MMM        the abbreviated localized month name (e.g. 'Jan' to 'Dec'). Uses 
 NB. MMMM       the long localized month name (e.g. 'January' to 'December'). Uses QDate::longMonthName().
 NB. yy         the year as two digit number (00-99)
 NB. yyyy       the year as four digit number
-NB. 
+NB.
 NB. These expressions may be used for the time:
-NB. 
+NB.
 NB. Expression                                 Output
 NB. h          the hour without a leading zero (0 to 23 or 1 to 12 if AM/PM display)
 NB. hh         the hour with a leading zero (00 to 23 or 01 to 12 if AM/PM display)
@@ -43,12 +43,12 @@ NB. z          the milliseconds without leading zeroes (0 to 999)
 NB. zzz        the milliseconds with leading zeroes (000 to 999)
 NB. AP         use AM/PM display. AP will be replaced by either "AM" or "PM".
 NB. ap         use am/pm display. ap will be replaced by either "am" or "pm".
-NB. 
+NB.
 NB. All other input characters will be ignored. Any sequence of characters that are enclosed in singlequotes will be treated as text and not be
 NB. used as an expression. Two consecutive singlequotes ("''") are replaced by a singlequote in the output.
-NB. 
+NB.
 NB. Example format strings (assumed that the QDateTime is 21 May 2001 14:13:09):
-NB. 
+NB.
 NB.     Format         Result
 NB. dd.MM.yyyy     21.05.2001
 NB. ddd MMMM d yy  Tue May 21 01

@@ -1,10 +1,11 @@
 
-require 'viewmat'
-
 coclass 'qtdemo'
 
 NB. =========================================================
 test1=: 3 : 0
+if. -. checkrequire_qtdemo_ 'viewmat';'graphics/viewmat' do. return. end.
+require 'viewmat'
+
 if. -. 'Android'-:UNAME do.
   viewmat i.5 5
   wd 'pmove ', ":(n=. ?100 100), _1 _1

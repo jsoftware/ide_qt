@@ -149,6 +149,14 @@ require 'pacman'
 )
 
 NB. =========================================================
+checkrequire=: 3 : 0
+'req install'=. y
+if. *./fexist getscripts_j_ req do. 1 return. end.
+sminfo 'To run this demo, first install: ',install
+0
+)
+
+NB. =========================================================
 notsupport=: 3 : 0
 sminfo 'This demo is not supported on ', UNAME, ' ', wd 'version'
 )

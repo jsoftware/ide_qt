@@ -1,7 +1,5 @@
-require 'gles'
 
 cocurrent 'demoshader'
-coinsert 'jgles'
 
 mp=: +/ . *
 sprog=: 0
@@ -13,6 +11,9 @@ rem form end;
 )
 
 a_run=: 3 : 0
+if. -. checkrequire_qtdemo_ 'gles';'api/gles' do. return. end.
+require 'gles'
+coinsert 'jgles'
 STEPS=: 100
 R=: 20 30 0
 EYE=: 0 0 1

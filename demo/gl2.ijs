@@ -1,12 +1,12 @@
 NB. run
 
-require 'gl2'
-
 coclass 'qtdemo'
-coinsert 'jgl2'
 
 NB. =========================================================
 gl2_run=: 3 : 0
+if. -. checkrequire 'gl2';'graphics/gl2' do. return. end.
+require 'gl2'
+coinsert 'jgl2'
 wd FORM
 wd 'pshow'
 glpaint''  NB. Android bug
@@ -87,4 +87,3 @@ glpixels 20 200 40 40,data
 )
 
 gl2_run''
-
