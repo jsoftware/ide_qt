@@ -1,7 +1,5 @@
 NB. table
 NB.
-NB. !!! this is experimental and *will* change...
-NB.
 NB. cover for the QTableWidget
 NB.
 NB. rows, cols are the data size
