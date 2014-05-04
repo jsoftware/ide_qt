@@ -34,7 +34,6 @@ quickwidget dquickwidget
 scrollarea dscrollarea
 shader dshader
 slider dslider
-sphere dsphere
 spinbox dspinbox
 split dsplit
 statusbar dstatusbar
@@ -119,7 +118,6 @@ dscrollarea=: load bind (jpath '~addons/ide/qt/demo/scrollarea.ijs')
 dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs')`notsupport@.(qtslim>'Android'-:UNAME)
 dslider=: load bind (jpath '~addons/ide/qt/demo/slider.ijs')
 dspinbox=: load bind (jpath '~addons/ide/qt/demo/spinbox.ijs')
-dsphere=: load bind (jpath '~addons/ide/qt/demo/sphere.ijs')`notsupport@.(qtslim+.'Android'-:UNAME)
 dsplit=: load bind (jpath '~addons/ide/qt/demo/split.ijs')
 dstatusbar=: load bind (jpath '~addons/ide/qt/demo/statusbar.ijs')
 dtable=: load bind (jpath '~addons/ide/qt/demo/table.ijs')
