@@ -111,9 +111,9 @@ dplot=: load bind (jpath '~addons/ide/qt/demo/plot.ijs')
 dprinter=: load bind (jpath '~addons/ide/qt/demo/printer.ijs')`notsupport@.('Android'-:UNAME)
 dprogressbar=: load bind (jpath '~addons/ide/qt/demo/progressbar.ijs')
 dpstyles=: load bind (jpath '~addons/ide/qt/demo/pstyles.ijs')
-dquickview1=: load bind (jpath '~addons/ide/qt/demo/quickview1.ijs')`notsupport@.((qtmajor=4)+.qtslim+.'Android'-:UNAME)
+dquickview1=: load bind (jpath '~addons/ide/qt/demo/quickview1.ijs')`notsupport@.((qtmajor=5)+.qtslim+.'Android'-:UNAME)
 dquickview2=: load bind (jpath '~addons/ide/qt/demo/quickview2.ijs')`notsupport@.((qtmajor=4)+.qtslim>'Android'-:UNAME)
-dquickwidget=: load bind (jpath '~addons/ide/qt/demo/quickwidget.ijs')`notsupport@.((qtslim+.'Android'-:UNAME)+.qtmajor=4)
+dquickwidget=: load bind (jpath '~addons/ide/qt/demo/quickwidget.ijs')`notsupport@.((qtmajor=4)+.qtslim+.'Android'-:UNAME)
 dscrollarea=: load bind (jpath '~addons/ide/qt/demo/scrollarea.ijs')
 dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs')`notsupport@.(qtslim>'Android'-:UNAME)
 dslider=: load bind (jpath '~addons/ide/qt/demo/slider.ijs')
@@ -144,6 +144,10 @@ qtdemo_addons_button=: 3 : 0
 require 'pacman'
 'update' jpkg ''
 'install' jpkg 'api/gles demos/wd'
+if. UNAME-:'Android' do.
+  require 'math/lapack'
+  install_jlapack_ ::0: ''
+end.
 )
 
 NB. =========================================================
