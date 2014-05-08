@@ -164,25 +164,23 @@ end.
 writeimg=: 4 : 0
 'h w'=. $x
 d=. ,x
-if. 2> #y=. boxopen y do.
-  f=. >@{.y
+f=. utf8 >@{.y
+type=. 'jpeg'
+opt=. ''
+quality=. _1
+if. 1= #y=. boxopen y do.
   type=. }. (}.~ i:&'.') f
-  opt=. ''
 elseif. 2= #y do.
-  f=. >@{.y
   type=. >1{y
-  opt=. ''
-elseif. do.
-  f=. utf8 >@{.y
+elseif. 3< #y do.
   type=. >1{y
   opt=. 2{.2}.y
-  opt=. (":&.>1{opt) 1}opt
 end.
 if. 'jpg'-:type do. type=. 'jpeg'
 elseif. 'tif'-:type do. type=. 'tiff'
 end.
 type=. toupper type
-if. ''-:opt do. quality=. _1 else. quality=. <. {. 0&".opt end.
+if. 'quality'-:>@{.opt do. quality=. <. >@{:opt end.
 d=. fliprgb^:(-.RGBSEQ_j_) d
 r=. wdwriteimg (2 ic d); (w,h); f; type; quality
 EMPTY
@@ -190,19 +188,20 @@ EMPTY
 putimg=: 4 : 0
 'h w'=. $x
 d=. ,x
-if. 2> #y=. boxopen y do.
+type=. 'jpeg'
+opt=. ''
+quality=. _1
+if. 1= #y=. boxxopen y do.
   type=. >@{.y
-  opt=. ''
-elseif. do.
+elseif. 2< #y do.
   type=. >@{.y
   opt=. 2{.}.y
-  opt=. (":&.>1{opt) 1}opt
 end.
 if. 'jpg'-:type do. type=. 'jpeg'
 elseif. 'tif'-:type do. type=. 'tiff'
 end.
 type=. toupper type
-if. ''-:opt do. quality=. _1 else. quality=. <. {. 0&".opt end.
+if. 'quality'-:>@{.opt do. quality=. <. >@{:opt end.
 d=. fliprgb^:(-.RGBSEQ_j_) d
 m=. wdputimg (2 ic d); (w,h); (len=. ,_1); type; quality
 if. m do.
