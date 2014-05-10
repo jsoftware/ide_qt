@@ -6,7 +6,7 @@ sprog=: 0
 
 A=: 0 : 0
 pc a;
-minwh 300 300;cc g opengl flush;
+minwh 300 300;cc g opengl version 2.0 flush;
 rem form end;
 )
 
@@ -24,6 +24,7 @@ LR=: UD=: IO=: 0
 UP=: 0 1 0
 wd A
 wd 'pshow'
+wd 'set g timer 100'
 )
 
 a_g_initialize=: 3 : 0
@@ -65,6 +66,11 @@ STEPS=: 200 <. STEPS + 's' = k
 STEPS=: 3 >. STEPS - 'a' = k
 LR=: LR - 0.01*'l'=k
 LR=: LR + 0.01*'r'=k
+gl_paintx''
+)
+
+a_g_timer=: 3 : 0
+R=: 360 | R + 2 * 1 1 1
 gl_paintx''
 )
 
