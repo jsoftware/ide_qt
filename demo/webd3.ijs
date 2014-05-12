@@ -20,9 +20,9 @@ h=. h,'<script type="text/javascript" src="',D3,'" charset="utf-8"></script>',LF
 h=. h,'<style>',s,'</style>',LF
 h=. h,'</head><body><script type="text/javascript">'
 m=. h,t,'</script></body></html>'
+wd 'pshow'
 wd 'set w baseurl *', file2url jpath '~addons'
 wd 'set w html *',m
-wd 'pshow'
 )
 
 NB. =========================================================
