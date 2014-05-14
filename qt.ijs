@@ -250,8 +250,7 @@ checkjqtversion''
 addons_msg=: 0 : 0
 The XX are not yet installed.
 
-To install, select menu Tools|Package Manager
-and install package YY.
+To install, select menu Tools|Package Manager and install package YY.
 )
 addons_missing=: 3 : 0
 'name addon script'=. y
@@ -286,7 +285,6 @@ if. addons_missing 'labs';'labs/labs';p do. return. end.
 require p
 lab_jlab_ y
 )
-
 
 helpcontext0=: 3 : 0
 require '~addons/ide/qt/help.ijs'

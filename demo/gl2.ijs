@@ -1,4 +1,4 @@
-NB. run
+NB. eric's gl2 demo
 
 coclass 'qtdemo'
 
@@ -7,12 +7,17 @@ gl2_run=: 3 : 0
 if. -. checkrequire 'gl2';'graphics/gl2' do. return. end.
 require 'gl2'
 coinsert 'jgl2'
+data=: ''
 wd FORM
 wd 'pshow'
-glpaint''  NB. Android bug
+NB. should not be needed on other platforms..
+if. IFJCDROID do.
+  glpaint''  NB. Android bug
+end.
 EMPTY
 )
 
+NB. =========================================================
 FORM=: 0 : 0
 pc demo closeok;pn "gl2 demo";
 minwh 450 350;
@@ -20,10 +25,10 @@ cc gs isigraph flush;
 )
 
 NB. =========================================================
-NB. eric's demo
 demo_gs_paint=: 3 : 0
 'w h'=: glqwh''
 NB. draw grid
+glfill 255 255 255
 glrgb 128 128 18
 glpen 0 0
 for_i. 50* i.>.h%50 do.
@@ -81,9 +86,20 @@ NB. ellipse
 glellipse 200 200 200 100
 
 NB. qpixels pixels
-data=: glqpixels 200 200 40 40
-smoutput 10{.data
-glpixels 20 200 40 40,data
+if. #data do.
+  glpixels 20 200 40 40,data
+else.
+  immexj 'getdata_qtdemo_$0'
+end.
 )
 
+NB. =========================================================
+getdata=: 3 : 0
+if. #data do. EMPTY return. end.
+data=: glqpixels 200 200 40 40
+smoutput 10{.data
+glpaint''
+)
+
+NB. =========================================================
 gl2_run''
