@@ -24,7 +24,7 @@ LR=: UD=: IO=: 0
 UP=: 0 1 0
 wd A
 wd 'pshow'
-wd 'set g timer 100'
+wd 'ptimer 100'
 )
 
 a_g_initialize=: 3 : 0
@@ -69,7 +69,7 @@ LR=: LR + 0.01*'r'=k
 gl_paintx''
 )
 
-a_g_timer=: 3 : 0
+a_timer=: 3 : 0
 R=: 360 | R + 2 * 1 1 1
 gl_paintx''
 )
