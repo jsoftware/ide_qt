@@ -10,6 +10,10 @@ NB. =========================================================
 quickview1=: 3 : 0
 wd 'pc quickview1'
 wd 'cc e edit'
+wd 'bin h'
+wd 'cc run button;cn "run"'
+wd 'cc view button;cn "View Source"'
+wd 'bin sz'
 wd 'set e text *', e=. jpath '~addons/ide/qt/demo/quick1.qml'
 wd 'pshow'
 )
@@ -17,6 +21,14 @@ wd 'pshow'
 NB. =========================================================
 quickview1_e_button=: 3 : 0
 wd 'quickview1 qv "', e ,'"'
+)
+
+NB. =========================================================
+quickview1_run_button=: quickview1_e_button
+
+NB. =========================================================
+quickview1_view_button=: 3 : 0
+textview e;1!:1 <e
 )
 
 NB. =========================================================

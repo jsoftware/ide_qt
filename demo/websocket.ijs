@@ -6,6 +6,7 @@ coclass 'qtdemo'
 
 wssvr_handler=: 3 : 0
 'evt sk'=. y
+smoutput _2]\ <;._2 wd ::empty 'ws state ',":sk
 if. evt = jws_onMessage do.
   try.
     r_jrx_=: ". wss0_jrx_
