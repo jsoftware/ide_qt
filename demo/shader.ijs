@@ -3,6 +3,7 @@ cocurrent 'demoshader'
 
 mp=: +/ . *
 sprog=: 0
+GLSL=: 0
 
 A=: 0 : 0
 pc a;
@@ -33,9 +34,18 @@ if. 0=p do. smoutput 'cannot retrieve GL_VERSION' return. end.
 if. p=. glGetString GL_VENDOR do. smoutput 'GL_VENDOR: ', memr 0 _1 2,~ p end.
 if. p=. glGetString GL_RENDERER do. smoutput 'GL_RENDERER: ', memr 0 _1 2,~ p end.
 if. p=. glGetString GL_SHADING_LANGUAGE_VERSION do. smoutput 'GL_SHADING_LANGUAGE_VERSION: ', memr 0 _1 2,~ p end.
+GLSL=: 100&#.@(2&{.)@(".;._2) '.',~ ({.~ i.&' ') dlb (memr 0 _1 2,~ p) -. a. -. '0123456789. '
 
 wglPROC''
 sprog=: 0
+if. GLSL>120 do.
+  vsrc=. '#version ',(":GLSL),LF,vsrc2
+  fsrc=. '#version ',(":GLSL),LF,fsrc2
+else.
+  vsrc=. '#version ',(":GLSL),LF,vsrc1
+  fsrc=. '#version ',(":GLSL),LF,fsrc1
+end.
+smoutput vsrc
 'err program'=. gl_makeprogram vsrc;fsrc
 if. #err do. smoutput err return. end.
 
@@ -185,7 +195,7 @@ colorData=: 1&fc , 0 1 1 1 1 0&{"2 ] 6 2 3$ , 0&". ;._2 [ 0 : 0
 )
 
 NB. =========================================================
-vsrc=: 0 : 0
+vsrc1=: 0 : 0
 attribute highp vec3 vertex;
 attribute lowp vec3 color;
 varying lowp vec4 v_color;
@@ -197,8 +207,29 @@ void main(void)
 }
 )
 
-fsrc=: 0 : 0
+fsrc1=: 0 : 0
 varying lowp vec4 v_color;
+void main(void)
+{
+  gl_FragColor = v_color;
+}
+)
+
+NB. =========================================================
+vsrc2=: 0 : 0
+in vec3 vertex;
+in vec3 color;
+out vec4 v_color;
+uniform mat4 mvp;
+void main(void)
+{
+  gl_Position = mvp * vec4(vertex,1.0);
+  v_color = vec4(color,1.0);
+}
+)
+
+fsrc2=: 0 : 0
+in vec4 v_color;
 void main(void)
 {
   gl_FragColor = v_color;
