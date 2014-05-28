@@ -34,7 +34,7 @@ if. 0=p do. smoutput 'cannot retrieve GL_VERSION' return. end.
 if. p=. glGetString GL_VENDOR do. smoutput 'GL_VENDOR: ', memr 0 _1 2,~ p end.
 if. p=. glGetString GL_RENDERER do. smoutput 'GL_RENDERER: ', memr 0 _1 2,~ p end.
 if. p=. glGetString GL_SHADING_LANGUAGE_VERSION do. smoutput 'GL_SHADING_LANGUAGE_VERSION: ', memr 0 _1 2,~ p end.
-GLSL=: 100&#.@(2&{.)@(".;._2) '.',~ ({.~ i.&' ') dlb (memr 0 _1 2,~ p) ([ -. -.) '0123456789. '
+GLSL=: wglGLSL''
 
 wglPROC''
 sprog=: 0
@@ -46,6 +46,7 @@ else.
   fsrc=. fsrc1
   if. 0=GL_ES_VERSION_2_0_jgles_ do.
     vsrc=. vsrc,~ '#define lowp', LF, '#define mediump', LF, '#define highp', LF
+    fsrc=. fsrc,~ '#define lowp', LF, '#define mediump', LF, '#define highp', LF
   end.
 end.
 vsrc=. '#version ',(":GLSL),LF,vsrc
