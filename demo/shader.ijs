@@ -25,7 +25,7 @@ LR=: UD=: IO=: 0
 UP=: 0 1 0
 wd A
 wd 'pshow'
-wd :: empty 'ptimer 100'
+wd 'ptimer 100'
 )
 
 a_g_initialize=: 3 : 0
