@@ -24,6 +24,7 @@ EYE=: 0 0 1
 LR=: UD=: IO=: 0
 UP=: 0 1 0
 wd A
+HD=: ".wd'qhwndc g'
 wd 'pshow'
 wd 'ptimer 100'
 )
@@ -88,6 +89,7 @@ gl_paintx''
 
 a_timer=: 3 : 0
 R=: 360 | R + 2 * 1 1 1
+gl_sel HD
 gl_paintx''
 )
 
