@@ -84,13 +84,13 @@ STEPS=: 200 <. STEPS + 's' = k
 STEPS=: 3 >. STEPS - 'a' = k
 LR=: LR - 0.01*'l'=k
 LR=: LR + 0.01*'r'=k
-gl_paintx''
+gl_paint''
 )
 
 a_timer=: 3 : 0
 R=: 360 | R + 2 * 1 1 1
 gl_sel HD
-gl_paintx''
+gl_paint''
 )
 
 a_g_paint=: 3 : 0
