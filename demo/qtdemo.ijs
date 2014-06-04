@@ -10,6 +10,12 @@ fexist=: 1:@(1!:4)@boxopen ::0:
 qtmajor=: 0 ". ({.~ i.&'.') '/s' -.~ (}.~ i.&'/') wd 'version'
 qtslim=: 's' e. wd 'version'
 
+win8x64=: 3 : 0''
+if. IFWIN *: IF64 do. 0 return. end.
+'w98 bld hi lo'=. 2 32768 256 256 #: 'kernel32 GetVersion > i' 15!:0 ''
+(hi>1)*.(lo>5)
+)
+
 TITLES=: maketitle 0 : 0
 controls dcontrols
 datetime ddatetime
@@ -115,7 +121,7 @@ dquickview1=: load bind (jpath '~addons/ide/qt/demo/quickview1.ijs')`notsupport@
 dquickview2=: load bind (jpath '~addons/ide/qt/demo/quickview2.ijs')`notsupport@.((qtmajor=4)+.qtslim>'Android'-:UNAME)
 dquickwidget=: load bind (jpath '~addons/ide/qt/demo/quickwidget.ijs')`notsupport@.((qtmajor=4)+.qtslim+.('Win'-:UNAME)+.'Android'-:UNAME)
 dscrollarea=: load bind (jpath '~addons/ide/qt/demo/scrollarea.ijs')
-dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs')`notsupport@.(qtslim>'Android'-:UNAME)
+dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs')`notsupport@.(win8x64+.(qtslim>'Android'-:UNAME))
 dslider=: load bind (jpath '~addons/ide/qt/demo/slider.ijs')
 dspinbox=: load bind (jpath '~addons/ide/qt/demo/spinbox.ijs')
 dsplit=: load bind (jpath '~addons/ide/qt/demo/split.ijs')
