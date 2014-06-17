@@ -7,7 +7,11 @@ NB. headers do not include the top left cell
 NB.
 NB. cell types:
 NB.  0   text
+NB.  10  multiline text
 NB.  100 checkbox
+NB.  200 combolist
+NB.  300 combobox
+NB.  400 button
 NB.
 NB. cell align:
 NB.  0 left
@@ -15,22 +19,35 @@ NB.  1 center
 NB.  2 right
 NB.
 NB. set parameters:
-NB.   data                 - ravelled data
+NB.   align                - alignment    (default left)
+NB.   background           - background color
+NB.   block                - block mode for set (align|background|colwidth|data|font|foreground|protect|rowheight|type)
+NB.                          row1 row2 col1 col2, for row2 and col2, _1 means last row or column
+NB.                          row col (one cell only)
+NB.   cell                 - cell data
+NB.   colwidth             - column width in pixels
+NB.   data                 - table data
+NB.   font                 - cell font
+NB.   foreground           - foreground color
 NB.   hdr                  - column headers
 NB.   lab                  - row labels
-NB.   cell row col value   - cell value
-NB.   block row col rows cols values  - block values
+NB.   protect              - if protected (default 0)
+NB.   rowheight            - row height in pixels
+NB.   type                 - cell type    (default 0)
+NB.   sort                 - column [ascending|descending] only applies to type 0
 NB.
 NB. following are singleton or one per column:
 NB.   hdralign  - column header align (make header first)
 NB.
-NB. following are singleton, one per column, or one per ravelled data:
-NB.   align - alignment   (default left)
-NB.   protect  - if protected (default 0)
-NB.   type  - cell type   (default 0)
-NB.
-NB. set size parameter - this resets the table:
+NB. set shape parameter - this resets the table:
 NB.   shape rows cols
+NB.
+NB. get commands
+NB.    cell row col - get contents of cell at row col
+NB.    row r        - get contents of row r
+NB.    col c        - get contents of column c
+NB.    table        - get block data as LF delimited string
+NB.                   optional arguments [row col] ro [row1 row2 col1 col2]
 
 coclass 'qtdemo'
 

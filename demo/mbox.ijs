@@ -10,8 +10,8 @@ NB.  critical  (default OK button)
 NB.  query     (requires two or three buttons, default is first given)
 NB.             note - display order is platform-dependent
 NB.
-NB. if 1 buttons, there is no result,
-NB. otherwise the result is the button numeric value
+NB. if 1 button, there is no result,
+NB. otherwise the result is the lowercase button label
 NB.
 NB. buttons (with numeric values) are from the set:
 NB.  0 mb_ok

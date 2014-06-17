@@ -1,44 +1,4 @@
 NB. table with combolists
-NB.
-NB. cover for the QTableWidget
-NB.
-NB. rows, cols are the data size
-NB. headers do not include the top left cell
-NB.
-NB. cell types:
-NB.  0   text
-NB.  100 checkbox
-NB.  200 combolist
-NB.  300 combobox
-NB.
-NB. cell align:
-NB.  0 left
-NB.  1 center
-NB.  2 right
-NB.
-NB. set parameters:
-NB.   data                 - ravelled data
-NB.   hdr                  - column headers
-NB.   lab                  - row labels
-NB.   type                 - cell type
-NB.   sort                 - column [ascending|descending] only applies to type 0
-NB.
-NB. following are singleton or one per column:
-NB.   hdralign  - column header align (make header first)
-NB.
-NB. following are singleton, one per column, or one per ravelled data:
-NB.   hdralign - alignment   (default left)
-NB.   protect  - if protected (default 0)
-NB.   type  - cell type   (default 0)
-NB.
-NB. set shape parameter - this resets the table:
-NB.   shape rows cols
-NB.
-NB. get commands
-NB.    cell row col - get contents of cell at row col
-NB.    row r        - get contents of row r
-NB.    col c        - get contents of column c
-NB.    table        - get entire table as LF delimited string
 
 coclass 'qtdemo'
 
