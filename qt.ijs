@@ -164,18 +164,18 @@ end.
 writeimg=: 4 : 0
 'h w'=. $x
 d=. ,x
-f=. utf8 >@{.y
+y=. boxopen y
+f=. > fboxname {. y
 type=. 'jpeg'
 opt=. ''
 quality=. _1
-if. 1= #y=. boxopen y do.
+if. 1= #y do.
   type=. }. (}.~ i:&'.') f
-elseif. 2= #y do.
-  type=. >1{y
-elseif. 3< #y do.
+else.
   type=. >1{y
   opt=. 2{.2}.y
 end.
+type=. tolower type
 if. 'jpg'-:type do. type=. 'jpeg'
 elseif. 'tif'-:type do. type=. 'tiff'
 end.
