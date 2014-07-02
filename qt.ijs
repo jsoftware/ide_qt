@@ -290,6 +290,11 @@ helpcontext0=: 3 : 0
 require '~addons/ide/qt/help.ijs'
 helpcontext y
 )
+
+helpcontext1=: 3 : 0
+require '~addons/ide/qt/help.ijs'
+helpcontext1 y
+)
 Qt_Key_Escape                 =: 16b00f800
 Qt_Key_Tab                    =: 16b00f801
 Qt_Key_Backtab                =: 16b00f802

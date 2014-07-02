@@ -1,7 +1,16 @@
 coclass 'jqtide'
 
-ContextHelp=: ,'jb'
+ContextHelp=: ,'j'
+ContextTarget=: 'dict'
 helpcontext=: 3 : 0
+ContextTarget=: 'dict'
+helpcontext_do y
+)
+helpcontext1=: 3 : 0
+ContextTarget=: 'nuvoc'
+helpcontext_do y
+)
+helpcontext_do=: 3 : 0
 ndx=. 2 { I. ' ' = 40 {. y
 'class bgn end'=. 0 ". ndx {. y
 txt=. (ndx+1) }. y
@@ -29,6 +38,9 @@ if. 2 = 3!:0 y do.
 else.
   ''
 end.
+)
+helpndx_nuvoc=: 3 : 0
+cname ,y
 )
 helppos=: 3 : 0
 'class pos txt'=. y
@@ -69,16 +81,18 @@ if. 0=#ContextHelp do. return. end.
 for_h. ,ContextHelp do.
   select. h
   case. 'j' do.
-    if. #ndx=. helpndx s do.
-      'dictionary/',ndx return.
+    if. ContextTarget -: 'dict' do.
+      if. #ndx=. helpndx s do.
+        'dictionary/',ndx return.
+      end.
+    else.
+      if. #ndx=. helpndx_nuvoc s do.
+        ndx return.
+      end.
     end.
   case. 'b' do.
     if. #n=. tagtag_jbaselibtag_ s do.
       htmlhelpbaselib tagfile_jbaselibtag_ {.n return.
-    end.
-  case. 'g' do.
-    if. #n=. tagtag_jgtkdoctag_ s do.
-      htmlhelpgtkdoc tagfile_jgtkdoctag_ {.n return.
     end.
   end.
 end.
@@ -101,6 +115,64 @@ htmlhelpbaselib=: 3 : 0
   end.
 ''
 )
+CBYTE=: 0 : 0
+=eq
+<lt
+>gt
+_under
++plus
+*star
+-minus
+%percent
+^hat
+$dollar
+~tilde
+|bar
+.dot
+:co
+,comma
+;semi
+#number
+!bang
+/slash
+\bslash
+[squarelf
+]squarert
+{curlylf
+}curlyrt
+(parenlf
+)parenrt
+'apostrophe
+"quote
+`grave
+@at
+&amp
+?query
+0zero
+1one
+2two
+3three
+4four
+5five
+6six
+7seven
+8eight
+9nine
+)
+
+cbyte=: (3 : 0)"0
+if.     y e. 'abcdefghijklmnopqrstuvwxyz' do. < y
+elseif. y e. 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' do. < 'cap' ,~ tolower y
+elseif. y e. CBYTE {~ I. 1 , }: LF=CBYTE  do. < }. LF taketo (CBYTE i. y) }. CBYTE
+elseif. do. ''
+end.
+)
+
+cname=: ; @: cbyte
+
+assert 'eq' 		-: cname '='
+assert 'eqco' 		-: cname '=:'
+assert 'ncapbcapdot' 	-: cname 'NB.'
 helperror=: 3 : 0
 0 return.
 )
