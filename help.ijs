@@ -40,7 +40,12 @@ else.
 end.
 )
 helpndx_nuvoc=: 3 : 0
-cname ,y
+top=. <,y
+if. top e. DICTNV do.
+  >DICTNVX {~ DICTNV i.top
+else.
+  ''
+end.
 )
 helppos=: 3 : 0
 'class pos txt'=. y
@@ -115,64 +120,6 @@ htmlhelpbaselib=: 3 : 0
   end.
 ''
 )
-CBYTE=: 0 : 0
-=eq
-<lt
->gt
-_under
-+plus
-*star
--minus
-%percent
-^hat
-$dollar
-~tilde
-|bar
-.dot
-:co
-,comma
-;semi
-#number
-!bang
-/slash
-\bslash
-[squarelf
-]squarert
-{curlylf
-}curlyrt
-(parenlf
-)parenrt
-'apostrophe
-"quote
-`grave
-@at
-&amp
-?query
-0zero
-1one
-2two
-3three
-4four
-5five
-6six
-7seven
-8eight
-9nine
-)
-
-cbyte=: (3 : 0)"0
-if.     y e. 'abcdefghijklmnopqrstuvwxyz' do. < y
-elseif. y e. 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' do. < 'cap' ,~ tolower y
-elseif. y e. CBYTE {~ I. 1 , }: LF=CBYTE  do. < }. LF taketo (CBYTE i. y) }. CBYTE
-elseif. do. ''
-end.
-)
-
-cname=: ; @: cbyte
-
-assert 'eq' 		-: cname '='
-assert 'eqco' 		-: cname '=:'
-assert 'ncapbcapdot' 	-: cname 'NB.'
 helperror=: 3 : 0
 0 return.
 )
@@ -339,3 +286,124 @@ _9: dconsf
 n=. j i.&> ' '
 DICT=: n {.each j
 DICTX=: (n+1) }.each j
+j=. <;._2 (0 : 0)
+= eq
+=. eqdot
+=: eqco
+< lt
+<. ltdot
+<: ltco
+> gt
+>. gtdot
+>: gtco
+_ under
+_. underdot
+_: underco
++ plus
++. plusdot
++: plusco
+* star
+*. stardot
+*: starco
+- minus
+-. minusdot
+-: minusco
+% percent
+%. percentdot
+%: percentco
+^ hat
+^. hatdot
+^: hatco
+$ dollar
+$. dollardot
+$: dollarco
+~ tilde
+~. tildedot
+~: tildeco
+| bar
+|. bardot
+|: barco
+. dot
+.. dotdot
+.: dotco
+: co
+:. codot
+:: coco
+, comma
+,. commadot
+,: commaco
+; semi
+;. semidot
+;: semico
+# number
+#. numberdot
+#: numberco
+! bang
+!. bangdot
+!: bangco
+/ slash
+/. slashdot
+/: slashco
+\ bslash
+\. bslashdot
+\: bslashco
+[ squarelf
+[: squarelfco
+] squarert
+{ curlylf
+{. curlylfdot
+{: curlylfco
+{:: curlylfcoco
+} curlyrt
+}. curlyrtdot
+}: curlyrtco
+" quote
+". quotedot
+": quoteco
+` grave
+`: graveco
+@ at
+@. atdot
+@: atco
+&. ampdot
+&.: ampdotco
+&: ampco
+? query
+?. querydot
+0: zeroco
+a. adot
+a: aco
+A. acapdot
+b. bdot
+C. ccapdot
+d. ddot
+D. dcapdot
+D: dcapco
+e. edot
+E. ecapdot
+f. fdot
+H. hcapdot
+i. idot
+i: ico
+I. icapdot
+j. jdot
+L. lcapdot
+L: lcapco
+M. mcapdot
+o. odot
+p. pdot
+p: pco
+q: qco
+r. rdot
+s: sco
+S: scapco
+t. tdot
+t: tco
+T. tcapdot
+u: uco
+x: xco
+)
+
+n=. j i.&> ' '
+DICTNV=: n {.each j
+DICTNVX=: (n+1) }.each j
