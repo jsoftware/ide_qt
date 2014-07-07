@@ -178,6 +178,7 @@ pmview_show''
 )
 pmview_selected=: 3 : 'PKGDATA #~ > {."1 PKGDATA'
 pmview_show=: 3 : 0
+wd 'psel pm'
 pmview_getmask ''
 sel=. IFSECTION pick Status;<SECTION
 wd 'set sel items ',todel sel
