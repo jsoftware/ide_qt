@@ -53,7 +53,7 @@ end.
 vsrc=. '#version ',(":GLSL),(' es'#~(GLSL>:300)*.0~:GL_ES_VERSION_2_0_jgles_),LF,vsrc
 fsrc=. '#version ',(":GLSL),(' es'#~(GLSL>:300)*.0~:GL_ES_VERSION_2_0_jgles_),LF,fsrc
 if.(GLSL>:300)*.0~:GL_ES_VERSION_2_0_jgles_ do.
-  frsc=. ('void main';'out vec4 gl_FragColor;',LF,'void main') stringreplace fsrc
+  fsrc=. ('void main';'out vec4 gl_FragColor;',LF,'void main') stringreplace fsrc
 end.
 smoutput vsrc
 smoutput fsrc
