@@ -116,17 +116,19 @@ dirmatch=: 3 : 'wd ''dirmatch '', ; dquote&.> 2 {. boxopen y'
 open=: 3 : 'wd ''openj *'' , > {. getscripts_j_ y'
 immexj=: [: wd 'immexj *'&,
 smact=: wd bind 'smact'
-getmd5=: 3 : 0
-gethash 'md5';,y
-)
 getsha1=: 3 : 0
-gethash 'sha1';,y
+gethash 'sha1';y
 )
 gethash=: 3 : 0
 't m'=. y
-c=. '"',libjqt,'" gethash ',(IFWIN#'+'),' n *c *c i * *i'
-'p n'=. 4 5 { c cd t;m;(#m);(,2);,0
-memr p,0,n
+m=. ,m
+c=. '"',libjqt,'" gethash ',(IFWIN#'+'),' i *c *c i * *i'
+'r t m w p n'=. c cd (tolower t);m;(#m);(,2);,0
+res=. memr p,0,n
+if. r do.
+  res (13!:8) 3
+end.
+res
 )
 textview=: 3 : 0
 if. 2=#p=. boxopen y do.
