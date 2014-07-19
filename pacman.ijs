@@ -339,7 +339,7 @@ SELNDX=: (0 ". sel_select) IFSECTION } SELNDX
 pmview_open=: 3 : 0
 if. 'Android'-:UNAME do.
   wd PMVIEW_S
-  wd 'set edlog wh _1 40'
+  wd 'set edlog wh _1 ', ":72*DM_density_ja_
 else.
   wd PMVIEW
 end.
