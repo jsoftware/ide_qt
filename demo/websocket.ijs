@@ -1,12 +1,13 @@
 NB. websocket
 NB.
-cocurrent 'z'
 
 coclass 'qtdemo'
 
 wssvr_handler=: 3 : 0
 'evt sk'=. y
-smoutput _2]\ <;._2 wd 'ws state ',":sk
+if. 5=qtmajor do.
+  smoutput _2]\ <;._2 wd 'ws state ',":sk
+end.
 if. evt = jws_onMessage do.
   try.
     r_jrx_=: ". wss0_jrx_
