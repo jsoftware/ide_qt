@@ -6,7 +6,7 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.1.31'
+VERSION=: '1.1.32'
 
 FILES=: 0 : 0
 debugs.ijs
