@@ -9,8 +9,9 @@ Qt development
 VERSION=: '1.1.31'
 
 FILES=: 0 : 0
-pacman.ijs
+debugs.ijs
 help.ijs
+pacman.ijs
 qt.ijs
 config/
 data/
