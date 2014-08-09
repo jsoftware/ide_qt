@@ -121,9 +121,11 @@ gethash 'sha1';y
 )
 gethash=: 3 : 0
 't m'=. y
-m=. ,m
+t gethash m
+:
+m=. ,y
 c=. '"',libjqt,'" gethash ',(IFWIN#'+'),' i *c *c i * *i'
-'r t m w p n'=. c cd (tolower t);m;(#m);(,2);,0
+'r t m w p n'=. c cd (tolower x);m;(#m);(,2);,0
 res=. memr p,0,n
 if. r do.
   res (13!:8) 3
