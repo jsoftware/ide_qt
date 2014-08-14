@@ -52,6 +52,13 @@ wd 'set ted stylesheet *background-color:#eeeeee'
 wd 'set ted text *How grand to be a Toucan',LF,'Just think what Toucan do.'
 wd 'pmove 400 10 300 300'
 wd 'pshow'
+NB. tooltip
+wd 'set names tooltip *tooltip for combobox'
+wd 'set list tooltip *tooltip for listbox'
+wd 'set ted tooltip *<font color="Red">tooltip</font> for <br> <br> <i>editm</i>'
+wd 'set ok tooltip *tooltip for button'
+NB. reset tooltip
+wd 'set ok tooltip'
 )
 
 NB. =========================================================
