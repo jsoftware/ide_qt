@@ -30,6 +30,7 @@ mbox dmbox
 mbdialog dmbdialog
 menu dmenu
 msgs dmsgs
+penstyles dpenstyles
 plot dplot
 printer dprinter
 progressbar dprogressbar
@@ -113,6 +114,7 @@ dmbox=: load bind (jpath '~addons/ide/qt/demo/mbox.ijs')
 dmbdialog=: load bind (jpath '~addons/ide/qt/demo/mbdialog.ijs')`notsupport@.('Android'-:UNAME)
 dmenu=: load bind (jpath '~addons/ide/qt/demo/menu.ijs')
 dmsgs=: load bind (jpath '~addons/ide/qt/demo/msgs.ijs')
+dpenstyles=: load bind (jpath '~addons/ide/qt/demo/penstyles.ijs')
 dplot=: load bind (jpath '~addons/ide/qt/demo/plot.ijs')
 dprinter=: load bind (jpath '~addons/ide/qt/demo/printer.ijs')`notsupport@.('Android'-:UNAME)
 dprogressbar=: load bind (jpath '~addons/ide/qt/demo/progressbar.ijs')
