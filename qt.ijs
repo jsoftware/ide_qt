@@ -639,32 +639,54 @@ NB gl2 on printer
 rpcinfinity=: 3 : 0
 <. 0 (I.(_=y)+.__=y)}y
 )
-glzarc=: ('"',libjqt,'" glzarc >',(IFWIN#'+'),' i *i') cd <
-glzbrush=: ('"',libjqt,'" glzbrush >',(IFWIN#'+'),' i')&cd bind ''
-glzbrushnull=: ('"',libjqt,'" glzbrushnull >',(IFWIN#'+'),' i')&cd bind ''
-glzclear=: ('"',libjqt,'" glzclear >',(IFWIN#'+'),' i')&cd bind ''
-glzclip=: ('"',libjqt,'" glzclip >',(IFWIN#'+'),' i *i') cd <
-glzclipreset=: ('"',libjqt,'" glzclipreset >',(IFWIN#'+'),' i')&cd bind ''
-glzcmds=: ('"',libjqt,'" glzcmds >',(IFWIN#'+'),' i *i i') cd (;#)@:rpcinfinity
-glzellipse=: ('"',libjqt,'" glzellipse >',(IFWIN#'+'),' i *i') cd <@:<.
-glzfont=: ('"',libjqt,'" glzfont >',(IFWIN#'+'),' i *c') cd <@,
-glzfont2=: ('"',libjqt,'" glzfont2 >',(IFWIN#'+'),' i *i i') cd (;#)@:<.
-glzfontangle=: ('"',libjqt,'" glzfontangle >',(IFWIN#'+'),' i i')&cd
-glzlines=: ('"',libjqt,'" glzlines >',(IFWIN#'+'),' i *i i') cd (;#)
-glznodblbuf=: ('"',libjqt,'" glznodblbuf >',(IFWIN#'+'),' i i') cd {.@(,&0)
-glzpen=: ('"',libjqt,'" glzpen >',(IFWIN#'+'),' i *i') cd <@:(2&{.)
-glzpie=: ('"',libjqt,'" glzpie >',(IFWIN#'+'),' i *i') cd <
-glzpixel=: ('"',libjqt,'" glzpixel >',(IFWIN#'+'),' i *i') cd <
-glzpixels=: ('"',libjqt,'" glzpixels >',(IFWIN#'+'),' i *i i') cd (;#)@:<.
-glzpixelsx=: ('"',libjqt,'" glzpixelsx >',(IFWIN#'+'),' i *i') cd <@:<.
-glzpolygon=: ('"',libjqt,'" glzpolygon >',(IFWIN#'+'),' i *i i') cd (;#)@:<.
-glzrect=: ('"',libjqt,'" glzrect >',(IFWIN#'+'),' i *i') cd <@:rpcinfinity
-glzrgb=: ('"',libjqt,'" glzrgb >',(IFWIN#'+'),' i *i') cd <@:<.
-glzrgba=: ('"',libjqt,'" glzrgba >',(IFWIN#'+'),' i *i') cd <@:<.
-glztext=: ('"',libjqt,'" glztext >',(IFWIN#'+'),' i *c') cd <@,
-glztextcolor=: ('"',libjqt,'" glztextcolor >',(IFWIN#'+'),' i')&cd bind ''
-glztextxy=: ('"',libjqt,'" glztextxy >',(IFWIN#'+'),' i *i') cd <@:<.
-glzwindoworg=: ('"',libjqt,'" glzwindoworg >',(IFWIN#'+'),' i *i') cd <@:<.
+
+chkgl2=: 13!:8@(3"_)^:(0&~:)
+glzarc=: chkgl2 @: (('"',libjqt,'" glzarc >',(IFWIN#'+'),' i *i') cd <)
+glzbrush=: chkgl2 @: (('"',libjqt,'" glzbrush >',(IFWIN#'+'),' i')&cd bind '')
+glzbrushnull=: chkgl2 @: (('"',libjqt,'" glzbrushnull >',(IFWIN#'+'),' i')&cd bind '')
+glzclear=: chkgl2 @: (('"',libjqt,'" glzclear >',(IFWIN#'+'),' i')&cd bind '')
+glzclip=: chkgl2 @: (('"',libjqt,'" glzclip >',(IFWIN#'+'),' i *i') cd <)
+glzclipreset=: chkgl2 @: (('"',libjqt,'" glzclipreset >',(IFWIN#'+'),' i')&cd bind '')
+glzcmds=: chkgl2 @: (('"',libjqt,'" glzcmds >',(IFWIN#'+'),' i *i i') cd (;#)@:rpcinfinity)
+glzellipse=: chkgl2 @: (('"',libjqt,'" glzellipse >',(IFWIN#'+'),' i *i') cd <@:<.)
+glzfill=: chkgl2 @: (('"',libjqt,'" glzfill >',(IFWIN#'+'),' i *i') cd <@:<.)
+glzfont=: chkgl2 @: (('"',libjqt,'" glzfont >',(IFWIN#'+'),' i *c') cd <@,)
+glzfont2=: chkgl2 @: (('"',libjqt,'" glzfont2 >',(IFWIN#'+'),' i *i i') cd (;#)@:<.)
+glzfontangle=: chkgl2 @: (('"',libjqt,'" glzfontangle >',(IFWIN#'+'),' i i')&cd)
+glzlines=: chkgl2 @: (('"',libjqt,'" glzlines >',(IFWIN#'+'),' i *i i') cd (;#))
+glznodblbuf=: chkgl2 @: (('"',libjqt,'" glznodblbuf >',(IFWIN#'+'),' i i') cd {.@(,&0))
+glzpen=: chkgl2 @: (('"',libjqt,'" glzpen >',(IFWIN#'+'),' i *i') cd <@:(2&{.))
+glzpie=: chkgl2 @: (('"',libjqt,'" glzpie >',(IFWIN#'+'),' i *i') cd <)
+glzpixel=: chkgl2 @: (('"',libjqt,'" glzpixel >',(IFWIN#'+'),' i *i') cd <)
+glzpixels=: chkgl2 @: (('"',libjqt,'" glzpixels >',(IFWIN#'+'),' i *i i') cd (;#)@:<.)
+glzpixelsx=: chkgl2 @: (('"',libjqt,'" glzpixelsx >',(IFWIN#'+'),' i *i') cd <@:<.)
+glzpolygon=: chkgl2 @: (('"',libjqt,'" glzpolygon >',(IFWIN#'+'),' i *i i') cd (;#)@:<.)
+glzrect=: chkgl2 @: (('"',libjqt,'" glzrect >',(IFWIN#'+'),' i *i') cd <@:rpcinfinity)
+glzrgb=: chkgl2 @: (('"',libjqt,'" glzrgb >',(IFWIN#'+'),' i *i') cd <@:<.)
+glzrgba=: chkgl2 @: (('"',libjqt,'" glzrgba >',(IFWIN#'+'),' i *i') cd <@:<.)
+glztext=: chkgl2 @: (('"',libjqt,'" glztext >',(IFWIN#'+'),' i *c') cd <@,)
+glztextcolor=: chkgl2 @: (('"',libjqt,'" glztextcolor >',(IFWIN#'+'),' i')&cd bind '')
+glztextxy=: chkgl2 @: (('"',libjqt,'" glztextxy >',(IFWIN#'+'),' i *i') cd <@:<.)
+glzwindoworg=: chkgl2 @: (('"',libjqt,'" glzwindoworg >',(IFWIN#'+'),' i *i') cd <@:<.)
+
+glzresolution=: chkgl2 @: (('"',libjqt,'" glzresolution >',(IFWIN#'+'),' i i')&cd)
+glzcolormode=: chkgl2 @: (('"',libjqt,'" glzcolormode >',(IFWIN#'+'),' i i')&cd)
+glzduplexmode=: chkgl2 @: (('"',libjqt,'" glzduplexmode >',(IFWIN#'+'),' i i')&cd)
+glzorientation=: chkgl2 @: (('"',libjqt,'" glzorientation >',(IFWIN#'+'),' i i')&cd)
+glzoutputformat=: chkgl2 @: (('"',libjqt,'" glzoutputformat >',(IFWIN#'+'),' i i')&cd)
+glzpageorder=: chkgl2 @: (('"',libjqt,'" glzpageorder >',(IFWIN#'+'),' i i')&cd)
+glzpapersize=: chkgl2 @: (('"',libjqt,'" glzpapersize >',(IFWIN#'+'),' i i')&cd)
+glzpapersource=: chkgl2 @: (('"',libjqt,'" glzpapersource >',(IFWIN#'+'),' i i')&cd)
+
+glzscale=: chkgl2 @: (('"',libjqt,'" glzscale >',(IFWIN#'+'),' i *f') cd <)
+
+glzabortdoc=: chkgl2 @: (('"',libjqt,'" glzabortdoc >',(IFWIN#'+'),' i')&cd bind '')
+glzenddoc=: chkgl2 @: (('"',libjqt,'" glzenddoc >',(IFWIN#'+'),' i')&cd bind '')
+glznewpage=: chkgl2 @: (('"',libjqt,'" glznewpage >',(IFWIN#'+'),' i')&cd bind '')
+glzprinter=: chkgl2 @: (('"',libjqt,'" glzprinter >',(IFWIN#'+'),' i *c') cd <@,)
+glzstartdoc=: chkgl2 @: (('"',libjqt,'" glzstartdoc >',(IFWIN#'+'),' i *c *c') cd 2: {. boxopen)
+
+glzinitprinter=: chkgl2 @: (('"',libjqt,'" glzinitprinter >',(IFWIN#'+'),' i')&cd bind '')
 
 glzqresolution=: ('"',libjqt,'" glzqresolution >',(IFWIN#'+'),' i')&cd bind ''
 glzqcolormode=: ('"',libjqt,'" glzqcolormode >',(IFWIN#'+'),' i')&cd bind ''
@@ -674,49 +696,30 @@ glzqoutputformat=: ('"',libjqt,'" glzqoutputformat >',(IFWIN#'+'),' i')&cd bind 
 glzqpageorder=: ('"',libjqt,'" glzqpageorder >',(IFWIN#'+'),' i')&cd bind ''
 glzqpapersize=: ('"',libjqt,'" glzqpapersize >',(IFWIN#'+'),' i')&cd bind ''
 glzqpapersource=: ('"',libjqt,'" glzqpapersource >',(IFWIN#'+'),' i')&cd bind ''
-
-glzresolution=: ('"',libjqt,'" glzresolution >',(IFWIN#'+'),' i i')&cd
-glzcolormode=: ('"',libjqt,'" glzcolormode >',(IFWIN#'+'),' i i')&cd
-glzduplexmode=: ('"',libjqt,'" glzduplexmode >',(IFWIN#'+'),' i i')&cd
-glzorientation=: ('"',libjqt,'" glzorientation >',(IFWIN#'+'),' i i')&cd
-glzoutputformat=: ('"',libjqt,'" glzoutputformat >',(IFWIN#'+'),' i i')&cd
-glzpageorder=: ('"',libjqt,'" glzpageorder >',(IFWIN#'+'),' i i')&cd
-glzpapersize=: ('"',libjqt,'" glzpapersize >',(IFWIN#'+'),' i i')&cd
-glzpapersource=: ('"',libjqt,'" glzpapersource >',(IFWIN#'+'),' i i')&cd
-
-glzscale=: ('"',libjqt,'" glzscale >',(IFWIN#'+'),' i *f') cd <
-
-glzabortdoc=: ('"',libjqt,'" glzabortdoc >',(IFWIN#'+'),' i')&cd bind ''
-glzenddoc=: ('"',libjqt,'" glzenddoc >',(IFWIN#'+'),' i')&cd bind ''
-glznewpage=: ('"',libjqt,'" glznewpage >',(IFWIN#'+'),' i')&cd bind ''
-glzprinter=: ('"',libjqt,'" glzprinter >',(IFWIN#'+'),' i *c') cd <@,
-glzstartdoc=: ('"',libjqt,'" glzstartdoc >',(IFWIN#'+'),' i *c *c') cd 2: {. boxopen
-
-glzinitprinter=: ('"',libjqt,'" glzinitprinter >',(IFWIN#'+'),' i')&cd bind ''
 glzqwh=: 3 : 0"1
 wh=. 2#1.1-1.1
-('"',libjqt,'" glzqwh >',(IFWIN#'+'),' i *f i') cd wh;y
+chkgl2 ('"',libjqt,'" glzqwh >',(IFWIN#'+'),' i *f i') cd wh;y
 wh
 )
 glzqmargins=: 3 : 0"1
 ltrb=. 4#1.1-1.1
-('"',libjqt,'" glzqmargins >',(IFWIN#'+'),' i *f i') cd ltrb;y
+chkgl2 ('"',libjqt,'" glzqmargins >',(IFWIN#'+'),' i *f i') cd ltrb;y
 ltrb
 )
 glzqextent=: 3 : 0"1
 wh=. 2#2-2
-('"',libjqt,'" glzqextent >',(IFWIN#'+'),' i *c *i') cd (,y);wh
+chkgl2 ('"',libjqt,'" glzqextent >',(IFWIN#'+'),' i *c *i') cd (,y);wh
 wh
 )
 glzqextentw=: 3 : 0"1
 y=. y,(LF~:{:y)#LF [ y=. ,y
 w=. (+/LF=y)#2-2
-('"',libjqt,'" glzqextentw >',(IFWIN#'+'),' i *c *i') cd y;w
+chkgl2 ('"',libjqt,'" glzqextentw >',(IFWIN#'+'),' i *c *i') cd y;w
 w
 )
 glzqtextmetrics=: 3 : 0"1
 tm=. 7#2-2
-('"',libjqt,'" glzqtextmetrics >',(IFWIN#'+'),' i *i') cd <tm
+chkgl2 ('"',libjqt,'" glzqtextmetrics >',(IFWIN#'+'),' i *i') cd <tm
 tm
 )
 QPrinter_Color=: 1
