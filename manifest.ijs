@@ -6,12 +6,14 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.1.37'
+VERSION=: '1.1.38'
 
 FILES=: 0 : 0
 debugs.ijs
 help.ijs
+keys.ijs
 pacman.ijs
+printer.ijs
 qt.ijs
 config/
 data/
