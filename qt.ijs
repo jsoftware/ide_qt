@@ -56,6 +56,12 @@ if. r do.
 end.
 res
 )
+gridindex=: 3 : 0
+'rws cls sel ndx shp'=. y
+d=. (sel,rws,cls) |: i.shp
+r=. (sel{shp),(*/rws{shp),*/cls{shp
+,(<ndx) { r ($,) d
+)
 showevents=: 3 : 0
 select. {. y,1
 case. 0 do.
