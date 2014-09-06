@@ -371,7 +371,7 @@ jdb_f5ctrlshift_fkey=: jdebug_runjdb_next
 jdb_f6_fkey=: jdebug_stepinto_button
 jdb_f7_fkey=: jdebug_stepover_button
 jdb_f8_fkey=: jdebug_stepout_button
-jdb_f9_fkey=: jdbmain_stopline_button
+jdb_f9_fkey=: jdebug_stopline_button
 jdb_f9ctrlshift_fkey=: jdebug_clearstops
 jdb_swapfkey=: 3 : 0
 if. TABCURRENT -: 'jdbmain' do.
