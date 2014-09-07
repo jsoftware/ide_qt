@@ -152,7 +152,11 @@ qtdemo_addons_button=: 3 : 0
 require 'pacman'
 'update' jpkg ''
 'install' jpkg 'api/gles demos/wd'
-if. UNAME-:'Android' do.
+if. IFWIN do.
+  require 'arc/zip'
+  install_jzlib_ ::0: ''
+  load 'arc/zip'
+elseif. UNAME-:'Android' do.
   require 'math/lapack'
   install_jlapack_ ::0: ''
 end.
