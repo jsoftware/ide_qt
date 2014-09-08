@@ -5,7 +5,7 @@ coclass 'qtdemo'
 
 NB. =========================================================
 grid=: 3 : 0
-wd 'pc grid'
+wd 'pc grid;pn "Grid Layout"'
 wd 'bin vhg'
 wd 'grid size 2 3'
 wd 'grid colwidth 1 200'
