@@ -2,13 +2,14 @@ NB. printer demo
 NB.
 NB. need the bmp
 
-require' graphics/bmp'
-
 coclass 'qtdemo'
+require 'ide/qt/printer'
 coinsert 'qtprinter'
 
 NB. =========================================================
 printer_run=: 3 : 0
+if. -. checkrequire 'bmp';'graphics/bmp' do. return. end.
+require 'bmp'
 if. 0= #y do.
   p=. wd 'mb print'
 else.

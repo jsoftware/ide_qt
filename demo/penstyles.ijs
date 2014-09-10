@@ -1,7 +1,5 @@
 NB. pen styles demo
 
-require 'gl2'
-
 coclass 'qtdemo'
 coinsert 'jgl2'
 
@@ -17,6 +15,9 @@ Dash Dot Dot Line
 
 NB. =========================================================
 penstyle_run=: 3 : 0
+if. -. checkrequire 'gl2';'graphics/gl2' do. return. end.
+require 'gl2'
+coinsert 'jgl2'
 wd 'pc penstyle escclose closeok'
 wd 'pn Pen Styles'
 wd 'minwh 400 270'

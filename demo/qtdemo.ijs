@@ -78,7 +78,10 @@ rem form end;
 NB. =========================================================
 qtdemo_run=: 3 : 0
 wd QTDEMO
-wd 'set static1 text *Select a Qt demo from the list below:'
+t=. 'Select a Qt demo from the list below.',LF2
+t=. t,'Click "install addons" to install the addons',LF
+t=. t,'needed for the demos.'
+wd 'set static1 text *',t
 wd 'set listbox items ',;DEL,each ({."1 TITLES),each DEL
 wd 'set listbox select 0'
 wd 'setfocus listbox'
@@ -151,15 +154,8 @@ NB. =========================================================
 qtdemo_addons_button=: 3 : 0
 require 'pacman'
 'update' jpkg ''
-'install' jpkg 'api/gles demos/wd'
-if. IFWIN do.
-  require 'arc/zip'
-  install_jzlib_ ::0: ''
-  load 'arc/zip'
-elseif. UNAME-:'Android' do.
-  require 'math/lapack'
-  install_jlapack_ ::0: ''
-end.
+'install' jpkg 'api/gles graphics/bmp graphics/gl2 graphics/plot graphics/viewmat'
+smoutput 'All Qt demo addons installed.'
 )
 
 NB. =========================================================

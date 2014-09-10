@@ -2,6 +2,7 @@ NB. websocket
 NB.
 
 coclass 'qtdemo'
+coinsert 'jqtide'
 
 wssvr_handler=: 3 : 0
 'evt sk'=. y
