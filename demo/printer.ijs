@@ -110,5 +110,5 @@ smoutput wd 'qprinters'
 printer_run''
 smoutput 0 : 0
 Try:
-  printer_run_qtdemo_ 'PDF'  NB. or name of your prniter
+  printer_run_qtdemo_ 'PDF'  NB. or name of your printer
 )
