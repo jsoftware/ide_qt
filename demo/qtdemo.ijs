@@ -10,6 +10,13 @@ fexist=: 1:@(1!:4)@boxopen ::0:
 qtmajor=: 0 ". ({.~ i.&'.') '/s' -.~ (}.~ i.&'/') wd 'version'
 qtslim=: 's' e. wd 'version'
 
+rundemo=: 1 : 0
+load bind ('~addons/ide/qt/demo/','.ijs',~m)
+)
+
+SOH=: 1{a.
+toSOH=: [:;(SOH,~":)each
+
 win8x64=: 3 : 0''
 if. IFWIN *: IF64 do. 0 return. end.
 'w98 bld hi lo'=. 2 32768 256 256 #: 'kernel32 GetVersion > i' 15!:0 ''
@@ -27,6 +34,8 @@ gl2 dgl2
 grid_layout dgrid
 ide dide
 image dimage
+isigrid disigrid
+isigrid2 disigrid2
 mbox dmbox
 mbdialog dmbdialog
 menu dmenu
@@ -104,45 +113,47 @@ qtdemo_enter=: qtdemo_ok_button=: qtdemo_listbox_button
 qtdemo_cancel_button=: qtdemo_close
 
 NB. =========================================================
-dcontrols=: load bind (jpath '~addons/ide/qt/demo/controls.ijs')
-ddatetime=: load bind (jpath '~addons/ide/qt/demo/datetime.ijs')
-dedit=: load bind (jpath '~addons/ide/qt/demo/edit.ijs')
-dedith=: load bind (jpath '~addons/ide/qt/demo/edith.ijs')
-deditm=: load bind (jpath '~addons/ide/qt/demo/editm.ijs')
-dgl2=: load bind (jpath '~addons/ide/qt/demo/gl2.ijs')
-dgrid=: load bind (jpath '~addons/ide/qt/demo/grid.ijs')
-dide=: load bind (jpath '~addons/ide/qt/demo/ide.ijs')`notsupport@.('Android'-:UNAME)
-dimage=: load bind (jpath '~addons/ide/qt/demo/image.ijs')
-dmbox=: load bind (jpath '~addons/ide/qt/demo/mbox.ijs')
-dmbdialog=: load bind (jpath '~addons/ide/qt/demo/mbdialog.ijs')`notsupport@.('Android'-:UNAME)
-dmenu=: load bind (jpath '~addons/ide/qt/demo/menu.ijs')
-dmsgs=: load bind (jpath '~addons/ide/qt/demo/msgs.ijs')
-dpenstyles=: load bind (jpath '~addons/ide/qt/demo/penstyles.ijs')
-dplot=: load bind (jpath '~addons/ide/qt/demo/plot.ijs')
-dprinter=: load bind (jpath '~addons/ide/qt/demo/printer.ijs')`notsupport@.('Android'-:UNAME)
-dprogressbar=: load bind (jpath '~addons/ide/qt/demo/progressbar.ijs')
-dpstyles=: load bind (jpath '~addons/ide/qt/demo/pstyles.ijs')
-dquickview1=: load bind (jpath '~addons/ide/qt/demo/quickview1.ijs')`notsupport@.((qtmajor=5)+.qtslim+.'Android'-:UNAME)
-dquickview2=: load bind (jpath '~addons/ide/qt/demo/quickview2.ijs')`notsupport@.((qtmajor=4)+.qtslim>'Android'-:UNAME)
-dquickwidget=: load bind (jpath '~addons/ide/qt/demo/quickwidget.ijs')`notsupport@.((qtmajor=4)+.qtslim+.('Win'-:UNAME)+.'Android'-:UNAME)
-dscrollarea=: load bind (jpath '~addons/ide/qt/demo/scrollarea.ijs')
-dshader=: load bind (jpath '~addons/ide/qt/demo/shader.ijs')`notsupport@.(win8x64+.(qtslim>'Android'-:UNAME))
-dslider=: load bind (jpath '~addons/ide/qt/demo/slider.ijs')
-dspinbox=: load bind (jpath '~addons/ide/qt/demo/spinbox.ijs')
-dsplit=: load bind (jpath '~addons/ide/qt/demo/split.ijs')
-dstatusbar=: load bind (jpath '~addons/ide/qt/demo/statusbar.ijs')
-dtable=: load bind (jpath '~addons/ide/qt/demo/table.ijs')
-dtable2=: load bind (jpath '~addons/ide/qt/demo/table2.ijs')
-dtable3=: load bind (jpath '~addons/ide/qt/demo/table3.ijs')
-dtabs=: load bind (jpath '~addons/ide/qt/demo/tabs.ijs')
-dtimer=: load bind (jpath '~addons/ide/qt/demo/timer.ijs')`notsupport@.('Android'-:UNAME)
-dtoolbar=: load bind (jpath '~addons/ide/qt/demo/toolbar.ijs')
-dtoolbarv=: load bind (jpath '~addons/ide/qt/demo/toolbarv.ijs')
-dviewmat=: load bind (jpath '~addons/ide/qt/demo/viewmat.ijs')
-dwebd3=: load bind (jpath '~addons/ide/qt/demo/webd3.ijs')`notsupport@.(qtslim+.'Android'-:UNAME)
-dwebsocket=: load bind (jpath '~addons/ide/qt/demo/websocket.ijs')`notsupport@.(qtslim>'Android'-:UNAME)
-dwebsocketclient=: load bind (jpath '~addons/ide/qt/demo/websocketclient.ijs')`notsupport@.(qtslim>'Android'-:UNAME)
-dwebview=: load bind (jpath '~addons/ide/qt/demo/webview.ijs')`notsupport@.(qtslim+.'Android'-:UNAME)
+dcontrols=: 'controls' rundemo
+ddatetime=: 'datetime' rundemo
+dedit=: 'edit' rundemo
+dedith=: 'edith' rundemo
+deditm=: 'editm' rundemo
+dgl2=: 'gl2' rundemo
+dgrid=: 'grid' rundemo
+dide=: 'ide' rundemo`notsupport@.('Android'-:UNAME)
+dimage=: 'image' rundemo
+disigrid=: 'isigrid' rundemo
+disigrid2=: 'isigrid2' rundemo
+dmbox=: 'mbox' rundemo
+dmbdialog=: 'mbdialog' rundemo`notsupport@.('Android'-:UNAME)
+dmenu=: 'menu' rundemo
+dmsgs=: 'msgs' rundemo
+dpenstyles=: 'penstyles' rundemo
+dplot=: 'plot' rundemo
+dprinter=: 'printer' rundemo`notsupport@.('Android'-:UNAME)
+dprogressbar=: 'progressbar' rundemo
+dpstyles=: 'pstyles' rundemo
+dquickview1=: 'quickview1' rundemo`notsupport@.((qtmajor=5)+.qtslim+.'Android'-:UNAME)
+dquickview2=: 'quickview2' rundemo`notsupport@.((qtmajor=4)+.qtslim>'Android'-:UNAME)
+dquickwidget=: 'quickwidget' rundemo`notsupport@.((qtmajor=4)+.qtslim+.('Win'-:UNAME)+.'Android'-:UNAME)
+dscrollarea=: 'scrollarea' rundemo
+dshader=: 'shader' rundemo`notsupport@.(win8x64+.(qtslim>'Android'-:UNAME))
+dslider=: 'slider' rundemo
+dspinbox=: 'spinbox' rundemo
+dsplit=: 'split' rundemo
+dstatusbar=: 'statusbar' rundemo
+dtable=: 'table' rundemo
+dtable2=: 'table2' rundemo
+dtable3=: 'table3' rundemo
+dtabs=: 'tabs' rundemo
+dtimer=: 'timer' rundemo`notsupport@.('Android'-:UNAME)
+dtoolbar=: 'toolbar' rundemo
+dtoolbarv=: 'toolbarv' rundemo
+dviewmat=: 'viewmat' rundemo
+dwebd3=: 'webd3' rundemo`notsupport@.(qtslim+.'Android'-:UNAME)
+dwebsocket=: 'websocket' rundemo`notsupport@.(qtslim>'Android'-:UNAME)
+dwebsocketclient=: 'websocketclient' rundemo`notsupport@.(qtslim>'Android'-:UNAME)
+dwebview=: 'webview' rundemo`notsupport@.(qtslim+.'Android'-:UNAME)
 
 NB. =========================================================
 qtdemo_view_button=: 3 : 0
