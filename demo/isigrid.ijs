@@ -19,7 +19,6 @@ HdrMerge=. 9 4 3 3 3 3,14#1
 lab=. 'France';'Germany';'Italy';''
 Lab=. lab , city
 LabMerge=. 3 5 2 1,(#city)#1
-wd FormHeader
 wd 'cc g isigrid'
 wd 'set g shape ',":Rws,Cls
 wd 'set g hdr ',toLF Hdr

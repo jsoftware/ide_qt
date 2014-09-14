@@ -102,7 +102,7 @@ load p
 )
 demowd=: 3 : 0
 p=. jpath '~addons/demos/wd/demos.ijs'
-if. addons_missing 'wd demos';'demos/wd';p do. return. end.
+if. addons_missing 'Showcase demos';'demos/wd';p do. return. end.
 load p
 )
 labs_run=: 3 : 0
