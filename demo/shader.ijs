@@ -25,8 +25,8 @@ LR=: UD=: IO=: 0
 UP=: 0 1 0
 wd A
 HD=: ".wd'qhwndc g'
-wd 'pshow'
 wd 'ptimer 100'
+wd 'pshow'
 )
 
 a_g_initialize=: 3 : 0

@@ -200,6 +200,17 @@ d=. fliprgb^:(-.RGBSEQ_j_) d
 r=. wdwriteimg (2 ic d); (w,h); f; type; quality
 EMPTY
 )
+evtloop=: ('"',libjqt,'" evtloop >',(IFWIN#'+'),' n')&cd bind ''
+state_run=: ('"',libjqt,'" state_run >',(IFWIN#'+'),' i i x *c i x x')&cd
+qapplication=: 3 : 0
+if. (UNAME-:'Linux') *. (0;'') e.~ <2!:5 'DISPLAY' do. _1 return. end.
+if. 1-.@-:y do. state_run 0;0;'';FHS;0;0 return. end.
+if. (0~:4!:0<'HJDLL_z_')+.(0~:4!:0<'JT_z_') do. HJDLL=. JT=. 0 end.
+if. (0=HJDLL)+.(0=JT) do. HJDLL=. JT=. 0 end.
+if. 0~: state_run 0;0;'';FHS;HJDLL;JT do. _1 return. end.
+IFQTC_z_=: 1
+0
+)
 cocurrent 'z'
 wd=: 3 : 0"1
 'r c l p n'=. wd1 (,y);(#,y);(,2);(,0)
@@ -315,6 +326,8 @@ clipwrite=: clipwrite_jqtide_
 getsha1=: getsha1_jqtide_
 gethash=: gethash_jqtide_
 textview=: textview_jqtide_
+evtloop=: evtloop_jqtide_
+qapplication=: qapplication_jqtide_
 coclass 'jqtide'
 JQTREQ=: '1.1.5'
 JQTMSG=: 0 : 0
