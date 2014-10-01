@@ -36,6 +36,7 @@ ide dide
 image dimage
 isigrid disigrid
 isigrid2 disigrid2
+jd_server djdserver
 mbox dmbox
 mbdialog dmbdialog
 menu dmenu
@@ -124,6 +125,7 @@ dide=: 'ide' rundemo`notsupport@.('Android'-:UNAME)
 dimage=: 'image' rundemo
 disigrid=: 'isigrid' rundemo
 disigrid2=: 'isigrid2' rundemo
+djdserver=: 'jdserver' rundemo`notsupport@.(-.IF64)
 dmbox=: 'mbox' rundemo
 dmbdialog=: 'mbdialog' rundemo`notsupport@.('Android'-:UNAME)
 dmenu=: 'menu' rundemo
