@@ -18,11 +18,8 @@ jdb_isparent=: wdisparent f.
 jdb_datatype=: datatype f.
 jdb_smact=: jdb_wd bind 'sm act'
 jdb_smoutput=: 0 0&$@(1!:2&2)
-jdb_wd=: wd f.
-jdb_wd=: 3 : 0
-LASTWD__=: y
-wd y
-)
+jdb_wdforms=: <;._2;._2@jdb_wd@('qpx'"_)
+jdb_wd1=: wd1 f.
 jdb_dbs=: 13!:1
 jdb_dbsq=: 13!:2
 jdb_dbss=: 13!:3
@@ -166,6 +163,12 @@ if. 2=#$b=. ":b do. b=. }.,LF,.b end.
 f=. DEL&, @ (,&DEL) @ -.&(0 127{a.)
 empty jdb_wd 'mb info ',(f a),' ',(f b)
 )
+jdb_isgui=: 3 : 0
+if. 0 e. $HWNDP do. 0 return. end.
+f=. jdb_wdforms''
+if. 0 e. $f do. 0 return. end.
+(<HWNDP) e. 1{"1 f
+)
 jdb_listboxed=: }. @; @: (LF&, &.>)
 jdb_listmatrix=: [: }. [: , LF&,.
 jdb_lxsoff=: 13!:15 @ (''"_)
@@ -220,6 +223,19 @@ if. '_' = {: y do.
   y {.~ (}:y) i: '_'
 else.
   y
+end.
+)
+jdb_wd=: 3 : 0"1
+'r c l p n'=. jdb_wd1 (,y);(#,y);(,2);(,0)
+select. r
+case. 0 do.
+  EMPTY
+case. _1 do.
+  (15!:1) p,0,n
+case. _2 do.
+  _2 [\ <;._2 (15!:1) p,0,n
+case. do.
+  (jdb_wd ::(''"_) 'qer') (13!:8) 3
 end.
 )
 jdb_validname=: 3 : 0
@@ -328,12 +344,12 @@ end.
 jdb_lxson''
 )
 jdb_close=: 3 : 0
-if. #HWNDP do.
+if. jdb_isgui'' do.
   jdb_wd 'psel ',HWNDP
   WINPOS=: 0 ". jdb_wd 'qform'
   jdb_wd 'pclose'
-  HWNDP=: ''
 end.
+HWNDP=: ''
 jdb_lxsoff ''
 jdb_imxss 0
 jdb_imxs ''
@@ -354,50 +370,48 @@ end.
 j=. 0 : 0
 Enter             !single step over
 F5~~~~~~~~        !run
-Ctrl+Shift+F5     !run from next sentence
+Ctrl+Shift+F5     !run from next line
 F6~~~~~~~~        !single step into
 F7~~~~~~~~        !single step over
 F8~~~~~~~~        !step out of current definition
 F9~~~~~~~~        !toggle stop on cursor line
-Ctrl+F9           !toggle stops on current definition
 Ctrl+Shift+F9     !remove all stops
 Ctrl+T            !toggle topmost attribute
 Ctrl+W            !write current line to session
 )
 
 SHORTCUTS=: ' ' (I. j='~') } TAB (I. j='!')} j
-jdb_f5_fkey=: jdebug_run_button
-jdb_f5ctrlshift_fkey=: jdebug_runjdb_next
-jdb_f6_fkey=: jdebug_stepinto_button
-jdb_f7_fkey=: jdebug_stepover_button
-jdb_f8_fkey=: jdebug_stepout_button
-jdb_f9_fkey=: jdebug_stopline_button
-jdb_f9ctrlshift_fkey=: jdebug_clearstops
 jdb_swapfkey=: 3 : 0
+jdebug_f5_fkey=: ]
+jdebug_f6_fkey=: ]
+jdebug_f7_fkey=: ]
+jdebug_f8_fkey=: ]
+jdebug_f9_fkey=: ]
+jdebug_f5ctrlshift_fkey=: ]
+jdebug_f9ctrlshift_fkey=: ]
 if. TABCURRENT -: 'jdbmain' do.
-  jdebug_f5_fkey=: jdb_f5_fkey
-  jdebug_f6_fkey=: jdb_f6_fkey
-  jdebug_f7_fkey=: jdb_f7_fkey
-  jdebug_f8_fkey=: jdb_f8_fkey
-  jdebug_f9_fkey=: jdb_f9_fkey
-  jdebug_f5ctrlshift_fkey=: jdb_f5ctrlshift_fkey
-  jdebug_f9ctrlshift_fkey=: jdb_f9ctrlshift_fkey
-  jdebug_f12_fkey=: jdb_f12_fkey
-  jdebug_f12shift_fkey=: jdb_f12shift_fkey
-else.
-  jdebug_f5_fkey=: ]
-  jdebug_f6_fkey=: ]
-  jdebug_f7_fkey=: ]
-  jdebug_f8_fkey=: ]
-  jdebug_f9_fkey=: ]
-  jdebug_f5ctrlshift_fkey=: ]
-  jdebug_f9ctrlshift_fkey=: ]
+  jdebug_f5_fkey=: jdebug_run_button
+  jdebug_f6_fkey=: jdebug_stepinto_button
+  jdebug_f7_fkey=: jdebug_stepover_button
+  jdebug_f8_fkey=: jdebug_stepout_button
+  jdebug_f9_fkey=: jdbmain_stopline_button
+  jdebug_f5ctrlshift_fkey=: jdebug_runnext
+  jdebug_f9ctrlshift_fkey=: jdebug_clearstops
+elseif. TABCURRENT -: 'jdbstop' do.
+  jdebug_f9_fkey=: jdbstop_stopline_button
 end.
 0
 )
 jdb_debug=: 3 : 0
 
 jdb_lxsoff''
+
+if. -. jdb_isgui'' do.
+  13!:15''
+  13!:0[0
+  HWNDP=: ''
+  return.
+end.
 
 stack=. jdb_getstack''
 if. 0 e. #stack do.
@@ -452,7 +466,6 @@ SCROLL=: 0 >. (NUMLINES - 6) <. MOVELINE - 2
 1 jdb_writelines lines
 jdb_wd 'set stack text *',jdb_listboxed stack
 jdb_wd 'set value text *',jdb_listboxed values
-jdb_minsize''
 jdb_wd 'pactive'
 )
 EX2=: '1234' ;&,&> ':'
@@ -621,7 +634,7 @@ if. type -: 'boxed' do.
 end.
 
 dat=. x,LF,LF,tag,LF,LF,dat
-s=. {:a.
+s=. 1{a.
 jdb_wd 'textview *',s,'view',s,s,dat
 )
 TIDS=: ' ' ,. 'nacvd' ,. ' '
@@ -772,11 +785,24 @@ astop=. (astop < numlines) # astop
 ustop=. (ustop < numlines) # ustop
 '*' ustop} '|' astop} numlines # ' '
 )
+jdb_stoponall=: 4 : 0
+nam=. {. jdb_boxxopen y
+jdb_stopread ''
+sel=. x
+if. sel=2 do.
+  sel=. -. (nam,1;1) e. 3 {."1 STOPS
+end.
+STOPS=: STOPS #~ nam ~: {."1 STOPS
+if. sel do.
+  STOPS=: STOPS, nam,1;1;'';''
+end.
+jdb_stopwrite ''
+)
 jdb_stopread=: 3 : 0
 sq=. 13!:2 ''
 if. sq -: STOPLAST do. STOPS return. end.
 if. 0 = #sq do.
-  STOPS=: i.0 5
+  STOPS=: 0#STOPS
   return.
 end.
 stp=. /:~ jdb_stopcut sq
@@ -798,36 +824,15 @@ for_i. 1 2 do.
 end.
 STOPS=: res
 )
-jdb_stoponall=: 4 : 0
-nam=. {. jdb_boxxopen y
-jdb_stopread ''
-sel=. x
-if. sel=2 do.
-  sel=. -. (nam,1;1) e. 3 {."1 STOPS
-end.
-STOPS=: STOPS #~ nam ~: {."1 STOPS
-if. sel do.
-  STOPS=: STOPS, nam,1;1;'';''
-end.
-jdb_stopwrite ''
-)
-jdb_stopset=: 3 : '13!:3 STOPLAST=: y'
-jdb_stopsetline=: 3 : 0
-'' jdb_stopsetline y
-:
-x jdb_stopsetone NAME;VALENCE;y
-jdb_stopwrite ''
-)
-jdb_stopsetone=: 3 : 0
-'' jdb_stopsetone y
-:
+jdb_stopsetone=: 4 : 0
+
 'name val line'=. y
-if. (name;1;1) e. 3 {."1 STOPS do. return. end.
 
 msk=. ({."1 STOPS) = <name
 stp=. msk # STOPS
 bal=. (-.msk) # STOPS
 if. SMBOTH do. val=. 0 1 end.
+
 if. 0 = #stp do.
   if. -. x -: 0 do.
     stp=. name;0;0;(0 1 e. val) {'';line
@@ -835,7 +840,7 @@ if. 0 = #stp do.
 else.
   stp=. {. stp
   for_v. val do.
-    'all sel'=. (val + 1 3) { stp
+    'all sel'=. (v + 1 3) { stp
     select. x
     case. 0 do.
       if. all do.
@@ -848,21 +853,31 @@ else.
         sel=. ~. line, sel
       end.
     case. do.
-      if. line e. sel do.
-        if. all do.
-          sel=. i.NUMLINES
-          all=. 0
-        end.
-        sel=. sel -. line
+      if. all do.
+        all=. 0
+        sel=. (i.NUMLINES) -. line
       else.
-        sel=. line, sel
+        if. line e. sel do.
+          sel=. sel -. line
+        else.
+          sel=. ~. line, sel
+          if. 0=#(i.NUMLINES) -. sel do.
+            all=. 1
+            sel=. ''
+          end.
+        end.
       end.
     end.
-    stp=. (all;sel) (val + 1 3) } stp
+    stp=. (all;/:~sel) (v + 1 3) } stp
   end.
 end.
 
 STOPS=: stp, bal
+)
+jdb_stopset=: 3 : '13!:3 STOPLAST=: y'
+jdb_stopsetline=: 4 : 0
+x jdb_stopsetone NAME;VALENCE;y
+jdb_stopwrite ''
 )
 jdb_stopson=: 3 : 0
 'name valence codelines'=. y
@@ -893,7 +908,7 @@ jdb_lxsoff''
 old=. TABCURRENT
 TABCURRENT=: new=. y
 
-if. 0=#HWNDP do.
+if. -. jdb_isgui'' do.
   jdb_wd JDEBUG
   HWNDP=: jdb_wd 'qhwndp'
   p=. WINPOS>.0 0,MINWIDTH,MINHEIGHT
@@ -964,9 +979,8 @@ minwh 540 400;
 cc tabs tab nobar;
 tabnew jdbmain;
 splitv;
-cc lines editm readonly;
+cc lines editm readonly selectable;
 set lines font fixfont;
-rem cc lines listbox;
 splitsep;
 splitv;
 cc stack editm readonly;
@@ -981,7 +995,7 @@ bin m8h;
 cc stopline button;cn "Stop Line";
 cc stopall button;cn "Stop All";
 bin s;
-cc close1 button;cn "Close";
+cc stopclose button;cn "Close";
 bin zhv;
 cc s0 static;cn "Name:";
 cc name combobox;
@@ -989,7 +1003,7 @@ bin zv;
 cc s1 static;cn "In:";
 cc locs combobox;
 bin zz;
-cc slines editm readonly;
+cc slines editm readonly selectable;
 set slines font fixfont;
 tabnew jdbwatch;
 bin m8hv;
@@ -998,7 +1012,7 @@ cc wlist editm;
 set wlist font fixfont;
 bin zvs1;
 cc watchclear button;cn "Clear";
-cc close2 button;cn "Close";
+cc watchclose button;cn "Close";
 bin s10zz;
 tabend;
 )
@@ -1006,6 +1020,7 @@ jdebug_run=: 3 : 0
 jdb_swap > (y-:1) { 'jdbnone';'jdbmain'
 )
 jdebug_clearstops=: 3 : 0
+STOPS=: 0#STOPS
 jdb_lxsoff''
 jdb_dbss''
 jdb_lexwin''
@@ -1040,52 +1055,14 @@ jdebug_tctrlshift_fkey=: jdb_stopsview
 jdebug_enter=: ]
 jdbmain_dun=: ]
 jdbmain_ini=: ]
-jdbmain_editdef_button=: 3 : 0
+jdbmain_stopline_button=: 3 : 0
 jdb_lxsoff''
-
-sf=. <'lines'
-sf=. (sf e. 'lines';'stack';'value') # sf
-
-if. 0=#sf do.
-  jdb_info 'No name selected' return.
-else.
-  sf=. >{. sf
-end.
-
-name=. 1 >@{ (0 ". (sf,'_select')~) jdb_getnameat sf~
-
-if. 0 e. #name do.
-  jdb_edit LOCALE jdb_addlocale NAME
-else.
-  if. (<name) e. LOCALNAMES do.
-    name jdb_viewname > (LOCALNAMES i. <name) { LOCALVALS
-  else.
-    nameloc=. LOCALE jdb_addlocale name
-    select. 4!:0 <nameloc
-    case. 1;2;3 do.
-      jdb_edit nameloc
-    case. 0 do.
-      name jdb_viewname ".nameloc
-    case. do.
-      jdb_info 'Unable to view: ',name
-    end.
-  end.
-end.
-
+bgn=. {. 0 ". lines_select
+line=. +/ LF = bgn {. lines
+opt=. (line e. CODELINES) >@{ 0;2
+opt jdb_stopsetline line
+jdb_lexwin''
 jdb_lxson''
-)
-jdbmain_stopatline_button=: 3 : 0
-if. NUMLINES=1 do.
-  jdebug_stopall_button''
-else.
-  jdb_lxsoff''
-
-  bgn=. {. 0 ". lines_select
-  line=. +/ LF = bgn {. lines
-  opt=. (line e. CODELINES) >@{ 0;''
-  opt jdb_stopsetline line
-  jdb_lxson''
-end.
 )
 jdbmain_stopname_button=: 3 : 0
 jdb_lxsoff''
@@ -1099,13 +1076,10 @@ jdb_lxson''
 jdbmain_stopwin_button=: 3 : 0
 jdb_lxsoff''
 'ndx name'=. jdbmain_getname''
-smoutput ndx;name
 name jdb_swap 'jdbstop'
 jdb_lxson''
 )
 jdebug_lines_button=: jdebug_stepover_button
-jdebug_stack_button=: jdebug_stepover_button
-jdebug_value_button=: jdebug_stepover_button
 jdbmain_getname=: 3 : 0
 sel=. 0 ". lines_select
 end=. I. LF=lines,LF
@@ -1118,7 +1092,7 @@ end.
 )
 jdb_writelines=: 4 : 0
 len=. 0, +/\ 1 + # &> y
-jdb_wd 'set lines text *', jdb_listboxed y
+jdb_wd 'set lines text *',jdb_listboxed y
 jdb_wd 'setscroll lines ',":SCROLL
 jdb_wd 'setfocus lines'
 if. x do.
@@ -1133,7 +1107,6 @@ jdbnone_stopwin_button=: 3 : 0
 jdb_lxson''
 )
 
-jdbnone_editdef_button=: empty
 jdbnone_stopname_button=: empty
 CX=: <'Current execution'
 jdbstop_dun=: ]
@@ -1163,14 +1136,8 @@ else.
   0 jdb_stopswritedef SMNAMES
 end.
 jdb_wd 'set locs select 0'
-
 )
-jdbstop_editdef_button=: 3 : 0
-'nam loc'=. jdbstop_getcurrentname''
-jdb_edit loc jdb_addlocale nam
-jdb_lxson''
-)
-jdebug_stopall_button=: 3 : 0
+jdbstop_stopall_button=: 3 : 0
 jdb_lxsoff''
 ndx=. {. _1,~ 0 ". name_select
 if. _1=ndx do. jdb_lxson'' return. end.
@@ -1179,17 +1146,18 @@ nam=. {. ndx { SMNAMES
 jdb_stoprefresh {: 0 ". slines_select
 jdb_lxson''
 )
-jdebug_stopline_button=: 3 : 0
+jdbstop_stopline_button=: 3 : 0
 jdb_lxsoff''
 if. -. LF e. slines do.
-  jdebug_stopall_button''
+  jdbstop_stopall_button''
 else.
   'bgn end'=. 2{._1 _1,~ 0 ". slines_select
   num=. +/ LF = bgn {. slines
   val=. num > {. SMCOUNT
   line=. num - val * 1 + {.SMCOUNT
   nam=. {. SMNDX { SMNAMES
-  jdb_stopsetone nam,val;line
+  NUMLINES=: val { SMCOUNT
+  2 jdb_stopsetone nam,val;line
   jdb_stopwrite''
   jdb_stoprefresh end
 end.
@@ -1201,7 +1169,7 @@ if. 0 e. $j=. jdbstop_getnameat'' do. jdb_lxson'' return. end.
 'pos name fullid'=. j
 
 if. fullid -: jdbstop_getcurrentname'' do.
-  jdebug_stopall_button''
+  jdbstop_stopall_button''
 else.
   1 jdb_stoponall name
   jdb_wd 'set slines select ',":pos
@@ -1314,7 +1282,7 @@ srep=. jdb_listboxed rep
 jdb_wd 'set slines text *', srep
 if. #y do.
   sel=. 2 $ y
-  jdb_wd 'setslines select ',":sel, 0
+  jdb_wd 'set slines select ',":sel, 0
 end.
 jdb_wd 'setfocus slines'
 SMBOTH=: both
@@ -1379,8 +1347,10 @@ if. 0 e. #y do.
   0
 else.
   'rep both count ndx nms'=. y
+  name_select=: ": ndx
+  slines_select=: ''
   jdb_wd 'set name items ',jdb_listboxed {."1 nms
-  jdb_wd 'set name select ',": ndx
+  jdb_wd 'set name select ',name_select
   jdb_wd 'set slines text *', jdb_listboxed rep
   jdb_wd 'setenable name 1;setenable slines 1'
   SMNAMES=: nms
@@ -1390,8 +1360,10 @@ else.
   *#rep
 end.
 )
-
-jdebug_close1_button=: jdebug_mainwin
+jdebug_locs_button=: jdebug_locs_select
+jdebug_name_button=: jdebug_name_select
+jdebug_stopall_button=: jdbstop_stopall_button
+jdebug_stopclose_button=: jdebug_mainwin
 j=. 0 : 0
 run       1 0 0 0
 stepinto  1 0 0 0
@@ -1550,7 +1522,7 @@ else.
 end.
 jdb_lxson''
 )
-jdebug_editdef_button=: 3 : '(TABCURRENT,''_editdef_button'')~0'
+jdebug_stopline_button=: 3 : '(TABCURRENT,''_stopline_button'')~0'
 jdebug_stopname_button=: 3 : '(TABCURRENT,''_stopname_button'')~0'
 jdebug_stopwin_button=: 3 : '(TABCURRENT,''_stopwin_button'')~0'
 jdebug_stepover_button=: immexj bind 'jdebug_stepover_run_jdebug_$0'
@@ -1586,7 +1558,4 @@ jdbwatch_stopwin_button=: 3 : 0
 '' jdb_swap 'jdbstop'
 jdb_lxson''
 )
-
-jdbwatch_editdef_button=: empty
-jdbwatch_stopname_button=: empty
-jdebug_close2_button=: jdebug_mainwin
+jdebug_watchclose_button=: jdebug_mainwin

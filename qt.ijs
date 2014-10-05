@@ -257,7 +257,6 @@ i.0 0
 wdclippaste=: (wd bind 'clippaste') :: (''"_)
 wdqq=: (wd bind 'q') :: (''"_)
 wdqchildxywh=: (0 ". [: wd 'qchildxywh ' , ]) :: (0 0 0 0"_)
-wdqchildxywh=: (0 ". [: wd 'qchildxywh ' , ] ) :: (0 0 0 0"_)
 wdqcolor=: (0 ". [: wd 'qcolor ' , ":) :: ( 0 0 0"_)
 wdqd=: (wd bind 'qd') :: (''"_)
 wdqer=: (wd bind 'qer') :: (''"_)
