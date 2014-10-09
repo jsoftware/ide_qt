@@ -6,9 +6,10 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.1.51'
+VERSION=: '1.1.53'
 
 FILES=: 0 : 0
+console.ijs
 debugs.ijs
 help.ijs
 keys.ijs

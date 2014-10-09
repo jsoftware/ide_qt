@@ -31,6 +31,7 @@ edith dedith
 editm deditm
 form_styles dpstyles
 gl2 dgl2
+glc dglc
 grid_layout dgrid
 ide dide
 image dimage
@@ -120,6 +121,7 @@ dedit=: 'edit' rundemo
 dedith=: 'edith' rundemo
 deditm=: 'editm' rundemo
 dgl2=: 'gl2' rundemo
+dglc=: 'glc' rundemo
 dgrid=: 'grid' rundemo
 dide=: 'ide' rundemo`notsupport@.('Android'-:UNAME)
 dimage=: 'image' rundemo
