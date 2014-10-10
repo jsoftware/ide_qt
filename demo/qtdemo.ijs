@@ -141,7 +141,7 @@ dquickview1=: 'quickview1' rundemo`notsupport@.((qtmajor=5)+.qtslim+.'Android'-:
 dquickview2=: 'quickview2' rundemo`notsupport@.((qtmajor=4)+.qtslim>'Android'-:UNAME)
 dquickwidget=: 'quickwidget' rundemo`notsupport@.((qtmajor=4)+.qtslim+.('Win'-:UNAME)+.'Android'-:UNAME)
 dscrollarea=: 'scrollarea' rundemo
-dshader=: 'shader' rundemo`notsupport@.(win8x64+.(qtslim>'Android'-:UNAME))
+dshader=: 'shader' rundemo`notsupport@.(qtslim>'Android'-:UNAME)
 dslider=: 'slider' rundemo
 dspinbox=: 'spinbox' rundemo
 dsplit=: 'split' rundemo

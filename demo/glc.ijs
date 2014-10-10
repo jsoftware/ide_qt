@@ -9,6 +9,7 @@ coclass 'qtdemo'
 glc_run=: 3 : 0
 require'~addons/ide/qt/qt.ijs'
 require'~addons/ide/qt/console.ijs'
+((<'jgl2') -.~ copath 'qtdemo') copath 'qtdemo'
 coinsert 'jglc'
 
 if. glfree ::1: '' do.
@@ -85,6 +86,7 @@ glpixels 20 200 40 40,data
 
 glsavefile jpath '~temp/glc.png'   NB. save image
 glfree''                           NB. free resource held
+((<'jglc') -.~ copath 'qtdemo') copath 'qtdemo'
 browse_j_ jpath '~temp/glc.png'    NB. view using web browser
 )
 
