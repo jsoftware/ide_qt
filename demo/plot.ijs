@@ -3,7 +3,7 @@ coclass 'qtdemo'
 
 run=: 3 : 0
 if. -. checkrequire 'plot';'graphics/plot' do. return. end.
-require 'plot'
+require 'plot math/misc/trig'
 steps=. {. + (1&{ - {.) * (i.@>: % ])@{:
 pd 'reset'
 pd 'title sin(exp) vs cos(exp)'

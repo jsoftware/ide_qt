@@ -44,6 +44,7 @@ menu dmenu
 msgs dmsgs
 pen_styles dpenstyles
 plot dplot
+plotc dplotc
 printer dprinter
 progressbar dprogressbar
 quickview1 dquickview1
@@ -134,6 +135,7 @@ dmenu=: 'menu' rundemo
 dmsgs=: 'msgs' rundemo
 dpenstyles=: 'penstyles' rundemo
 dplot=: 'plot' rundemo
+dplotc=: 'plotc' rundemo
 dprinter=: 'printer' rundemo`notsupport@.('Android'-:UNAME)
 dprogressbar=: 'progressbar' rundemo
 dpstyles=: 'pstyles' rundemo
