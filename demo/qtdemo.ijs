@@ -141,7 +141,7 @@ dprogressbar=: 'progressbar' rundemo
 dpstyles=: 'pstyles' rundemo
 dquickview1=: 'quickview1' rundemo`notsupport@.((qtmajor=5)+.qtslim+.'Android'-:UNAME)
 dquickview2=: 'quickview2' rundemo`notsupport@.((qtmajor=4)+.qtslim>'Android'-:UNAME)
-dquickwidget=: 'quickwidget' rundemo`notsupport@.((qtmajor=4)+.qtslim+.('Win'-:UNAME))
+dquickwidget=: 'quickwidget' rundemo`notsupport@.((qtmajor=4)+.('Win'-:UNAME)+.qtslim>'Android'-:UNAME)
 dscrollarea=: 'scrollarea' rundemo
 dshader=: 'shader' rundemo`notsupport@.(qtslim>'Android'-:UNAME)
 dslider=: 'slider' rundemo
