@@ -11,7 +11,6 @@ run_webgl=: 3 : 0
 wd 'pc webgl;cc w webview'
 h=. fread jpath '~addons/ide/qt/demo/webgl.html'
 m=. ('J3DI_js';J3DI;'J3DIMath_js';J3DIMath;'PICTURE';PICTURE) stringreplace h
-smoutput m
 wd 'pshow'
 wd 'set w baseurl *', file2url jpath '~Public'
 wd 'set w html *',m
