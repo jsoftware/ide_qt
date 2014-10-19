@@ -65,6 +65,7 @@ toolbar dtoolbar
 toolbarv dtoolbarv
 viewmat dviewmat
 webd3 dwebd3
+webgl dwebgl
 websocket dwebsocket
 websocket_client dwebsocketclient
 webview dwebview
@@ -157,6 +158,7 @@ dtoolbar=: 'toolbar' rundemo
 dtoolbarv=: 'toolbarv' rundemo
 dviewmat=: 'viewmat' rundemo
 dwebd3=: 'webd3' rundemo`notsupport@.(qtslim+.'Android'-:UNAME)
+dwebgl=: 'webgl' rundemo`notsupport@.(qtslim+.'Android'-:UNAME)
 dwebsocket=: 'websocket' rundemo`notsupport@.(qtslim>'Android'-:UNAME)
 dwebsocketclient=: 'websocketclient' rundemo`notsupport@.(qtslim>'Android'-:UNAME)
 dwebview=: 'webview' rundemo`notsupport@.(qtslim+.'Android'-:UNAME)
