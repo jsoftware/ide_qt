@@ -20,10 +20,10 @@ NB. flip and save as png
 d1=. |."1 d
 d1 writeimg_jqtide_ jpath '~temp/toucan.png'
 wd 'set png image *',jpath '~temp/toucan.png'
-NB. flip and save as bmp
-d2=. |."2 d
-d2 writeimg_jqtide_ jpath '~temp/toucan.bmp'
-wd 'set bmp image *',jpath '~temp/toucan.bmp'
+NB. pure blue
+d2=. ($d)$255
+d2 writeimg_jqtide_ jpath '~temp/blue.bmp'
+wd 'set bmp image *',jpath '~temp/blue.bmp'
 wd 'pshow'
 )
 

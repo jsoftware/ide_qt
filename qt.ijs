@@ -135,7 +135,7 @@ getimg=: 3 : 0
 if. m=. wdgetimg y;(#y);wh=. 2$2-2 do.
   d=. _2 ic memr m,0,(*/wh,4),2
   wdreadimg 2#<<0
-  (|.wh)$d
+  (|.wh)$ fliprgb^:(-.RGBSEQ_j_) alpha17 d
 else.
   0 0$2-2
 end.
@@ -144,7 +144,7 @@ readimg=: 3 : 0
 if. m=. wdreadimg (utf8 ,y);wh=. 2$2-2 do.
   d=. _2 ic memr m,0,(*/wh,4),2
   wdreadimg 2#<<0
-  (|.wh)$d
+  (|.wh)$ fliprgb^:(-.RGBSEQ_j_) alpha17 d
 else.
   0 0$2-2
 end.
@@ -166,7 +166,7 @@ elseif. 'tif'-:type do. type=. 'tiff'
 end.
 type=. toupper type
 if. 'quality'-:>@{.opt do. quality=. <. >@{:opt end.
-d=. fliprgb^:(-.RGBSEQ_j_) d
+d=. fliprgb^:(-.RGBSEQ_j_) alpha27 d
 m=. wdputimg (2 ic d); (w,h); (len=. ,_1); type; quality
 if. m do.
   z=. memr m,0,len,2
@@ -196,7 +196,7 @@ elseif. 'tif'-:type do. type=. 'tiff'
 end.
 type=. toupper type
 if. 'quality'-:>@{.opt do. quality=. <. >@{:opt end.
-d=. fliprgb^:(-.RGBSEQ_j_) d
+d=. fliprgb^:(-.RGBSEQ_j_) alpha27 d
 r=. wdwriteimg (2 ic d); (w,h); f; type; quality
 EMPTY
 )
