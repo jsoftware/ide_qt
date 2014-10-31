@@ -16,7 +16,9 @@ jdb_empty=: empty f.
 jdb_expand=: expand f.
 jdb_isparent=: wdisparent f.
 jdb_datatype=: datatype f.
-jdb_smact=: jdb_wd bind 'sm act'
+jdb_getactive=: jdb_wd bind 'sm get active'
+jdb_setactive=: jdb_wd @ ('sm focus '&,)
+jdb_smact=: jdb_setactive @ jdb_getactive
 jdb_smoutput=: 0 0&$@(1!:2&2)
 jdb_wdforms=: <;._2;._2@jdb_wd@('qpx'"_)
 jdb_wd1=: wd1 f.
@@ -197,7 +199,6 @@ h=. jdb_wd :: ] 'qhwndp'
 jdb_empty HWNDPX=: (-. h-:HWNDP)#h
 )
 jdb_ppset=: 3 : 0
-0
 if. #HWNDPX do. jdb_wd :: ] 'psel ', HWNDPX end.
 jdb_empty''
 )
@@ -278,13 +279,13 @@ STOPNONE=: '';0;0;NULL;NULL
 SHOWWID=: 80
 jdb_vSHOWWID=: SHOWWID"_
 
+TABCURRENT=: ''
 TYPES=: 'acv'
 
 STOPNONE=: '';0;0;NULL;NULL
 TYPES=: 'acv'
 jdb_debuginit=: 3 : 0
 STOPS=: i.0 5
-TABCURRENT=: ''
 'HWNDP' jdb_default ''
 if. 0>4!:0 <'WINPOS' do.
   WINPOS=: 0 ". (<0 1) >@{ jdb_wd 'qtstate debugpos'
@@ -350,6 +351,7 @@ if. jdb_isgui'' do.
   jdb_wd 'pclose'
 end.
 HWNDP=: ''
+TABCURRENT=: ''
 jdb_lxsoff ''
 jdb_imxss 0
 jdb_imxs ''
@@ -357,6 +359,7 @@ jdb_debuginit''
 13!:0 [ 0
 )
 jdb_open=: 3 : 0
+a=. jdb_getactive''
 jdb_debuginit''
 ERM_j_=: ''
 if. #jdb_getstack'' do.
@@ -366,6 +369,7 @@ else.
   jdebug_run 0
   jdb_restore''
 end.
+jdb_setactive a
 )
 j=. 0 : 0
 Enter             !single step over
@@ -409,7 +413,7 @@ jdb_lxsoff''
 if. -. jdb_isgui'' do.
   13!:15''
   13!:0[0
-  HWNDP=: ''
+  HWNDP=: TABCURRENT=: ''
   return.
 end.
 
@@ -921,21 +925,17 @@ if. -. jdb_isgui'' do.
 
 else.
   if. new-:old do. return. end.
-
   if. #old do.
     (old,'_dun')~ 0
   end.
-
+  jdb_wd 'psel ',HWNDP
   if. -. (<'jdbnone') e. old;new do.
     jdb_wd 'set tabs active ', ":jdb_tabcurrent''
   else.
     hp=. HWNDP
     p=. -. new-:'jdbnone'
     fx=. 0 ". jdb_wd 'qform'
-    jdb_wd JDEBUG
-    if. p do.
-      jdb_wd JDEBUGP
-    end.
+    jdb_wd JDEBUG, p#JDEBUGP
     HWNDP=: jdb_wd 'qhwndp'
     jdb_wd 'pmove ',":(3 {.fx),MINHEIGHT*p
     jdb_wd 'pas 0 0;pshow;ptop ',":PTOP
@@ -1040,7 +1040,7 @@ jdb_info 'Debug Shortcuts';SHORTCUTS
 jdebug_wctrl_fkey=: 3 : 0
 jdb_lxsoff''
 wd 'sm prompt *   ',jdb_dlb MOVELINE >@{ LINES
-jdb_smact''
+jdb_smsetactive 'term'
 jdb_lxson''
 )
 jdebug_tctrl_fkey=: 3 : 0

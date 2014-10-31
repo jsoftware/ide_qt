@@ -3,15 +3,17 @@ NB. examples of wd 'sm'
 NB. get which window is active:
 wd 'sm get active'
 
-NB. get text and selection for given window:
+NB. get text and selection for given window
+NB. also file name for edit:
 wd 'sm get term'
 wd 'sm get edit'
 
 NB. get xywh of windows:
 wd 'sm get xywh'
 
-NB. set input focus to term window:
-wd 'sm act'
+NB. set input focus:
+wd 'sm focus term'     NB. same as wd 'sm act'
+wd 'sm focus edit'
 
 NB. set term prompt:
 wd 'sm prompt *   i.2 3'
