@@ -4,6 +4,7 @@ require 'project'
 
 coclass 'jqtide'
 'jws_onOpen jws_onClose jws_onMessage jws_onError jws_onSslError jws_onStateChange'=: i.6
+alpha23_z_=: (23 b.) & (0 (26 b.) 16bffffff)
 boxj2utf8=: 3 : 0
 if. 1 < #$y do. y return. end.
 b=. (16+i.11) { a.
@@ -136,7 +137,7 @@ getimg=: 3 : 0
 if. m=. wdgetimg y;(#y);wh=. 2$2-2 do.
   d=. _2 ic memr m,0,(*/wh,4),2
   wdreadimg 2#<<0
-  (|.wh)$ fliprgb^:(-.RGBSEQ) alpha17 d
+  (|.wh)$ fliprgb^:(-.RGBSEQ) d
 else.
   0 0$2-2
 end.
@@ -145,7 +146,7 @@ readimg=: 3 : 0
 if. m=. wdreadimg (utf8 ,y);wh=. 2$2-2 do.
   d=. _2 ic memr m,0,(*/wh,4),2
   wdreadimg 2#<<0
-  (|.wh)$ fliprgb^:(-.RGBSEQ) alpha17 d
+  (|.wh)$ fliprgb^:(-.RGBSEQ) d
 else.
   0 0$2-2
 end.
@@ -167,7 +168,7 @@ elseif. 'tif'-:type do. type=. 'tiff'
 end.
 type=. toupper type
 if. 'quality'-:>@{.opt do. quality=. <. >@{:opt end.
-d=. fliprgb^:(-.RGBSEQ) alpha27 d
+d=. fliprgb^:(-.RGBSEQ) d
 m=. wdputimg (2 ic d); (w,h); (len=. ,_1); type; quality
 if. m do.
   z=. memr m,0,len,2
@@ -197,7 +198,7 @@ elseif. 'tif'-:type do. type=. 'tiff'
 end.
 type=. toupper type
 if. 'quality'-:>@{.opt do. quality=. <. >@{:opt end.
-d=. fliprgb^:(-.RGBSEQ) alpha27 d
+d=. fliprgb^:(-.RGBSEQ) d
 r=. wdwriteimg (2 ic d); (w,h); f; type; quality
 EMPTY
 )

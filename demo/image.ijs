@@ -21,7 +21,7 @@ d1=. |."1 d
 d1 writeimg_jqtide_ jpath '~temp/toucan.png'
 wd 'set png image *',jpath '~temp/toucan.png'
 NB. pure blue
-d2=. ($d)$255
+d2=. alpha23 ($d)$255
 d2 writeimg_jqtide_ jpath '~temp/blue.bmp'
 wd 'set bmp image *',jpath '~temp/blue.bmp'
 wd 'pshow'
