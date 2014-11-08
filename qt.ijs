@@ -4,7 +4,9 @@ require 'project'
 
 coclass 'jqtide'
 'jws_onOpen jws_onClose jws_onMessage jws_onError jws_onSslError jws_onStateChange'=: i.6
-alpha23_z_=: (23 b.) & (0 (26 b.) 16bffffff)
+setalpha_z_=: 16bff&$: : (4 : 0)
+((_32&(34 b.))^:IF64 _8 (32 b.) x)&(23 b.) 16bffffff (17 b.) y
+)
 boxj2utf8=: 3 : 0
 if. 1 < #$y do. y return. end.
 b=. (16+i.11) { a.
