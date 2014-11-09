@@ -154,6 +154,10 @@ else.
 end.
 )
 putimg=: 4 : 0
+if3=. (3=#$x) *. 3={:$x
+if. if3 do.
+  x=. setalpha 256&#. x
+end.
 'h w'=. $x
 d=. ,x
 type=. 'jpeg'
@@ -181,6 +185,10 @@ else.
 end.
 )
 writeimg=: 4 : 0
+if3=. (3=#$x) *. 3={:$x
+if. if3 do.
+  x=. setalpha 256&#. x
+end.
 'h w'=. $x
 d=. ,x
 y=. boxopen y
