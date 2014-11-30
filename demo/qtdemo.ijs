@@ -37,7 +37,6 @@ ide dide
 image dimage
 isigrid disigrid
 isigrid2 disigrid2
-jd_server djdserver
 mbox dmbox
 mbdialog dmbdialog
 menu dmenu
