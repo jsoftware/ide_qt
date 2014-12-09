@@ -12,7 +12,7 @@ NB. get xywh of windows:
 wd 'sm get xywh'
 
 NB. set input focus:
-wd 'sm focus term'     NB. same as wd 'sm act'
+wd 'sm focus term'         NB. same as wd 'sm act'
 wd 'sm focus edit'
 
 NB. set term prompt:
