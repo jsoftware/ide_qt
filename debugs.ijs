@@ -175,7 +175,7 @@ jdb_listboxed=: }. @; @: (LF&, &.>)
 jdb_listmatrix=: [: }. [: , LF&,.
 jdb_lxsoff=: 13!:15 @ (''"_)
 jdb_lxson=: 3 : 0
-13!:15 'jdb_debug_jdebug_ coname$0'
+13!:15 'jdb_debug_jdebug_ (coname$0)'
 if. 0 = 13!:17'' do. 13!:0 [ 1 end.
 )
 jdb_minsize=: 3 : 0
@@ -321,11 +321,28 @@ WATCH=: ''
 jdb_restore=: 3 : 0
 jdb_ppset''
 jdb_lxson ''
-jdb_imxs 'jdb_imxhandler_jdebug_ 1'
+xsstg =. 'jdb_imxhandler_jdebug_ 1'
+if. #y do.
+  xsstg =. ('(', (": 1 {:: y) , ' dissect ',(jdb_quote 0 {:: y), ') ') , xsstg
+end.
+jdb_imxs xsstg
 jdb_imxss 1
 )
 jdb_imxhandler=: 3 : 0
 if. 1 >: # 13!:13'' do. jdb_clear'' end.
+empty''
+:
+if. '' -: $x do. autodissectlocale =: x
+elseif. *#x do. wdinfo 'Dissect message';x
+end.
+jdb_imxhandler 1
+)
+
+jdb_destroyad =: 3 : 0
+if. #autodissectlocale do.
+  if. autodissectlocale e. 18!:1 (1) do. destroy__autodissectlocale '' end.
+end.
+autodissectlocale =: 0$a:
 empty''
 )
 jdb_inactive=: 3 : '0 e. #NAME'
@@ -333,6 +350,7 @@ jdb_clear=: 3 : 0
 hx=. HWNDPX
 jdb_debugreset''
 if. jdb_isparent <'jdebug' do.
+  jdb_destroyad''
   jdb_wd 'psel jdebug'
   jdb_swap 'jdbnone'
 end.
@@ -355,6 +373,7 @@ TABCURRENT=: ''
 jdb_lxsoff ''
 jdb_imxss 0
 jdb_imxs ''
+jdb_destroyad''
 jdb_debuginit''
 13!:0 [ 0
 )
@@ -428,7 +447,7 @@ jdb_ppget 0
 if. #y do.
   LOCALE=: y
 else.
-  LOCALE=: <'base'
+  LOCALE =: 'base'
 end.
 ERM_j_=: jdb_dberm''
 'NAME ERRNUM CURRENTLINE'=: 3 {. stack
@@ -436,7 +455,12 @@ MOVELINE=: CURRENTLINE
 MOVELINES=: ,MOVELINE
 ERRMSG=: (ERRNUM <. <:#ERRORS) >@{ ERRORS
 jdb_lexwin ''
-jdb_restore ''
+if. (*#y) *. AUTODISSECT do.
+
+  jdb_destroyad''
+  jdebug_dissectcurrent_run CURRENTLINE
+else. jdb_restore ''
+end.
 )
 jdb_lexwin=: 3 : 0
 if. 0 e. #NAME do. '' return. end.
@@ -913,6 +937,8 @@ old=. TABCURRENT
 TABCURRENT=: new=. y
 
 if. -. jdb_isgui'' do.
+  AUTODISSECT =: 0
+  autodissectlocale =: 0$a:
   jdb_wd JDEBUG
   HWNDP=: jdb_wd 'qhwndp'
   p=. WINPOS>.0 0,MINWIDTH,MINHEIGHT
@@ -951,7 +977,28 @@ jdb_tbenable''
 jdb_swapfkey''
 )
 TABGROUPS=: ;: 'jdbmain jdbstop jdbwatch'
-JDEBUG=: 0 : 0 rplc 'DEBUGPATH';jpath '~addons/ide/qt/images'
+DISSECTSTATUS =: 3 : 0 (3 7)
+if. 0 > 4!:0 <'dissect_dissect_' do.
+
+  if. fexist getscripts_j_ 'debug/dissect' do.
+    load 'debug/dissect'
+  end.
+end.
+if. 3 = 4!:0 <'dissect_dissect_' do.
+
+  if. 0 ~: {. /: y ,: ". 'DISSECTLEVEL_dissect_' do.
+    wdinfo 'Out-of-date addon';'The addon, debug/dissect, is out of date.  Use Tools|Package Manager to update it.'
+    0
+  else. 1
+  end.
+else. _1
+end.
+
+)
+DTTCURR =. DTTTOGGLE =. 'These functions are defined in the debug/dissect addon, use Package Manager to get it'
+DTTCURR =. 'Dissect current/cursor line' [^:(DISSECTSTATUS=1) DTTCURR
+DTTTOGGLE =. 'Automatically dissect on error' [^:(DISSECTSTATUS=1) DTTTOGGLE
+JDEBUG=: 0 : 0 rplc 'DEBUGPATH';(jpath '~addons/ide/qt/images');'DTTCURR';DTTCURR;'DTTTOGGLE';DTTTOGGLE
 pc jdebug escclose ptop;pn "Debug";
 cc tbar toolbar 22x22 flush;
 set tbar add run "Run" "DEBUGPATH/run.png";
@@ -971,6 +1018,10 @@ set tbar add stopname "Stop name at cursor" "DEBUGPATH/stopname.png";
 set tbar add stopwin "Stop Manager" "DEBUGPATH/stopmanager.png";
 set tbar add watchwin "Watch Manager" "DEBUGPATH/watchmanager.png";
 set tbar add stack "View stack" "DEBUGPATH/stack.png";
+set tbar addsep;
+set tbar add dissectcurrent "DTTCURR" "DEBUGPATH/dissect-current.png";
+set tbar add dissecttoggleauto "DTTTOGGLE" "DEBUGPATH/dissect-toggle.png";
+set tbar checkable dissecttoggleauto;
 set tbar addsep;
 set tbar add clear "Clear" "DEBUGPATH/clear.png";
 )
@@ -1378,6 +1429,8 @@ stopname  1 1 0 0
 stopwin   1 1 1 1
 watchwin  1 1 0 1
 stack     1 1 1 1
+dissectcurrent 1 1 0 0
+dissecttoggleauto 1 1 1 1
 clear     1 1 1 0
 )
 
@@ -1471,6 +1524,28 @@ CUTLINES=: ; 2 {"1 STACK
 jdb_restore''
 13!:4''
 )
+jdebug_dissectcurrent_run=: 3 : 0
+if. DISSECTSTATUS ~: 1 do.
+  wdinfo 'Dissect Current/Cursor Line';'This feature requires the debug/dissect addon.  Use Tools|Package Manager to install the addon.'
+  empty''
+else.
+  if. 0 = #line =. y do.
+    if. 0 = #line=. jdb_getcursorline'' do.
+      line =, CURRENTLINE
+    end.
+  end.
+  jdb_restore (line { LINES) , <2 * *#y
+end.
+)
+jdebug_dissecttoggleauto_run=: 3 : 0
+if. DISSECTSTATUS ~: 1 do.
+  wdinfo 'Toggle Autodissect';'This feature requires the debug/dissect addon.  Use Tools|Package Manager to install the addon.'
+else.
+  AUTODISSECT =: -. AUTODISSECT
+end.
+wd 'set tbar checked dissecttoggleauto ' , ": AUTODISSECT
+empty''
+)
 jdebug_stepout_run=: 3 : 0
 jdb_restore''
 if. MOVELINE=CURRENTLINE do.
@@ -1531,6 +1606,8 @@ jdebug_stepout_button=: immexj bind 'jdebug_stepout_run_jdebug_$0'
 jdebug_cutback_button=: immexj bind 'jdebug_cutback_run_jdebug_$0'
 jdebug_runcursor_button=: immexj bind 'jdebug_runcursor_run_jdebug_$0'
 jdebug_run_button=: immexj bind 'jdebug_run_run_jdebug_$0'
+jdebug_dissectcurrent_button=: immexj bind 'jdebug_dissectcurrent_run_jdebug_$0'
+jdebug_dissecttoggleauto_button=: immexj bind 'jdebug_dissecttoggleauto_run_jdebug_$0'
 jdbwatch_dun=: 3 : 0
 if. 0 ~: 4!:0 <'wlist' do. return. end.
 
