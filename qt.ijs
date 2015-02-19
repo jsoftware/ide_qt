@@ -220,7 +220,9 @@ IFQTC=. (IFQTC"_)^:(0=4!:0<'IFQTC') (0)
 EMPTY
 )
 cocurrent 'z'
+Debugwd_jqtide_=: (Debugwd_jqtide_"_)^:(0=4!:0<'Debugwd_jqtide_') 0
 wd=: 3 : 0"1
+smoutput^:(1<Debugwd_jqtide_) y
 'r c l p n'=. wd1 (,y);(#,y);(,2);(,0)
 select. r
 case. 0 do.
@@ -230,7 +232,15 @@ case. _1 do.
 case. _2 do.
   _2 [\ <;._2 memr p,0,n
 case. do.
-  (wd ::(''"_) 'qer') (13!:8) 3
+  if. d=. Debugwd_jqtide_ do.
+    smoutput^:(1=Debugwd_jqtide_) y
+    smoutput '**ERROR**'
+    Debugwd_jqtide_=: d [ e=. wd ::(''"_) 'qer' [ Debugwd_jqtide_=: 0
+    smoutput e
+    e (13!:8) 3
+  else.
+    (wd ::(''"_) 'qer') (13!:8) 3
+  end.
 end.
 )
 
