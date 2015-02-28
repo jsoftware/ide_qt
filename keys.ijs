@@ -1,7 +1,9 @@
- NB. enum Qt_Key
+NB. enum Qt_Key
 
 NB. unicode Private Use Areas
 NB. map 0x10000?? to 0x00fb?? because J only supports ucs2
+
+coclass 'jqtide'
 
 Qt_Key_Escape                 =: 16b00f800
 Qt_Key_Tab                    =: 16b00f801
