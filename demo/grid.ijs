@@ -7,7 +7,7 @@ NB. =========================================================
 grid=: 3 : 0
 wd 'pc grid;pn "Grid Layout"'
 wd 'bin vhg'
-wd 'grid size 2 3'
+wd 'grid shape 2 3'
 wd 'grid colwidth 1 200'
 wd 'grid colstretch 0 1'
 wd 'grid rowheight 0 40'

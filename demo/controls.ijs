@@ -40,6 +40,7 @@ set entry text 盛大 abc 巨嘴鸟;
 cc ted editm readonly;
 rem demonstrate bin and child stretch:;
 bin h s2;
+cc iconbutton button;cn "";
 cc ok button;cn "Push Me";
 cc cancel button default;cn "Cancel";
 set ok stretch 1;
@@ -47,9 +48,11 @@ set ok stretch 1;
 
 NB. =========================================================
 controls_run=: 3 : 0
+wd 'verbose 2'
 wd Controls
 wd 'set ted stylesheet *background-color:#eeeeee'
 wd 'set ted text *How grand to be a Toucan',LF,'Just think what Toucan do.'
+wd 'set iconbutton icon ', dquote jpath '~addons/ide/qt/images/about.png'
 wd 'pmove 400 10 300 300'
 wd 'pshow'
 NB. tooltip
@@ -59,6 +62,7 @@ wd 'set ted tooltip *<font color="Red">tooltip</font> for <br> <br> <i>editm</i>
 wd 'set ok tooltip *tooltip for button'
 NB. reset tooltip
 wd 'set ok tooltip'
+wd 'verbose 0'
 )
 
 NB. =========================================================

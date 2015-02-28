@@ -6,7 +6,7 @@ NB. =========================================================
 imdemo_run=: 3 : 0
 if. -. checkrequire 'bmp';'graphics/bmp' do. return. end.
 wd 'pc imdemo closeok escclose'
-wd 'grid size 2 2'
+wd 'grid shape 2 2'
 wd 'cc pic image'
 wd 'cc jpg image'
 wd 'cc png image'

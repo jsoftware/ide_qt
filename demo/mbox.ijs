@@ -13,13 +13,25 @@ NB.
 NB. if 1 button, there is no result,
 NB. otherwise the result is the lowercase button label
 NB.
-NB. buttons (with numeric values) are from the set:
-NB.  0 mb_ok
-NB.  1 mb_cancel
-NB.  2 mb_yes
-NB.  3 mb_no
-NB.  4 mb_save
-NB.  5 mb_discard
+NB. buttons are from the set, a button starts with = is the default:
+NB.  mb_ok
+NB.  mb_open
+NB.  mb_save
+NB.  mb_cancel
+NB.  mb_close
+NB.  mb_discard
+NB.  mb_apply
+NB.  mb_reset
+NB.  mb_restoredefaults
+NB.  mb_help
+NB.  mb_saveall
+NB.  mb_yes
+NB.  mb_yestoall
+NB.  mb_no
+NB.  mb_notoall
+NB.  mb_abort
+NB.  mb_retry
+NB.  mb_ignore
 
 coclass 'qtdemo'
 
@@ -40,7 +52,7 @@ wd 'mb query mb_ok mb_cancel "Model Run" "OK to save?"'
 )
 
 demo5=: 3 : 0
-wd 'mb query mb_yes mb_no mb_cancel "Model Run" "OK to continue?"'
+wd 'mb query mb_yes =mb_no mb_cancel "Model Run" "OK to continue?"'
 )
 
 demo1''

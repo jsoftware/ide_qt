@@ -6,7 +6,9 @@ NB. cc id tab     - start a tabs control with keywords:
 NB.   closable         tab can be closed
 NB.   documentmode     (default off)
 NB.   east|south|west  (default north)
+NB.   icon
 NB.   movable          (default fixed)
+NB.   tooltip
 NB.
 NB. tabnew id        start a single tab
 NB. ...
@@ -37,7 +39,7 @@ cc names combobox;
 
 tabnew Dummy;
 cc list listbox;
-cc entry edit;
+cc entry edit;set _ sizepolicy expanding;
 cc ted editm;
 
 tabend;
@@ -61,6 +63,10 @@ wd Tabdemo
 wd 'set ted text *How grand to be a Toucan',LF,'Just think what Toucan do.'
 wd 'set prefs active 1'
 wd 'set prefs label 2 Notes'
+wd 'set prefs tooltip 0 "toolip view"'
+wd 'set prefs tooltip 1 "toolip editor"'
+wd 'set prefs icon 0 ',dquote jpath '~addons/ide/qt/images/home.png'
+wd 'set prefs icon 1 ',dquote jpath '~addons/ide/qt/images/print.png'
 wd 'pmove 400 10 400 200'
 wd 'pshow'
 )

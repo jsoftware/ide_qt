@@ -24,7 +24,7 @@ wd 'minwh 400 270'
 wd 'cc g isidraw'
 wd 'pshow'
 off=. <.-:{:glqextent'X'
-glfill 255 255 255
+glfill 255 255 255 255
 glrgb 0 0 255
 for_i. i.#PenStyles do.
   y=. 30+40*i

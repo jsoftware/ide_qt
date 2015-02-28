@@ -28,7 +28,7 @@ NB. =========================================================
 demo_gs_paint=: 3 : 0
 'w h'=: glqwh''
 NB. draw grid
-glfill 255 255 255
+glfill 255 255 255 255
 glrgb 128 128 18
 glpen 0 1
 for_i. 50* i.>.h%50 do.
