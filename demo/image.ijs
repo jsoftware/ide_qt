@@ -6,11 +6,12 @@ NB. =========================================================
 imdemo_run=: 3 : 0
 if. -. checkrequire 'bmp';'graphics/bmp' do. return. end.
 wd 'pc imdemo closeok escclose'
-wd 'grid shape 2 2'
-wd 'cc pic image'
-wd 'cc jpg image'
-wd 'cc png image'
-wd 'cc bmp image'
+wd 'grid shape 2'
+wd 'maxwh 204 148;cc pic image'
+wd 'maxwh 204 148;cc jpg image'
+wd 'maxwh 204 148;cc png image'
+wd 'maxwh 204 148;cc bmp image'
+wd 'bin z'
 wd 'set pic image *',jpath '~addons/graphics/bmp/toucan.bmp'
 NB. convert to jpg
 d=. readimg_jqtide_ jpath '~addons/graphics/bmp/toucan.bmp'

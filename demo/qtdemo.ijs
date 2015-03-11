@@ -26,6 +26,7 @@ if. IFWIN *: IF64 do. 0 return. end.
 TITLES=: maketitle 0 : 0
 controls dcontrols
 datetime ddatetime
+dial ddial
 edit dedit
 edith dedith
 editm deditm
@@ -50,6 +51,7 @@ quickview1 dquickview1
 quickview2 dquickview2
 quickwidget dquickwidget
 scrollarea dscrollarea
+scrollbar dscrollbar
 shader dshader
 slider dslider
 spinbox dspinbox
@@ -118,6 +120,7 @@ qtdemo_cancel_button=: qtdemo_close
 NB. =========================================================
 dcontrols=: 'controls' rundemo
 ddatetime=: 'datetime' rundemo
+ddial=: 'dial' rundemo
 dedit=: 'edit' rundemo
 dedith=: 'edith' rundemo
 deditm=: 'editm' rundemo
@@ -143,6 +146,7 @@ dquickview1=: 'quickview1' rundemo`notsupport@.((qtmajor=5)+.qtslim+.'Android'-:
 dquickview2=: 'quickview2' rundemo`notsupport@.((qtmajor=4)+.qtslim>'Android'-:UNAME)
 dquickwidget=: 'quickwidget' rundemo`notsupport@.((qtmajor=4)+.('Win'-:UNAME)+.qtslim>'Android'-:UNAME)
 dscrollarea=: 'scrollarea' rundemo
+dscrollbar=: 'scrollbar' rundemo
 dshader=: 'shader' rundemo`notsupport@.(qtslim>'Android'-:UNAME)
 dslider=: 'slider' rundemo
 dspinbox=: 'spinbox' rundemo

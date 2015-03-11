@@ -5,11 +5,13 @@ coclass 'qtdemo'
 
 NB. =========================================================
 edit=: 3 : 0
+wd 'fontdef monospace 12'
 wd 'pc edit'
+wh=. ". wd 'get .. extent ',10#'M'
 wd 'bin v'
 wd 'bin g;grid size 3'
 wd 'minwh 150 20'
-wd 'cc e0 edit'
+wd 'cc e0 edit;set _ maxwh ',":8 8 + wh
 wd 'cc e4 edit password'
 wd 'cc e5 edit readonly'
 wd 'cc l1 static left'
@@ -27,6 +29,7 @@ wd 'bin h;cc l7 static;cn "input mask Mac address";cc v4 edit;set _ inputmask "H
 wd 'bin z'
 wd 'bin sz'
 wd 'pshow'
+wd 'fontdef'
 wd 'set e0 limit 10'
 wd 'set e0 text limit=10'
 wd 'set e1 text left'
@@ -37,9 +40,24 @@ wd 'set e5 text readonly'
 wd 'set l1 text left'
 wd 'set l2 text center'
 wd 'set l3 text right'
-wd 'pstylesheet *QLineEdit{color:blue} QLabel{color:green;background-color:yellow}'
+wd 'set .. stylesheet *QLineEdit{color:blue} QLabel{color:green;background-color:yellow}'
 wd 'set e4 stylesheet color:red'
 wd 'set e5 stylesheet background-color:#bbbbbb'
+wd 'set .. wh 480 480'
+)
+
+NB. =========================================================
+edit_e0_button=: 3 : 0
+smoutput 'e0 button event'
+)
+
+NB. =========================================================
+edit_e0_char=: 3 : 0
+if. 16bf800 <: 3 u: ucp sysdata do.
+  smoutput 'e0 char event keycode: ', ": 3 u: ucp sysdata
+else.
+  smoutput 'e0 char event key: ', sysdata
+end.
 )
 
 NB. =========================================================
