@@ -6,7 +6,7 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.1.69'
+VERSION=: '1.1.70'
 
 FILES=: 0 : 0
 console.ijs
@@ -23,4 +23,4 @@ js/
 images/
 )
 
-RELEASE=: 'j803'
+RELEASE=: 'j803 j804'
