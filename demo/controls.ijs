@@ -56,7 +56,7 @@ wd 'set iconbutton icon ', dquote jpath '~addons/ide/qt/images/about.png'
 wd 'pmove 400 10 300 300'
 wd 'pshow'
 smoutput wd'get ted stylesheet'
-wd 'set .. tooltip *tooltip for form'
+wd 'setp tooltip *tooltip for form'
 NB. tooltip
 wd 'set names tooltip *tooltip for combobox'
 wd 'set list tooltip *tooltip for listbox'

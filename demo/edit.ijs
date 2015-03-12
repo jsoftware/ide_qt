@@ -7,7 +7,7 @@ NB. =========================================================
 edit=: 3 : 0
 wd 'fontdef monospace 12'
 wd 'pc edit'
-wh=. ". wd 'get .. extent ',10#'M'
+wh=. ". wd 'getp extent ',10#'M'
 wd 'bin v'
 wd 'bin g;grid size 3'
 wd 'minwh 150 20'
@@ -40,10 +40,10 @@ wd 'set e5 text readonly'
 wd 'set l1 text left'
 wd 'set l2 text center'
 wd 'set l3 text right'
-wd 'set .. stylesheet *QLineEdit{color:blue} QLabel{color:green;background-color:yellow}'
+wd 'setp stylesheet *QLineEdit{color:blue} QLabel{color:green;background-color:yellow}'
 wd 'set e4 stylesheet color:red'
 wd 'set e5 stylesheet background-color:#bbbbbb'
-wd 'set .. wh 480 480'
+wd 'setp wh 480 480'
 )
 
 NB. =========================================================
