@@ -52,7 +52,7 @@ wd 'verbose 2'
 wd Controls
 wd 'set ted stylesheet *background-color:#eeeeee'
 wd 'set ted text *How grand to be a Toucan',LF,'Just think what Toucan do.'
-wd 'set iconbutton icon ', dquote jpath '~addons/ide/qt/images/about.png'
+wd 'set iconbutton icon ', (dquote jpath '~addons/graphics/bmp/toucan.bmp'), ' 204x148'
 wd 'pmove 400 10 300 300'
 wd 'pshow'
 smoutput wd'get ted stylesheet'
