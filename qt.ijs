@@ -62,6 +62,7 @@ d=. (sel,rws,cls) |: i.shp
 r=. (sel{shp),(*/rws{shp),*/cls{shp
 ,(<ndx) { r ($,) d
 )
+logcat=: empty @: (('"',libjqt,'" logcat ',(IFWIN#'+'),' n *c') cd <@,)
 showevents=: 3 : 0
 select. {. y,1
 case. 0 do.
@@ -256,7 +257,7 @@ if. 3 > wd_ndx do.
         ERM_j_=: ''
         if. wd_erm -: wd_err do. i.0 0 return. end.
       end.
-      wd_err=. LF,,LF,.}.;._2 wd_err
+      wd_err=. LF,,LF,.];._2 LF,~ wd_err
       wdinfo 'wdhandler';'error in: ',wd_fn,wd_err
     end.
   end.
