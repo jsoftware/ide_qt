@@ -42,6 +42,7 @@ mbox dmbox
 mbdialog dmbdialog
 menu dmenu
 msgs dmsgs
+multimedia dmultimedia
 pen_styles dpenstyles
 plot dplot
 plotc dplotc
@@ -136,6 +137,7 @@ dmbox=: 'mbox' rundemo
 dmbdialog=: 'mbdialog' rundemo`notsupport@.('Android'-:UNAME)
 dmenu=: 'menu' rundemo
 dmsgs=: 'msgs' rundemo
+dmultimedia=: 'multimedia' rundemo`notsupport@.((qtmajor=4)+.qtslim>'Android'-:UNAME)
 dpenstyles=: 'penstyles' rundemo
 dplot=: 'plot' rundemo
 dplotc=: 'plotc' rundemo
