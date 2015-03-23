@@ -43,7 +43,6 @@ wd 'set l3 text right'
 wd 'setp stylesheet *QLineEdit{color:blue} QLabel{color:green;background-color:yellow}'
 wd 'set e4 stylesheet color:red'
 wd 'set e5 stylesheet background-color:#bbbbbb'
-wd 'setp wh 480 480'
 )
 
 NB. =========================================================

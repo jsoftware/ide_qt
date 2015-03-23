@@ -76,7 +76,7 @@ wd 'mb info error ',sysdata
 
 NB. =========================================================
 multimedia_mute_button=: 3 : 0
-wd 'set mm muted ', mute
+wd 'set mm mute ', mute
 )
 
 NB. =========================================================
