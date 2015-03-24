@@ -69,9 +69,9 @@ assert. _1~: mvpUni
 
 glGenBuffers 2;vbo=: 2#_1
 glBindBuffer GL_ARRAY_BUFFER; {.vbo
-glBufferData GL_ARRAY_BUFFER; (#vertexData); (<symdat <'vertexData'); GL_STATIC_DRAW
+glBufferData GL_ARRAY_BUFFER; (#vertexData); (symdat <'vertexData'); GL_STATIC_DRAW
 glBindBuffer GL_ARRAY_BUFFER; {:vbo
-glBufferData GL_ARRAY_BUFFER; (#colorData); (<symdat <'colorData'); GL_STATIC_DRAW
+glBufferData GL_ARRAY_BUFFER; (#colorData); (symdat <'colorData'); GL_STATIC_DRAW
 glBindBuffer GL_ARRAY_BUFFER; 0
 
 sprog=: program
@@ -121,11 +121,11 @@ glUniformMatrix4fv mvpUni; 1; GL_FALSE; mvp
 
 glBindBuffer GL_ARRAY_BUFFER; {.vbo
 glEnableVertexAttribArray vertexAttr
-glVertexAttribPointer vertexAttr; 3; GL_FLOAT; 0; 0; <<0
+glVertexAttribPointer vertexAttr; 3; GL_FLOAT; 0; 0; 0
 
 glBindBuffer GL_ARRAY_BUFFER; {:vbo
 glEnableVertexAttribArray colorAttr
-glVertexAttribPointer colorAttr; 3; GL_FLOAT; 0; 0; <<0
+glVertexAttribPointer colorAttr; 3; GL_FLOAT; 0; 0; 0
 
 glDrawArrays GL_TRIANGLES; 0; 36
 
