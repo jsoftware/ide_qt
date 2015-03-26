@@ -8,7 +8,7 @@ PICTURE=: file2url jpath '~addons/graphics/bmp/toucan.bmp'
 
 NB. =========================================================
 run_webgl=: 3 : 0
-wd 'pc webgl;cc w webview'
+wd 'pc webgl;cc w ',(qtmajor=5){::'webview';'webengine'
 h=. fread jpath '~addons/ide/qt/demo/webgl.html'
 m=. ('J3DI_js';J3DI;'J3DIMath_js';J3DIMath;'PICTURE';PICTURE) stringreplace h
 wd 'pshow'

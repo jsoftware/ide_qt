@@ -1,10 +1,10 @@
 NB. webd3
 NB.
 NB. These demos are from https://github.com/mbostock/d3/wiki/Gallery
-NB. and demonstrate that Qt webview can run d3 scripts.
+NB. and demonstrate that Qt webview/webengine can run d3 scripts.
 NB.
 NB. This means that a J application could display graphics by
-NB. creating appropriate d3 commands, then calling Qt webview.
+NB. creating appropriate d3 commands, then calling Qt webview/webengine.
 
 coclass 'qtdemo'
 
@@ -14,7 +14,7 @@ F0=: file2url jpath '~addons/ide/qt/data/data.tsv'
 NB. =========================================================
 svgview=: 3 : 0
 's t'=. y
-wd 'pc svgview;cc w webview'
+wd 'pc svgview;cc w ',(qtmajor=5){::'webview';'webengine'
 h=. '<!DOCTYPE html><html><head><meta charset="utf-8"/>',LF
 h=. h,'<script type="text/javascript" src="',D3,'" charset="utf-8"></script>',LF
 h=. h,'<style>',s,'</style>',LF

@@ -7,7 +7,7 @@ GLSL=: 0
 
 A=: 0 : 0
 pc a;
-minwh 300 300;cc g opengl version 2.0 flush;
+minwh 300 300;cc g opengl flush;
 rem form end;
 )
 
