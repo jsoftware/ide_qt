@@ -24,7 +24,7 @@ if. -. checkrequire 'gl2';'graphics/gl2' do. return. end.
 require 'gl2'
 coinsert 'jgl2'
 wd 'pc sademo'
-wd 'cc g isigraph'
+wd 'cc g isigraph flush'
 wd 'cc sa scrollarea'
 if. 'Android'-:UNAME do.
   scrwh=. 2 3{ ". wd'qscreen'

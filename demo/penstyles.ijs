@@ -21,7 +21,7 @@ coinsert 'jgl2'
 wd 'pc penstyle escclose closeok'
 wd 'pn Pen Styles'
 wd 'minwh 400 270'
-wd 'cc g isidraw'
+wd 'cc g isidraw flush'
 wd 'pshow'
 off=. <.-:{:glqextent'X'
 glfill 255 255 255 255

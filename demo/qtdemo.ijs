@@ -67,7 +67,7 @@ toolbar dtoolbar
 toolbarv dtoolbarv
 viewmat dviewmat
 webd3 dwebd3
-webengine dwebengine
+webengine_experimental dwebengine
 webgl dwebgl
 websocket dwebsocket
 websocket_client dwebsocketclient
