@@ -181,7 +181,7 @@ pmview_show=: 3 : 0
 wd 'psel pm'
 pmview_getmask ''
 sel=. IFSECTION pick Status;<SECTION
-wd 'set sel items ',todel sel
+wd 'set sel items ',toDEL sel
 wd 'setselect sel ',":IFSECTION { SELNDX
 wd 'setenable apply ',":ONLINE
 pmview_showdata DATAMASK # PKGDATA
