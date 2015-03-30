@@ -1,10 +1,10 @@
 NB. webd3
 NB.
 NB. These demos are from https://github.com/mbostock/d3/wiki/Gallery
-NB. and demonstrate that Qt webview/webengine can run d3 scripts.
+NB. and demonstrate that Qt webview can run d3 scripts.
 NB.
 NB. This means that a J application could display graphics by
-NB. creating appropriate d3 commands, then calling Qt webview/webengine.
+NB. creating appropriate d3 commands, then calling Qt webview.
 
 coclass 'qtdemo'
 
