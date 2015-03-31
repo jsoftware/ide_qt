@@ -50,8 +50,8 @@ else.
     fsrc=. fsrc,~ '#define lowp', LF, '#define mediump', LF, '#define highp', LF
   end.
 end.
-vsrc=. '#version ',(":GLSL),(' es'#~(GLSL>:300)*.0~:GLES_VERSION_jgles_),LF,vsrc
-fsrc=. '#version ',(":GLSL),(' es'#~(GLSL>:300)*.0~:GLES_VERSION_jgles_),LF,fsrc
+vsrc=. '#version ',(":GLSL),((GLSL>:300)#(*GLES_VERSION){::' core';' es'),LF,vsrc
+fsrc=. '#version ',(":GLSL),((GLSL>:300)#(*GLES_VERSION){::' core';' es'),LF,vsrc
 if.(GLSL>:300)*.0~:GLES_VERSION_jgles_ do.
   fsrc=. ('void main';'out vec4 gl_FragColor;',LF,'void main') stringreplace fsrc
 end.

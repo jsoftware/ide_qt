@@ -30,6 +30,7 @@ info=: 3 : 0
 wd 'mb info "',SYSNAME,'" *',y
 )
 runpacman=: 3 : 0
+if. (<'jpacman') e. {.2}.|:(<;._2);._2 wd'qpx' do. EMPTY return. end.
 empty '' conew 'jpacman'
 )
 pm_apply_button=: 3 : 0
