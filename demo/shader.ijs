@@ -51,7 +51,7 @@ else.
   end.
 end.
 vsrc=. '#version ',(":GLSL),((GLSL>:300)#(*GLES_VERSION){::' core';' es'),LF,vsrc
-fsrc=. '#version ',(":GLSL),((GLSL>:300)#(*GLES_VERSION){::' core';' es'),LF,vsrc
+fsrc=. '#version ',(":GLSL),((GLSL>:300)#(*GLES_VERSION){::' core';' es'),LF,fsrc
 if.(GLSL>:300)*.0~:GLES_VERSION_jgles_ do.
   fsrc=. ('void main';'out vec4 gl_FragColor;',LF,'void main') stringreplace fsrc
 end.
@@ -159,6 +159,7 @@ end.
 a_cancel=: a_close
 
 a_close=: 3 : 0
+glDeleteBuffers ::0: 2; vbo
 glDeleteProgram ::0: sprog
 wd 'pclose'
 )
