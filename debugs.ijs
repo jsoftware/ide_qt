@@ -291,6 +291,7 @@ STOPNONE=: '';0;0;NULL;NULL
 TYPES=: 'acv'
 jdb_debuginit=: 3 : 0
 STOPS=: i.0 5
+DISSECTOPTIONS=:0 5$a:
 'HWNDP' jdb_default ''
 if. 0>4!:0 <'WINPOS' do.
   WINPOS=: 0 ". (<0 1) >@{ jdb_wd 'qtstate debugpos'
@@ -329,7 +330,8 @@ jdb_ppset''
 jdb_lxson ''
 xsstg =. 'jdb_imxhandler_jdebug_ 1'
 if. #y do.
-  xsstg =. ('(', (": 1 {:: y) , ' dissect ',(jdb_quote 0 {:: y), ') ') , xsstg
+  'line dissectopts' =. y
+  xsstg =. ('((', (5!:5 <'dissectopts') , ') dissect ',(jdb_quote line), ') ') , xsstg
 end.
 jdb_imxs xsstg
 jdb_imxss 1
@@ -432,7 +434,6 @@ end.
 0
 )
 jdb_debug=: 3 : 0
-
 jdb_lxsoff''
 
 if. -. jdb_isgui'' do.
@@ -453,7 +454,7 @@ jdb_ppget 0
 if. #y do.
   LOCALE=: y
 else.
-  LOCALE =: 'base'
+  LOCALE =: <'base'
 end.
 ERM_j_=: jdb_dberm''
 'NAME ERRNUM CURRENTLINE'=: 3 {. stack
@@ -473,13 +474,11 @@ jdb_debug y
 )
 jdb_lexwin=: 3 : 0
 if. 0 e. #NAME do. '' return. end.
-
 jdb_stopread''
 STACK=: jdb_getstack''
 jdb_lexwin1 ''
 )
 jdb_lexwin1=: 3 : 0
-
 j=. (MOVELINE ; ERRMSG) jdb_stackrep STACK
 
 if. 0 = L. j do. return. end.
@@ -949,6 +948,80 @@ dyd=. ": &.> 4 {"1 STOPS
 dyd=. (<'*') (I. ;2 {"1 STOPS) } dyd
 jdb_stopset ; (nms,.mon,.dyd) ,&.> "1 ' :;'
 )
+jdb_extstops =: 3 : 0
+'stopinfo autoinfo dissectinfo' =. 3 {. y
+if. #stopinfo do.
+  if. 1 = #$stopinfo do. stopinfo =. ,: stopinfo end.
+  assert. (,5) -: }.$stopinfo
+
+  (((<0;1 2)&{ jdb_installstops 0 3 4&{"1)/.~   1 2&{"1) stopinfo
+end.
+
+if. #autoinfo do.
+
+  assert. '' -: $autoinfo
+  assert. autoinfo e. 0 1
+  jdebug_dissecttoggleauto_run autoinfo
+end.
+
+if. #dissectinfo do.
+  if. 1 = #$dissectinfo do. dissectinfo =. ,: dissectinfo end.
+  assert. (,5) -: }.$dissectinfo
+
+  (((<0;1 2)&{ jdb_installdissectopts 0 3 4&{"1)/.~   1 2&{"1) dissectinfo
+end.
+)
+
+jdb_installstops =: 4 : 0
+x jdb_stoprefresh''
+x jdb_installstops1 y
+jdb_stopwrite''
+)
+jdb_installstops1 =: 4 : 0"1
+'nam loc' =. x
+'action val lines' =. y
+assert. '' -: $val
+assert. val e. 0 1
+assert. '' -: $ action
+assert. action e. 0 1 2
+NUMLINES =: val { SMCOUNT
+assert. 0 < NUMLINES [ 'selected valence is empty'
+if. 0 = #lines do. lines =. i. NUMLINES end.
+(action jdb_stopsetone (nam;val)&,)@<"0 lines
+0 0$0
+)
+jdb_installdissectopts =: 4 : 0
+x jdb_stoprefresh''
+x jdb_installdissectopts1 y
+)
+jdb_installdissectopts1 =: 4 : 0"1
+'nam loc' =. x
+'opttbl val lines' =. y
+assert. '' -: $val
+assert. val e. 0 1
+NUMLINES =: val { SMCOUNT
+assert. 0 < NUMLINES [ 'selected valence is empty'
+if. 0 = #lines do. lines =. i. NUMLINES end.
+if. #opttbl do.
+  if. 1 = #$opttbl do. opttbl =. ,: opttbl end. 
+  assert. (,2) -: }.$opttbl
+
+  DISSECTOPTIONS =: DISSECTOPTIONS , opttbl;nam;loc;val;lines
+else.
+
+
+  nvmsk =. (nam;loc;val) -:"1 (1 2 3) {"1 DISSECTOPTIONS
+  oldlines =. nvmsk # DISSECTOPTIONS
+
+  oldlines =. (nlct =. -.&lines&.> 4 {"1 oldlines) (<a:;4)} oldlines
+
+  oldlines =. (a: ~: nlct) # oldlines
+
+  DISSECTOPTIONS =: ((-. nvmsk) # DISSECTOPTIONS) , oldlines
+end.
+0 0$0
+)
+
 jdb_swap=: 3 : 0
 '' jdb_swap y
 :
@@ -970,11 +1043,11 @@ if. -. jdb_isgui'' do.
   jdb_wd 'pmove ',(":p),';pas 0 0;pshow'
 
 else.
+  jdb_wd 'psel ',HWNDP
   if. new-:old do. return. end.
   if. #old do.
     (old,'_dun')~ 0
   end.
-  jdb_wd 'psel ',HWNDP
   if. -. (<'jdbnone') e. old;new do.
     jdb_wd 'set tabs active ', ":jdb_tabcurrent''
   else.
@@ -993,6 +1066,7 @@ else.
   end.
 end.
 
+wd 'set tbar checked dissecttoggleauto ' , ": AUTODISSECT
 jdb_tbenable''
 jdb_swapfkey''
 )
@@ -1345,15 +1419,16 @@ else.
 end.
 )
 jdb_stoprefresh=: 3 : 0
-'nam loc'=. jdbstop_getcurrentname''
-'rep both count'=. jdb_stoprep nam;loc
-srep=. jdb_listboxed rep
-jdb_wd 'set slines text *', srep
+(jdbstop_getcurrentname'') jdb_stoprefresh y
+:
+'rep both count'=. jdb_stoprep x
 if. #y do.
+  srep=. jdb_listboxed rep
+  jdb_wd 'set slines text *', srep
   sel=. 2 $ y
   jdb_wd 'set slines select ',":sel, 0
+  jdb_wd 'setfocus slines'
 end.
-jdb_wd 'setfocus slines'
 SMBOTH=: both
 SMCOUNT=: count
 )
@@ -1557,7 +1632,26 @@ case. do.
       line =, CURRENTLINE
     end.
   end.
-  jdb_restore (line { LINES) , <12 14 {~ *#y
+
+  dissectopts =. 12 14 {~ *#y
+  if. #dos =. (((NAME;LOCALE,<VALENCE) -:"1 (1 2 3)&{"1) # 0 4&{"1) DISSECTOPTIONS do.
+    if. #dos =. (#~    line e.&> {:"1) dos do.
+
+      dopts =. ; {."1 dos
+      if. +./ amsk =. (<'auto') = {."1 dopts do.
+
+        if. (*#y) *. (+./ ('auto';'0') -:&(,&.>)"1 amsk # dopts) do.
+
+          dissectopts =. dopts =. ''
+        else.
+          dopts =. (-. amsk) # dopts
+        end.
+      end.
+      if. #dopts do. dissectopts =. dissectopts ;< dopts end.
+    end.
+  end.
+
+  jdb_restore (*#dissectopts) # (line { LINES) , <dissectopts
 end.
 )
 jdebug_dissecttoggleauto_run=: 3 : 0
@@ -1568,7 +1662,12 @@ case. 0 do.
 case. _1 do.
   wdinfo 'Toggle Autodissect';'This feature requires the debug/dissect addon.  Use Tools|Package Manager to install the addon.'
 case. do.
-  AUTODISSECT =: -. AUTODISSECT
+  if. #y do.
+    wd 'psel jdebug'
+    AUTODISSECT =: y
+  else.
+    AUTODISSECT =: -. AUTODISSECT
+  end.
 end.
 wd 'set tbar checked dissecttoggleauto ' , ": AUTODISSECT
 empty''
