@@ -1138,6 +1138,7 @@ bin m8h;
 cc stopline button;cn "Stop Line";
 cc stopall button;cn "Stop All";
 bin s;
+cc syslocs checkbox;cn "Show all locales";
 cc stopclose button;cn "Close";
 bin zhv;
 cc s0 static;cn "Name:";
@@ -1254,21 +1255,15 @@ jdbnone_stopname_button=: empty
 CX=: <'Current execution'
 jdbstop_dun=: ]
 jdbstop_ini=: 3 : 0
-lc=. (18!:1[0), 18!:1[1
-hd=. ;: 'base z'
-lc=. hd, lc -. hd
 
 if. jdb_inactive'' do.
   SMLOC=: <'base'
-  SMLOCS=: SMLOC,lc -. SMLOC,<'jdebug'
+  0 jdebug_syslocs_button ''
   STNAMES=: i.0 2
-  jdb_wd 'set locs items ',jdb_toDEL SMLOCS
   jdb_stoplocaleset SMLOC
 else.
   SMLOC=: CX
-  j=. SMLOC, ~. LOCALE, <'base'
-  SMLOCS=: j, lc -. j
-  jdb_wd 'set locs items ',jdb_toDEL SMLOCS
+  0 jdebug_syslocs_button ~. LOCALE, <'base'
   nms=. {."1 STACK
   nms=. ~. (jdb_boxxopen y), nms
   r=. ([:{.(_2&{.@I.@('_'=])))&.>nms
@@ -1278,7 +1273,6 @@ else.
   STNAMES=: SMNAMES
   0 jdb_stopswritedef SMNAMES
 end.
-jdb_wd 'set locs select 0'
 )
 jdbstop_stopall_button=: 3 : 0
 jdb_lxsoff''
@@ -1375,6 +1369,21 @@ jdebug_locs_select=: 3 : 0
 jdb_lxsoff''
 jdb_stoplocaleset locs
 jdb_lxson''
+)
+
+SYSTEMLOCALES =: ;: 'z'
+SYSTEMPREFIXES =: ;: 'dissect lint j'
+jdebug_syslocs_button=: 3 : 0
+(0 ". syslocs) jdebug_syslocs_button y
+:
+lc=. (18!:1[0), 18!:1[1
+if. 0 = x do.
+  lc =. (#~   [: -. [: +./ SYSTEMPREFIXES ([ -: #@[ {. ])&>/ ]) lc -. SYSTEMLOCALES
+  lc =. (#~   *@#@(-.&'0123456789')@>) lc
+end.
+jdb_wd 'set locs items ',jdb_toDEL SMLOCS =: (,   lc -. ]) SMLOC , y
+jdb_wd 'set locs select 0'
+0 0$0
 )
 jdbstop_getcurrentname=: 3 : 0
 ndx=. 0 ". name_select
