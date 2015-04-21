@@ -357,7 +357,7 @@ if. 'Android'-:UNAME do.
 else.
   msg=. JQTMSG rplc 'XX';'updatejqt.',IFWIN pick 'sh';'cmd'
 end.
-wdinfo 'JQt';msg
+sminfo 'JQt';msg
 )
 checkjqtversion''
 
