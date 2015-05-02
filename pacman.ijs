@@ -340,11 +340,8 @@ SELNDX=: (0 ". sel_select) IFSECTION } SELNDX
 pmview_open=: 3 : 0
 if. 'Android'-:UNAME do.
   wd PMVIEW_S
-  if. 0=4!:0<'DM_density_ja_' do.
-    wd 'set edlog wh _1 ', ":72*DM_density_ja_
-  else.
-    wd 'set edlog wh _1 ', ":72*3
-  end.
+  android_getdisplaymetrics 0
+  wd 'set edlog wh _1 ', ":72*DM_density_ja_
 else.
   wd PMVIEW
 end.
