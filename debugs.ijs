@@ -1079,7 +1079,7 @@ jdb_tbenable''
 jdb_swapfkey''
 )
 TABGROUPS=: ;: 'jdbmain jdbstop jdbwatch'
-DISSECTSTATUS =: (dissectchecklevel =: 4 : 0&(3 7)) 0
+DISSECTSTATUS =: (dissectchecklevel =: 4 : 0&(4 9)) 0
 if. x +. 0 > 4!:0 <'dissect_dissect_' do.
 
   if. fexist getscripts_j_ 'debug/dissect' do.
