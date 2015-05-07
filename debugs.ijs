@@ -1754,7 +1754,7 @@ case. do.
       dopts =. ; {."1 dos
       if. +./ amsk =. (<'auto') = {."1 dopts do.
 
-        if. (*#y) *. (+./ ('auto';'0') -:&(,&.>)"1 amsk # dopts) do.
+        if. (*#y) *. (+./ ('auto';'0') -:&:(,&.>)"1 amsk # dopts) do.
 
           dissectopts =. dopts =. ''
         else.
