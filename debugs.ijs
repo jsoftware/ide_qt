@@ -1079,7 +1079,7 @@ jdb_tbenable''
 jdb_swapfkey''
 )
 TABGROUPS=: ;: 'jdbmain jdbstop jdbwatch'
-DISSECTSTATUS =: (dissectchecklevel =: 4 : 0&(4 9)) 0
+DISSECTSTATUS =: (dissectchecklevel =: 4 : 0&(4 0)) 0
 if. x +. 0 > 4!:0 <'dissect_dissect_' do.
 
   if. fexist getscripts_j_ 'debug/dissect' do.
@@ -1848,6 +1848,7 @@ jdebug_runcursor_button=: immexj bind 'jdebug_runcursor_run_jdebug_$0'
 jdebug_run_button=: immexj bind 'jdebug_run_run_jdebug_$0'
 jdebug_dissectcurrent_button=: immexj bind 'jdebug_dissectcurrent_run_jdebug_$0'
 jdebug_dissecttoggleauto_button=: immexj bind 'jdebug_dissecttoggleauto_run_jdebug_$0'
+jdebug_jctrl_fkey=: immexj bind 'labrun_jlab_$0'
 jdbwatch_dun=: 3 : 0
 if. 0 ~: 4!:0 <'wlist' do. return. end.
 
