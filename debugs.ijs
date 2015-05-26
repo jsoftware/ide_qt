@@ -290,7 +290,7 @@ TYPES=: 'acv'
 STOPNONE=: '';0;0;NULL;NULL
 TYPES=: 'acv'
 jdb_debuginit=: 3 : 0
-STOPS=: i.0 5
+jdb_stopwrite STOPS=: i.0 5
 DISSECTOPTIONS=:0 5$a:
 'HWNDP' jdb_default ''
 if. 0>4!:0 <'WINPOS' do.
