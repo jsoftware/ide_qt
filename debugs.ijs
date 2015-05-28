@@ -1356,6 +1356,19 @@ jdebug_name_select=: 3 : 0
 jdb_lxsoff''
 ndx=. {. _1,~ 0 ". name_select
 if. _1=ndx do. jdb_lxson'' return. end.
+jdb_wd 'set locs select ',": SMLOCS i. SMLOC
+if. ndx = #SMNAMES do.
+
+
+
+
+
+  'dbgnames dispnames' =. jdebug_debugnametodisp SMNAMES
+  jdb_wd 'set name items ',jdb_listboxed {."1 dispnames
+  jdb_wd 'set name select ', ": SMNDX
+  jdb_lxson''
+  return.
+end.
 if. ndx ~: SMNDX do.
 
 
@@ -1397,7 +1410,14 @@ jdb_lxson''
 )
 jdebug_locs_select=: 3 : 0
 jdb_lxsoff''
-jdb_stoplocaleset locs
+if. SMLOCS -.@e.~ <locs do.
+
+
+  jdb_wd 'set locs items ',jdb_toDEL SMLOCS
+  jdb_wd 'set locs select ' , ": SMLOCS i. SMLOC
+else.
+  jdb_stoplocaleset locs
+end.
 jdb_lxson''
 )
 
