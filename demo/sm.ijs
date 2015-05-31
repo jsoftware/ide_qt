@@ -1,4 +1,8 @@
 NB. examples of wd 'sm'
+NB. where tab index is used, ensure the index is valid
+
+wd 'sm active tab 1' NB. active tab index 1
+wd 'sm close tab 1'  NB. close tab index 1
 
 NB. get which window is active:
 wd 'sm get active'
@@ -19,7 +23,7 @@ NB. set term prompt:
 wd 'sm prompt *   i.2 3'
 
 NB. set selection in window:
-wd 'sm set edit select 29 46'
+wd 'sm set edit select 28 46'
 
 NB. set text in window - this will replace
 NB. any existing text in term:
