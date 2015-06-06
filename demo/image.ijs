@@ -10,7 +10,7 @@ wd 'grid shape 2'
 wd 'cc pic image'
 wd 'cc jpg image transparent'
 wd 'cc png image transparent keep'
-wd 'cc bmp image expand'
+wd 'cc bmp image ignore'
 wd 'bin z'
 wd 'set pic image *',jpath '~addons/graphics/bmp/toucan.bmp'
 NB. convert to jpg
