@@ -16,6 +16,7 @@ wd 'sm focus edit'
 
 wd 'sm font Monospace 20'  NB. set session font
 
+wd 'sm open edit'
 wd 'sm open tab'            NB. open new tab
 wd 'sm open tab ~addons/ide/qt/demo/spinbox.ijs'  NB. open file, in new tab if necessary
 
@@ -28,6 +29,7 @@ wd 'sm save tabs' NB. save all edit tabs
 
 NB. set selection in window:
 wd 'sm set edit select 28 46'
+wd 'sm set edit select 34 34'  NB. if same, just set cursor
 
 NB. set text in window - replace any existing text:
 wd 'sm set term text *How grand to be a Toucan',LF,'Just think what Toucan do.'
