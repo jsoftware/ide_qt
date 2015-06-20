@@ -335,7 +335,7 @@ getsha1=: getsha1_jqtide_
 gethash=: gethash_jqtide_
 textview=: textview_jqtide_
 coclass 'jqtide'
-JQTREQ=: '1.4.1'
+JQTREQ=: '1.4.2'
 JQTMSG=: 0 : 0
 The JQt binary needs updating.
 
