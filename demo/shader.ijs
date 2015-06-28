@@ -4,6 +4,7 @@ cocurrent 'demoshader'
 mp=: +/ . *
 sprog=: 0
 GLSL=: 0
+STOP=: 1
 
 A=: 0 : 0
 pc a;
@@ -91,6 +92,7 @@ gl_paint''
 )
 
 a_timer=: 3 : 0
+if. 0=STOP do. return. end.
 R=: 360 | R + 2 * 1 1 1
 gl_sel HD
 gl_paint''
@@ -142,7 +144,7 @@ gl_clear ''
 gl_rgb 255 255 255
 gl_textcolor ''
 gl_textxy 10 30
-gl_text 'keys: x y z a s l r'
+gl_text 'keys: x y z a s l r F10'
 gl_textxy 10 50
 gl_text 'scale: ',":STEPS%100
 gl_textxy 10 70
@@ -154,6 +156,10 @@ for_i. i.4 do.
   gl_textxy 10, 105+i*15
   gl_text 6j2": i{mvp
 end.
+)
+
+a_f10_fkey=: 3 : 0
+STOP=: -.STOP
 )
 
 a_cancel=: a_close
@@ -192,19 +198,31 @@ _1  1 _1
 )
 
 NB. rgb for each vertex
-colorData=: 1&fc , 0 1 1 1 1 0&{"2 ] 6 2 3$ , 0&". ;._2 [ 0 : 0
-1 0 0
-0 1 0
-0 1 0
-0 0 1
-1 0 0
-0 0 1
-1 1 0
+colorData=: 1&fc , 0 1 2 2 1 3&{"2 ] 6 4 3$ , 0&".@(-.&',') ;._2 [ 0 : 0
+0 0 0
 0 0 1
 0 1 1
+0 1 0
+0 0 1
+1 1 0
+0 1 0
+1 0 1
+1 1 0
+1 1 1
+1 0 1
+1 0 0
+1 1 1
+0 0 0
+1 0 0
+0 1 1
+1 1 1
+1 1 0
+0 0 0
+0 0 1
+0 1 1
+0 1 0
 1 0 0
 1 0 1
-0 1 0
 )
 
 NB. =========================================================
