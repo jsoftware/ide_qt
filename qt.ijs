@@ -85,6 +85,13 @@ end.
 'title caption text'=. _3 {. p
 wd 'textview *;',title,';',caption,';',flatten text
 )
+wdhandlerx=: 3 : 0
+loc=. <y
+if. loc e. 18!:1[0 1 do.
+  wdhandler__loc''
+end.
+EMPTY
+)
 addons_msg=: 0 : 0
 The XX are not yet installed.
 
