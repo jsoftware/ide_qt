@@ -86,10 +86,8 @@ end.
 wd 'textview *;',title,';',caption,';',flatten text
 )
 wdhandlerx=: 3 : 0
-loc=. <y
-if. loc e. 18!:1[0 1 do.
-  wdhandler__loc''
-end.
+loc=. <,y
+if. 0 <: 18!:0 loc do. wdhandler__loc'' end.
 EMPTY
 )
 addons_msg=: 0 : 0
