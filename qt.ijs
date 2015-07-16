@@ -86,8 +86,12 @@ end.
 wd 'textview *;',title,';',caption,';',flatten text
 )
 wdhandlerx=: 3 : 0
-loc=. <,y
-if. 0 <: 18!:0 loc do. wdhandler__loc'' end.
+try.
+  loc=. <,y
+  if. 0 <: 18!:0 loc do. wdhandler__loc'' end.
+catch.
+  smoutput 'error in handler for event: ',sysevent__loc
+end.
 EMPTY
 )
 addons_msg=: 0 : 0
