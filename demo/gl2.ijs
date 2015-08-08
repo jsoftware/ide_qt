@@ -11,9 +11,6 @@ data=: ''
 wd FORM
 wd 'pshow'
 NB. should not be needed on other platforms..
-if. IFJCDROID do.
-  glpaint''  NB. Android bug
-end.
 EMPTY
 )
 
