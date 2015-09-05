@@ -183,8 +183,8 @@ wd 'psel pm'
 pmview_getmask ''
 sel=. IFSECTION pick Status;<SECTION
 wd 'set sel items ',toDEL sel
-wd 'setselect sel ',":IFSECTION { SELNDX
-wd 'setenable apply ',":ONLINE
+wd 'set sel select ',":IFSECTION { SELNDX
+wd 'set apply enable ',":ONLINE
 pmview_showdata DATAMASK # PKGDATA
 )
 pmview_showdata=: 3 : 0
@@ -229,7 +229,7 @@ browse_j_ 'http://www.jsoftware.com/jwiki/',a
 loggui=: 3 : 0
 LOGTXT=: LOGTXT,<;.2 y,LF -. {: y
 if. window=0 do. return. end.
-wd 'set blog 1'
+wd 'set blog value 1'
 MSGX=: 3
 pmview_showlog''
 wd 'msgs'
@@ -345,8 +345,8 @@ if. 'Android'-:UNAME do.
 else.
   wd PMVIEW
 end.
-wd 'set bsummary 1'
-wd 'set bstatus 1'
+wd 'set bsummary value 1'
+wd 'set bstatus value 1'
 wd 'pn *',SYSNAME
 wd 'set pac shape 0 5'
 wd 'set pac type 100 0 0 0 0'
