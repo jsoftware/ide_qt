@@ -92,6 +92,7 @@ try.
 catch.
   smoutput 'error in handler for event: ',sysevent__loc
 end.
+wd :: 0: 'qpop'
 EMPTY
 )
 addons_msg=: 0 : 0
