@@ -1,6 +1,5 @@
 NB. multimedia demo
 NB. depends on platform support
-NB. android does not support video output
 
 coclass 'qtdemo'
 
@@ -23,24 +22,6 @@ bin z;
 bin h;
 cc openurl button;cn "open url";
 cc url edit;
-bin z;
-bin z;
-pshow;
-)
-
-NB. =========================================================
-MULTIMEDIA0=: 0 : 0
-pc multimedia;
-bin v;
-cc mm multimedia;
-bin h;
-cc open button;cn "open local";
-cc play button;cn "";set _ icon qstyle::sp_mediaplay;
-cc mute checkbox;cn mute;
-cc vol slider;
-bin zh;
-cc loop checkbox;cn loop;
-cc pos slider;
 bin z;
 bin z;
 pshow;
@@ -103,9 +84,7 @@ if. #mmfile do.
   wd 'set mm stop'
   wd 'set play icon qstyle::sp_mediapause'
   wd 'set pos value 0'
-  if. 'Android'-.@-:UNAME do.
-    wd 'set mm brightness ', wd 'get bri value'
-  end.
+  wd 'set mm brightness ', wd 'get bri value'
   wd 'set mm volume ', wd 'get vol value'
   wd 'set mm position 0'
   wd 'set mm media ', dquote mmfile
@@ -120,9 +99,7 @@ if. #mmfile do.
   wd 'set mm stop'
   wd 'set play icon qstyle::sp_mediapause'
   wd 'set pos value 0'
-  if. 'Android'-.@-:UNAME do.
-    wd 'set mm brightness ', wd 'get bri value'
-  end.
+  wd 'set mm brightness ', wd 'get bri value'
   wd 'set mm volume ', wd 'get vol value'
   wd 'set mm position 0'
   wd 'set mm media ', dquote mmfile
@@ -148,13 +125,9 @@ wd 'pclose'
 
 NB. =========================================================
 MMdemo_run=: 3 : 0
-if. 'Android'-.@-:UNAME do.
-  wd MULTIMEDIA
-  wd 'set url text "https://archive.org/download/test-mpeg/test-mpeg.mpg"'
-  wd 'set bri max 100;set _ min _100;set _ value 0'
-else.
-  wd MULTIMEDIA0
-end.
+wd MULTIMEDIA
+wd 'set url text "https://archive.org/download/test-mpeg/test-mpeg.mpg"'
+wd 'set bri max 100;set _ min _100;set _ value 0'
 wd 'set vol max 100;set _ min 0;set _ value 50'
 wd 'pshow'
 )

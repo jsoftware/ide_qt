@@ -26,13 +26,8 @@ coinsert 'jgl2'
 wd 'pc sademo'
 wd 'cc g isigraph flush'
 wd 'cc sa scrollarea'
-if. 'Android'-:UNAME do.
-  scrwh=. 2 3{ ". wd'qscreen'
-  wd 'set g minwh ', ": >. 1.5*scrwh
-else.
-  wd 'set g minwh 400 250'
-  wd 'pmove 700 20 300 200'
-end.
+wd 'set g minwh 400 250'
+wd 'pmove 700 20 300 200'
 wd 'pshow'
 smoutput 'Try:',LF,'  wd ''set sa pos 10 100'''
 showevents_jqtide_ 2
@@ -48,14 +43,8 @@ NB. =========================================================
 sademo_g_paint=: 3 : 0
 glclear''
 glbrush glrgb 255 0 0
-if. 'Android'-:UNAME do.
-  scrwh=. 2 3{ ". wd'qscreen'
-  glrect 50 50 , >. 1.1*scrwh
-  gllines 30 30 , >. 1.2*scrwh
-else.
-  glrect 50 50 200 200
-  gllines 30 30 300 300
-end.
+glrect 50 50 200 200
+gllines 30 30 300 300
 )
 
 NB. =========================================================

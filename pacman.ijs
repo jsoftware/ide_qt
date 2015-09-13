@@ -66,9 +66,6 @@ pmview_show''
 )
 pm_close=: pm_exit_button=: 3 : 0
 wd 'pclose'
-if. 'Android'-:UNAME do.
-  smact''
-end.
 destroy''
 )
 pm_remove_button=: 3 : 0
@@ -338,13 +335,7 @@ IFSECTION=: 0 ". bsection
 SELNDX=: (0 ". sel_select) IFSECTION } SELNDX
 )
 pmview_open=: 3 : 0
-if. 'Android'-:UNAME do.
-  wd PMVIEW_S
-  android_getdisplaymetrics 0
-  wd 'set edlog wh _1 ', ":72*DM_density_ja_
-else.
-  wd PMVIEW
-end.
+wd PMVIEW
 wd 'set bsummary value 1'
 wd 'set bstatus value 1'
 wd 'pn *',SYSNAME

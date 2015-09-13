@@ -62,7 +62,6 @@ d=. (sel,rws,cls) |: i.shp
 r=. (sel{shp),(*/rws{shp),*/cls{shp
 ,(<ndx) { r ($,) d
 )
-logcat=: empty @: (('"',libjqt,'" logcat ',(IFWIN#'+'),' n *c') cd <@,)
 showevents=: 3 : 0
 select. {. y,1
 case. 0 do.
@@ -361,12 +360,7 @@ ver=. wd 'version'
 act=. f (<./ ver i.'/s') {. ver
 req=. f JQTREQ
 if. req <: act do. return. end.
-if. 'Android'-:UNAME do.
-  msg=. 'The JQt application needs updating.',LF2
-  msg=. msg,'Please download and install the latest Android apk.'
-else.
-  msg=. JQTMSG rplc 'XX';'updatejqt.',IFWIN pick 'sh';'cmd'
-end.
+msg=. JQTMSG rplc 'XX';'updatejqt.',IFWIN pick 'sh';'cmd'
 sminfo 'JQt';msg
 )
 checkjqtversion''
