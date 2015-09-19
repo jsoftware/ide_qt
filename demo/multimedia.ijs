@@ -126,7 +126,7 @@ wd 'pclose'
 NB. =========================================================
 MMdemo_run=: 3 : 0
 wd MULTIMEDIA
-wd 'set url text "https://archive.org/download/test-mpeg/test-mpeg.mpg"'
+wd 'set url text "https://archive.org/download/test-mpeg/test-mpeg_512kb.mp4"'
 wd 'set bri max 100;set _ min _100;set _ value 0'
 wd 'set vol max 100;set _ min 0;set _ value 50'
 wd 'pshow'
