@@ -126,7 +126,7 @@ dedit=: 'edit' rundemo
 dedith=: 'edith' rundemo
 deditm=: 'editm' rundemo
 dgl2=: 'gl2' rundemo
-dglc=: 'glc' rundemo
+dglc=: 'glc' rundemo`notsupport@.('Darwin'-:UNAME)
 dgrid=: 'grid' rundemo
 dide=: 'ide' rundemo
 dimage=: 'image' rundemo
@@ -140,7 +140,7 @@ dmsgs=: 'msgs' rundemo
 dmultimedia=: 'multimedia' rundemo`notsupport@.((qtmajor=4)+.qtslim)
 dpenstyles=: 'penstyles' rundemo
 dplot=: 'plot' rundemo
-dplotc=: 'plotc' rundemo
+dplotc=: 'plotc' rundemo`notsupport@.('Darwin'-:UNAME)
 dprinter=: 'printer' rundemo
 dprogressbar=: 'progressbar' rundemo
 dpstyles=: 'pstyles' rundemo
