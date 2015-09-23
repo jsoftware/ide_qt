@@ -87,7 +87,7 @@ glpixels 20 200 40 40,data
 glsavefile jpath '~temp/glc.png'   NB. save image
 glfree''                           NB. free resource held
 ((<'jglc') -.~ copath 'qtdemo') copath 'qtdemo'
-browse_j_ jpath '~temp/glc.png'    NB. view using web browser
+viewimage_j_ jpath '~temp/glc.png'
 )
 
 NB. =========================================================
