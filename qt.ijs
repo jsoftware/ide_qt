@@ -221,7 +221,7 @@ EMPTY
 )
 qapplication=: 3 : 0
 if. (UNAME-:'Linux') *. (0;'') e.~ <2!:5 'DISPLAY' do. _1 return. end.
-('"',libjqt,'" state_run >',(IFWIN#'+'),' i i x *c i x x *x *x')&cd`0:@.IFQT 0;0;'';FHS;0;0;(hjdll=. ,_1);(pjst=. ,_1)
+('"',libjqt,'" state_run >',(IFWIN#'+'),' i i x *c i i x x *x *x')&cd`0:@.IFQT 0;0;'';FHS;0;0;0;(hjdll=. ,_1);(pjst=. ,_1)
 0[IFQTC_z_=: 1
 )
 3 : 0''
@@ -335,7 +335,7 @@ end.
 wdpclose=: [: wd :: empty 'psel ' , ';pclose' ,~ ":
 
 initjqt=: 3 : 0
-('"',libjqt,'" state_run >',(IFWIN#'+'),' i i x *c i x x x x')&cd _100;0;'';0;0;0;0;0
+('"',libjqt,'" state_run >',(IFWIN#'+'),' i i x *c i i x x x x')&cd _100;0;'';0;0;0;0;0;0
 EMPTY
 )
 dirmatch=: 3 : 'wd ''dirmatch '', ; dquote&.> 2 {. boxopen y'
