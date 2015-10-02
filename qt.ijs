@@ -333,6 +333,11 @@ end.
 )
 
 wdpclose=: [: wd :: empty 'psel ' , ';pclose' ,~ ":
+
+initjqt=: 3 : 0
+('"',libjqt,'" state_run >',(IFWIN#'+'),' i i x *c i x x x x')&cd _100;0;'';0;0;0;0;0
+EMPTY
+)
 dirmatch=: 3 : 'wd ''dirmatch '', ; dquote&.> 2 {. boxopen y'
 open=: 3 : 'wd ''openj *'' , > {. getscripts_j_ y'
 immexj=: [: wd 'immexj *'&,
