@@ -6,7 +6,7 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.1.96'
+VERSION=: '1.1.97'
 
 FILES=: 0 : 0
 console.ijs
