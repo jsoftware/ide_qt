@@ -1632,6 +1632,7 @@ if. (LF,')') -: _2 {. ld do.
       end.
     end.
   end.
+elseif. (dnm =. nm,DEBUGNAMESUFFIX) +./@:E. ld do. nm =. dnm
 end.
 nm ; loc
 )
