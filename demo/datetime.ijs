@@ -73,9 +73,10 @@ showevents_jqtide_ 0
 NB. =========================================================
 datetimedemo_run=: 3 : 0
 P=. jpath '~addons/ide/qt/images/'
+dt=. 6!:0 'YYYYMMDDhhmmss'
 wd DTdemo
-wd 'set date value 20120331'
-wd 'set time value 142358'
+wd 'set date value ',8{.dt
+wd 'set time value ',8}.dt
 wd 'pmove 700 10 400 200'
 wd 'pshow'
 )
@@ -85,7 +86,7 @@ showevents_jqtide_ 2
 datetimedemo_run''
 smoutput 0 : 0
 Try:
-  wd 'set date value 20120410'
+  wd 'set date value 20151110'
   wd 'set date format "ddd.MMM.yyyy"'
   wd 'set time value 140002.123'
   wd 'set time format "hh:mm:ss ap"'

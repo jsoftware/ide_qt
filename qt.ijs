@@ -74,6 +74,18 @@ if. 0=#n do. 0 return. end.
 if. (<'define') e. (n+1){t do. 1 return. end.
 (,each ':0') e. (n+/1 2){t,<''
 )
+Multiline=: (,each '01234'),;:'noun adverb conjunction verb monad dyad'
+
+ismultiline=: 3 : 0
+if. 0=#y do. 0 return. end.
+t=. ;: :: 0: y
+if. t-:0 do. 0 return. end.
+if. (<'Note') = {.t do. 1 return. end.
+n=. I. }: t e. Multiline
+if. 0=#n do. 0 return. end.
+if. (<'define') e. (n+1){t do. 1 return. end.
+(,each ':0') e. (n+/1 2){t,<''
+)
 showevents=: 3 : 0
 select. {. y,1
 case. 0 do.
