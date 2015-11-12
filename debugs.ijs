@@ -386,10 +386,11 @@ jdb_debuginit''
 13!:0 [ 0
 )
 jdb_open=: 3 : 0
+forcereopen =. {.!.0 y
 a=. jdb_getactive''
 jdb_debuginit''
 ERM_j_=: ''
-if. #jdb_getstack'' do.
+if. (-.forcereopen)*#jdb_getstack'' do.
   jdb_debug ''
 else.
   jdb_ppget 0
@@ -399,16 +400,16 @@ end.
 jdb_setactive a
 )
 j=. 0 : 0
-Enter             !single step over
-F5~~~~~~~~        !run
-Ctrl+Shift+F5     !run from next line
-F6~~~~~~~~        !single step into
-F7~~~~~~~~        !single step over
-F8~~~~~~~~        !step out of current definition
-F9~~~~~~~~        !toggle stop on cursor line
-Ctrl+Shift+F9     !remove all stops
-Ctrl+T            !toggle topmost attribute
-Ctrl+W            !write current line to session
+Enter          !single step over
+F5~~~~~~~~     !run
+Ctrl+Shift+F5  !run from next line
+F6~~~~~~~~     !single step into
+F7~~~~~~~~     !single step over
+F8~~~~~~~~     !step out of current definition
+F9~~~~~~~~     !toggle stop on cursor line
+Ctrl+Shift+F9  !remove all stops
+Ctrl+T         !toggle topmost attribute
+Ctrl+W         !write current line to session
 )
 
 SHORTCUTS=: ' ' (I. j='~') } TAB (I. j='!')} j
@@ -1099,7 +1100,7 @@ DTTCURR =. DTTTOGGLE =. 'These functions are defined in the debug/dissect addon,
 DTTCURR =. 'Dissect current/cursor line' [^:(DISSECTSTATUS=1) DTTCURR
 DTTTOGGLE =. 'Automatically dissect on stop' [^:(DISSECTSTATUS=1) DTTTOGGLE
 JDEBUG=: 0 : 0 rplc 'DEBUGPATH';(jpath '~addons/ide/qt/images');'DTTCURR';DTTCURR;'DTTTOGGLE';DTTTOGGLE
-pc jdebug escclose ptop;pn "Debug";
+pc jdebug escclose ptop;pn "Debug - Ctrl+H to see shortcuts";
 cc tbar toolbar 22x22 flush;
 set tbar add run "Run" "DEBUGPATH/run.png";
 set tbar addsep;
