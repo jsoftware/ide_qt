@@ -100,7 +100,7 @@ NB. font information: Height, Ascent, Descent, InternalLeading, ExternalLeading,
 NB. TODO
 glc_qtextmetrics=: 3 : 0"1
 tm=. 7#2-2
-chkgl2 ('"',libjqt,'" glc_qtextmetrics >',(IFWIN#'+'),' i *i') cd tm
+chkgl2 ('"',libjqt,'" glc_qtextmetrics >',(IFWIN#'+'),' i *i') cd <tm
 tm
 )
 
