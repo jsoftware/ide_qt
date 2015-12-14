@@ -31,6 +31,8 @@ NB. set selection in window:
 wd 'sm set edit select 28 46'
 wd 'sm set edit select 34 34'  NB. if same, just set cursor
 
+wd 'sm set edit scroll 5'  NB. scroll to line 5 (origin-0)
+
 NB. set text in window - replace any existing text:
 wd 'sm set term text *How grand to be a Toucan',LF,'Just think what Toucan do.'
 
