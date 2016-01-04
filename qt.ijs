@@ -103,7 +103,6 @@ try.
 catch.
   smoutput 'error in handler for event: ',sysevent__loc
 end.
-wd :: 0: 'qpop'
 EMPTY
 )
 addons_msg=: 0 : 0
@@ -361,7 +360,7 @@ getsha1=: getsha1_jqtide_
 gethash=: gethash_jqtide_
 textview=: textview_jqtide_
 coclass 'jqtide'
-JQTREQ=: '1.4.6'
+JQTREQ=: '1.4.9'
 JQTMSG=: 0 : 0
 The JQt binary needs updating.
 
