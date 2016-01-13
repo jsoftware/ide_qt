@@ -1012,7 +1012,7 @@ NUMLINES =: val { SMCOUNT
 assert. 0 < NUMLINES [ 'selected valence is empty'
 if. 0 = #lines do. lines =. i. NUMLINES end.
 if. #opttbl do.
-  if. 1 = #$opttbl do. opttbl =. ,: opttbl end. 
+  if. 1 = #$opttbl do. opttbl =. ,: opttbl end.
   assert. (,2) -: }.$opttbl
 
   DISSECTOPTIONS =: DISSECTOPTIONS , opttbl;nam;loc;val;lines
@@ -1030,7 +1030,6 @@ else.
 end.
 0 0$0
 )
-
 jdb_swap=: 3 : 0
 '' jdb_swap y
 :
@@ -1399,7 +1398,7 @@ if. ndx ~: SMNDX do.
 
 
       rep =. DEBUGNAMESUFFIX&(taketo , takeafter)&.> rep
-    end. 
+    end.
     jdb_wd 'set slines text *',jdb_listboxed rep
     SMNDX=: ndx
     NMC=: 4!:0 fullname
@@ -1611,7 +1610,7 @@ loc =. 1 { y
 ld =. 5!:5 <nm,'__loc'
 if. (LF,')') -: _2 {. ld do.
   'l1 ln' =. LF (taketo ; takeafter) ld
-  if. 3 < # l1w =. ;: l1 do. 
+  if. 3 < # l1w =. ;: l1 do.
     if. 1 = #cox =. (<,':') I.@:= l1w do.
       cox =. {. cox
       if. 4 > exptype =. ('1234' ;&,"0 '0') i. ((_1 1 + cox) { l1w,a:)  do.
