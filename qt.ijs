@@ -97,13 +97,16 @@ end.
 wd 'textview *;',title,';',caption,';',flatten text
 )
 wdhandlerx=: 3 : 0
-try.
-  loc=. <,y
-  if. 0 <: 18!:0 loc do. wdhandler__loc'' end.
-catch.
-  smoutput 'error in handler for event: ',sysevent__loc
+loc=. <,y
+if. 0 <: 18!:0 loc do.
+  wdhandler__loc''
+else.
+  msg=. 'no locale for event handler: ',>loc
+  if. #wdq=. wd 'q' do.
+    msg=. msg, ', event: ',(<1 1) pick wdq
+  end.
+  smoutput msg
 end.
-EMPTY
 )
 addons_msg=: 0 : 0
 The XX are not yet installed.
