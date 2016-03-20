@@ -382,6 +382,6 @@ if. req <: act do. return. end.
 msg=. JQTMSG rplc 'XX';'updatejqt.',IFWIN pick 'sh';'cmd'
 sminfo 'JQt';msg
 )
-checkjqtversion''
+checkjqtversion^:IFQT''
 
 cocurrent 'base'
