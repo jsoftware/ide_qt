@@ -59,7 +59,7 @@ NB. =========================================================
 psdemo_run=: 3 : 0
 wd PSdemo
 wd 'set lab text ',PSmsg
-wd 'pmove 50 50 0 0'
+wd 'pmove 50 50 _1 _1'
 wd 'pshow'
 )
 
