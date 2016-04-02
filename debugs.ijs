@@ -1038,7 +1038,7 @@ old=. TABCURRENT
 TABCURRENT=: new=. y
 
 if. -. jdb_isgui'' do.
-  AUTODISSECT =: 0
+  AUTODISSECT =: {.!.0 ". 'AUTODISSECT_jdebug_'
   autodissectlocale =: 0$a:
   jdb_wd JDEBUG
   HWNDP=: jdb_wd 'qhwndp'
@@ -1191,8 +1191,8 @@ jdb_info 'Debug Shortcuts';SHORTCUTS
 )
 jdebug_wctrl_fkey=: 3 : 0
 jdb_lxsoff''
+jdb_setactive 'term'
 wd 'sm prompt *   ',jdb_dlb MOVELINE >@{ LINES
-jdb_smsetactive 'term'
 jdb_lxson''
 )
 jdebug_tctrl_fkey=: 3 : 0
@@ -1564,7 +1564,7 @@ else.
   *#rep
 end.
 )
-jdebug_debugnametodisp =: ; @: (<@(3 : 0)/.~   1&{"1) @: (,:^:(1=#@$))
+jdebug_debugnametodisp =: ,&.>/ @: ((3 : 0)/.~   1&{"1) @: (,:^:(1=#@$))
 dispnms =. nms =. 0 {"1 y
 loc =. (<0 1) { y
 cocurrent loc
@@ -1611,7 +1611,7 @@ ld =. 5!:5 <nm,'__loc'
 if. (LF,')') -: _2 {. ld do.
   'l1 ln' =. LF (taketo ; takeafter) ld
   if. 3 < # l1w =. ;: l1 do.
-    if. 1 = #cox =. (<,':') I.@:= l1w do.
+    if. 1 = #cox =. I. 2 (;:':0')&-:\ l1w do.
       cox =. {. cox
       if. 4 > exptype =. ('1234' ;&,"0 '0') i. ((_1 1 + cox) { l1w,a:)  do.
         keepcom =. 9!:40''
