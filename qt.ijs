@@ -280,7 +280,7 @@ if. 3 > wd_ndx do.
         ERM_j_=: ''
         if. wd_erm -: wd_err do. i.0 0 return. end.
       end.
-      wd_err=. LF,,LF,.(}.^:(':|'e.~{.));._2 LF,~ wd_err
+      wd_err=. LF,,LF,.(}.^:('|'e.~{.));._2 ,&LF^:(LF~:{:) wd_err
       wdinfo 'wdhandler';'error in: ',wd_fn,wd_err
     end.
   end.
