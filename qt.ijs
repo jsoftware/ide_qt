@@ -383,5 +383,6 @@ msg=. JQTMSG rplc 'XX';'updatejqt.',IFWIN pick 'sh';'cmd'
 sminfo 'JQt';msg
 )
 checkjqtversion^:IFQT''
+finalize_jqtide_^:(3=(4!:0)@<) 'finalize_jqtide_'
 
 cocurrent 'base'
