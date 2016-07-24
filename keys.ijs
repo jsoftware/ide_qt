@@ -1,7 +1,7 @@
 NB. enum Qt_Key
 
 NB. unicode Private Use Areas
-NB. map all Qt chars to 0x00f800 and above because J only supports ucs2
+NB. map all Qt event key code to 0x00f800 and above
 
 coclass 'jqtide'
 
