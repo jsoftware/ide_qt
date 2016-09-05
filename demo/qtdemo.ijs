@@ -7,8 +7,11 @@ sububar=: I. @(e.&'_')@]}
 maketitle=: ' '&sububar each @ cutopen ;._2
 fexist=: 1:@(1!:4)@boxopen ::0:
 
-qtmajor=: 0 ". ({.~ i.&'.') '/s' -.~ (}.~ i.&'/') wd 'version'
+qtmajor=: 0 ". ({.~ i.&'.') '/fs' -.~ (}.~ i.&'/') wd 'version'
 qtslim=: 's' e. wd 'version'
+qtfat=: 'f' e. wd 'version'
+NB. pre 1.5.1
+qtfat=: (qtfat,-.qtslim){~10500>(3#100)#. ".;._1 '.', '/fs' -.~ (}.~ i.&'/') wd 'version'
 
 rundemo=: 1 : 0
 load bind ('~addons/ide/qt/demo/','.ijs',~m)
@@ -144,9 +147,9 @@ dplotc=: 'plotc' rundemo`notsupport@.('Darwin'-:UNAME)
 dprinter=: 'printer' rundemo
 dprogressbar=: 'progressbar' rundemo
 dpstyles=: 'pstyles' rundemo
-dquickview1=: 'quickview1' rundemo`notsupport@.((qtmajor=5)+.qtslim)
-dquickview2=: 'quickview2' rundemo`notsupport@.((qtmajor=4)+.qtslim)
-dquickwidget=: 'quickwidget' rundemo`notsupport@.((qtmajor=4)+.qtslim)
+dquickview1=: 'quickview1' rundemo`notsupport@.((qtmajor=5)+.-.qtfat)
+dquickview2=: 'quickview2' rundemo`notsupport@.((qtmajor=4)+.-.qtfat)
+dquickwidget=: 'quickwidget' rundemo`notsupport@.((qtmajor=4)+.-.qtfat)
 dscrollarea=: 'scrollarea' rundemo
 dscrollbar=: 'scrollbar' rundemo
 dshader=: 'shader' rundemo`notsupport@.((qtmajor=4)*.qtslim)
