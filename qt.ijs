@@ -3,6 +3,7 @@ NB. J qtide
 require 'project'
 
 coclass 'jqtide'
+'libc.so.6 setlocale > x i *c'&(15!:0)^:(UNAME-:'Linux') 1;,'C'
 'jws_onOpen jws_onClose jws_onMessage jws_onError jws_onSslError jws_onStateChange'=: i.6
 boxj2utf8=: 3 : 0
 if. 1 < #$y do. y return. end.
@@ -363,13 +364,15 @@ getsha1=: getsha1_jqtide_
 gethash=: gethash_jqtide_
 textview=: textview_jqtide_
 coclass 'jqtide'
-JQTREQ=: '1.4.9'
+JQTREQ=: '1.5.2'
 JQTMSG=: 0 : 0
 The JQt binary needs updating.
 
 To do so, close this session, then load jconsole and run:
 
    getqtbin''
+or
+   getqtbin'slim'
 
 or run XX in the J installation folder.
 )
