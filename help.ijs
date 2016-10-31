@@ -95,10 +95,6 @@ for_h. ,ContextHelp do.
         ndx return.
       end.
     end.
-  case. 'b' do.
-    if. #n=. tagtag_jbaselibtag_ s do.
-      htmlhelpbaselib tagfile_jbaselibtag_ {.n return.
-    end.
   end.
 end.
 ''
