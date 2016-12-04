@@ -3,7 +3,6 @@ NB. J qtide
 require 'project'
 
 coclass 'jqtide'
-'libc.so.6 setlocale > x i *c'&(15!:0)^:(UNAME-:'Linux') 1;,'C'
 'jws_onOpen jws_onClose jws_onMessage jws_onError jws_onSslError jws_onStateChange'=: i.6
 boxj2utf8=: 3 : 0
 if. 1 < #$y do. y return. end.
