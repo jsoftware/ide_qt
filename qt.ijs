@@ -352,6 +352,7 @@ initjqt=: 3 : 0
 ('"',libjqt,'" state_run >',(IFWIN#'+'),' i i x *c i i x x x x')&cd _100;0;'';0;0;0;0;0;0
 EMPTY
 )
+3 : 0^:(IFQT > IFJHS)''
 dirmatch=: 3 : 'wd ''dirmatch '', ; dquote&.> 2 {. boxopen y'
 open=: 3 : 'wd ''openj *'' , > {. getscripts_j_ y'
 immexj=: [: wd 'immexj *'&,
@@ -362,8 +363,11 @@ clipwrite=: clipwrite_jqtide_
 getsha1=: getsha1_jqtide_
 gethash=: gethash_jqtide_
 textview=: textview_jqtide_
+
+EMPTY
+)
 coclass 'jqtide'
-JQTREQ=: '1.5.2'
+JQTREQ=: '1.5.3'
 JQTMSG=: 0 : 0
 The JQt binary needs updating.
 
