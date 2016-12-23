@@ -36,7 +36,7 @@ set names select 2;
 cc list listbox;
 set list items one "two turtle doves" three "four colly birds" five six seven;
 cc entry edit;
-set entry text 盛大 abc 巨嘴鸟;
+set entry text 盛大 abc 大嘴鳥;
 cc ted editm readonly;
 rem demonstrate bin and child stretch:;
 bin h s2;
