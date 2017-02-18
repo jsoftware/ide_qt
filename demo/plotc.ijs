@@ -2,11 +2,10 @@
 coclass 'qtdemo'
 
 run_plotc=: 3 : 0
-require'~addons/ide/qt/qt.ijs'
 require'~addons/ide/qt/console.ijs'
 require 'plot math/misc/trig'
 
-if. glc_free_jglc_ ::1: '' do.
+if. glfree_jglc_ ::1: '' do.
   smoutput 'This demo is not supported on ', UNAME, ' ', wd 'version'
   return.
 end.

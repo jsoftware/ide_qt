@@ -19,6 +19,8 @@ require 'gl2'
 coinsert 'jgl2'
 require 'gles'
 coinsert 'jgles'
+require '~addons/ide/qt/opengl.ijs'
+coinsert 'qtopengl'
 STEPS=: 100
 R=: 20 30 0
 EYE=: 0 0 1

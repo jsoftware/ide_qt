@@ -1,8 +1,16 @@
 NB. J qtide
 
-require 'project'
-
 coclass 'jqtide'
+
+3 : 0''
+if. IFQT do.
+  require 'ide/qt/qtlib'
+  require 'ide/qt/keys'
+  finalize_jgl2_=: load bind 'ide/qt/gl2'
+  require 'gl2'
+end.
+EMPTY
+)
 'jws_onOpen jws_onClose jws_onMessage jws_onError jws_onSslError jws_onStateChange'=: i.6
 boxj2utf8=: 3 : 0
 if. 1 < #$y do. y return. end.
@@ -39,22 +47,6 @@ case. do.
   dat=. 1 1}. _1 _1}. ": < dat
   }: (,|."1 [ 1,.-. *./\"1 |."1 dat=' ')#,dat,.LF
 end.
-)
-getsha1=: 3 : 0
-gethash 'sha1';y
-)
-gethash=: 3 : 0
-'t m'=. y
-t gethash m
-:
-m=. ,y
-c=. '"',libjqt,'" gethash ',(IFWIN#'+'),' i *c *c i * *i'
-'r t m w p n'=. c cd (tolower x);m;(#m);(,2);,0
-res=. memr p,0,n
-if. r do.
-  res (13!:8) 3
-end.
-res
 )
 gridindex=: 3 : 0
 'rws cls sel ndx shp'=. y
@@ -95,18 +87,6 @@ if. 2=#p=. boxopen y do.
 end.
 'title caption text'=. _3 {. p
 wd 'textview *;',title,';',caption,';',flatten text
-)
-wdhandlerx=: 3 : 0
-loc=. <,y
-if. 0 <: 18!:0 loc do.
-  wdhandler__loc''
-else.
-  msg=. 'no locale for event handler: ',>loc
-  if. #wdq=. wd 'q' do.
-    msg=. msg, ', event: ',(<1 1) pick wdq
-  end.
-  smoutput msg
-end.
 )
 addons_msg=: 0 : 0
 The XX are not yet installed.
@@ -155,95 +135,7 @@ helpcontext1=: 3 : 0
 require '~addons/ide/qt/help.ijs'
 helpcontext1 y
 )
-RGBSEQ=: 1
-getimg=: 3 : 0
-if. m=. wdgetimg y;(#y);wh=. 2$2-2 do.
-  d=. _2 ic memr m,0,(*/wh,4),2
-  wdreadimg 2#<<0
-  (|.wh)$ fliprgb^:(-.RGBSEQ) d
-else.
-  0 0$2-2
-end.
-)
-readimg=: 3 : 0
-if. m=. wdreadimg (utf8 ,y);wh=. 2$2-2 do.
-  d=. _2 ic memr m,0,(*/wh,4),2
-  wdreadimg 2#<<0
-  (|.wh)$ fliprgb^:(-.RGBSEQ) d
-else.
-  0 0$2-2
-end.
-)
-putimg=: 4 : 0
-if3=. (3=#$x) *. 3={:$x
-if. if3 do.
-  x=. setalpha 256&#. x
-end.
-'h w'=. $x
-d=. ,x
-type=. 'jpeg'
-opt=. ''
-quality=. _1
-if. 1= #y=. boxxopen y do.
-  type=. >@{.y
-elseif. 2< #y do.
-  type=. >@{.y
-  opt=. 2{.}.y
-end.
-if. 'jpg'-:type do. type=. 'jpeg'
-elseif. 'tif'-:type do. type=. 'tiff'
-end.
-type=. toupper type
-if. 'quality'-:>@{.opt do. quality=. <. >@{:opt end.
-d=. fliprgb^:(-.RGBSEQ) d
-m=. wdputimg (2 ic d); (w,h); (len=. ,_1); type; quality
-if. m do.
-  z=. memr m,0,len,2
-  wdputimg (4#(<<0)),<0
-  z
-else.
-  ''
-end.
-)
-writeimg=: 4 : 0
-if3=. (3=#$x) *. 3={:$x
-if. if3 do.
-  x=. setalpha 256&#. x
-end.
-'h w'=. $x
-d=. ,x
-y=. boxopen y
-f=. > fboxname {. y
-type=. 'jpeg'
-opt=. ''
-quality=. _1
-if. 1= #y do.
-  type=. }. (}.~ i:&'.') f
-else.
-  type=. >1{y
-  opt=. 2{.2}.y
-end.
-type=. tolower type
-if. 'jpg'-:type do. type=. 'jpeg'
-elseif. 'tif'-:type do. type=. 'tiff'
-end.
-type=. toupper type
-if. 'quality'-:>@{.opt do. quality=. <. >@{:opt end.
-d=. fliprgb^:(-.RGBSEQ) d
-r=. wdwriteimg (2 ic d); (w,h); f; type; quality
-EMPTY
-)
-qapplication=: 3 : 0
-if. (UNAME-:'Linux') *. (0;'') e.~ <2!:5 'DISPLAY' do. _1 return. end.
-('"',libjqt,'" state_run >',(IFWIN#'+'),' i i x *c i i x x *x *x')&cd`0:@.IFQT 0;0;'';FHS;0;0;0;(hjdll=. ,_1);(pjst=. ,_1)
-0[IFQTC_z_=: 1
-)
-3 : 0''
-IFQTC=. (IFQTC"_)^:(0=4!:0<'IFQTC') (0)
-(qapplication ::0:)^:(IFQT+:IFQTC) 0
-EMPTY
-)
-cocurrent 'z'
+cocurrent IFQT{'jqtide';'z'
 wd=: 3 : 0"1
 'r c l p n'=. wd1 (,y);(#,y);(,2);(,0)
 select. r
@@ -286,6 +178,18 @@ if. 3 > wd_ndx do.
   end.
 end.
 i.0 0
+)
+wdhandlerx=: 3 : 0
+loc=. <,y
+if. 0 <: 18!:0 loc do.
+  wdhandler__loc''
+else.
+  msg=. 'no locale for event handler: ',>loc
+  if. #wdq=. wd 'q' do.
+    msg=. msg, ', event: ',(<1 1) pick wdq
+  end.
+  smoutput msg
+end.
 )
 wdclippaste=: (wd bind 'clippaste') :: (''"_)
 wdqq=: (wd bind 'q') :: (''"_)
@@ -333,11 +237,6 @@ jpathsep wd 8 u: 'mb open1 ',y
 mbsave=: 3 : 0
 jpathsep wd 8 u: 'mb save ',y
 )
-
-wdreadimg=: ('"',libjqt,'" wdreadimg >',(IFWIN#'+'),' x *c *i')&cd
-wdgetimg=: ('"',libjqt,'" wdgetimg >',(IFWIN#'+'),' x *c i *i')&cd
-wdwriteimg=: ('"',libjqt,'" wdwriteimg >',(IFWIN#'+'),' i *c *i *c *c i')&cd
-wdputimg=: ('"',libjqt,'" wdputimg >',(IFWIN#'+'),' x *c *i *i *c i')&cd
 wdget=: 4 : 0
 nms=. {."1 y
 vls=. {:"1 y
@@ -347,11 +246,6 @@ end.
 )
 
 wdpclose=: [: wd :: empty 'psel ' , ';pclose' ,~ ":
-
-initjqt=: 3 : 0
-('"',libjqt,'" state_run >',(IFWIN#'+'),' i i x *c i i x x x x')&cd _100;0;'';0;0;0;0;0;0
-EMPTY
-)
 3 : 0^:(IFQT > IFJHS)''
 dirmatch=: 3 : 'wd ''dirmatch '', ; dquote&.> 2 {. boxopen y'
 open=: 3 : 'wd ''openj *'' , > {. getscripts_j_ y'

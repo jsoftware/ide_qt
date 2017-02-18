@@ -7,7 +7,6 @@ NB. load '~addons/ide/qt/demo/glc.ijs'
 coclass 'qtdemo'
 
 glc_run=: 3 : 0
-require'~addons/ide/qt/qt.ijs'
 require'~addons/ide/qt/console.ijs'
 ((<'jgl2') -.~ copath 'qtdemo') copath 'qtdemo'
 coinsert 'jglc'
