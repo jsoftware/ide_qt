@@ -1,5 +1,7 @@
 NB. J qtide
 
+require 'project'
+
 coclass 'jqtide'
 
 3 : 0''
