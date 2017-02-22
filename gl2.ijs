@@ -281,39 +281,6 @@ NB. =========================================================
 glsel=: glsel1`glsel2@.(2=3!:0)
 
 
-NB. record played by glpaint or automatically after paint event
-
-NB. stash gl2 command for glcmds
-stash_state=: 0
-stash_buf=: 0$0
-
-NB. is now recording ?
-glqmark=: 3 : 0"1
-stash_state
-)
-
-NB. start recording
-glmark=: 3 : 0"1
-stash_state=: 1
-EMPTY
-)
-
-NB. discard buffer and stop recording and return buffer
-gltrash=: 3 : 0"1
-b [ stash_state=: 0 [ stash_buf=: 0$0 [ b=. stash_buf
-)
-
-NB. record gl2 cmds into buffer
-glbuf=: 4 : 0"0 1
-assert. 1=stash_state
-if. (*#y) *. 2 = 3!:0 y do. y=. a. i. y end.
-if. glcmds_n_jgl2_ = x do.
-  stash_buf=: stash_buf, y
-else.
-  stash_buf=: stash_buf, (2+#y),x,<.y
-end.
-EMPTY
-)
 NB. util
 
 NB. =========================================================
