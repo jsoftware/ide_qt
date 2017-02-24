@@ -174,7 +174,6 @@ glsetlocale=: chkgl2 @: (('"',libjqt,'" glsetlocale >',(IFWIN#'+'),' i *c') cd <
 NB. =========================================================
 NB. immediate paint
 glpaint=: 3 : 0 "1
-if. #stash_buf do. stash_buf=: 0$0 [ glcmds stash_buf end.
 ('"',libjqt,'" glpaint >',(IFWIN#'+'),' i')&cd ''
 0
 )
@@ -182,7 +181,6 @@ if. #stash_buf do. stash_buf=: 0$0 [ glcmds stash_buf end.
 NB. =========================================================
 NB. paint
 glpaintx=: 3 : 0 "1
-if. #stash_buf do. stash_buf=: 0$0 [ glcmds stash_buf end.
 ('"',libjqt,'" glpaintx >',(IFWIN#'+'),' i')&cd ''
 0
 )
