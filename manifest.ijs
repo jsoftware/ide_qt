@@ -6,7 +6,9 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.1.113'
+VERSION=: '1.1.114'
+
+RELEASE=: 'j805'
 
 FILES=: 0 : 0
 console.ijs
@@ -26,4 +28,6 @@ js/
 images/
 )
 
-RELEASE=: 'j805'
+DEPENDS=: 0 : 0
+graphics/gl2
+)
