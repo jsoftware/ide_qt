@@ -5,7 +5,7 @@ coclass 'qtdemo'
 
 sububar=: I. @(e.&'_')@]}
 maketitle=: ' '&sububar each @ cutopen ;._2
-fexist=: 1:@(1!:4)@boxopen ::0:
+fexist=: (1:@(1!:4) :: 0:) @ (fboxname &>) @ boxopen
 
 qtmajor=: 0 ". ({.~ i.&'.') '/fs' -.~ (}.~ i.&'/') wd 'version'
 qtslim=: 's' e. wd 'version'
