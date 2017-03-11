@@ -1,14 +1,11 @@
 NB. =========================================================
 NB. utilites for running jqt under jconsole
 
-require '~addons/ide/qt/qtlib.ijs'
+require 'ide/qt/qtlib'
 coclass 'jqtide'
 
 NB. =========================================================
 NB. utilites for running jqt under jconsole
-
-require '~addons/ide/qt/qtlib.ijs'
-coclass 'jqtide'
 
 NB. y ignored
 qapplication=: 3 : 0
@@ -35,43 +32,43 @@ rpcinfinity=: 3 : 0
 chkgl2=: 13!:8@3:^:(0&<)
 
 NB. =========================================================
-glarc=: chkgl2 @: (('"',libjqt,'" glc_arc >',(IFWIN#'+'),' i *i') cd <)
-glbrush=: chkgl2 @: (('"',libjqt,'" glc_brush >',(IFWIN#'+'),' i')&cd bind '')
-glbrushnull=: chkgl2 @: (('"',libjqt,'" glc_brushnull >',(IFWIN#'+'),' i')&cd bind '')
-glcapture=: chkgl2 @: (('"',libjqt,'" glc_capture >',(IFWIN#'+'),' i i')&cd)
-glcaret=: chkgl2 @: (('"',libjqt,'" glc_caret >',(IFWIN#'+'),' i *i') cd <)
-glclear=: ('"',libjqt,'" glc_clear >',(IFWIN#'+'),' i')&cd bind ''
-glclip=: chkgl2 @: (('"',libjqt,'" glc_clip >',(IFWIN#'+'),' i *i') cd <)
-glclipreset=: chkgl2 @: (('"',libjqt,'" glc_clipreset >',(IFWIN#'+'),' i')&cd bind '')
-glcmds=: chkgl2 @: (('"',libjqt,'" glc_cmds >',(IFWIN#'+'),' i *i i') cd (;#)@:rpcinfinity)
-glcursor=: chkgl2 @: (('"',libjqt,'" glc_cursor >',(IFWIN#'+'),' i i')&cd)
-glellipse=: chkgl2 @: (('"',libjqt,'" glc_ellipse >',(IFWIN#'+'),' i *i') cd <@:<.)
-glfill=: chkgl2 @: (('"',libjqt,'" glc_fill >',(IFWIN#'+'),' i *i') cd <@:<.)
-glfont=: chkgl2 @: (('"',libjqt,'" glc_font >',(IFWIN#'+'),' i *c') cd <@,)
-glfont2=: chkgl2 @: (('"',libjqt,'" glc_font2 >',(IFWIN#'+'),' i *i i') cd (;#)@:<.)
-glfontangle=: chkgl2 @: (('"',libjqt,'" glc_fontangle >',(IFWIN#'+'),' i i')&cd)
-glfontextent=: chkgl2 @: (('"',libjqt,'" glc_fontextent >',(IFWIN#'+'),' i *c') cd <@,)
-gllines=: chkgl2 @: (('"',libjqt,'" glc_lines >',(IFWIN#'+'),' i *i i') cd (;#))
-glnodblbuf=: chkgl2 @: (('"',libjqt,'" glc_nodblbuf >',(IFWIN#'+'),' i i') cd {.@(,&0))
-glpen=: chkgl2 @: (('"',libjqt,'" glc_pen >',(IFWIN#'+'),' i *i') cd <@:(2 {. (,&1)))
-glpie=: chkgl2 @: (('"',libjqt,'" glc_pie >',(IFWIN#'+'),' i *i') cd <)
-glpixel=: chkgl2 @: (('"',libjqt,'" glc_pixel >',(IFWIN#'+'),' i *i') cd <)
-glpixels=: chkgl2 @: (('"',libjqt,'" glc_pixels >',(IFWIN#'+'),' i *i i') cd (;#)@:<.)
-glpixelsx=: chkgl2 @: (('"',libjqt,'" glc_pixelsx >',(IFWIN#'+'),' i *i') cd <@:<.)
-glpolygon=: chkgl2 @: (('"',libjqt,'" glc_polygon >',(IFWIN#'+'),' i *i i') cd (;#)@:<.)
-glrect=: chkgl2 @: (('"',libjqt,'" glc_rect >',(IFWIN#'+'),' i *i') cd <@:rpcinfinity)
-glrgb=: chkgl2 @: (('"',libjqt,'" glc_rgb >',(IFWIN#'+'),' i *i') cd <@:<.)
-glrgba=: chkgl2 @: (('"',libjqt,'" glc_rgba >',(IFWIN#'+'),' i *i') cd <@:<.)
-NB. glc_sel=: chkgl2 @: (('"',libjqt,'" glc_sel >',(IFWIN#'+'),' i x')&cd)
-NB. glc_sel2=: chkgl2 @: (('"',libjqt,'" glc_sel2 >',(IFWIN#'+'),' i *c') cd <@,)
-gltext=: chkgl2 @: (('"',libjqt,'" glc_text >',(IFWIN#'+'),' i *c') cd <@,)
-gltextcolor=: chkgl2 @: (('"',libjqt,'" glc_textcolor >',(IFWIN#'+'),' i')&cd bind '')
-gltextxy=: chkgl2 @: (('"',libjqt,'" glc_textxy >',(IFWIN#'+'),' i *i') cd <@:<.)
-glwindoworg=: chkgl2 @: (('"',libjqt,'" glc_windoworg >',(IFWIN#'+'),' i *i') cd <@:<.)
+glarc=: chkgl2 @: (('"',libjqt,'" glc_arc >',(IFWIN#'+'),' i *i') cd <) "1
+glbrush=: chkgl2 @: (('"',libjqt,'" glc_brush >',(IFWIN#'+'),' i')&cd bind '') "1
+glbrushnull=: chkgl2 @: (('"',libjqt,'" glc_brushnull >',(IFWIN#'+'),' i')&cd bind '') "1
+glcapture=: chkgl2 @: (('"',libjqt,'" glc_capture >',(IFWIN#'+'),' i i')&cd) "1
+glcaret=: chkgl2 @: (('"',libjqt,'" glc_caret >',(IFWIN#'+'),' i *i') cd <) "1
+glclear=: (('"',libjqt,'" glc_clear >',(IFWIN#'+'),' i')&cd bind '') "1
+glclip=: chkgl2 @: (('"',libjqt,'" glc_clip >',(IFWIN#'+'),' i *i') cd <) "1
+glclipreset=: chkgl2 @: (('"',libjqt,'" glc_clipreset >',(IFWIN#'+'),' i')&cd bind '') "1
+glcmds=: chkgl2 @: (('"',libjqt,'" glc_cmds >',(IFWIN#'+'),' i *i i') cd (;#)@:rpcinfinity) "1
+glcursor=: chkgl2 @: (('"',libjqt,'" glc_cursor >',(IFWIN#'+'),' i i')&cd) "1
+glellipse=: chkgl2 @: (('"',libjqt,'" glc_ellipse >',(IFWIN#'+'),' i *i') cd <@:<.) "1
+glfill=: chkgl2 @: (('"',libjqt,'" glc_fill >',(IFWIN#'+'),' i *i') cd <@:<.) "1
+glfont=: chkgl2 @: (('"',libjqt,'" glc_font >',(IFWIN#'+'),' i *c') cd <@,) "1
+glfont2=: chkgl2 @: (('"',libjqt,'" glc_font2 >',(IFWIN#'+'),' i *i i') cd (;#)@:<.) "1
+glfontangle=: chkgl2 @: (('"',libjqt,'" glc_fontangle >',(IFWIN#'+'),' i i')&cd) "1
+glfontextent=: chkgl2 @: (('"',libjqt,'" glc_fontextent >',(IFWIN#'+'),' i *c') cd <@,) "1
+gllines=: chkgl2 @: (('"',libjqt,'" glc_lines >',(IFWIN#'+'),' i *i i') cd (;#)) "1
+glnodblbuf=: chkgl2 @: (('"',libjqt,'" glc_nodblbuf >',(IFWIN#'+'),' i i') cd {.@(,&0)) "1
+glpen=: chkgl2 @: (('"',libjqt,'" glc_pen >',(IFWIN#'+'),' i *i') cd <@:(2 {. (,&1))) "1
+glpie=: chkgl2 @: (('"',libjqt,'" glc_pie >',(IFWIN#'+'),' i *i') cd <) "1
+glpixel=: chkgl2 @: (('"',libjqt,'" glc_pixel >',(IFWIN#'+'),' i *i') cd <) "1
+glpixels=: chkgl2 @: (('"',libjqt,'" glc_pixels >',(IFWIN#'+'),' i *i i') cd (;#)@:<.) "1
+glpixelsx=: chkgl2 @: (('"',libjqt,'" glc_pixelsx >',(IFWIN#'+'),' i *i') cd <@:<.) "1
+glpolygon=: chkgl2 @: (('"',libjqt,'" glc_polygon >',(IFWIN#'+'),' i *i i') cd (;#)@:<.) "1
+glrect=: chkgl2 @: (('"',libjqt,'" glc_rect >',(IFWIN#'+'),' i *i') cd <@:rpcinfinity) "1
+glrgb=: chkgl2 @: (('"',libjqt,'" glc_rgb >',(IFWIN#'+'),' i *i') cd <@:<.) "1
+glrgba=: chkgl2 @: (('"',libjqt,'" glc_rgba >',(IFWIN#'+'),' i *i') cd <@:<.) "1
+NB. glc_sel=: chkgl2 @: (('"',libjqt,'" glc_sel >',(IFWIN#'+'),' i x')&cd) "1
+NB. glc_sel2=: chkgl2 @: (('"',libjqt,'" glc_sel2 >',(IFWIN#'+'),' i *c') cd <@,) "1
+gltext=: chkgl2 @: (('"',libjqt,'" glc_text >',(IFWIN#'+'),' i *c') cd <@,) "1
+gltextcolor=: chkgl2 @: (('"',libjqt,'" glc_textcolor >',(IFWIN#'+'),' i')&cd bind '') "1
+gltextxy=: chkgl2 @: (('"',libjqt,'" glc_textxy >',(IFWIN#'+'),' i *i') cd <@:<.) "1
+glwindoworg=: chkgl2 @: (('"',libjqt,'" glc_windoworg >',(IFWIN#'+'),' i *i') cd <@:<.) "1
 
-glinit=: chkgl2 @: (('"',libjqt,'" glc_init >',(IFWIN#'+'),' i *i') cd <@:(2&{.))
-glfree=: chkgl2 @: (('"',libjqt,'" glc_free >',(IFWIN#'+'),' i')&cd bind '')
-glsavefile=: chkgl2 @: (('"',libjqt,'" glc_savefile >',(IFWIN#'+'),' i *c') cd <@,)
+glinit=: chkgl2 @: (('"',libjqt,'" glc_init >',(IFWIN#'+'),' i *i') cd <@:(2&{.)) "1
+glfree=: chkgl2 @: (('"',libjqt,'" glc_free >',(IFWIN#'+'),' i')&cd bind '') "1
+glsavefile=: chkgl2 @: (('"',libjqt,'" glc_savefile >',(IFWIN#'+'),' i *c') cd <@,) "1
 
 NB. =========================================================
 glqwh=: 3 : 0"1

@@ -255,10 +255,7 @@ smact=: wd bind 'smact'
 
 clipread=: clipread_jqtide_
 clipwrite=: clipwrite_jqtide_
-getsha1=: getsha1_jqtide_
-gethash=: gethash_jqtide_
 textview=: textview_jqtide_
-
 EMPTY
 )
 coclass 'jqtide'
