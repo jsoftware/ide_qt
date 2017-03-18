@@ -5,7 +5,7 @@ require 'project'
 coclass 'jqtide'
 
 3 : 0''
-if. IFQT do.
+if. IFQT+.806>{.0".}.({.~ i.&'/')9!:14'' do.
   require 'ide/qt/qtlib'
   require 'ide/qt/keys'
   require 'gl2'
