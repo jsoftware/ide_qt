@@ -1,7 +1,9 @@
 NB.
 
-coclass 'jqtide'
+require 'ide/qt/keys'
+require 'ide/qt/gl2'
 
+coclass 'jqtide'
 NB. image
 
 NB. Format              Description               Qt's support

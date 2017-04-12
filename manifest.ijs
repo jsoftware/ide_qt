@@ -6,9 +6,9 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.1.118'
+VERSION=: '1.1.119'
 
-RELEASE=: 'j805 j806'
+RELEASE=: 'j806'
 
 FILES=: 0 : 0
 console.ijs
@@ -26,8 +26,4 @@ data/
 demo/
 js/
 images/
-)
-
-DEPENDS=: 0 : 0
-graphics/gl2
 )

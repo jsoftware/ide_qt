@@ -126,10 +126,6 @@ kbSHIFT=: Qt_Key_Shift_jqtide_
 kbCTRL=: Qt_Key_Control_jqtide_
 NB qt gl2
 
-rpcinfinity=: 3 : 0
-<. 0 (I.(_=y)+.__=y)}y
-)
-
 chkgl2=: 13!:8@3:^:(0&<)
 
 NB. =========================================================
@@ -141,7 +137,7 @@ glcaret=: chkgl2 @: (('"',libjqt,'" glcaret >',(IFWIN#'+'),' i *i') cd <) "1
 glclear=: (('"',libjqt,'" glclear >',(IFWIN#'+'),' i')&cd bind '') "1
 glclip=: chkgl2 @: (('"',libjqt,'" glclip >',(IFWIN#'+'),' i *i') cd <) "1
 glclipreset=: chkgl2 @: (('"',libjqt,'" glclipreset >',(IFWIN#'+'),' i')&cd bind '') "1
-glcmds=: chkgl2 @: (('"',libjqt,'" glcmds >',(IFWIN#'+'),' i *i i') cd (;#)@:rpcinfinity) "1
+glcmds=: chkgl2 @: (('"',libjqt,'" glcmds >',(IFWIN#'+'),' i *i i') cd (;#)) "1
 glcursor=: chkgl2 @: (('"',libjqt,'" glcursor >',(IFWIN#'+'),' i i')&cd) "1
 glellipse=: chkgl2 @: (('"',libjqt,'" glellipse >',(IFWIN#'+'),' i *i') cd <@:<.) "1
 glfill=: chkgl2 @: (('"',libjqt,'" glfill >',(IFWIN#'+'),' i *i') cd <@:<.) "1
@@ -157,7 +153,7 @@ glpixel=: chkgl2 @: (('"',libjqt,'" glpixel >',(IFWIN#'+'),' i *i') cd <) "1
 glpixels=: chkgl2 @: (('"',libjqt,'" glpixels >',(IFWIN#'+'),' i *i i') cd (;#)@:<.) "1
 glpixelsx=: chkgl2 @: (('"',libjqt,'" glpixelsx >',(IFWIN#'+'),' i *i') cd <@:<.) "1
 glpolygon=: chkgl2 @: (('"',libjqt,'" glpolygon >',(IFWIN#'+'),' i *i i') cd (;#)@:<.) "1
-glrect=: chkgl2 @: (('"',libjqt,'" glrect >',(IFWIN#'+'),' i *i') cd <@:rpcinfinity) "1
+glrect=: chkgl2 @: (('"',libjqt,'" glrect >',(IFWIN#'+'),' i *i') cd <) "1
 glrgb=: chkgl2 @: (('"',libjqt,'" glrgb >',(IFWIN#'+'),' i *i') cd <@:<.) "1
 glrgba=: chkgl2 @: (('"',libjqt,'" glrgba >',(IFWIN#'+'),' i *i') cd <@:<.) "1
 glsel1=: chkgl2 @: (('"',libjqt,'" glsel >',(IFWIN#'+'),' i x')&cd) "1
@@ -276,7 +272,7 @@ glfile=: [:
 glroundr=: [:
 
 NB. =========================================================
-glsel=: glsel1`glsel2@.(2=3!:0)
+glsel=: glsel2@:(":^:(2~:3!:0))
 
 
 NB. util

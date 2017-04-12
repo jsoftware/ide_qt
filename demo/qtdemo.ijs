@@ -51,9 +51,6 @@ plot dplot
 plotc dplotc
 printer dprinter
 progressbar dprogressbar
-quickview1 dquickview1
-quickview2 dquickview2
-quickwidget dquickwidget
 scrollarea dscrollarea
 scrollbar dscrollbar
 shader dshader
