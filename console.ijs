@@ -25,10 +25,6 @@ coclass 'jglc'
 NB. gl2 on jconsole
 NB. no events
 
-rpcinfinity=: 3 : 0
-<. 0 (I.(_=y)+.__=y)}y
-)
-
 chkgl2=: 13!:8@3:^:(0&<)
 
 NB. =========================================================
@@ -40,7 +36,7 @@ glcaret=: chkgl2 @: (('"',libjqt,'" glc_caret >',(IFWIN#'+'),' i *i') cd <) "1
 glclear=: (('"',libjqt,'" glc_clear >',(IFWIN#'+'),' i')&cd bind '') "1
 glclip=: chkgl2 @: (('"',libjqt,'" glc_clip >',(IFWIN#'+'),' i *i') cd <) "1
 glclipreset=: chkgl2 @: (('"',libjqt,'" glc_clipreset >',(IFWIN#'+'),' i')&cd bind '') "1
-glcmds=: chkgl2 @: (('"',libjqt,'" glc_cmds >',(IFWIN#'+'),' i *i i') cd (;#)@:rpcinfinity) "1
+glcmds=: chkgl2 @: (('"',libjqt,'" glc_cmds >',(IFWIN#'+'),' i *i i') cd (;#)) "1
 glcursor=: chkgl2 @: (('"',libjqt,'" glc_cursor >',(IFWIN#'+'),' i i')&cd) "1
 glellipse=: chkgl2 @: (('"',libjqt,'" glc_ellipse >',(IFWIN#'+'),' i *i') cd <@:<.) "1
 glfill=: chkgl2 @: (('"',libjqt,'" glc_fill >',(IFWIN#'+'),' i *i') cd <@:<.) "1
@@ -56,7 +52,7 @@ glpixel=: chkgl2 @: (('"',libjqt,'" glc_pixel >',(IFWIN#'+'),' i *i') cd <) "1
 glpixels=: chkgl2 @: (('"',libjqt,'" glc_pixels >',(IFWIN#'+'),' i *i i') cd (;#)@:<.) "1
 glpixelsx=: chkgl2 @: (('"',libjqt,'" glc_pixelsx >',(IFWIN#'+'),' i *i') cd <@:<.) "1
 glpolygon=: chkgl2 @: (('"',libjqt,'" glc_polygon >',(IFWIN#'+'),' i *i i') cd (;#)@:<.) "1
-glrect=: chkgl2 @: (('"',libjqt,'" glc_rect >',(IFWIN#'+'),' i *i') cd <@:rpcinfinity) "1
+glrect=: chkgl2 @: (('"',libjqt,'" glc_rect >',(IFWIN#'+'),' i *i') cd <) "1
 glrgb=: chkgl2 @: (('"',libjqt,'" glc_rgb >',(IFWIN#'+'),' i *i') cd <@:<.) "1
 glrgba=: chkgl2 @: (('"',libjqt,'" glc_rgba >',(IFWIN#'+'),' i *i') cd <@:<.) "1
 NB. glc_sel=: chkgl2 @: (('"',libjqt,'" glc_sel >',(IFWIN#'+'),' i x')&cd) "1
