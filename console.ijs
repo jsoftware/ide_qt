@@ -10,6 +10,7 @@ NB. utilites for running jqt under jconsole
 NB. y ignored
 qapplication=: 3 : 0
 if. (UNAME-:'Linux') *. (0;'') e.~ <2!:5 'DISPLAY' do. _1 return. end.
+if. ((<UNAME)e.'Darwin';'Win') *. 0-:2!:5 'QT_PLUGIN_PATH' do. _1 return. end.
 ('"',libjqt,'" state_run >',(IFWIN#'+'),' i i x *c i i x x *x *x')&cd`0:@.IFQT 0;0;'';FHS;0;0;0;(hjdll=. ,_1);(pjst=. ,_1)
 0[IFQTC_z_=: 1
 )
