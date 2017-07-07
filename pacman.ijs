@@ -38,6 +38,9 @@ dat=. pmview_selected''
 if. 0 = #dat do.
   info 'No packages selected for installation.' return.
 end.
+if. -.HASADDONSDIR*.HASFILEACCESS do.
+  info 'File permission' return.
+end.
 if. -. ONLINE do.
   if. -. getonline 'Install Packages';CHECKONLINE do. return. end.
 end.
@@ -69,6 +72,9 @@ wd 'pclose'
 destroy''
 )
 pm_remove_button=: 3 : 0
+if. -. HASADDONSDIR*.HASFILEACCESS do.
+  info 'File permission' return.
+end.
 dat=. pmview_selected''
 if. 0 = #dat do.
   info 'No packages selected for removal.' return.
@@ -92,6 +98,9 @@ DATAX=: {. 0 ". pac
 pmview_showlog''
 )
 pm_prebuild_button=: 3 : 0
+if. -. HASADDONSDIR*.HASFILEACCESS do.
+  info 'File permission' return.
+end.
 if. -. ONLINE do.
   getonline 'Read Catalog from Server';CHECKASK
 end.
@@ -107,6 +116,9 @@ pacman_init''
 pmview_show''
 )
 pm_pupcat_button=: 3 : 0
+if. -. HASADDONSDIR*.HASFILEACCESS do.
+  info 'File permission' return.
+end.
 if. -. ONLINE do.
   if. 0 = getonline 'Read Catalog from Server';CHECKASK do. return. end.
 end.
@@ -164,11 +176,11 @@ end.
 DATAX=: DATAX <. <: +/DATAMASK
 )
 pmview_init=: 3 : 0
-if. -. checkaccess'' do. 0 return. end.
-if. -. checkaddonsdir'' do. 0 return. end.
+HASFILEACCESS=: checkaccess''
+HASADDONSDIR=: checkaddonsdir''
 setfiles ''
 readlocal''
-if. -. checkonline'' do. 0 return. end.
+ONLINE=: checkonline''
 pacman_init 1
 pmview_open''
 pmview_show''
