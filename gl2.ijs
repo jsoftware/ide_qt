@@ -124,7 +124,7 @@ kbMETA=: Qt_Key_Meta_jqtide_
 kbALT=: Qt_Key_Alt_jqtide_
 kbSHIFT=: Qt_Key_Shift_jqtide_
 kbCTRL=: Qt_Key_Control_jqtide_
-NB qt gl2
+NB. qt gl2
 
 chkgl2=: 13!:8@3:^:(0&<)
 
@@ -273,8 +273,6 @@ glroundr=: [:
 
 NB. =========================================================
 glsel=: glsel2@:(":^:(2~:3!:0))
-
-
 NB. util
 
 NB. =========================================================
