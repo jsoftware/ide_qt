@@ -68,7 +68,10 @@ wd 'set mm position ',":pos
 
 NB. =========================================================
 multimedia_bri_changed=: 3 : 0
-wd 'set mm brightness ',wd'get bri value'
+NB. available since Qt 5.4
+if. -. UNAME-:'Linux' do.
+  wd 'set mm brightness ',wd'get bri value'
+end.
 )
 
 NB. =========================================================
