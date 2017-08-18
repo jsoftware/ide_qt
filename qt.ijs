@@ -257,7 +257,7 @@ textview=: textview_jqtide_
 EMPTY
 )
 coclass 'jqtide'
-JQTREQ=: '1.5.3'
+JQTREQ=: '1.6.0'
 JQTMSG=: 0 : 0
 The JQt binary needs updating.
 

@@ -4,7 +4,6 @@ coclass 'qtdemo'
 
 NB. =========================================================
 gl2_run=: 3 : 0
-if. -. checkrequire 'gl2';'graphics/gl2' do. return. end.
 require 'gl2'
 coinsert 'jgl2'
 data=: ''

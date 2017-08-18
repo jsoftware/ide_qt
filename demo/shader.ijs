@@ -13,7 +13,6 @@ rem form end;
 )
 
 a_run=: 3 : 0
-if. -. checkrequire_qtdemo_ 'gl2';'graphics/gl2' do. return. end.
 if. -. checkrequire_qtdemo_ 'gles';'api/gles' do. return. end.
 require 'gl2'
 coinsert 'jgl2'

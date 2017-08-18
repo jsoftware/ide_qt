@@ -149,7 +149,7 @@ dquickview2=: 'quickview2' rundemo`notsupport@.((qtmajor=4)+.-.qtfat)
 dquickwidget=: 'quickwidget' rundemo`notsupport@.((qtmajor=4)+.-.qtfat)
 dscrollarea=: 'scrollarea' rundemo
 dscrollbar=: 'scrollbar' rundemo
-dshader=: 'shader' rundemo`notsupport@.((qtmajor=4)*.qtslim)
+dshader=: 'shader' rundemo
 dslider=: 'slider' rundemo
 dspinbox=: 'spinbox' rundemo
 dsplit=: 'split' rundemo
@@ -164,8 +164,8 @@ dtoolbarv=: 'toolbarv' rundemo
 dviewmat=: 'viewmat' rundemo
 dwebd3=: 'webd3' rundemo`notsupport@.(qtslim)
 dwebgl=: 'webgl' rundemo`notsupport@.(qtslim)
-dwebsocket=: 'websocket' rundemo`notsupport@.(qtslim)
-dwebsocketclient=: 'websocketclient' rundemo`notsupport@.(qtslim)
+dwebsocket=: 'websocket' rundemo
+dwebsocketclient=: 'websocketclient' rundemo
 dwebview=: 'webview' rundemo`notsupport@.(qtslim)
 
 NB. =========================================================
@@ -178,7 +178,7 @@ NB. =========================================================
 qtdemo_addons_button=: 3 : 0
 require 'pacman'
 'update' jpkg ''
-'install' jpkg 'api/gles graphics/bmp graphics/gl2 graphics/plot graphics/viewmat'
+'install' jpkg 'api/gles graphics/bmp graphics/plot graphics/viewmat'
 smoutput 'All Qt demo addons installed.'
 )
 
