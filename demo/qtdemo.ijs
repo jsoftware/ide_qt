@@ -58,6 +58,7 @@ slider dslider
 spinbox dspinbox
 split dsplit
 statusbar dstatusbar
+svg dsvg
 table dtable
 table2 dtable2
 table3 dtable3
@@ -154,6 +155,7 @@ dslider=: 'slider' rundemo
 dspinbox=: 'spinbox' rundemo
 dsplit=: 'split' rundemo
 dstatusbar=: 'statusbar' rundemo
+dsvg=: 'svg' rundemo
 dtable=: 'table' rundemo
 dtable2=: 'table2' rundemo
 dtable3=: 'table3' rundemo
