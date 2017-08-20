@@ -6,7 +6,7 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.1.125'
+VERSION=: '1.1.126'
 
 RELEASE=: 'j806'
 
@@ -22,8 +22,5 @@ printer.ijs
 qt.ijs
 qtlib.ijs
 config/
-data/
-demo/
-js/
 images/
 )
