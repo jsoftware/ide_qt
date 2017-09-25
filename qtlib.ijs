@@ -115,7 +115,7 @@ d=. fliprgb^:(-.RGBSEQ) d
 r=. wdwriteimg (2 ic d); (w,h); f; type; quality
 EMPTY
 )
-NB. 
+NB.
 
 cocurrent IFQT{'jqtide';'z'
 
@@ -151,5 +151,3 @@ if. r do.
 end.
 res
 )
-
-
