@@ -109,21 +109,15 @@ if. addons_missing 'Showcase demos';'demos/wd';p do. return. end.
 load p
 )
 labs_run=: 3 : 0
-smfocus_jijs_=: 0:
-closewindows_jijs_=: 0:
-smclose_jijs_=: 0:
-smopen_jijs_=: open
-smsel_jijs_=: 0:
-smselout_jijs_=: 0:
-smsetsaved_jijs_=: 0:
-smwrite_jijs_=: 0:
-tile_jijs_=: 0:
-coinsert_jijs_ (,copath) coname''
-
 p=. jpath '~addons/labs/labs/lab.ijs'
 if. addons_missing 'labs';'labs/labs';p do. return. end.
 require p
-lab_jlab_ y
+if. 0 e. $y do.
+  require '~addons/labs/labs/labs805.ijs'
+  labselect_jlab805_'' return.
+end.
+if. y -: 1 do. y=. ':' end.
+empty lab_jlab_ y
 )
 coclass 'jqtide'
 
