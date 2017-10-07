@@ -269,6 +269,7 @@ ERM_j_=: ''
 
 ERRORS=: '';(9!:8''),<'Unknown Error'
 ERRORCODES=: (i.#ERRORS) -. 0 18
+IFDISSECT=: 1
 MINWIDTH=: 540
 MINHEIGHT=: 500
 
