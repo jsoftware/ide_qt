@@ -463,7 +463,7 @@ MOVELINE=: CURRENTLINE
 MOVELINES=: ,MOVELINE
 ERRMSG=: (ERRNUM <. <:#ERRORS) >@{ ERRORS
 jdb_lexwin ''
-if. (*#y) *. AUTODISSECT do.
+if. (*#y) *. IFDISSECT *. AUTODISSECT do.
 
   jdb_destroyad''
   jdebug_dissectcurrent_run CURRENTLINE
@@ -962,6 +962,8 @@ if. #stopinfo do.
   (((<0;1 2)&{ jdb_installstops 0 3 4&{"1)/.~   1 2&{"1) stopinfo
 end.
 
+if. -. IFDISSECT do. return. end.
+
 if. #autoinfo do.
 
   assert. '' -: $autoinfo
@@ -1038,8 +1040,8 @@ old=. TABCURRENT
 TABCURRENT=: new=. y
 
 if. -. jdb_isgui'' do.
-  AUTODISSECT =: {.!.0 ". 'AUTODISSECT_jdebug_'
-  autodissectlocale =: 0$a:
+  AUTODISSECT=: {.!.0 ". 'AUTODISSECT_jdebug_'
+  autodissectlocale=: 0$a:
   jdb_wd JDEBUG
   HWNDP=: jdb_wd 'qhwndp'
   p=. WINPOS>.0 0,MINWIDTH,MINHEIGHT
@@ -1074,12 +1076,16 @@ else.
   end.
 end.
 
-wd 'set tbar checked dissecttoggleauto ' , ": AUTODISSECT
+if. IFDISSECT do.
+  wd 'set tbar checked dissecttoggleauto ' , ": AUTODISSECT
+end.
+
 jdb_tbenable''
 jdb_swapfkey''
 )
 TABGROUPS=: ;: 'jdbmain jdbstop jdbwatch'
 DISSECTSTATUS =: (dissectchecklevel =: 4 : 0&(4 0)) 0
+if. -. IFDISSECT do. _1 return. end.
 if. x +. 0 > 4!:0 <'dissect_dissect_' do.
 
   if. fexist getscripts_j_ 'debug/dissect' do.
@@ -1098,7 +1104,14 @@ end.
 DTTCURR =. DTTTOGGLE =. 'These functions are defined in the debug/dissect addon, use Package Manager to get it'
 DTTCURR =. 'Dissect current/cursor line' [^:(DISSECTSTATUS=1) DTTCURR
 DTTTOGGLE =. 'Automatically dissect on stop' [^:(DISSECTSTATUS=1) DTTTOGGLE
-JDEBUG=: 0 : 0 rplc 'DEBUGPATH';(jpath '~addons/ide/qt/images');'DTTCURR';DTTCURR;'DTTTOGGLE';DTTTOGGLE
+
+DTTTBAR=: IFDISSECT # 0 : 0 rplc 'DTTCURR';DTTCURR;'DTTTOGGLE';DTTTOGGLE
+set tbar add dissectcurrent "DTTCURR" "DEBUGPATH/dissect-current.png";
+set tbar add dissecttoggleauto "DTTTOGGLE" "DEBUGPATH/dissect-toggle.png";
+set tbar checkable dissecttoggleauto;
+set tbar addsep;
+)
+JDEBUG=: (0 : 0 rplc 'DTTTBAR';DTTTBAR) rplc 'DEBUGPATH';(jpath '~addons/ide/qt/images')
 pc jdebug escclose ptop;pn "Debug - Ctrl+H to see shortcuts";
 cc tbar toolbar 22x22 flush;
 set tbar add run "Run" "DEBUGPATH/run.png";
@@ -1119,10 +1132,7 @@ set tbar add stopwin "Stop Manager" "DEBUGPATH/stopmanager.png";
 set tbar add watchwin "Watch Manager" "DEBUGPATH/watchmanager.png";
 set tbar add stack "View stack" "DEBUGPATH/stack.png";
 set tbar addsep;
-set tbar add dissectcurrent "DTTCURR" "DEBUGPATH/dissect-current.png";
-set tbar add dissecttoggleauto "DTTTOGGLE" "DEBUGPATH/dissect-toggle.png";
-set tbar checkable dissecttoggleauto;
-set tbar addsep;
+DTTTBAR
 set tbar add clear "Clear" "DEBUGPATH/clear.png";
 )
 JDEBUGP=: 0 : 0
@@ -1664,6 +1674,7 @@ clear     1 1 1 0
 
 f=. (1 + i.&' ') ({.;".@}.) ]
 j=. f ;._2 j
+j=. j #~ IFDISSECT >: ('dissect' -: 7 {.]) &> {."1 j
 nms=. ';set tbar enable '&, &.> {."1 j
 nms1=. jdb_deb &.> {."1 j
 vls=. >{:"1 j
