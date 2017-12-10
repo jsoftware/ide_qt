@@ -81,7 +81,10 @@ end.
 EMPTY
 )
 textview=: 3 : 0
-if. 2=#p=. boxopen y do.
+p=. boxopen y
+if. 1<#$p do.
+  p=. <":p
+elseif. 2=#p do.
   p=. 1 0 1 #^:_1 p
 end.
 'title caption text'=. _3 {. p

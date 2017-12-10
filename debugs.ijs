@@ -1213,7 +1213,6 @@ jdb_wd 'psel ',HWNDP,';ptop ',":PTOP
 jdb_lxson''
 )
 jdebug_cancel=: jdebug_close=: jdb_close
-jdebug_tctrlshift_fkey=: jdb_stopsview
 
 jdebug_enter=: ]
 jdbmain_dun=: ]
@@ -1881,7 +1880,7 @@ jdebug_runcursor_button=: immexj bind 'jdebug_runcursor_run_jdebug_$0'
 jdebug_run_button=: immexj bind 'jdebug_run_run_jdebug_$0'
 jdebug_dissectcurrent_button=: immexj bind 'jdebug_dissectcurrent_run_jdebug_$0'
 jdebug_dissecttoggleauto_button=: immexj bind 'jdebug_dissecttoggleauto_run_jdebug_$0'
-jdebug_jctrl_fkey=: immexj bind 'labrun_jlab_$0'
+jdebug_jctrl_fkey=: immexj bind 'lab_jlab_ 0'
 jdbwatch_dun=: 3 : 0
 if. 0 ~: 4!:0 <'wlist' do. return. end.
 
