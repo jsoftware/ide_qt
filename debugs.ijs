@@ -1113,7 +1113,7 @@ set tbar checkable dissecttoggleauto;
 set tbar addsep;
 )
 JDEBUG=: (0 : 0 rplc 'DTTTBAR';DTTTBAR) rplc 'DEBUGPATH';(jpath '~addons/ide/qt/images')
-pc jdebug escclose ptop;pn "Debug - Ctrl+H to see shortcuts";
+pc jdebug escclose ptop;pn "Debug - Ctrl+H help";
 cc tbar toolbar 22x22 flush;
 set tbar add run "Run" "DEBUGPATH/run.png";
 set tbar addsep;
