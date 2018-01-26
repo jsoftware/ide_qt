@@ -295,7 +295,7 @@ textview=: textview_jqtide_
 EMPTY
 )
 coclass 'jqtide'
-JQTREQ=: '1.6.0'
+JQTREQ=: '1.7.0'
 JQTMSG=: 0 : 0
 The JQt binary needs updating.
 
@@ -310,6 +310,7 @@ or run XX in the J installation folder.
 checkjqtversion=: 3 : 0
 f=. 1000 #. 0 ". ' ' I.@('.'=])} ]
 ver=. wd 'version'
+JQTVER=: f (1+ver i.'/') }. ver
 act=. f (<./ ver i.'/s') {. ver
 req=. f JQTREQ
 if. req <: act do. return. end.

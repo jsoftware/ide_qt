@@ -6,9 +6,9 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.1.128'
+VERSION=: '1.1.129'
 
-RELEASE=: 'j806'
+RELEASE=: 'j807'
 
 FILES=: 0 : 0
 console.ijs
