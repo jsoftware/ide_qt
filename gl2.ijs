@@ -126,7 +126,7 @@ kbSHIFT=: Qt_Key_Shift_jqtide_
 kbCTRL=: Qt_Key_Control_jqtide_
 NB. qt gl2
 
-chkgl2=: 13!:8@3:^:(0&<)
+chkgl2=: 13!:8@3:^:(0&<)@>@{.
 
 NB. =========================================================
 glarc=: chkgl2 @: (('"',libjqt,'" glarc >',(IFWIN#'+'),' i *i') cd <) "1
@@ -184,22 +184,22 @@ glpaintx=: 3 : 0 "1
 NB. =========================================================
 glqhandles=: 3 : 0"1
 hs=. 3#2-2
-chkgl2 ('"',libjqt,'" glqhandles >',(IFWIN#'+'),' i *x') cd <hs
-hs
+chkgl2 cdrc=. ('"',libjqt,'" glqhandles  ',(IFWIN#'+'),' i *x') cd <hs
+1{::cdrc
 )
 
 NB. =========================================================
 glqtype=: 3 : 0"1
 type=. 1#2-2
-chkgl2 ('"',libjqt,'" glqtype >',(IFWIN#'+'),' i *i') cd <type
-type
+chkgl2 cdrc=. ('"',libjqt,'" glqtype  ',(IFWIN#'+'),' i *i') cd <type
+1{::cdrc
 )
 
 NB. =========================================================
 glqwh=: 3 : 0"1
 wh=. 2#2-2
-chkgl2 ('"',libjqt,'" glqwh >',(IFWIN#'+'),' i *i') cd <wh
-wh
+chkgl2 cdrc=. ('"',libjqt,'" glqwh  ',(IFWIN#'+'),' i *i') cd <wh
+1{::cdrc
 )
 
 NB. =========================================================
@@ -210,8 +210,8 @@ glqpixelm=: 3 : 0"1
 n=. */ 2{.2}.y
 pix=. n#2-2
 shape=. 2#2-2
-chkgl2 ('"',libjqt,'" glqpixelm >',(IFWIN#'+'),' i *i *i *i') cd y;shape;pix
-shape$pix
+chkgl2 cdrc=. ('"',libjqt,'" glqpixelm  ',(IFWIN#'+'),' i *i *i *i') cd y;shape;pix
+(2&{:: $ 3&{::) cdrc
 )
 
 NB. =========================================================
@@ -221,16 +221,16 @@ NB. TODO
 glqpixels=: 3 : 0"1
 n=. */ 2{.2}.y
 pix=. n#2-2
-chkgl2 ('"',libjqt,'" glqpixels >',(IFWIN#'+'),' i *i *i') cd y;pix
-pix
+chkgl2 cdrc=. ('"',libjqt,'" glqpixels  ',(IFWIN#'+'),' i *i *i') cd y;pix
+2{::cdrc
 )
 
 NB. =========================================================
 NB. TODO
 glqextent=: 3 : 0"1
 wh=. 2#2-2
-chkgl2 ('"',libjqt,'" glqextent >',(IFWIN#'+'),' i *c *i') cd (,y);wh
-wh
+chkgl2 cdrc=. ('"',libjqt,'" glqextent  ',(IFWIN#'+'),' i *c *i') cd (,y);wh
+2{::cdrc
 )
 
 NB. =========================================================
@@ -238,8 +238,8 @@ NB. TODO
 glqextentw=: 3 : 0"1
 y=. y,(LF~:{:y)#LF [ y=. ,y
 w=. (+/LF=y)#2-2
-chkgl2 ('"',libjqt,'" glqextentw >',(IFWIN#'+'),' i *c *i') cd y;w
-w
+chkgl2 cdrc=. ('"',libjqt,'" glqextentw  ',(IFWIN#'+'),' i *c *i') cd y;w
+2{::cdrc
 )
 
 NB. =========================================================
@@ -247,8 +247,8 @@ NB. font information: Height, Ascent, Descent, InternalLeading, ExternalLeading,
 NB. TODO
 glqtextmetrics=: 3 : 0"1
 tm=. 7#2-2
-chkgl2 ('"',libjqt,'" glqtextmetrics >',(IFWIN#'+'),' i *i') cd tm
-tm
+chkgl2 cdrc=. ('"',libjqt,'" glqtextmetrics  ',(IFWIN#'+'),' i *i') cd tm
+1{::cdrc
 )
 
 NB. =========================================================

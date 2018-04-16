@@ -3,7 +3,7 @@ coclass 'qtopengl'
 NB. gl2 overlay on opengl
 NB. all drawing commands should be used inside paintz event only
 
-chkgl2=: 13!:8@3:^:(0&<)
+chkgl2=: 13!:8@3:^:(0&<)@>@{.
 
 NB. =========================================================
 gl_arc=: chkgl2 @: (('"',libjqt,'" gl_arc >',(IFWIN#'+'),' i *i') cd <) "1
@@ -49,15 +49,15 @@ gl_setlocale=: chkgl2 @: (('"',libjqt,'" gl_setlocale >',(IFWIN#'+'),' i *c') cd
 NB. =========================================================
 gl_qhandles=: 3 : 0"1
 hs=. 3#2-2
-chkgl2 ('"',libjqt,'" gl_qhandles >',(IFWIN#'+'),' i *x') cd <hs
-hs
+chkgl2 cdrc=. ('"',libjqt,'" gl_qhandles  ',(IFWIN#'+'),' i *x') cd <hs
+1{::cdrc
 )
 
 NB. =========================================================
 gl_qwh=: 3 : 0"1
 wh=. 2#2-2
-chkgl2 ('"',libjqt,'" gl_qwh >',(IFWIN#'+'),' i *i') cd <wh
-wh
+chkgl2 cdrc=. ('"',libjqt,'" gl_qwh  ',(IFWIN#'+'),' i *i') cd <wh
+1{::cdrc
 )
 
 NB. =========================================================
@@ -68,8 +68,8 @@ gl_qpixelm=: 3 : 0"1
 n=. */ 2{.2}.y
 pix=. n#2-2
 shape=. 2#2-2
-chkgl2 ('"',libjqt,'" gl_qpixelm >',(IFWIN#'+'),' i *i *i *i') cd y;shape;pix
-shape$pix
+chkgl2 cdrc=. ('"',libjqt,'" gl_qpixelm  ',(IFWIN#'+'),' i *i *i *i') cd y;shape;pix
+(2&{:: $ 3&{::) cdrc
 )
 
 NB. =========================================================
@@ -79,16 +79,16 @@ NB. TODO
 gl_qpixels=: 3 : 0"1
 n=. */ 2{.2}.y
 pix=. n#2-2
-chkgl2 ('"',libjqt,'" gl_qpixels >',(IFWIN#'+'),' i *i *i') cd y;pix
-pix
+chkgl2 cdrc=. ('"',libjqt,'" gl_qpixels  ',(IFWIN#'+'),' i *i *i') cd y;pix
+2{::cdrc
 )
 
 NB. =========================================================
 NB. TODO
 gl_qextent=: 3 : 0"1
 wh=. 2#2-2
-chkgl2 ('"',libjqt,'" gl_qextent >',(IFWIN#'+'),' i *c *i') cd (,y);wh
-wh
+chkgl2 cdrc=. ('"',libjqt,'" gl_qextent  ',(IFWIN#'+'),' i *c *i') cd (,y);wh
+2{::cdrc
 )
 
 NB. =========================================================
@@ -96,8 +96,8 @@ NB. TODO
 gl_qextentw=: 3 : 0"1
 y=. y,(LF~:{:y)#LF [ y=. ,y
 w=. (+/LF=y)#2-2
-chkgl2 ('"',libjqt,'" gl_qextentw >',(IFWIN#'+'),' i *c *i') cd y;w
-w
+chkgl2 cdrc=. ('"',libjqt,'" gl_qextentw  ',(IFWIN#'+'),' i *c *i') cd y;w
+2{::cdrc
 )
 
 NB. =========================================================
@@ -105,6 +105,6 @@ NB. font information: Height, Ascent, Descent, InternalLeading, ExternalLeading,
 NB. TODO
 gl_qtextmetrics=: 3 : 0"1
 tm=. 7#2-2
-chkgl2 ('"',libjqt,'" gl_qtextmetrics >',(IFWIN#'+'),' i *i') cd tm
-tm
+chkgl2 cdrc=. ('"',libjqt,'" gl_qtextmetrics  ',(IFWIN#'+'),' i *i') cd tm
+1{::cdrc
 )

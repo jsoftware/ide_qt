@@ -25,7 +25,7 @@ NB. =========================================================
 NB. reading file images from memory to argb matrix
 NB. y raw image data
 getimg=: 3 : 0
-if. m=. wdgetimg y;(#y);wh=. 2$2-2 do.
+if. m [[ 'm wh'=. 0 3{ wdgetimg y;(#y);wh=. 2$2-2 do.
   d=. _2 ic memr m,0,(*/wh,4),2
   wdreadimg 2#<<0  NB. dispose temp image in qt side
   (|.wh)$ fliprgb^:(-.RGBSEQ) d
@@ -38,7 +38,7 @@ NB. =========================================================
 NB. reading file images to argb matrix
 NB. y image file name
 readimg=: 3 : 0
-if. m=. wdreadimg (utf8 ,y);wh=. 2$2-2 do.
+if. m [[ 'm wh'=. 0 2{ wdreadimg (utf8 ,y);wh=. 2$2-2 do.
   d=. _2 ic memr m,0,(*/wh,4),2
   wdreadimg 2#<<0  NB. dispose temp image in qt side
   (|.wh)$ fliprgb^:(-.RGBSEQ) d
@@ -73,7 +73,7 @@ end.
 type=. toupper type
 if. 'quality'-:>@{.opt do. quality=. <. >@{:opt end.
 d=. fliprgb^:(-.RGBSEQ) d
-m=. wdputimg (2 ic d); (w,h); (len=. ,_1); type; quality
+'m len'=. 0 3{ wdputimg (2 ic d); (w,h); (len=. ,_1); type; quality
 if. m do.
   z=. memr m,0,len,2
   wdputimg (4#(<<0)),<0  NB. dispose temp bytearry in qt side
@@ -112,7 +112,7 @@ end.
 type=. toupper type
 if. 'quality'-:>@{.opt do. quality=. <. >@{:opt end.
 d=. fliprgb^:(-.RGBSEQ) d
-r=. wdwriteimg (2 ic d); (w,h); f; type; quality
+wdwriteimg (2 ic d); (w,h); f; type; quality
 EMPTY
 )
 NB.
@@ -121,15 +121,15 @@ cocurrent IFQT{'jqtide';'z'
 
 NB. =========================================================
 initjqt=: 3 : 0
-('"',libjqt,'" state_run >',(IFWIN#'+'),' i i x *c i i x x x x')&cd _100;0;'';0;0;0;0;0;0
+('"',libjqt,'" state_run  ',(IFWIN#'+'),' i i x *c i i x x x x')&cd _100;0;'';0;0;0;0;0;0
 EMPTY
 )
 
 NB. =========================================================
-wdreadimg=: ('"',libjqt,'" wdreadimg >',(IFWIN#'+'),' x *c *i')&cd
-wdgetimg=: ('"',libjqt,'" wdgetimg >',(IFWIN#'+'),' x *c i *i')&cd
-wdwriteimg=: ('"',libjqt,'" wdwriteimg >',(IFWIN#'+'),' i *c *i *c *c i')&cd
-wdputimg=: ('"',libjqt,'" wdputimg >',(IFWIN#'+'),' x *c *i *i *c i')&cd
+wdreadimg=: ('"',libjqt,'" wdreadimg  ',(IFWIN#'+'),' x *c *i')&cd
+wdgetimg=: ('"',libjqt,'" wdgetimg  ',(IFWIN#'+'),' x *c i *i')&cd
+wdwriteimg=: ('"',libjqt,'" wdwriteimg  ',(IFWIN#'+'),' i *c *i *c *c i')&cd
+wdputimg=: ('"',libjqt,'" wdputimg  ',(IFWIN#'+'),' x *c *i *i *c i')&cd
 
 NB. =========================================================
 NB. preserved for compatibility

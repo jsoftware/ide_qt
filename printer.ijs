@@ -3,7 +3,7 @@ coclass 'qtprinter'
 NB. gl2 on printer
 NB. all drawing commands should be used for printer only
 
-chkgl2=: 13!:8@3:^:(0&<)
+chkgl2=: 13!:8@3:^:(0&<)@>@{.
 
 NB. =========================================================
 glzarc=: chkgl2 @: (('"',libjqt,'" glzarc >',(IFWIN#'+'),' i *i') cd <) "1
@@ -66,23 +66,23 @@ glzqpapersource=: (('"',libjqt,'" glzqpapersource >',(IFWIN#'+'),' i')&cd bind '
 NB. =========================================================
 glzqwh=: 3 : 0"1
 wh=. 2#1.1-1.1
-chkgl2 ('"',libjqt,'" glzqwh >',(IFWIN#'+'),' i *f i') cd wh;y
-wh
+chkgl2 cdrc=. ('"',libjqt,'" glzqwh  ',(IFWIN#'+'),' i *f i') cd wh;y
+1{::cdrc
 )
 
 NB. =========================================================
 glzqmargins=: 3 : 0"1
 ltrb=. 4#1.1-1.1
-chkgl2 ('"',libjqt,'" glzqmargins >',(IFWIN#'+'),' i *f i') cd ltrb;y
-ltrb
+chkgl2 cdrc=. ('"',libjqt,'" glzqmargins  ',(IFWIN#'+'),' i *f i') cd ltrb;y
+1{::cdrc
 )
 
 NB. =========================================================
 NB. TODO
 glzqextent=: 3 : 0"1
 wh=. 2#2-2
-chkgl2 ('"',libjqt,'" glzqextent >',(IFWIN#'+'),' i *c *i') cd (,y);wh
-wh
+chkgl2 cdrc=. ('"',libjqt,'" glzqextent  ',(IFWIN#'+'),' i *c *i') cd (,y);wh
+2{::cdrc
 )
 
 NB. =========================================================
@@ -90,8 +90,8 @@ NB. TODO
 glzqextentw=: 3 : 0"1
 y=. y,(LF~:{:y)#LF [ y=. ,y
 w=. (+/LF=y)#2-2
-chkgl2 ('"',libjqt,'" glzqextentw >',(IFWIN#'+'),' i *c *i') cd y;w
-w
+chkgl2 cdrc=. ('"',libjqt,'" glzqextentw  ',(IFWIN#'+'),' i *c *i') cd y;w
+2{::cdrc
 )
 
 NB. =========================================================
@@ -99,8 +99,8 @@ NB. font information: Height, Ascent, Descent, InternalLeading, ExternalLeading,
 NB. TODO
 glzqtextmetrics=: 3 : 0"1
 tm=. 7#2-2
-chkgl2 ('"',libjqt,'" glzqtextmetrics >',(IFWIN#'+'),' i *i') cd <tm
-tm
+chkgl2 cdrc=. ('"',libjqt,'" glzqtextmetrics  ',(IFWIN#'+'),' i *i') cd <tm
+1{::cdrc
 )
 
 NB. enum Qprinter::ColorMode
