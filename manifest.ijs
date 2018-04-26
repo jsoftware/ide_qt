@@ -10,6 +10,8 @@ VERSION=: '1.1.130'
 
 RELEASE=: 'j807'
 
+FOLDER=: 'ide/qt'
+
 FILES=: 0 : 0
 console.ijs
 debugs.ijs
