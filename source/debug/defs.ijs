@@ -14,7 +14,7 @@ ERM_j_=: ''   NB. last error message stored in j
 ERRORS=: '';(9!:8''),<'Unknown Error'
 ERRORCODES=: (i.#ERRORS) -. 0 18   NB. exclude none and stop
 
-IFDISSECT=: 'true' -: 0 1 {:: wd 'qtstate debugdissect' NB. if include dissect
+IFDISSECT=: 'true' -: 0 1&{::@:wd ::0: 'qtstate debugdissect' NB. if include dissect
 
 NB. smallest sizes (MINWIDTH so all buttons are displayed):
 MINWIDTH=: 540

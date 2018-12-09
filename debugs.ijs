@@ -270,7 +270,7 @@ ERM_j_=: ''
 ERRORS=: '';(9!:8''),<'Unknown Error'
 ERRORCODES=: (i.#ERRORS) -. 0 18
 
-IFDISSECT=: 'true' -: 0 1 {:: wd 'qtstate debugdissect'
+IFDISSECT=: 'true' -: 0 1&{::@:wd ::0: 'qtstate debugdissect'
 MINWIDTH=: 540
 MINHEIGHT=: 500
 
