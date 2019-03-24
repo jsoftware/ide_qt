@@ -17,7 +17,6 @@ load '~Qt/',y,'/build.ijs'
 NB. =========================================================
 Source=: <;._2 (0 : 0)
 config
-console
 debug
 gl2
 help
@@ -61,7 +60,6 @@ f=. 3 : 0
 (paddons,'/',y) fcopynew '~.Qt/release/',y
 )
 
-f 'console.ijs'
 f 'debugs.ijs'
 f 'gl2.ijs'
 f 'help.ijs'
@@ -78,13 +76,6 @@ f=. 3 : 0
 
 f 'manifest.ijs'
 f 'history.txt'
-
-f=. 3 : 0
-(pAddons,'/',y) fcopynew jpath 'Qt/console/',y
-(paddons,'/',y) fcopynew jpath 'Qt/console/',y
-)
-
-f 'glc2.ijs'
 
 NB. =========================================================
 f=. 3 : 0

@@ -6,14 +6,13 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.1.133'
+VERSION=: '1.1.134'
 
 RELEASE=: 'j901'
 
 FOLDER=: 'ide/qt'
 
 FILES=: 0 : 0
-console.ijs
 debugs.ijs
 gl2.ijs
 help.ijs

@@ -5,7 +5,7 @@ NB. set and test against JQt binary version
 coclass 'jqtide'
 
 NB. minimum required JQt binary version:
-JQTREQ=: '1.7.0'
+JQTREQ=: '1.8.1'
 
 NB. =========================================================
 JQTMSG=: 0 : 0
