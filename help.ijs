@@ -109,11 +109,11 @@ else.
 end.
 )
 htmlhelpbaselib=: 3 : 0
-  if. fexist f=. jpath '~.Main/', y do.
-    open f
-  else.
-    browse_j_ 'http://www.jsoftware.com/wsvn/base8/trunk/', y
-  end.
+if. fexist f=. jpath '~.Main/', y do.
+  open f
+else.
+  browse_j_ 'https://github.com/jsoftware/base9/tree/master/',y
+end.
 ''
 )
 helperror=: 3 : 0
