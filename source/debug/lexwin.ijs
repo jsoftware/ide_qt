@@ -1,3 +1,4 @@
+cocurrent 'jdebug'
 NB. jdb_lexwin
 
 NB. =========================================================
@@ -8,6 +9,7 @@ if. 0 e. #NAME do. '' return. end.
 jdb_stopread''
 STACK=: jdb_getstack''
 jdb_lexwin1 ''
+i. 0 0
 )
 
 NB. =========================================================

@@ -1,5 +1,37 @@
+cocurrent 'jdebug'
 NB. call
 
+NB. wdhandler - exactly like the system handler except the value returned from wd_fn is passed through in debug
+wdhandler =: 3 : 0
+wdq=: wd 'q'
+wd_val=. {:"1 wdq
+({."1 wdq)=: wd_val
+if. 3=4!:0<'wdhandler_debug' do.
+  try. wdhandler_debug'' catch. end.
+end.
+wd_ndx=. 1 i.~ 3 = 4!:0 [ 3 {. wd_val
+if. 3 > wd_ndx do.
+  wd_fn=. > wd_ndx { wd_val
+  if. 13!:17'' do.
+    wd_fn~''
+  else.
+    try. wd_fn~''
+    catch.
+      wd_err=. 13!:12''
+      if. 0=4!:0 <'ERM_j_' do.
+        wd_erm=. ERM_j_
+        ERM_j_=: ''
+        if. wd_erm -: wd_err do. i.0 0 return. end.
+      end.
+      wd_err=. LF,,LF,.(}.^:('|'e.~{.));._2 ,&LF^:(LF~:{:) wd_err
+      wdinfo 'wdhandler';'error in: ',wd_fn,wd_err
+    end.
+  i.0 0
+  end.
+else. i. 0 0
+end.
+)
+      
 NB. =========================================================
 NB. restore various settings before running user code
 NB. If y is nonempty, it is (line to dissect);(x options for dissect)
@@ -13,6 +45,7 @@ if. #y do.
 end.
 jdb_imxs xsstg
 jdb_imxss 1
+i. 0 0
 )
 
 NB. =========================================================

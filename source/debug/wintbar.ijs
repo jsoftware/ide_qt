@@ -1,3 +1,4 @@
+cocurrent 'jdebug'
 NB. toolbar definitions
 
 NB. =========================================================
@@ -100,6 +101,7 @@ r=. tc@": &.> stk
 r=. ,(":r),.LF
 s=. {:a.
 jdb_wd 'textview *',s,'stack',s,s,r
+i. 0 0
 )
 
 NB. =========================================================
@@ -267,12 +269,12 @@ jdebug_stopname_button=: 3 : '(TABCURRENT,''_stopname_button'')~0'
 jdebug_stopwin_button=: 3 : '(TABCURRENT,''_stopwin_button'')~0'
 
 NB. =========================================================
-jdebug_stepover_button=: immexj bind 'jdebug_stepover_run_jdebug_$0'
-jdebug_stepinto_button=: immexj bind 'jdebug_stepinto_run_jdebug_$0'
-jdebug_stepout_button=: immexj bind 'jdebug_stepout_run_jdebug_$0'
-jdebug_cutback_button=: immexj bind 'jdebug_cutback_run_jdebug_$0'
-jdebug_runcursor_button=: immexj bind 'jdebug_runcursor_run_jdebug_$0'
-jdebug_run_button=: immexj bind 'jdebug_run_run_jdebug_$0'
-jdebug_dissectcurrent_button=: immexj bind 'jdebug_dissectcurrent_run_jdebug_$0'
+jdebug_stepover_button=: jdebug_stepover_run
+jdebug_stepinto_button=: jdebug_stepinto_run
+jdebug_stepout_button=: jdebug_stepout_run
+jdebug_cutback_button=: jdebug_cutback_run
+jdebug_runcursor_button=: jdebug_runcursor_run
+jdebug_run_button=: jdebug_run_run
+jdebug_dissectcurrent_button=: jdebug_dissectcurrent_run
 jdebug_dissecttoggleauto_button=: immexj bind 'jdebug_dissecttoggleauto_run_jdebug_$0'
 jdebug_jctrl_fkey=: immexj bind 'lab_jlab_ 0'
