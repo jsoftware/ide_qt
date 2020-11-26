@@ -6,9 +6,9 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.1.140'
+VERSION=: '1.1.141'
 
-RELEASE=: 'j901'
+RELEASE=: 'j902'
 
 FOLDER=: 'ide/qt'
 
