@@ -1,5 +1,4 @@
 coclass 'jdebug'
-cocurrent 'jdebug'
 jdb_deb=: #~ (+. (1: |. (> </\)))@(' '&~:)
 jdb_dlb=: }.~ =&' ' i. 0:
 jdb_dtb=: #~ ([: +./\. ' '&~:)
@@ -329,37 +328,6 @@ STATE=: 0
 STOPLAST=: ''
 WATCH=: ''
 )
-cocurrent 'jdebug'
-wdhandler =: 3 : 0
-wdq=: wd 'q'
-wd_val=. {:"1 wdq
-({."1 wdq)=: wd_val
-if. 3=4!:0<'wdhandler_debug' do.
-  try. wdhandler_debug'' catch. end.
-end.
-wd_ndx=. 1 i.~ 3 = 4!:0 [ 3 {. wd_val
-if. 3 > wd_ndx do.
-  wd_fn=. > wd_ndx { wd_val
-  if. 13!:17'' do.
-    wd_fn~''
-  else.
-    try. wd_fn~''
-    catch.
-      wd_err=. 13!:12''
-      if. 0=4!:0 <'ERM_j_' do.
-        wd_erm=. ERM_j_
-        ERM_j_=: ''
-        if. wd_erm -: wd_err do. i.0 0 return. end.
-      end.
-      wd_err=. LF,,LF,.(}.^:('|'e.~{.));._2 ,&LF^:(LF~:{:) wd_err
-      wdinfo 'wdhandler';'error in: ',wd_fn,wd_err
-    end.
-  i.0 0
-  end.
-else. i. 0 0
-end.
-)
-      
 jdb_restore=: 3 : 0
 jdb_ppset''
 jdb_lxson ''
@@ -509,7 +477,6 @@ end.
 LOCALTYPES =: x
 jdb_debug y
 )
-cocurrent 'jdebug'
 jdb_lexwin=: 3 : 0
 if. 0 e. #NAME do. '' return. end.
 jdb_stopread''
@@ -1690,7 +1657,6 @@ jdebug_locs_button=: jdebug_locs_select
 jdebug_name_button=: jdebug_name_select
 jdebug_stopall_button=: jdbstop_stopall_button
 jdebug_stopclose_button=: jdebug_mainwin
-cocurrent 'jdebug'
 j=. 0 : 0
 run       1 0 0 0
 stepinto  1 0 0 0
@@ -1918,8 +1884,8 @@ jdebug_cutback_button=: jdebug_cutback_run
 jdebug_runcursor_button=: jdebug_runcursor_run
 jdebug_run_button=: jdebug_run_run
 jdebug_dissectcurrent_button=: jdebug_dissectcurrent_run
-jdebug_dissecttoggleauto_button=: immexj bind 'jdebug_dissecttoggleauto_run_jdebug_$0'
-jdebug_jctrl_fkey=: immexj bind 'lab_jlab_ 0'
+jdebug_dissecttoggleauto_button=: jdebug_dissecttoggleauto_run
+jdebug_jctrl_fkey=: 3 : 'lab_jlab_ 0'
 jdbwatch_dun=: 3 : 0
 if. 0 ~: 4!:0 <'wlist' do. return. end.
 

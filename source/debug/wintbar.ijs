@@ -1,4 +1,3 @@
-cocurrent 'jdebug'
 NB. toolbar definitions
 
 NB. =========================================================
@@ -276,5 +275,5 @@ jdebug_cutback_button=: jdebug_cutback_run
 jdebug_runcursor_button=: jdebug_runcursor_run
 jdebug_run_button=: jdebug_run_run
 jdebug_dissectcurrent_button=: jdebug_dissectcurrent_run
-jdebug_dissecttoggleauto_button=: immexj bind 'jdebug_dissecttoggleauto_run_jdebug_$0'
-jdebug_jctrl_fkey=: immexj bind 'lab_jlab_ 0'
+jdebug_dissecttoggleauto_button=: jdebug_dissecttoggleauto_run
+jdebug_jctrl_fkey=: 3 : 'lab_jlab_ 0'

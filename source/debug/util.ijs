@@ -1,4 +1,3 @@
-cocurrent 'jdebug'
 NB. utils
 
 jdb_deb=: #~ (+. (1: |. (> </\)))@(' '&~:)
