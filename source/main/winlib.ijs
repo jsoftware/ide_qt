@@ -29,7 +29,7 @@ NB. runs first found of: form_handler, form_event, form_default,
 NB. with global event variables from wdq
 NB. if debug is off, wraps event handler in try. catch.
 NB. catch exits if error message is the last picked up by debug.
-wdhandler=: 3 : 0
+wdhandler_0=: 3 : 0
 wdq=: wd 'q'
 wd_val=. {:"1 wdq
 ({."1 wdq)=: wd_val
@@ -56,6 +56,38 @@ if. 3 > wd_ndx do.
   end.
 end.
 i.0 0
+)
+
+NB. =========================================================
+NB. wdhandler - exactly like the system handler except the value returned from wd_fn is passed through in debug
+wdhandler=: 3 : 0
+wdq=: wd 'q'
+wd_val=. {:"1 wdq
+({."1 wdq)=: wd_val
+if. 3=4!:0<'wdhandler_debug' do.
+  try. wdhandler_debug'' catch. end.
+end.
+wd_ndx=. 1 i.~ 3 = 4!:0 [ 3 {. wd_val
+if. 3 > wd_ndx do.
+  wd_fn=. > wd_ndx { wd_val
+  if. 13!:17'' do.
+    wd_fn~''
+  else.
+    try. wd_fn~''
+    catch.
+      wd_err=. 13!:12''
+      if. 0=4!:0 <'ERM_j_' do.
+        wd_erm=. ERM_j_
+        ERM_j_=: ''
+        if. wd_erm -: wd_err do. i.0 0 return. end.
+      end.
+      wd_err=. LF,,LF,.(}.^:('|'e.~{.));._2 ,&LF^:(LF~:{:) wd_err
+      wdinfo 'wdhandler';'error in: ',wd_fn,wd_err
+    end.
+  i.0 0
+  end.
+else. i. 0 0
+end.
 )
 
 NB. =========================================================
