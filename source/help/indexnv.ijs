@@ -79,6 +79,7 @@ $: dollarco
 @ at
 @. atdot
 @: atco
+& ampm
 &. ampdot
 &.: ampdotco
 &: ampco
