@@ -247,7 +247,7 @@ NB. font information: Height, Ascent, Descent, InternalLeading, ExternalLeading,
 NB. TODO
 glqtextmetrics=: 3 : 0"1
 tm=. 7#2-2
-chkgl2 cdrc=. ('"',libjqt,'" glqtextmetrics  ',(IFWIN#'+'),' i *i') cd tm
+chkgl2 cdrc=. ('"',libjqt,'" glqtextmetrics  ',(IFWIN#'+'),' i *i') cd <tm
 1{::cdrc
 )
 
