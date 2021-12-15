@@ -90,6 +90,7 @@ end.
 'title caption text'=. _3 {. p
 wd 'textview *;',title,';',caption,';',flatten text
 )
+echo_z_=: wd@'msgs'^:2 [ 1!:2&2
 addons_msg=: 0 : 0
 The XX are not yet installed.
 

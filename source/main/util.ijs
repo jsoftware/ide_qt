@@ -113,3 +113,7 @@ end.
 'title caption text'=. _3 {. p
 wd 'textview *;',title,';',caption,';',flatten text
 )
+
+NB. =========================================================
+NB. override default echo to invoke jqt's message pump
+echo_z_=: wd@'msgs'^:2 [ 1!:2&2
