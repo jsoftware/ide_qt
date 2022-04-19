@@ -188,7 +188,7 @@ case. do.
 end.
 )
 
-wd1=: ('"',libjqt,'" wd ', (IFWIN#'+'),' i *c i * *i') & cd f.
+wd1=: ('"',libjqt,'" wd ', (IFWIN#'+'),' i *c i *x *i') & cd f.
 wdhandler_0=: 3 : 0
 wdq=: wd 'q'
 wd_val=. {:"1 wdq

@@ -19,7 +19,7 @@ NB. echo all errors
 end.
 )
 
-wd1=: ('"',libjqt,'" wd ', (IFWIN#'+'),' i *c i * *i') & cd f.
+wd1=: ('"',libjqt,'" wd ', (IFWIN#'+'),' i *c i *x *i') & cd f.
 
 NB. =========================================================
 NB.*wdhandler v wd handler
