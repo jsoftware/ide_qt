@@ -64,22 +64,6 @@ r=. (sel{shp),(*/rws{shp),*/cls{shp
 )
 
 NB. =========================================================
-NB. return if line is start of multiline definition
-NB. checks only most common cases, using standard library
-Multiline=: (,each '01234'),;:'noun adverb conjunction verb monad dyad'
-
-ismultiline=: 3 : 0
-if. 0=#y do. 0 return. end.
-t=. ;: :: 0: y
-if. t-:0 do. 0 return. end.
-if. (<'Note') = {.t do. 1 return. end.
-n=. I. }: t e. Multiline
-if. 0=#n do. 0 return. end.
-if. (<'define') e. (n+1){t do. 1 return. end.
-(,each ':0') e. (n+/1 2){t,<''
-)
-
-NB. =========================================================
 NB. show wd events
 NB. 0=none
 NB. 1=sysevent

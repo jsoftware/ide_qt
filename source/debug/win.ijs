@@ -138,11 +138,12 @@ jdb_info 'Debug Shortcuts';SHORTCUTS
 )
 
 NB. =========================================================
-jdebug_wctrl_fkey=: 3 : 0
-jdb_lxsoff''
-jdb_setactive 'term'
-wd 'sm prompt *   ',jdb_dlb MOVELINE >@{ LINES
-jdb_lxson''
+jdebug_resize=: 3 : 0
+if. #ACTIVE do.
+  echo i.0 0
+  jdb_setactive ACTIVE
+  ACTIVE=: ''
+end.
 )
 
 NB. =========================================================
@@ -150,6 +151,14 @@ jdebug_tctrl_fkey=: 3 : 0
 jdb_lxsoff''
 PTOP=: -. PTOP
 jdb_wd 'psel ',HWNDP,';ptop ',":PTOP
+jdb_lxson''
+)
+
+NB. =========================================================
+jdebug_wctrl_fkey=: 3 : 0
+jdb_lxsoff''
+jdb_setactive 'term'
+wd 'sm prompt *   ',jdb_dlb MOVELINE >@{ LINES
 jdb_lxson''
 )
 

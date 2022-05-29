@@ -340,21 +340,6 @@ end.
 )
 
 NB. =========================================================
-jdb_wd=: 3 : 0"1
-'r c l p n'=. jdb_wd1 (,y);(#,y);(,2);(,0)
-select. r
-case. 0 do.
-  EMPTY
-case. _1 do.
-  (15!:1) p,0,n
-case. _2 do.
-  _2 [\ <;._2 (15!:1) p,0,n
-case. do.
-  (jdb_wd ::(''"_) 'qer') (13!:8) 3
-end.
-)
-
-NB. =========================================================
 NB. check we have a valid name, else return jdb_empty
 jdb_validname=: 3 : 0
 if. 0=#y do. '' return. end.
@@ -375,5 +360,20 @@ else.
   else.
     y
   end.
+end.
+)
+
+NB. =========================================================
+jdb_wd=: 3 : 0"1
+'r c l p n'=. jdb_wd1 (,y);(#,y);(,2);(,0)
+select. r
+case. 0 do.
+  EMPTY
+case. _1 do.
+  (15!:1) p,0,n
+case. _2 do.
+  _2 [\ <;._2 (15!:1) p,0,n
+case. do.
+  (jdb_wd ::(''"_) 'qer') (13!:8) 3
 end.
 )

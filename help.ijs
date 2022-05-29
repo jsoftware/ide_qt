@@ -86,14 +86,8 @@ if. 0=#ContextHelp do. return. end.
 for_h. ,ContextHelp do.
   select. h
   case. 'j' do.
-    if. ContextTarget -: 'dict' do.
-      if. #ndx=. helpndx s do.
-        'dictionary/',ndx return.
-      end.
-    else.
-      if. #ndx=. helpndx_nuvoc s do.
-        ndx return.
-      end.
+    if. #ndx=. helpndx_nuvoc s do.
+      ndx return.
     end.
   end.
 end.

@@ -232,19 +232,6 @@ else.
   y
 end.
 )
-jdb_wd=: 3 : 0"1
-'r c l p n'=. jdb_wd1 (,y);(#,y);(,2);(,0)
-select. r
-case. 0 do.
-  EMPTY
-case. _1 do.
-  (15!:1) p,0,n
-case. _2 do.
-  _2 [\ <;._2 (15!:1) p,0,n
-case. do.
-  (jdb_wd ::(''"_) 'qer') (13!:8) 3
-end.
-)
 jdb_validname=: 3 : 0
 if. 0=#y do. '' return. end.
 if. 1 e. b=. '__' E. }: y do.
@@ -264,6 +251,19 @@ else.
   else.
     y
   end.
+end.
+)
+jdb_wd=: 3 : 0"1
+'r c l p n'=. jdb_wd1 (,y);(#,y);(,2);(,0)
+select. r
+case. 0 do.
+  EMPTY
+case. _1 do.
+  (15!:1) p,0,n
+case. _2 do.
+  _2 [\ <;._2 (15!:1) p,0,n
+case. do.
+  (jdb_wd ::(''"_) 'qer') (13!:8) 3
 end.
 )
 ERM_j_=: ''
@@ -349,7 +349,6 @@ elseif. *#x do. wdinfo 'Dissect message';x
 end.
 jdb_imxhandler 1
 )
-
 jdb_destroyad =: 3 : 0
 if. #autodissectlocale do.
   if. autodissectlocale e. 18!:1 (1) do. destroy__autodissectlocale '' end.
@@ -396,12 +395,14 @@ jdb_debuginit''
 ERM_j_=: ''
 if. (-.forcereopen)*#jdb_getstack'' do.
   jdb_debug ''
+  jdb_setactive a
+  ACTIVE=: ''
 else.
   jdb_ppget 0
   jdebug_run 0
   jdb_restore''
+  ACTIVE=: a
 end.
-jdb_setactive a
 )
 j=. 0 : 0
 Enter          !single step over
@@ -1204,16 +1205,23 @@ end.
 jdebug_hctrl_fkey=: 3 : 0
 jdb_info 'Debug Shortcuts';SHORTCUTS
 )
-jdebug_wctrl_fkey=: 3 : 0
-jdb_lxsoff''
-jdb_setactive 'term'
-wd 'sm prompt *   ',jdb_dlb MOVELINE >@{ LINES
-jdb_lxson''
+jdebug_resize=: 3 : 0
+if. #ACTIVE do.
+  echo i.0 0
+  jdb_setactive ACTIVE
+  ACTIVE=: ''
+end.
 )
 jdebug_tctrl_fkey=: 3 : 0
 jdb_lxsoff''
 PTOP=: -. PTOP
 jdb_wd 'psel ',HWNDP,';ptop ',":PTOP
+jdb_lxson''
+)
+jdebug_wctrl_fkey=: 3 : 0
+jdb_lxsoff''
+jdb_setactive 'term'
+wd 'sm prompt *   ',jdb_dlb MOVELINE >@{ LINES
 jdb_lxson''
 )
 jdebug_cancel=: jdebug_close=: jdb_close

@@ -29,6 +29,7 @@ end.
 jdb_imxhandler 1  NB. finish up through monad
 )
 
+NB. =========================================================
 jdb_destroyad =: 3 : 0
 NB. In case user destroyed the locale already, check before we do
 if. #autodissectlocale do.
@@ -87,10 +88,12 @@ jdb_debuginit''
 ERM_j_=: ''
 if. (-.forcereopen)*#jdb_getstack'' do.
   jdb_debug ''
+  jdb_setactive a
+  ACTIVE=: ''
 else.
   jdb_ppget 0
   jdebug_run 0
   jdb_restore''
+  ACTIVE=: a
 end.
-jdb_setactive a
 )
