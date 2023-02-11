@@ -120,12 +120,6 @@ NB.
 cocurrent IFQT{'jqtide';'z'
 
 NB. =========================================================
-initjqt=: 3 : 0
-('"',libjqt,'" state_run  ',(IFWIN#'+'),' i i x *c i i x x x x')&cd _100;0;'';0;0;0;0;0;0
-EMPTY
-)
-
-NB. =========================================================
 wdreadimg=: ('"',libjqt,'" wdreadimg  ',(IFWIN#'+'),' x *c *i')&cd
 wdgetimg=: ('"',libjqt,'" wdgetimg  ',(IFWIN#'+'),' x *c i *i')&cd
 wdwriteimg=: ('"',libjqt,'" wdwriteimg  ',(IFWIN#'+'),' i *c *i *c *c i')&cd
