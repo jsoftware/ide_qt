@@ -40,7 +40,7 @@ def=. med # y
 GDEFS=: GDEFS, def
 
 18!:4 x
-if. #val do. val=. ". &.> val end.
+if. #val do. val=. jdb_val_jdebug_@". &.> val end.
 if. #def do. def=. <@(5!:5) "0 def end.
 18!:4 <'jdebug'
 

@@ -20,6 +20,7 @@ jdb_getactive=: jdb_wd bind 'sm get active'
 jdb_setactive=: jdb_wd @ ('sm focus '&,)
 jdb_smact=: jdb_setactive @ jdb_getactive
 jdb_smoutput=: 0 0&$@(1!:2&2)
+jdb_val=: ]`($.^:_1) @. jdb_issparse
 jdb_wdforms=: <;._2;._2@jdb_wd@('qpx'"_)
 jdb_wd1=: 0:`wd1@.IFQT f.
 jdb_dbs=: 13!:1
@@ -720,7 +721,7 @@ def=. med # y
 GDEFS=: GDEFS, def
 
 18!:4 x
-if. #val do. val=. ". &.> val end.
+if. #val do. val=. jdb_val_jdebug_@". &.> val end.
 if. #def do. def=. <@(5!:5) "0 def end.
 18!:4 <'jdebug'
 
