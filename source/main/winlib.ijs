@@ -21,6 +21,14 @@ end.
 
 wd1=: ('"',libjqt,'" wd ', (IFWIN#'+'),' i *c i *x *i') & cd f.
 
+3 : 0''
+if. WDCB_jqtide_ do.
+  erase 'wd';'wd1'
+  wd=: 11!:0
+end.
+EMPTY
+)
+
 NB. =========================================================
 NB.*wdhandler v wd handler
 NB. runs in form locale
@@ -84,7 +92,7 @@ if. 3 > wd_ndx do.
       wd_err=. LF,,LF,.(}.^:('|'e.~{.));._2 ,&LF^:(LF~:{:) wd_err
       wdinfo 'wdhandler';'error in: ',wd_fn,wd_err
     end.
-  i.0 0
+    i.0 0
   end.
 else. i. 0 0
 end.

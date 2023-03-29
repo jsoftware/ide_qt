@@ -103,6 +103,75 @@ chkgl2 cdrc=. ('"',libjqt,'" glzqtextmetrics  ',(IFWIN#'+'),' i *i') cd <tm
 1{::cdrc
 )
 
+NB. =========================================================
+3 : 0''
+if. WDCB_jqtide_ do.
+  chkgl2=: ]
+  glzarc=: 11 !: glzarc_n
+  glzbrush=: 11 !: glzbrush_n
+  glzbrushnull=: 11 !: glzbrushnull_n
+  glzclear=: 11 !: glzclear_n
+  glzclip=: 11 !: glzclip_n
+  glzclipreset=: 11 !: glzclipreset_n
+  glzcmds=: 11 !: glzcmds_n
+  glzellipse=: 11 !: glzellipse_n
+  glzfill=: 11 !: glzfill_n
+  glzfont=: 11 !: glzfont_n
+  glzfont2=: 11 !: glzfont2_n
+  glzfontangle=: 11 !: glzfontangle_n
+  glzfontextent=: 11 !: glzfontextent_n
+  glzlines=: 11 !: glzlines_n
+  glznodblbuf=: 11 !: glznodblbuf_n
+  glzpen=: 11 !: glzpen_n
+  glzpie=: 11 !: glzpie_n
+  glzpixel=: 11 !: glzpixel_n
+  glzpixels=: 11 !: glzpixels_n
+  glzpixelsx=: 11 !: glzpixelsx_n
+  glzpolygon=: 11 !: glzpolygon_n
+  glzrect=: 11 !: glzrect_n
+  glzrgb=: 11 !: glzrgb_n
+  glzrgba=: 11 !: glzrgba_n
+  glztext=: 11 !: glztext_n
+  glztextcolor=: 11 !: glztextcolor_n
+  glztextxy=: 11 !: glztextxy_n
+  glzwindoworg=: 11 !: glzwindoworg_n
+  glzresolution=: 11 !: glzresolution_n
+  glzcolormode=: 11 !: glzcolormode_n
+  glzduplexmode=: 11 !: glzduplexmode_n
+  glzorientation=: 11 !: glzorientation_n
+  glzoutputformat=: 11 !: glzoutputformat_n
+  glzpageorder=: 11 !: glzpageorder_n
+  glzpapersize=: 11 !: glzpapersize_n
+  glzpapersource=: 11 !: glzpapersource_n
+  glzscale=: 11 !: glzscale_n @: ([: <. 1000.0&*)
+  glzabortdoc=: 11 !: glzabortdoc_n
+  glzenddoc=: 11 !: glzenddoc_n
+  glznewpage=: 11 !: glznewpage_n
+  glzprinter=: 11 !: glzprinter_n @: (a.&i.)
+  glzstartdoc=: 11 !: glzstartdoc_n @: ;@:((# , a.&i.)&.>)
+  glzinitprinter=: 11 !: glzinitprinter_n
+  glzqresolution=: 11 !: glzqresolution_n
+  glzqcolormode=: 11 !: glzqcolormode_n
+  glzqduplexmode=: 11 !: glzqduplexmode_n
+  glzqorientation=: 11 !: glzqorientation_n
+  glzqoutputformat=: 11 !: glzqoutputformat_n
+  glzqpageorder=: 11 !: glzqpageorder_n
+  glzqpapersize=: 11 !: glzqpapersize_n
+  glzqpapersource=: 11 !: glzqpapersource_n
+  glzqwh=: (%&1000.0) @: (11 !: glzqwh_n)
+  glzqmargins=: (%&1000.0) @: (11 !: glzqmargins_n)
+  glzqextent=: 11 !: glzqextent_n
+  glzqextentw=: 11 !: glzqextentw_n
+  glzqtextmetrics=: 11 !: glzqtextmetrics_n
+  glzcapture=: 11 !: glzcapture_n
+  glzcaret=: 11 !: glzcaret_n
+  glzcursor=: 11 !: glzcursor_n
+  glzqtype=: 11 !: glzqtype_n
+end.
+EMPTY
+)
+
+NB. =========================================================
 NB. enum Qprinter::ColorMode
 QPrinter_Color=: 1     NB.   print in color if available, otherwise in grayscale.
 QPrinter_GrayScale=: 0     NB.   print in grayscale, even on color printers.

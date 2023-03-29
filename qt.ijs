@@ -5,6 +5,10 @@ require 'project'
 coclass 'jqtide'
 
 3 : 0''
+WdDB=: 0
+try.
+  WDCB=: 'jqt'-:11!:0'qwd'
+catch. end.
 if. IFQT do.
   require 'ide/qt/qtlib'
 end.
@@ -78,7 +82,7 @@ end.
 'title caption text'=. _3 {. p
 wd 'textview *;',title,';',caption,';',flatten text
 )
-echo_z_=: wd@'msgs'^:2 [ 1!:2&2
+echo_z_=: wd ::empty@'msgs'^:2 [ 1!:2&2
 addons_msg=: 0 : 0
 The XX are not yet installed.
 
@@ -223,6 +227,14 @@ end.
 )
 
 wd1=: ('"',libjqt,'" wd ', (IFWIN#'+'),' i *c i *x *i') & cd f.
+
+3 : 0''
+if. WDCB_jqtide_ do.
+  erase 'wd';'wd1'
+  wd=: 11!:0
+end.
+EMPTY
+)
 wdhandler_0=: 3 : 0
 wdq=: wd 'q'
 wd_val=. {:"1 wdq
@@ -275,7 +287,7 @@ if. 3 > wd_ndx do.
       wd_err=. LF,,LF,.(}.^:('|'e.~{.));._2 ,&LF^:(LF~:{:) wd_err
       wdinfo 'wdhandler';'error in: ',wd_fn,wd_err
     end.
-  i.0 0
+    i.0 0
   end.
 else. i. 0 0
 end.
@@ -373,7 +385,7 @@ or run XX in the J installation folder.
 )
 checkjqtversion=: 3 : 0
 f=. 1000 #. 0 ". ' ' I.@('.'=])} ]
-ver=. wd 'version'
+ver=. wd ::('0.0.0'"_) 'version'
 ver=. (ver i.'(') {. ver
 JQTVER=: f (1+ver i.'/') }. ver
 act=. f (<./ ver i.'/s') {. ver

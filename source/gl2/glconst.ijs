@@ -84,15 +84,18 @@ glwindoworg_n=: 2045
 
 glbkmode_n=: 2003
 glnoerasebkgnd_n=: 2071
+glsetlocale_n=: 2072
 
 glfont2_n=: 2312
-glfontangle_n=: 2342
-glrgba_n=: 2343
-glsel2_n=: 2344
+glfontangle_n=: 2096
+glrgba_n=: 2097
+glsel2_n=: 2098
 
-NB. opengl only
-glwaitgl_n=: 2345
-glwaitnative_n=: 2346
+NB. image utility
+glgetimg_n=: 3000
+glreadimg_n=: 3001
+glputimg_n=: 3002
+glwriteimg_n=: 3003
 
 NB. keyboard events
 kbBS=: Qt_Key_Backspace_jqtide_

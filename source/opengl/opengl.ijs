@@ -108,3 +108,58 @@ tm=. 7#2-2
 chkgl2 cdrc=. ('"',libjqt,'" gl_qtextmetrics  ',(IFWIN#'+'),' i *i') cd tm
 1{::cdrc
 )
+
+NB. =========================================================
+3 : 0''
+if. WDCB_jqtide_ do.
+  chkgl2=: ]
+  gl_arc=: 11 !: gl_arc_n
+  gl_brush=: 11 !: gl_brush_n
+  gl_brushnull=: 11 !: gl_brushnull_n
+  gl_capture=: 11 !: gl_capture_n
+  gl_caret=: 11 !: gl_caret_n
+  gl_clear=: 11 !: gl_clear_n
+  gl_clip=: 11 !: gl_clip_n
+  gl_clipreset=: 11 !: gl_clipreset_n
+  gl_cmds=: 11 !: gl_cmds_n
+  gl_cursor=: 11 !: gl_cursor_n
+  gl_ellipse=: 11 !: gl_ellipse_n
+  gl_fill=: 11 !: gl_fill_n
+  gl_font=: 11 !: gl_font_n
+  gl_font2=: 11 !: gl_font2_n
+  gl_fontangle=: 11 !: gl_fontangle_n
+  gl_lines=: 11 !: gl_lines_n
+  gl_nodblbuf=: 11 !: gl_nodblbuf_n
+  gl_paint=: 11 !: gl_paint_n
+  gl_paintx=: 11 !: gl_paintx_n
+  gl_pen=: 11 !: gl_pen_n
+  gl_pie=: 11 !: gl_pie_n
+  gl_pixel=: 11 !: gl_pixel_n
+  gl_pixels=: 11 !: gl_pixels_n
+  gl_pixelsx=: 11 !: gl_pixelsx_n
+  gl_polygon=: 11 !: gl_polygon_n
+  gl_rect=: 11 !: gl_rect_n
+  gl_rgb=: 11 !: gl_rgb_n
+  gl_rgba=: 11 !: gl_rgba_n
+  gl_sel=: (11 !: gl_sel_n)`(11 !: gl_sel2_n)@.(2=3!:0)
+  gl_sel2=: 11 !: gl_sel2_n
+  gl_text=: 11 !: gl_text_n
+  gl_textcolor=: 11 !: gl_textcolor_n
+  gl_textxy=: 11 !: gl_textxy_n
+  gl_waitgl=: 11 !: gl_waitgl_n
+  gl_waitnative=: 11 !: gl_waitnative_n
+  gl_windoworg=: 11 !: gl_windoworg_n
+  gl_updategl=: 11 !: gl_updategl_n
+  gl_setlocale=: 11 !: gl_setlocale_n
+  gl_qhandles=: 11 !: gl_qhandles_n
+  gl_qwh=: 11 !: gl_qwh_n
+  gl_qpixelm=: 11 !: gl_qpixelm_n
+  gl_qpixels=: 11 !: gl_qpixels_n
+  gl_qextent=: 11 !: gl_qextent_n
+  gl_qextentw=: 11 !: gl_qextentw_n
+  gl_qtextmetrics=: 11 !: gl_qtextmetrics_n
+  gl_fontextent=: 11 !: gl_fontextent_n
+  gl_qtype=: 11 !: gl_qtype_n
+end.
+EMPTY
+)

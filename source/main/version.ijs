@@ -23,7 +23,7 @@ or run XX in the J installation folder.
 NB. =========================================================
 checkjqtversion=: 3 : 0
 f=. 1000 #. 0 ". ' ' I.@('.'=])} ]
-ver=. wd 'version'
+ver=. wd ::('0.0.0'"_) 'version'
 ver=. (ver i.'(') {. ver
 JQTVER=: f (1+ver i.'/') }. ver
 act=. f (<./ ver i.'/s') {. ver

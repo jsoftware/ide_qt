@@ -378,3 +378,11 @@ case. do.
   (jdb_wd ::(''"_) 'qer') (13!:8) 3
 end.
 )
+
+3 : 0''
+if. WDCB_jqtide_ do.
+  erase 'jdb_wd';'jdb_wd1'
+  jdb_wd=: 11!:0
+end.
+EMPTY
+)

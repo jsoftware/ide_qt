@@ -25,12 +25,20 @@ NB. =========================================================
 NB. reading file images from memory to argb matrix
 NB. y raw image data
 getimg=: 3 : 0
-if. m [[ 'm wh'=. 0 3{ wdgetimg y;(#y);wh=. 2$2-2 do.
-  d=. _2 ic memr m,0,(*/wh,4),2
-  wdreadimg 2#<<0  NB. dispose temp image in qt side
-  (|.wh)$ fliprgb^:(-.RGBSEQ) d
+if. WDCB_jqtide_ do.
+  try.
+    fliprgb^:(-.RGBSEQ) glgetimg_jgl2_ y
+  catch.
+    0 0$2-2
+  end.
 else.
-  0 0$2-2
+  if. m [[ 'm wh'=. 0 3{ wdgetimg y;(#y);wh=. 2$2-2 do.
+    d=. _2 ic memr m,0,(*/wh,4),2
+    wdreadimg 2#<<0  NB. dispose temp image in qt side
+    (|.wh)$ fliprgb^:(-.RGBSEQ) d
+  else.
+    0 0$2-2
+  end.
 end.
 )
 
@@ -38,12 +46,20 @@ NB. =========================================================
 NB. reading file images to argb matrix
 NB. y image file name
 readimg=: 3 : 0
-if. m [[ 'm wh'=. 0 2{ wdreadimg (utf8 ,y);wh=. 2$2-2 do.
-  d=. _2 ic memr m,0,(*/wh,4),2
-  wdreadimg 2#<<0  NB. dispose temp image in qt side
-  (|.wh)$ fliprgb^:(-.RGBSEQ) d
+if. WDCB_jqtide_ do.
+  try.
+    fliprgb^:(-.RGBSEQ) glreadimg_jgl2_ utf8 ,y
+  catch.
+    0 0$2-2
+  end.
 else.
-  0 0$2-2
+  if. m [[ 'm wh'=. 0 2{ wdreadimg (utf8 ,y);wh=. 2$2-2 do.
+    d=. _2 ic memr m,0,(*/wh,4),2
+    wdreadimg 2#<<0  NB. dispose temp image in qt side
+    (|.wh)$ fliprgb^:(-.RGBSEQ) d
+  else.
+    0 0$2-2
+  end.
 end.
 )
 
@@ -73,13 +89,21 @@ end.
 type=. toupper type
 if. 'quality'-:>@{.opt do. quality=. <. >@{:opt end.
 d=. fliprgb^:(-.RGBSEQ) d
-'m len'=. 0 3{ wdputimg (2 ic d); (w,h); (len=. ,_1); type; quality
-if. m do.
-  z=. memr m,0,len,2
-  wdputimg (4#(<<0)),<0  NB. dispose temp bytearry in qt side
-  z
+if. WDCB_jqtide_ do.
+  try.
+    glputimg_jgl2_ ((h,w)$d);type;quality
+  catch.
+    ''
+  end.
 else.
-  ''
+  'm len'=. 0 3{ wdputimg (2 ic d); (w,h); (len=. ,_1); type; quality
+  if. m do.
+    z=. memr m,0,len,2
+    wdputimg (4#(<<0)),<0  NB. dispose temp bytearry in qt side
+    z
+  else.
+    ''
+  end.
 end.
 )
 
@@ -112,7 +136,14 @@ end.
 type=. toupper type
 if. 'quality'-:>@{.opt do. quality=. <. >@{:opt end.
 d=. fliprgb^:(-.RGBSEQ) d
-wdwriteimg (2 ic d); (w,h); f; type; quality
+if. WDCB_jqtide_ do.
+  try.
+    glwriteimg_jgl2_ ((h,w)$d);f;type;quality
+  catch.
+  end.
+else.
+  wdwriteimg (2 ic d); (w,h); f; type; quality
+end.
 EMPTY
 )
 NB.

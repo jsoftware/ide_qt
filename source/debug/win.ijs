@@ -37,6 +37,9 @@ set tbar addsep;
 NB. =========================================================
 JDEBUG=: (0 : 0 rplc 'DTTTBAR';DTTTBAR) rplc 'DEBUGPATH';(jpath '~addons/ide/qt/images')
 pc jdebug escclose ptop;pn "Debug - Ctrl+H help";
+menupop "&File";
+menu quit "&Quit" "Ctrl+Q" "" "";
+menupopz;
 cc tbar toolbar 22x22 flush;
 set tbar add run "Run" "DEBUGPATH/run.png";
 set tbar addsep;
@@ -59,6 +62,7 @@ set tbar addsep;
 DTTTBAR
 set tbar add clear "Clear" "DEBUGPATH/clear.png";
 )
+jdebug_quit_button=: jdebug_close
 
 NB. =========================================================
 JDEBUGP=: 0 : 0

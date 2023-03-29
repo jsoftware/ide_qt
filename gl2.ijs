@@ -2,9 +2,10 @@ NB. gl2 init
 
 coclass 'jgl2'
 
+WDCB_jqtide_=: (WDCB_jqtide_"_)^:(0=4!:0<'WDCB_jqtide_') (IFIOS*.IFQT)+.(UNAME-:'Wasm')
 3 : 0''
-if. 0~: 4!:0 <'PROFONT_z_' do. PROFONT=: (('Linux';'Darwin';'Android';'Win') i. <UNAME){:: 'Sans 10' ; '"Lucida Grande" 10' ; (IFQT{::'Sans 10';'"Droid Sans" 10') ; 'Tahoma 10' else. PROFONT=: PROFONT_z_ end.
-if. 0~: 4!:0 <'FIXFONT_z_' do. FIXFONT=: (('Linux';'Darwin';'Android';'Win') i. <UNAME){:: 'mono 10' ; 'Monaco 10' ; (IFQT{::'monospace 10';'"Droid Sans Mono" 10') ; '"Lucida Console" 10' else. FIXFONT=: FIXFONT_z_ end.
+if. 0~: 4!:0 <'PROFONT_z_' do. PROFONT=: (('Linux';'Darwin';'Android';'Win') i. <UNAME){:: 'Sans 10' ; '"Lucida Grande" 10' ; (IFQT{::'Sans 10';'"Droid Sans" 10') ; 'Tahoma 10' ; 'Tahoma 10' else. PROFONT=: PROFONT_z_ end.
+if. 0~: 4!:0 <'FIXFONT_z_' do. FIXFONT=: (('Linux';'Darwin';'Android';'Win') i. <UNAME){:: 'mono 10' ; 'Monaco 10' ; (IFQT{::'monospace 10';'"Droid Sans Mono" 10') ; '"Lucida Console" 10' ; '"Lucida Console" 10' else. FIXFONT=: FIXFONT_z_ end.
 )
 
 NB. gl2 constant
@@ -93,15 +94,18 @@ glwindoworg_n=: 2045
 
 glbkmode_n=: 2003
 glnoerasebkgnd_n=: 2071
+glsetlocale_n=: 2072
 
 glfont2_n=: 2312
-glfontangle_n=: 2342
-glrgba_n=: 2343
-glsel2_n=: 2344
+glfontangle_n=: 2096
+glrgba_n=: 2097
+glsel2_n=: 2098
 
-NB. opengl only
-glwaitgl_n=: 2345
-glwaitnative_n=: 2346
+NB. image utility
+glgetimg_n=: 3000
+glreadimg_n=: 3001
+glputimg_n=: 3002
+glwriteimg_n=: 3003
 
 NB. keyboard events
 kbBS=: Qt_Key_Backspace_jqtide_
@@ -273,6 +277,64 @@ glroundr=: [:
 
 NB. =========================================================
 glsel=: glsel2@:(":^:(2~:3!:0))
+
+NB. =========================================================
+3 : 0''
+if. WDCB_jqtide_ do.
+  chkgl2=: ]
+  glarc=: 11 !: glarc_n
+  glbrush=: 11 !: glbrush_n
+  glbrushnull=: 11 !: glbrushnull_n
+  glcapture=: 11 !: glcapture_n
+  glcaret=: 11 !: glcaret_n
+  glclear=: 11 !: glclear_n
+  glclip=: 11 !: glclip_n
+  glclipreset=: 11 !: glclipreset_n
+  glcmds=: 11 !: glcmds_n
+  glcursor=: 11 !: glcursor_n
+  glellipse=: 11 !: glellipse_n
+  glfill=: 11 !: glfill_n
+  glfont=: 11 !: glfont_n
+  glfont2=: 11 !: glfont2_n
+  glfontangle=: 11 !: glfontangle_n
+  glfontextent=: 11 !: glfontextent_n
+  gllines=: 11 !: gllines_n
+  glnodblbuf=: 11 !: glnodblbuf_n
+  glpen=: 11 !: glpen_n
+  glpie=: 11 !: glpie_n
+  glpixel=: 11 !: glpixel_n
+  glpixels=: 11 !: glpixels_n
+  glpixelsx=: 11 !: glpixelsx_n
+  glpolygon=: 11 !: glpolygon_n
+  glrect=: 11 !: glrect_n
+  glrgb=: 11 !: glrgb_n
+  glrgba=: 11 !: glrgba_n
+  gltext=: 11 !: gltext_n
+  gltextcolor=: 11 !: gltextcolor_n
+  gltextxy=: 11 !: gltextxy_n
+NB.   glwaitgl=: 11 !: glwaitgl_n
+NB.   glwaitnative=: 11 !: glwaitnative_n
+  glwindoworg=: 11 !: glwindoworg_n
+  glsetlocale=: 11 !: glsetlocale_n
+  glpaint=: 11 !: glpaint_n
+  glpaintx=: 11 !: glpaintx_n
+  glqhandles=: 11 !: glqhandles_n
+  glqtype=: 11 !: glqtype_n
+  glqwh=: 11 !: glqwh_n
+  glqpixelm=: 11 !: glqpixelm_n
+  glqpixels=: 11 !: glqpixels_n
+  glqextent=: 11 !: glqextent_n
+  glqextentw=: 11 !: glqextentw_n
+  glqtextmetrics=: 11 !: glqtextmetrics_n
+  glsel=: (11 !: glsel_n)`(11 !: glsel2_n)@.(2=3!:0)
+NB. image utility
+  glgetimg=: 11 !: glgetimg_n
+  glreadimg=: 11 !: glreadimg_n
+  glputimg=: 11 !: glputimg_n
+  glwriteimg=: 11 !: glwriteimg_n
+end.
+EMPTY
+)
 NB. util
 
 NB. =========================================================
