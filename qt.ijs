@@ -5,7 +5,7 @@ require 'project'
 coclass 'jqtide'
 
 3 : 0''
-WdDB=: 0
+WDCB=: 0
 try.
   WDCB=: 'jqt'-:11!:0'qwd'
 catch. end.
@@ -83,6 +83,8 @@ end.
 wd 'textview *;',title,';',caption,';',flatten text
 )
 echo_z_=: wd ::empty@'msgs'^:2 [ 1!:2&2
+logcat_z_=: wd@('logcat ' , }.@:;@:(LF&,"1)@:":)
+echol_z_=: (wd ::empty@'msgs'^:2 [ 1!:2&2) [ wd@('logcat ' , }.@:;@:(LF&,"1)@:":)
 addons_msg=: 0 : 0
 The XX are not yet installed.
 

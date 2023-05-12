@@ -5,7 +5,7 @@ require 'project'
 coclass 'jqtide'
 
 3 : 0''
-WdDB=: 0  NB. use 11!:x wd ?
+WDCB=: 0  NB. use 11!:x wd ?
 try.
   WDCB=: 'jqt'-:11!:0'qwd'
 catch. end.

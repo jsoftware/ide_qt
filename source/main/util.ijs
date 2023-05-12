@@ -101,3 +101,11 @@ wd 'textview *;',title,';',caption,';',flatten text
 NB. =========================================================
 NB. override default echo to invoke jqt's message pump
 echo_z_=: wd ::empty@'msgs'^:2 [ 1!:2&2
+
+NB. =========================================================
+NB. qDebug()
+logcat_z_=: wd@('logcat ' , }.@:;@:(LF&,"1)@:":)
+
+NB. =========================================================
+NB. echo and logcat
+echol_z_=: (wd ::empty@'msgs'^:2 [ 1!:2&2) [ wd@('logcat ' , }.@:;@:(LF&,"1)@:":)
