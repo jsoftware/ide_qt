@@ -83,8 +83,8 @@ end.
 wd 'textview *;',title,';',caption,';',flatten text
 )
 echo_z_=: wd ::empty@'msgs'^:2 [ 1!:2&2
-logcat_z_=: wd@('logcat ' , }.@:;@:(LF&,"1)@:":)
-echol_z_=: (wd ::empty@'msgs'^:2 [ 1!:2&2) [ wd@('logcat ' , }.@:;@:(LF&,"1)@:":)
+logcat_z_=: (wd ::empty)@('logcat ' , }.@:;@:(LF&,"1)@:":)
+echol_z_=: (wd ::empty@'msgs'^:2 [ 1!:2&2) [ (wd ::empty)@('logcat ' , }.@:;@:(LF&,"1)@:":)
 addons_msg=: 0 : 0
 The XX are not yet installed.
 
