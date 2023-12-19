@@ -1069,7 +1069,10 @@ if. -. jdb_isgui'' do.
 
 else.
   jdb_wd 'psel ',HWNDP
-  if. new-:old do. return. end.
+  if. new-:old do.
+    if. new -: 'jdbnone' do. jdb_minimize_none'' end. return.
+  end.
+
   if. #old do.
     (old,'_dun')~ 0
   end.
@@ -1097,6 +1100,13 @@ end.
 
 jdb_tbenable''
 jdb_swapfkey''
+if. IFWIN do. jdb_minimize_none y end.
+)
+jdb_minimize_none=: 3 : 0
+if. y -: 'jdbnone' do.
+  jdb_wd 'psel ',HWNDP
+  jdb_wd 'pmove ',":0 (3)} 0 ". jdb_wd 'qform'
+end.
 )
 TABGROUPS=: ;: 'jdbmain jdbstop jdbwatch'
 DISSECTSTATUS =: (dissectchecklevel =: 4 : 0&(4 0)) 0
