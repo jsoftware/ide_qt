@@ -24,7 +24,10 @@ if. -. jdb_isgui'' do.
 
 else.
   jdb_wd 'psel ',HWNDP  NB. In case we were called externally, select the window
-  if. new-:old do. return. end.
+  if. new-:old do.
+    if. new -: 'jdbnone' do. jdb_minimize_none'' end. return.
+  end.
+
   if. #old do.
     (old,'_dun')~ 0
   end.
@@ -52,4 +55,15 @@ end.
 
 jdb_tbenable''
 jdb_swapfkey''
+
+NB. this is repeated for Win 11 Qt 6.5.3
+if. IFWIN do. jdb_minimize_none y end.
+)
+
+NB. =========================================================
+jdb_minimize_none=: 3 : 0
+if. y -: 'jdbnone' do.
+  jdb_wd 'psel ',HWNDP
+  jdb_wd 'pmove ',":0 (3)} 0 ". jdb_wd 'qform'
+end.
 )
