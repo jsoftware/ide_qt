@@ -23,7 +23,7 @@ jdb_smact=: jdb_setactive @ jdb_getactive
 jdb_smoutput=: 0 0&$@(1!:2&2)
 jdb_val=: ]`($.^:_1) @. jdb_issparse
 jdb_wdforms=: <;._2;._2@jdb_wd@('qpx'"_)
-jdb_wd1=: 0:`wd1@.IFQT f.
+jdb_wd1=: 0:`wd1@.(IFQT*.3=4!:0<'wd1') f.
 
 NB. =========================================================
 jdb_dbs=: 13!:1
