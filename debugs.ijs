@@ -398,7 +398,7 @@ jdb_debuginit''
 13!:0 [ 0
 )
 jdb_open=: 3 : 0
-forcereopen =. {.!.0 y
+forcereopen=. 0 < {.!.0 y
 a=. jdb_getactive''
 jdb_debuginit''
 ERM_j_=: ''
@@ -411,6 +411,7 @@ else.
   jdebug_run 0
   jdb_restore''
   ACTIVE=: a
+  if. y -: 513 do. jdb_debug'' end.
 end.
 )
 j=. 0 : 0
@@ -1755,7 +1756,7 @@ jdb_stopwrite''
 jdb_lxson''
 )
 jdebug_stack_button=: 3 : 0
-stk=. 2}.13!:13''
+stk=. jdb_getstack''
 if. 0 e. $stk do.
   jdb_info 'Nothing on the stack' return.
 end.

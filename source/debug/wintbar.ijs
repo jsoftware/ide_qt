@@ -86,7 +86,7 @@ jdb_lxson''
 
 NB. =========================================================
 jdebug_stack_button=: 3 : 0
-stk=. 2}.13!:13''
+stk=. jdb_getstack''
 if. 0 e. $stk do.
   jdb_info 'Nothing on the stack' return.
 end.

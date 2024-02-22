@@ -82,7 +82,7 @@ NB. =========================================================
 NB. If y is 1, ignore getstack and start by reopening the form
 NB. (getstack keeps old data if we have cleared debug but not returned)
 jdb_open=: 3 : 0
-forcereopen =. {.!.0 y
+forcereopen=. 0 < {.!.0 y
 a=. jdb_getactive''
 jdb_debuginit''
 ERM_j_=: ''
@@ -95,5 +95,6 @@ else.
   jdebug_run 0
   jdb_restore''
   ACTIVE=: a
+  if. y -: 513 do. jdb_debug'' end.
 end.
 )
