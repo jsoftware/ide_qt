@@ -1,5 +1,5 @@
 NB. call
-
+cocurrent'jdebug'
 NB. =========================================================
 NB. restore various settings before running user code
 NB. If y is nonempty, it is (line to dissect);(x options for dissect)
@@ -91,7 +91,7 @@ if. (-.forcereopen)*#jdb_getstack'' do.
   jdb_setactive a
   ACTIVE=: ''
 else.
-  jdb_ppget 0
+  if. y -: 513 do. HWNDP=:HWNDPX=:'' else. jdb_ppget 0 end.  NB. if postmortem, there is no current window
   jdebug_run 0
   jdb_restore''
   ACTIVE=: a
