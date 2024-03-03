@@ -337,6 +337,7 @@ STATE=: 0
 STOPLAST=: ''
 WATCH=: ''
 )
+cocurrent'jdebug'
 jdb_restore=: 3 : 0
 jdb_ppset''
 jdb_lxson ''
@@ -407,7 +408,7 @@ if. (-.forcereopen)*#jdb_getstack'' do.
   jdb_setactive a
   ACTIVE=: ''
 else.
-  jdb_ppget 0
+  if. y -: 513 do. HWNDP=:HWNDPX=:'' else. jdb_ppget 0 end.
   jdebug_run 0
   jdb_restore''
   ACTIVE=: a
