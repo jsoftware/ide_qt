@@ -6,7 +6,7 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.1.161'
+VERSION=: '1.1.162'
 
 RELEASE=: 'j904'
 
