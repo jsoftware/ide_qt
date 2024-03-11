@@ -69,6 +69,7 @@ i.0 0
 NB. =========================================================
 NB. wdhandler - exactly like the system handler except the value returned from wd_fn is passed through in debug
 wdhandler=: 3 : 0
+passs=. 13 {{ try. (i. 0 0)&(m!:n) catch. (i. 0 0)"_ end. }} 23
 wdq=: wd 'q'
 wd_val=. {:"1 wdq
 ({."1 wdq)=: wd_val
@@ -79,9 +80,9 @@ wd_ndx=. 1 i.~ 3 = 4!:0 [ 3 {. wd_val
 if. 3 > wd_ndx do.
   wd_fn=. > wd_ndx { wd_val
   if. 13!:17'' do.
-    wd_fn~''
+    passs wd_fn~''
   else.
-    try. wd_fn~''
+    try. passs wd_fn~''
     catch.
       wd_err=. 13!:12''
       if. 0=4!:0 <'ERM_j_' do.
@@ -91,8 +92,8 @@ if. 3 > wd_ndx do.
       end.
       wd_err=. LF,,LF,.(}.^:('|'e.~{.));._2 ,&LF^:(LF~:{:) wd_err
       wdinfo 'wdhandler';'error in: ',wd_fn,wd_err
+      i.0 0
     end.
-    i.0 0
   end.
 else. i. 0 0
 end.
