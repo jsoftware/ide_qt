@@ -100,13 +100,14 @@ end.
 )
 
 NB. =========================================================
-NB. called when J is suspended
-NB. first checks that locale is valid
+NB. first checks that locale is valid,
+NB. otherwise show message if Debug is non-zero
 wdhandlerx=: 3 : 0
 loc=. <,y
 if. 0 <: 18!:0 loc do.
   wdhandler__loc''
 else.
+  if. Debug_jqtide_=0 do. EMPTY return. end.
   msg=. 'no locale for event handler: ',>loc
   if. #wdq=. wd 'q' do.
     msg=. msg, ', event: ',(<1 1) pick wdq

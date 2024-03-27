@@ -14,6 +14,7 @@ if. IFQT do.
 end.
 EMPTY
 )
+Debug=: 0
 'jws_onOpen jws_onClose jws_onMessage jws_onError jws_onSslError jws_onStateChange'=: i.6
 boxj2utf8=: 3 : 0
 if. 1 < #$y do. y return. end.
@@ -300,6 +301,7 @@ loc=. <,y
 if. 0 <: 18!:0 loc do.
   wdhandler__loc''
 else.
+  if. Debug_jqtide_=0 do. EMPTY return. end.
   msg=. 'no locale for event handler: ',>loc
   if. #wdq=. wd 'q' do.
     msg=. msg, ', event: ',(<1 1) pick wdq
