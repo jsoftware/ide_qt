@@ -584,20 +584,20 @@ if. 1 e. '__' E. }: name do.
   if. 0 ~: nc <b do. '' return. end.
   c=. (b,'_',loc,'_')~
   if. 1 ~: L. c do. '' return. end.
-  18!:4 c
+  cocurrent c
   nc=. 4!:0 :: _2: <a
-  18!:4 <'jdebug'
+  cocurrent <'jdebug'
   if. -. nc e. 1 2 3 do. '' return. end.
 else.
-  18!:4 bloc
+  cocurrent bloc
   nc=. 4!:0 :: _2: <name
-  18!:4 <'jdebug'
+  cocurrent <'jdebug'
   if. -. nc e. 1 2 3 do. '' return. end.
 end.
 
-18!:4 bloc
+cocurrent bloc
 def=. 5!:5 <name
-18!:4 <'jdebug'
+cocurrent <'jdebug'
 
 def
 )
@@ -719,9 +719,9 @@ jdb_showglobals=: 4 : 0
 if. 0 e. $y do. '' return. end.
 
 ind=. (1: e. '__'&E.) @: }: &> y
-18!:4 x
+cocurrent x
 nmc=. 4!:0 :: _2: "0 y
-18!:4 <'jdebug'
+cocurrent <'jdebug'
 nmc=. nmc - ind *. nmc=_1
 
 msk=. nmc = 0
@@ -730,10 +730,10 @@ med=. nmc > 0
 def=. med # y
 GDEFS=: GDEFS, def
 
-18!:4 x
+cocurrent x
 if. #val do. val=. jdb_val_jdebug_@". &.> val end.
 if. #def do. def=. <@(5!:5) "0 def end.
-18!:4 <'jdebug'
+cocurrent <'jdebug'
 
 val=. jdb_fixnoun &.> val
 def=. (med # nmc) jdb_fixdef &.> def
@@ -1503,9 +1503,9 @@ idx=. 0
 if. bloc -: CX do.
   idx jdb_stopswritedef STNAMES
 else.
-  18!:4 bloc
+  cocurrent bloc
   ids=. 4!:1 [ 1 2 3
-  18!:4 <'jdebug'
+  cocurrent <'jdebug'
   idx jdb_stopswritedef ids ,. bloc
 end.
 
