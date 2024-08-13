@@ -128,7 +128,7 @@ NB. Indicate tacit definitions by '[tacit]'; header lines by '[header]'.
 NB. header lines are tacit lines that contain the debug suffix
 headerlines =. tacitlines *. DEBUGNAMESUFFIX&(+./@:E. ,)@> exl  NB. , needed because interp puts in scalar ':' line
 NB. remove the debug suffix from the definition of a header line
-exl =. headerlines DEBUGNAMESUFFIX&(taketo , takeafter)&.> exl
+exl =. headerlines DEBUGNAMESUFFIX&(taketo , takeafter)@]^:[&.> exl
 NB. format the line number; 0=explicit,1=tacit,2=header
 ind=. jdb_indices&.> (tacitlines+headerlines) ({ ;&('tacit';'header'))"0 lns
 NB. Remove the debugname suffix from the debug name
