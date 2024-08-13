@@ -812,7 +812,7 @@ lns=. lns <. bln
 exl=. ;lns ({ ,& (<'{unknown}')) &.> brp
 tacitlines =. -. +./ (LF;'1 :';'2 :';'3 :';'4 :') +./@:E.&>/ rps
 headerlines =. tacitlines *. DEBUGNAMESUFFIX&(+./@:E. ,)@> exl
-exl =. headerlines DEBUGNAMESUFFIX&(taketo , takeafter)&.> exl
+exl =. headerlines DEBUGNAMESUFFIX&(taketo , takeafter)@]^:[&.> exl
 ind=. jdb_indices&.> (tacitlines+headerlines) ({ ;&('tacit';'header'))"0 lns
 nmd =. ((-#DEBUGNAMESUFFIX) * (<DEBUGNAMESUFFIX) = (-#DEBUGNAMESUFFIX)&{.&.> nms) }.&.> nms
 stack=. nmd ,&.> ind ,&.> exl
