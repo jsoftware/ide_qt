@@ -49,6 +49,14 @@ else.
   end.
 end.
 
+NB. The following line is necessary when a J script is run from Edit which opens
+NB. a new window (e.g. viewmat) and then opens debugger.
+NB. The error was caused by wd 'set tbar ... called by
+NB. wd 'set tbar checked dissecttoggleauto ... and
+NB. jdb_tbenable''
+NB. An event (opening the viewmat window) changes the selected parent, so psel is added.
+jdb_wd 'psel jdebug'
+
 if. IFDISSECT do.
   wd 'set tbar checked dissecttoggleauto ' , ": AUTODISSECT
 end.

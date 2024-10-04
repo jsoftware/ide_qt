@@ -1096,6 +1096,8 @@ else.
   end.
 end.
 
+jdb_wd 'psel jdebug'
+
 if. IFDISSECT do.
   wd 'set tbar checked dissecttoggleauto ' , ": AUTODISSECT
 end.
