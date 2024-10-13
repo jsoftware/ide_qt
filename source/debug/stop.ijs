@@ -232,12 +232,6 @@ NB.*jdb_installstops v edit STOPS table
 NB. x is name;locale
 NB. y is table of action;valence;lines
 jdb_installstops =: 4 : 0
-NB. If name has been reloaded and is no longer a header/body pair, remove the body
-jdebug_debugnametodisp x
-NB. The user interacts with us using the display name, i. e. 'v' to mean the
-NB. body of v is v has a header.  So we convert the display name to the debug name,
-NB. and then in case the selected name is a header, split it and look inside the body
-x =. jdebug_splitheader jdebug_dispnametodebug x
 NB. Refresh globals for the selected definition
 x jdb_stoprefresh''
 NB. Apply each action
@@ -272,12 +266,6 @@ NB.*jdb_installdissectopts v edit dissect info
 NB. x is name;locale
 NB. y is table of dissectinfo;valence;lines
 jdb_installdissectopts =: 4 : 0
-NB. If name has been reloaded and is no longer a header/body pair, remove the body
-jdebug_debugnametodisp x
-NB. The user interacts with us using the display name, i. e. 'v' to mean the
-NB. body of v is v has a header.  So we convert the display name to the debug name,
-NB. and then in case the selected name is a header, split it and look inside the body
-x =. jdebug_splitheader jdebug_dispnametodebug x
 NB. Refresh globals for the selected definition (needed only to get NUMLINES)
 x jdb_stoprefresh''
 NB. Apply each action

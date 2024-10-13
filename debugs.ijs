@@ -810,12 +810,8 @@ VALENCE=: {. val
 NMC=: {.nmc
 lns=. lns <. bln
 exl=. ;lns ({ ,& (<'{unknown}')) &.> brp
-tacitlines =. -. +./ (LF;'1 :';'2 :';'3 :';'4 :') +./@:E.&>/ rps
-headerlines =. tacitlines *. DEBUGNAMESUFFIX&(+./@:E. ,)@> exl
-exl =. headerlines DEBUGNAMESUFFIX&(taketo , takeafter)@]^:[&.> exl
-ind=. jdb_indices&.> (tacitlines+headerlines) ({ ;&('tacit';'header'))"0 lns
-nmd =. ((-#DEBUGNAMESUFFIX) * (<DEBUGNAMESUFFIX) = (-#DEBUGNAMESUFFIX)&{.&.> nms) }.&.> nms
-stack=. nmd ,&.> ind ,&.> exl
+ind=. jdb_indices&.> <"0 lns
+stack=. nms ,&.> ind ,&.> exl
 
 st0=. errmsg
 if. ERRNUM e. ERRORCODES do.
@@ -997,8 +993,6 @@ end.
 )
 
 jdb_installstops =: 4 : 0
-jdebug_debugnametodisp x
-x =. jdebug_splitheader jdebug_dispnametodebug x
 x jdb_stoprefresh''
 x jdb_installstops1 y
 jdb_stopwrite''
@@ -1017,8 +1011,6 @@ if. 0 = #lines do. lines =. i. NUMLINES end.
 0 0$0
 )
 jdb_installdissectopts =: 4 : 0
-jdebug_debugnametodisp x
-x =. jdebug_splitheader jdebug_dispnametodebug x
 x jdb_stoprefresh''
 x jdb_installdissectopts1 y
 )
@@ -1095,7 +1087,6 @@ else.
     jdb_wd 'set tabs active ', ":jdb_tabcurrent''
   end.
 end.
-
 jdb_wd 'psel jdebug'
 
 if. IFDISSECT do.
@@ -1310,9 +1301,6 @@ jdb_lxson''
 
 jdbnone_stopname_button=: empty
 CX=: <'Current execution'
-
-DEBUGNAMESUFFIX =: 'd4B7g0'
-DISPNAMESUFFIX =: ' (header)'
 jdbstop_dun=: ]
 jdbstop_ini=: 3 : 0
 
@@ -1372,7 +1360,7 @@ else.
   jdb_wd 'set slines select ',":pos
   if. SMLOC-:CX do.
     SMNAMES=: ~. SMNAMES, fullid
-    jdb_wd 'set name items ',jdb_listboxed {."1 jdebug_debugnametodisp SMNAMES
+    jdb_wd 'set name items ',jdb_listboxed {."1 SMNAMES
   end.
 end.
 jdb_lxson''
@@ -1412,49 +1400,30 @@ if. ndx = #SMNAMES do.
 
 
 
-  'dbgnames dispnames' =. jdebug_debugnametodisp SMNAMES
-  jdb_wd 'set name items ',jdb_listboxed {."1 dispnames
+  jdb_wd 'set name items ',jdb_listboxed {."1 SMNAMES
   jdb_wd 'set name select ', ": SMNDX
   jdb_lxson''
   return.
 end.
-if. ndx ~: SMNDX do.
+name =. ndx { SMNAMES
+'rep both count'=. jdb_stoprep name
 
-
-
-  if. (ndx { SMNAMES) -.@-: fullname =. jdebug_splitheader ndx { SMNAMES do.
-
-
-
-    SMNAMES =: (2 ndx} (#SMNAMES)$1) # SMNAMES
-    'dbgnames dispnames' =. jdebug_debugnametodisp fullname (>:ndx)} SMNAMES
-    SMNAMES =: dbgnames
-    ndx =. SMNAMES i. fullname
-    jdb_wd 'set name items ',jdb_listboxed {."1 dispnames
-    jdb_wd 'set name select ', ": ndx
-  end.
-  'rep both count'=. jdb_stoprep fullname
-  if. 0=#rep do.
-    j=. 'Unable to get representation of:', LF, LF
-    jdb_info j, 0 >@{ ndx { SMNAMES
-    'dbgnames dispnames' =. jdebug_debugnametodisp (<<<ndx) { SMNAMES
-    SMNAMES =: dbgnames
-    SMNDX=: 0
-    jdb_wd 'set name items ',jdb_listboxed {."1 dispnames
-    jdb_wd 'set name select ', ": SMNDX
-  else.
-    if. DISPNAMESUFFIX ([ -: -@#@[ {. ]) name do.
-
-
-      rep =. DEBUGNAMESUFFIX&(taketo , takeafter)&.> rep
-    end.
-    jdb_wd 'set slines text *',jdb_listboxed rep
-    SMNDX=: ndx
-    NMC=: 4!:0 fullname
-    SMBOTH=: both
-    SMCOUNT=: count
-  end.
+if. 0=#rep do.
+  j=. 'Unable to get representation of:', LF, LF
+  jdb_info j, 0 >@{ ndx { SMNAMES
+  SMNAMES =: (0:`(ndx"_)`($&1@])}~@:# # ]) SMNAMES
+  SMNDX=: _1
+  jdb_wd 'set name items ',jdb_listboxed {."1 SMNAMES
+  jdb_wd 'set name select ', ": # SMNAMES
+  jdb_wd 'set slines text *'
+else.
+  jdb_wd 'set slines text *',jdb_listboxed rep
+  SMNDX=: ndx
+  NMC=: 4!:0 name
+  SMBOTH=: both
+  SMCOUNT=: count
 end.
+
 jdb_lxson''
 )
 jdebug_locs_select=: 3 : 0
@@ -1540,6 +1509,17 @@ end.
 SMBOTH=: both
 SMCOUNT=: count
 )
+jdb_isAED =: 3 : 0
+if. (LF , ')') -: _2 {. y do.
+  header =. LF taketo y
+  if. 3 < # tokens =. ;: header do.
+    if. 1 = # I. 2 (;:':0')&-:\ tokens do.
+      1 return.
+    end.
+  end.
+end.
+0
+)
 jdb_stoprep=: 3 : 0
 
 name=. jdb_boxopen y
@@ -1549,7 +1529,7 @@ both=. 0
 
 if. 0=#rep do. '';0;0 0 return. end.
 
-tac=. -. jdb_isexplicit lname
+tac=. -. (jdb_isAED rep) +. jdb_isexplicit lname
 cls=. 4!:0 <lname
 'cls rep0 rep1'=. (tac,cls) jdb_boxrep rep
 
@@ -1586,6 +1566,8 @@ jdb_stopswritedef=: 4 : 0
 if. 0 e. #y do.
   jdb_stopswritedefone ''
 else.
+
+  y =. (('>' ~: {:)@>@:({."1) # ]) y
   'rep both count'=. jdb_stoprep x { y
   jdb_stopswritedefone rep;both;count;x;<y
 end.
@@ -1600,10 +1582,9 @@ if. 0 e. #y do.
 else.
   'rep both count ndx nms'=. y
   slines_select=: ''
-  'dbgnames dispnames' =. jdebug_debugnametodisp nms
-  name_select=: ": SMNDX =: dbgnames i. ndx { nms
-  SMNAMES =: dbgnames
-  jdb_wd 'set name items ',jdb_listboxed {."1 dispnames
+  name_select=: ": SMNDX =: ndx
+  SMNAMES =: nms
+  jdb_wd 'set name items ',jdb_listboxed {."1 SMNAMES
   jdb_wd 'set name select ', ": SMNDX
   jdb_wd 'set name select ',name_select
   jdb_wd 'set slines text *', jdb_listboxed rep
@@ -1612,78 +1593,6 @@ else.
   SMCOUNT=: count
   *#rep
 end.
-)
-jdebug_debugnametodisp =: ,&.>/ @: ((3 : 0)/.~   1&{"1) @: (,:^:(1=#@$))
-dispnms =. nms =. 0 {"1 y
-loc =. (<0 1) { y
-cocurrent loc
-ids=. 4!:1 [ 1 2 3
-cocurrent <'jdebug'
-if. #dids =. (#~   DEBUGNAMESUFFIX&([ -:"1 -@#@[ {.&> ])) ids do.
-
-
-  oids =. (-#DEBUGNAMESUFFIX) }.&.> dids
-
-
-  if. #deadoids =. (#~  loc&jdebug_ismultiline) oids do.
-    deaddids =. ,&DEBUGNAMESUFFIX&.> deadoids
-    dids =. dids -. deaddids
-    oids =. oids -. deadoids
-    nms =. nms -. deaddids
-    4!:55 ,&(,&'_')&.>/"1 deaddids ,. loc
-  end.
-
-  hids =. ,&' (header)'&.> oids
-
-  dispnms =. (hids,oids,nms) {~ (oids,dids,nms) i. nms
-end.
-(nms,.loc) ,&< (dispnms,.loc)
-)
-
-jdebug_dispnametodebug =: 3 : 0
-nm =. 0 {:: y
-if. DISPNAMESUFFIX ([ -: -@#@[ {. ]) nm do. nm =. (-#DISPNAMESUFFIX) }. nm
-elseif.
-cocurrent (1 { y)
-ids =. ({.nm) 4!:1 [ 1 2 3
-cocurrent <'jdebug'
-(<nm,DEBUGNAMESUFFIX) e. ids
-do.
-  nm =. nm,DEBUGNAMESUFFIX
-end.
-nm ; 1 { y
-)
-jdebug_splitheader =: 3 : 0
-nm =. 0 {:: y
-loc =. 1 { y
-ld =. 5!:5 <nm,'__loc'
-if. (LF,')') -: _2 {. ld do.
-  'l1 ln' =. LF (taketo ; takeafter) ld
-  if. 3 < # l1w =. ;: l1 do.
-    if. 1 = #cox =. I. 2 (;:':0')&-:\ l1w do.
-      cox =. {. cox
-      if. 4 > exptype =. ('1234' ;&,"0 '0') i. ((_1 1 + cox) { l1w,a:)  do.
-        keepcom =. 9!:40''
-        9!:41 'NB.' +./@:E. ln
-
-        ((dnm =. nm,DEBUGNAMESUFFIX),'__loc') =: (>:exptype) : (}: ln)
-
-        try.
-          ". (nm,'__loc =: ') , ;:^:_1 ('';dnm;'') (_1 0 1 + cox)} l1w
-
-          nm =. dnm
-        catch.
-
-          4!:55 <dnm,'__loc'
-        end.
-
-        9!:41 keepcom
-      end.
-    end.
-  end.
-elseif. (dnm =. nm,DEBUGNAMESUFFIX) +./@:E. ld do. nm =. dnm
-end.
-nm ; loc
 )
 jdebug_ismultiline =: 4 : 0"0
 (LF,')') -: _2 {. 5!:5 <(>y),'__x'

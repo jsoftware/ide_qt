@@ -8,9 +8,6 @@ NB. SMLOC       selected locale
 
 CX=: <'Current execution'
 
-DEBUGNAMESUFFIX =: 'd4B7g0'
-DISPNAMESUFFIX =: ' (header)'  NB. Added for display when a name is split
-
 NB. =========================================================
 jdbstop_dun=: ]
 
@@ -84,7 +81,7 @@ else.
   jdb_wd 'set slines select ',":pos
   if. SMLOC-:CX do.
     SMNAMES=: ~. SMNAMES, fullid
-    jdb_wd 'set name items ',jdb_listboxed {."1 jdebug_debugnametodisp SMNAMES
+    jdb_wd 'set name items ',jdb_listboxed {."1 SMNAMES
   end.
 end.
 jdb_lxson''
@@ -133,49 +130,32 @@ if. ndx = #SMNAMES do.
   NB. but we don't do that yet).  But Qt may have added it to the items in
   NB. the name control, so we rewrite the name and selection to expunge the
   NB. mistyped name.
-  'dbgnames dispnames' =. jdebug_debugnametodisp SMNAMES
-  jdb_wd 'set name items ',jdb_listboxed {."1 dispnames
+  jdb_wd 'set name items ',jdb_listboxed {."1 SMNAMES
   jdb_wd 'set name select ', ": SMNDX
   jdb_lxson''
   return.
 end.
-if. ndx ~: SMNDX do.
-  NB. Get the selected name, and see if it has a detachable header.
-  NB. If it does, the body will be detached and given a new name, which
-  NB. we will use from here on
-  if. (ndx { SMNAMES) -.@-: fullname =. jdebug_splitheader ndx { SMNAMES do.
-    NB. The body was detached.  We will use it, but we must fix up
-    NB. SMNAMES by adding the new name just after the header,
-    NB. pointing ndx to it, and rewriting the control and selection
-    SMNAMES =: (2 ndx} (#SMNAMES)$1) # SMNAMES
-    'dbgnames dispnames' =. jdebug_debugnametodisp fullname (>:ndx)} SMNAMES
-    SMNAMES =: dbgnames
-    ndx =. SMNAMES i. fullname
-    jdb_wd 'set name items ',jdb_listboxed {."1 dispnames
-    jdb_wd 'set name select ', ": ndx
-  end.
-  'rep both count'=. jdb_stoprep fullname
-  if. 0=#rep do.
-    j=. 'Unable to get representation of:', LF, LF
-    jdb_info j, 0 >@{ ndx { SMNAMES
-    'dbgnames dispnames' =. jdebug_debugnametodisp (<<<ndx) { SMNAMES
-    SMNAMES =: dbgnames
-    SMNDX=: 0
-    jdb_wd 'set name items ',jdb_listboxed {."1 dispnames
-    jdb_wd 'set name select ', ": SMNDX
-  else.
-    if. DISPNAMESUFFIX ([ -: -@#@[ {. ]) name do.
-      NB. The selected name was a header name (in display form).  Remove the
-      NB. debug suffix from the (necessarily one-line) body
-      rep =. DEBUGNAMESUFFIX&(taketo , takeafter)&.> rep
-    end.
-    jdb_wd 'set slines text *',jdb_listboxed rep
-    SMNDX=: ndx
-    NMC=: 4!:0 fullname
-    SMBOTH=: both
-    SMCOUNT=: count
-  end.
+NB. Recalculate content of window even if index (and selected name) has not changed (ndx = SMNDX).
+NB. It is done because some names could be deleted with verbs erase or clear.
+name =. ndx { SMNAMES
+'rep both count'=. jdb_stoprep name
+
+if. 0=#rep do.
+  j=. 'Unable to get representation of:', LF, LF
+  jdb_info j, 0 >@{ ndx { SMNAMES
+  SMNAMES =: (0:`(ndx"_)`($&1@])}~@:# # ]) SMNAMES NB. Delete non-existing the name from SMNAMES.
+  SMNDX=: _1
+  jdb_wd 'set name items ',jdb_listboxed {."1 SMNAMES NB. Reload items.
+  jdb_wd 'set name select ', ": # SMNAMES NB. (# SMNAMES) is out of range, so combobox will be empty.
+  jdb_wd 'set slines text *' NB. Put empty code.
+else.
+  jdb_wd 'set slines text *',jdb_listboxed rep
+  SMNDX=: ndx
+  NMC=: 4!:0 name
+  SMBOTH=: both
+  SMCOUNT=: count
 end.
+
 jdb_lxson''
 )
 
@@ -301,6 +281,23 @@ SMCOUNT=: count
 )
 
 NB. =========================================================
+NB. jdb_isAED
+NB. y is result of 5!:5 of verb.
+NB. Returns 1 if special case of AED - AT MOST ONE (m : 0)!
+NB. Otherwise 0.
+jdb_isAED =: 3 : 0
+if. (LF , ')') -: _2 {. y do.  NB. multiline definition
+  header =. LF taketo y
+  if. 3 < # tokens =. ;: header do.  NB. More than just n : 0
+    if. 1 = # I. 2 (;:':0')&-:\ tokens do.  NB. Positions of :0 - must be only one
+      1 return.
+    end.
+  end.
+end.
+0
+)
+
+NB. =========================================================
 NB. jdb_stoprep - get representation for given name
 NB. form: jdb_stoprep name
 NB. returns: rep; both; countmonad, countdyad
@@ -319,7 +316,7 @@ both=. 0
 
 if. 0=#rep do. '';0;0 0 return. end.
 
-tac=. -. jdb_isexplicit lname
+tac=. -. (jdb_isAED rep) +. jdb_isexplicit lname
 cls=. 4!:0 <lname
 'cls rep0 rep1'=. (tac,cls) jdb_boxrep rep
 
@@ -361,6 +358,8 @@ NB. empty if no objects in locale...
 if. 0 e. #y do.
   jdb_stopswritedefone ''
 else.
+  NB. Filter out names ending with '>' which are used as internal verbs of AEDs.
+  y =. (('>' ~: {:)@>@:({."1) # ]) y
   'rep both count'=. jdb_stoprep x { y
   jdb_stopswritedefone rep;both;count;x;<y
 end.
@@ -377,10 +376,9 @@ if. 0 e. #y do.
 else.
   'rep both count ndx nms'=. y
   slines_select=: ''
-  'dbgnames dispnames' =. jdebug_debugnametodisp nms
-  name_select=: ": SMNDX =: dbgnames i. ndx { nms
-  SMNAMES =: dbgnames
-  jdb_wd 'set name items ',jdb_listboxed {."1 dispnames
+  name_select=: ": SMNDX =: ndx
+  SMNAMES =: nms
+  jdb_wd 'set name items ',jdb_listboxed {."1 SMNAMES
   jdb_wd 'set name select ', ": SMNDX
   jdb_wd 'set name select ',name_select
   jdb_wd 'set slines text *', jdb_listboxed rep
@@ -389,121 +387,6 @@ else.
   SMCOUNT=: count
   *#rep
 end.
-)
-
-NB. =========================================================
-NB. y is a fullname (i. e. name;loc) or a table of them
-NB. If debug names are deleted, we delete them from the incoming name list
-NB.
-NB. If the name is a debug name, we change it back to the original name
-NB. If the name is an original name and the corresponding debug name is
-NB.  defined, we change the name to 'original (header)'
-NB.
-NB. The names are returned in accidental order.  Unused debugging names are deleted
-NB.
-NB. Result is (table of debugnames after deletions);(table of display names after deletion)
-jdebug_debugnametodisp =: ,&.>/ @: ((3 : 0)/.~   1&{"1) @: (,:^:(1=#@$))
-NB. Now y is a table of fullnames all in the same locale
-dispnms =. nms =. 0 {"1 y
-loc =. (<0 1) { y
-NB. Get the debug names in the locale
-cocurrent loc
-ids=. 4!:1 [ 1 2 3
-cocurrent <'jdebug'
-if. #dids =. (#~   DEBUGNAMESUFFIX&([ -:"1 -@#@[ {.&> ])) ids do.
-  NB. For each debug name, get the corresponding original name
-  NB. and the header name
-  oids =. (-#DEBUGNAMESUFFIX) }.&.> dids
-  NB. If the original name is not a single line, it must have been reloaded
-  NB. by the user.  Expunge the debug name in that case, and delete it
-  if. #deadoids =. (#~  loc&jdebug_ismultiline) oids do.
-    deaddids =. ,&DEBUGNAMESUFFIX&.> deadoids
-    dids =. dids -. deaddids
-    oids =. oids -. deadoids
-    nms =. nms -. deaddids
-    4!:55 ,&(,&'_')&.>/"1 deaddids ,. loc
-  end.
-  NB. Translate the headers - but only the ones that still have debug names
-  hids =. ,&' (header)'&.> oids
-  NB. Translate debug to original, and original to header
-  dispnms =. (hids,oids,nms) {~ (oids,dids,nms) i. nms
-end.
-(nms,.loc) ,&< (dispnms,.loc)
-)
-
-
-NB. =========================================================
-NB. Convert display name to debug name
-NB. if name ends with (header), remove that
-NB. otherwise, if there is a debugname, switch to it
-NB. y is a fullname (name;locale), result is a single fullname
-jdebug_dispnametodebug =: 3 : 0
-nm =. 0 {:: y
-if. DISPNAMESUFFIX ([ -: -@#@[ {. ]) nm do. nm =. (-#DISPNAMESUFFIX) }. nm
-elseif.
-cocurrent (1 { y)
-ids =. ({.nm) 4!:1 [ 1 2 3
-cocurrent <'jdebug'
-(<nm,DEBUGNAMESUFFIX) e. ids
-do.
-  nm =. nm,DEBUGNAMESUFFIX
-end.
-nm ; 1 { y
-)
-
-NB. =========================================================
-NB. Replace a definition with a header by two defs, for header & body
-NB. y is a fullname (name;locale), result is new fullname
-NB.  the name must be defined in the locale itself (not merely in the path)
-NB.
-NB. If the name is for an explicit definition with a header
-NB. (example: hverb =: 3 : 0"0),
-NB. create a new name for the explicit part and replace the
-NB. original name with a reference to it, as in
-NB. hverb =: d7B2g0hverb"0
-NB. d7B2g0hverb =: 3 : 0
-NB.    (body of hverb)
-NB.
-NB. If the name is in suspension, we can't modify it
-NB.
-NB. If we split the name, we return the name of the debug name
-NB. If the name has already been split, we return the debug name
-jdebug_splitheader =: 3 : 0
-NB. To be a candidate for change, the verb must be a
-NB. multiline definition, with the first line containing exactly one
-NB. sequence of [1234] : 0 plus some other stuff.
-NB. This definition implies that once we have split a definition,
-NB. neither part will be split again
-nm =. 0 {:: y
-loc =. 1 { y
-ld =. 5!:5 <nm,'__loc'  NB. Linear definition
-if. (LF,')') -: _2 {. ld do.  NB. multiline definition
-  'l1 ln' =. LF (taketo ; takeafter) ld
-  if. 3 < # l1w =. ;: l1 do.  NB. More than just n : 0
-    if. 1 = #cox =. I. 2 (;:':0')&-:\ l1w do.  NB. Positions of :0 - must be only one
-      cox =. {. cox
-      if. 4 > exptype =. ('1234' ;&,"0 '0') i. ((_1 1 + cox) { l1w,a:)  do.
-        keepcom =. 9!:40''
-        9!:41 'NB.' +./@:E. ln   NB. If definition contains comments, preserve them
-        NB. Create the new name
-        ((dnm =. nm,DEBUGNAMESUFFIX),'__loc') =: (>:exptype) : (}: ln)  NB. remove trailing )
-        NB. Replace the pattern with the new name.  If the name is in suspension, this will fail
-        try.
-          ". (nm,'__loc =: ') , ;:^:_1 ('';dnm;'') (_1 0 1 + cox)} l1w
-          NB. point user to the modifiable part
-          nm =. dnm
-        catch.
-          NB. error replacing header; remove the debug name
-          4!:55 <dnm,'__loc'
-        end.
-        NB. Restore comment status
-        9!:41 keepcom
-      end.
-    end.
-  end.
-elseif. (dnm =. nm,DEBUGNAMESUFFIX) +./@:E. ld do. nm =. dnm
-end.
-nm ; loc
 )
 
 NB. =========================================================

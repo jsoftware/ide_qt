@@ -121,19 +121,8 @@ NB. ---------------------------------------------------------
 NB. stack:
 lns=. lns <. bln
 exl=. ;lns ({ ,& (<'{unknown}')) &.> brp
-NB. Create line-number indices
-NB. tacit definitions contain no linefeeds, and no instance of [1234] :
-tacitlines =. -. +./ (LF;'1 :';'2 :';'3 :';'4 :') +./@:E.&>/ rps
-NB. Indicate tacit definitions by '[tacit]'; header lines by '[header]'.
-NB. header lines are tacit lines that contain the debug suffix
-headerlines =. tacitlines *. DEBUGNAMESUFFIX&(+./@:E. ,)@> exl  NB. , needed because interp puts in scalar ':' line
-NB. remove the debug suffix from the definition of a header line
-exl =. headerlines DEBUGNAMESUFFIX&(taketo , takeafter)@]^:[&.> exl
-NB. format the line number; 0=explicit,1=tacit,2=header
-ind=. jdb_indices&.> (tacitlines+headerlines) ({ ;&('tacit';'header'))"0 lns
-NB. Remove the debugname suffix from the debug name
-nmd =. ((-#DEBUGNAMESUFFIX) * (<DEBUGNAMESUFFIX) = (-#DEBUGNAMESUFFIX)&{.&.> nms) }.&.> nms
-stack=. nmd ,&.> ind ,&.> exl
+ind=. jdb_indices&.> <"0 lns
+stack=. nms ,&.> ind ,&.> exl
 
 st0=. errmsg
 if. ERRNUM e. ERRORCODES do.
