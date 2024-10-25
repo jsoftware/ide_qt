@@ -492,7 +492,7 @@ jdb_debug y
 jdb_lexwin=: 3 : 0
 if. 0 e. #NAME do. '' return. end.
 jdb_stopread''
-STACK=: jdb_getstack''
+STACK=: jdb_getstack i. 11
 jdb_lexwin1 ''
 i. 0 0
 )
@@ -522,6 +522,35 @@ jdb_wd 'set stack text *',jdb_listboxed stack
 jdb_wd 'set value text *',jdb_listboxed values
 jdb_wd 'pactive'
 )
+jdb_newboxrep =: <@(4 : 0)"0 1
+'rep erep' =. y
+if. x do.
+  < SUBTC (I. rep = LF) } rep
+else.
+  jdb_verbrep erep
+end.
+)
+jdb_verbrep =: 3 : 0"2
+idxs =. (0 ; 2)&{::"0@:(1&{"1) y
+ilns =. {:"1 y
+ulns =. (idxs <@:(' '&joinstring)/. ilns) (~. idxs)} a: $~ >: {: idxs
+jdb_linerep&.> ulns
+)
+jdb_linerep =: 3 : 0"1
+tokens =. ;: y
+idxs9 =. (i. 5)&+"0 I. ((, '(') ; (, '9') ; , ':')&E. tokens
+if. 0 = # idxs9 do.
+  jdb_joinlinerep tokens
+else.
+
+  idxsTxt =. 3&{"1 idxs9
+
+  tokens =. (< '{{ ... }}') idxsTxt} tokens
+
+  jdb_joinlinerep ((i. # tokens) -. , 0 1 2 4 {"1 idxs9) { tokens
+end.
+)
+jdb_joinlinerep =: [: (LF ; ' ')&stringreplace ' '&joinstring
 EX2=: '1234' ;&,&> ':'
 EX0=: EX2 ,. < ,'0'
 EX1=: EX2 ,. < ,'('
@@ -747,11 +776,9 @@ jdb_stackrep=: 3 : 0
 '' jdb_stackrep y
 :
 
-if. 0 = #y do. y=. jdb_getstack'' end.
+if. 0 = #y do. y=. jdb_getstack i. 11 end.
 if. 0 = #y do. '' return. end.
 LOCALVALS=: 7 {"1 y
-y=. 7 {."1 y
-
 STACKLOCALS=: {."1 &.> LOCALVALS
 LOCALVALS=: {:"1 > {. LOCALVALS
 LOCALNAMES=: > {. STACKLOCALS
@@ -770,6 +797,7 @@ nms=. 0{"1 y
 lns=. linenum , }. ; 2{"1 y
 nmc=. ; 3{"1 y
 rps=. 4{"1 y
+erps=. 10{"1 y
 arglen=. # &> 6{"1 y
 val=. (#nmc) # _1
 if. 1 e. b=. nmc=3 do.
@@ -781,7 +809,7 @@ if. 1 e. b=. (nmc~:3) *. (1: e. MNUV&e.) &> STACKLOCALS do.
 end.
 nmc=. nmc + (nmc=3) *. val=1
 tac=. 0 = # &> STACKLOCALS
-brp=. (>: 0 >. val) >@{ &.> (<"1 tac,.nmc) jdb_boxrep &.> rps
+brp=. tac jdb_newboxrep rps ,. erps
 bln=. # &> brp
 
 if. 0=#brp do.

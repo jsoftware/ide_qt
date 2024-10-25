@@ -1,4 +1,61 @@
-NB. boxed representation
+NB. Boxed representation for Debug window.
+
+jdb_newboxrep =: <@(4 : 0)"0 1
+'rep erep' =. y  NB. rep is representation from 4th column from stack and erep is extended representation from 10th column from stack.
+if. x do.  NB. Tacit.
+  < SUBTC (I. rep = LF) } rep  NB. Use normal representation.
+else.  NB. Explicit.
+  jdb_verbrep erep  NB. Use extended representation.
+end.
+)
+
+NB. =========================================================
+NB. Direct definitions {{ ... }} can occur inside verb.
+NB. We do not allow setting stops inside such DDs, so we want to treat them as single lines.
+NB. Normal representation of verb on stack (4th column) show DDs in multiline form, so we do not know where each of DDs ends (counting {{ is not enough, because of {{)n).
+NB. That is why we use extended representation (10th column) which returns internal lines and then it is possible to join corresponding lines to match internal representation with user's code and then convert all (9 : '...') to {{ ... }}.
+NB. y is table of boxes (extended representation which is element from 10th column from stack).
+NB. Result:
+NB. Array of boxes where each box contains string with line of monadic or dyadic part of verb.
+jdb_verbrep =: 3 : 0"2
+NB. Same idxs iff in the same line in user's code.
+idxs =. (0 ; 2)&{::"0@:(1&{"1) y
+ilns =. {:"1 y  NB. Internal lines.
+NB. Join lines and add add empty lines or with (deleted) comments to match line numbers.
+ulns =. (idxs <@:(' '&joinstring)/. ilns) (~. idxs)} a: $~ >: {: idxs  NB. User's lines.
+jdb_linerep&.> ulns  NB. Replace (9 : '...') with {{ ... }}.
+)
+
+NB. =========================================================
+NB. y is string (line of verb).
+NB. Result:
+NB. String where all (9 : '...') are converted to {{ ... }}.
+jdb_linerep =: 3 : 0"1
+tokens =. ;: y
+NB. idxs9 is table with 5 columns of indices - each (9 : '...') consists of 5 tokens.
+idxs9 =. (i. 5)&+"0 I. ((, '(') ; (, '9') ; , ':')&E. tokens
+if. 0 = # idxs9 do.
+  jdb_joinlinerep tokens
+else.
+  NB. Column 3 contains '...'.
+  idxsTxt =. 3&{"1 idxs9
+  NB. Replace each '...' by '{{ ... }}'.
+  tokens =. (< '{{ ... }}') idxsTxt} tokens
+  NB. Remove ( 9 :  ) and join tokens with spaces.
+  jdb_joinlinerep ((i. # tokens) -. , 0 1 2 4 {"1 idxs9) { tokens
+end.
+)
+
+NB. =========================================================
+NB. y is array of tokens (boxes containing strings).
+NB. Result:
+NB. String where each tokens is delimeted by space and each LF is replaced by space.
+NB. Replacement of LF for situations of multiline nouns - {{)n.
+NB. If extended representation were also 'pretty printer' then joinstring would be omitted.
+jdb_joinlinerep =: [: (LF ; ' ')&stringreplace ' '&joinstring
+
+NB. =========================================================
+NB. Boxed representation for Stops manager.
 NB.
 NB. returns boxed list of lines
 

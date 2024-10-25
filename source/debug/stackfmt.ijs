@@ -16,7 +16,7 @@ jdb_stackrep=: 3 : 0
 '' jdb_stackrep y
 :
 
-if. 0 = #y do. y=. jdb_getstack'' end.
+if. 0 = #y do. y=. jdb_getstack i. 11 end.
 if. 0 = #y do. '' return. end.
 
 NB. ---------------------------------------------------------
@@ -24,8 +24,6 @@ NB. define various globals:
 
 NB. split up stack to minimize time used:
 LOCALVALS=: 7 {"1 y
-y=. 7 {."1 y
-
 STACKLOCALS=: {."1 &.> LOCALVALS
 
 NB. redefine LOCALVALS for current definition only:
@@ -50,10 +48,11 @@ else.
 end.
 
 NB. ---------------------------------------------------------
-nms=. 0{"1 y
-lns=. linenum , }. ; 2{"1 y
-nmc=. ; 3{"1 y        NB. 1 2 3
-rps=. 4{"1 y
+nms=. 0{"1 y  NB. Names.
+lns=. linenum , }. ; 2{"1 y  NB. Integer array of line numbers in explicit definitions (0 if tacit).
+nmc=. ; 3{"1 y  NB. Integer array of name classes: 1 = adverb, 2 = conjunction, 3 = verb.
+rps=. 4{"1 y  NB. Normal representations (used for tacit verbs).
+erps=. 10{"1 y  NB. Extended representations (used for explicit verbs).
 arglen=. # &> 6{"1 y
 
 NB. ---------------------------------------------------------
@@ -83,7 +82,7 @@ tac=. 0 = # &> STACKLOCALS
 NB. ---------------------------------------------------------
 NB. convert reps into boxed lists:
 
-brp=. (>: 0 >. val) >@{ &.> (<"1 tac,.nmc) jdb_boxrep &.> rps
+brp=. tac jdb_newboxrep rps ,. erps
 bln=. # &> brp
 
 if. 0=#brp do.

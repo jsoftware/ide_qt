@@ -6,7 +6,7 @@ jdb_lexwin=: 3 : 0
 NB. exit if no-name definition (not initialized)
 if. 0 e. #NAME do. '' return. end.
 jdb_stopread''
-STACK=: jdb_getstack''
+STACK=: jdb_getstack i. 11
 jdb_lexwin1 ''
 i. 0 0
 )
