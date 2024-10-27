@@ -551,50 +551,7 @@ else.
 end.
 )
 jdb_joinlinerep =: [: (LF ; ' ')&stringreplace ' '&joinstring
-EX2=: '1234' ;&,&> ':'
-EX0=: EX2 ,. < ,'0'
-EX1=: EX2 ,. < ,'('
-jdb_boxrep=: 4 : 0
 
-'tac nmc'=. x
-if. tac do.
-  rep=. SUBTC (I.y=LF) } y
-  nmc;2$<<rep return.
-end.
-hdr=. ;: LF jdb_taketo y
-if. 1 e. , b=. EX0 E."1 hdr do.
-  cls=. >: (+./"1 b) i. 1
-  rep=. }. }: <;._2 y,LF
-elseif. 1 e. , b=. EX1 E."1 hdr do.
-  cls=. >: (+./"1 b) i. 1
-  bgn=. 3 + 1 i.~ +./ b
-  hdr=. bgn }. hdr
-  hdr=. ; (hdr i. <,')') {. hdr
-  try.
-    rep=. ". hdr
-  catch.
-    rep=. hdr
-  end.
-elseif. 1 e. , b=. EX2 E."1 hdr do.
-  cls=. >: (+./"1 b) i. 1
-  ndx=. 2 + 1 i.~ +./ b
-  try.
-    rep=. ". ndx >@{ hdr
-  catch.
-    rep=. }. }: ndx >@{ hdr
-  end.
-elseif. do.
-  cls=. _1
-  rep=. y
-end.
-rep=. jdb_boxxopen rep
-ind=. rep i. < ,':'
-if. ind < #rep do.
-  cls ; (ind {. rep) ; < (1+ind) }. rep
-else.
-  cls ; rep ; < rep
-end.
-)
 j=. SHOWWID & {.
 jdb_curtail=: ]`(j f.) @. (jdb_vSHOWWID < #)
 j=. (SHOWWID-3) & {. , '...'"_
@@ -625,10 +582,12 @@ else.
 end.
 
 cocurrent bloc
-def=. 5!:5 <name
+rep =. 5!:5 < name
+erep0 =. (1) 5!:7 < name
+erep1 =. (2) 5!:7 < name
 cocurrent <'jdebug'
 
-def
+rep ; (< erep0) , (< erep1)
 )
 jdb_fixlocal=: 4 : 0
 if. 0=#x do. '' return. end.
@@ -1549,46 +1508,44 @@ end.
 0
 )
 jdb_stoprep=: 3 : 0
+name =. jdb_boxopen y
+reps =. jdb_getdrep name
+lname =. ; name ,&.> '_'
+both =. 0
 
-name=. jdb_boxopen y
-rep=. jdb_getdrep name
-lname=. ; name ,&.> '_'
-both=. 0
+if. reps -: '' do. '' ; 0 ; 0 0 return. end.
 
-if. 0=#rep do. '';0;0 0 return. end.
+tac =. -. jdb_isexplicit lname
+rep0 =. > tac jdb_newboxrep 0 1 { reps
+rep1 =. > tac jdb_newboxrep 0 2 { reps
 
-tac=. -. (jdb_isAED rep) +. jdb_isexplicit lname
-cls=. 4!:0 <lname
-'cls rep0 rep1'=. (tac,cls) jdb_boxrep rep
+if. rep0 -: , a: do. rep0 =. '' end.
+if. rep1 -: , a: do. rep1 =. '' end.
 
-if. rep0 -: rep1 do.
-  if. cls=4 do.
-    rep0=. ''
-  else.
-    both=. 1
-    rep1=. ''
-  end.
+if. tac do.
+  both =. 1
+  rep1 =. ''
 end.
 
-cod0=. jdb_codelines rep0
-cod1=. jdb_codelines rep1
-num0=. #rep0
-num1=. #rep1
+cod0 =. jdb_codelines rep0
+cod1 =. jdb_codelines rep1
+num0 =. # rep0
+num1 =. # rep1
 
 if. num0 do.
-  stp0=. jdb_stopgetone name,0;num0;cod0
-  r=. stp0 ,&.> jdb_indexit rep0
+  stp0 =. jdb_stopgetone name , 0 ; num0 ; cod0
+  r =. stp0 ,&.> jdb_indexit rep0
 else.
-  r=. ''
+  r =. ''
 end.
 
 if. num1 do.
-  stp1=. jdb_stopgetone name,1;num1;cod1
-  r=. r, <' [:] ',40#'-'
-  r=. r, stp1 ,&.> jdb_indexit rep1
+  stp1=. jdb_stopgetone name , 1 ; num1 ; cod1
+  r =. r , < ' [:] ' , 40 # '-'
+  r =. r , stp1 ,&.> jdb_indexit rep1
 end.
 
-r; both ; num0, num1
+r ; both ; num0, num1
 )
 jdb_stopswritedef=: 4 : 0
 if. 0 e. #y do.

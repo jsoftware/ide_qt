@@ -285,6 +285,7 @@ NB. jdb_isAED
 NB. y is result of 5!:5 of verb.
 NB. Returns 1 if special case of AED - AT MOST ONE (m : 0)!
 NB. Otherwise 0.
+NB. Currently unused (better display of AEDs in Stops Manager is removed, because of fixed display of nested {{ ... }}).
 jdb_isAED =: 3 : 0
 if. (LF , ')') -: _2 {. y do.  NB. multiline definition
   header =. LF taketo y
@@ -298,56 +299,51 @@ end.
 )
 
 NB. =========================================================
-NB. jdb_stoprep - get representation for given name
-NB. form: jdb_stoprep name
-NB. returns: rep; both; countmonad, countdyad
-NB.
-NB. both is 1 if both monad and dyad reps are identical,
-NB. in which case the display is as for monad, but both
-NB. monad and dyad stops are updated.
-NB.
-NB. y is name;locale
+NB. jdb_stoprep
+NB. Get representation for given name.
+NB. y is name ; locale
+NB. Result:
+NB. Representation ; both ; count monad , count dyad where
+NB. both is 1 if display is as for monad, but both monad and dyad stops are updated.
 jdb_stoprep=: 3 : 0
+name =. jdb_boxopen y
+reps =. jdb_getdrep name
+lname =. ; name ,&.> '_'
+both =. 0
 
-name=. jdb_boxopen y
-rep=. jdb_getdrep name
-lname=. ; name ,&.> '_'
-both=. 0
+if. reps -: '' do. '' ; 0 ; 0 0 return. end.
 
-if. 0=#rep do. '';0;0 0 return. end.
+tac =. -. jdb_isexplicit lname
+rep0 =. > tac jdb_newboxrep 0 1 { reps  NB. Representation of monad.
+rep1 =. > tac jdb_newboxrep 0 2 { reps  NB. Representation of dyad.
 
-tac=. -. (jdb_isAED rep) +. jdb_isexplicit lname
-cls=. 4!:0 <lname
-'cls rep0 rep1'=. (tac,cls) jdb_boxrep rep
+if. rep0 -: , a: do. rep0 =. '' end.
+if. rep1 -: , a: do. rep1 =. '' end.
 
-if. rep0 -: rep1 do.
-  if. cls=4 do.
-    rep0=. ''
-  else.
-    both=. 1
-    rep1=. ''
-  end.
+if. tac do. NB. If tacit then both = 1.
+  both =. 1
+  rep1 =. ''
 end.
 
-cod0=. jdb_codelines rep0
-cod1=. jdb_codelines rep1
-num0=. #rep0
-num1=. #rep1
+cod0 =. jdb_codelines rep0
+cod1 =. jdb_codelines rep1
+num0 =. # rep0
+num1 =. # rep1
 
 if. num0 do.
-  stp0=. jdb_stopgetone name,0;num0;cod0
-  r=. stp0 ,&.> jdb_indexit rep0
+  stp0 =. jdb_stopgetone name , 0 ; num0 ; cod0
+  r =. stp0 ,&.> jdb_indexit rep0
 else.
-  r=. ''
+  r =. ''
 end.
 
 if. num1 do.
-  stp1=. jdb_stopgetone name,1;num1;cod1
-  r=. r, <' [:] ',40#'-'
-  r=. r, stp1 ,&.> jdb_indexit rep1
+  stp1=. jdb_stopgetone name , 1 ; num1 ; cod1
+  r =. r , < ' [:] ' , 40 # '-'
+  r =. r , stp1 ,&.> jdb_indexit rep1
 end.
 
-r; both ; num0, num1
+r ; both ; num0, num1
 )
 
 NB. =========================================================

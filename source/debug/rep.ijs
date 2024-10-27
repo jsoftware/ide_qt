@@ -1,4 +1,4 @@
-NB. Boxed representation for Debug window.
+NB. Boxed representation for Debug window and Stops Manager.
 
 jdb_newboxrep =: <@(4 : 0)"0 1
 'rep erep' =. y  NB. rep is representation from 4th column from stack and erep is extended representation from 10th column from stack.
@@ -54,68 +54,6 @@ NB. Replacement of LF for situations of multiline nouns - {{)n.
 NB. If extended representation were also 'pretty printer' then joinstring would be omitted.
 jdb_joinlinerep =: [: (LF ; ' ')&stringreplace ' '&joinstring
 
-NB. =========================================================
-NB. Boxed representation for Stops manager.
-NB.
-NB. returns boxed list of lines
-
-EX2=: '1234' ;&,&> ':'
-EX0=: EX2 ,. < ,'0'
-EX1=: EX2 ,. < ,'('
-
-NB. =========================================================
-NB.*jdb_boxrep v representation as boxed list of:
-NB.
-NB.   class ; monad ; dyad
-NB.
-NB. class is known class: 1 2 3 4 or _1 if unknown
-NB.
-NB. x is tacit, nameclass
-jdb_boxrep=: 4 : 0
-
-'tac nmc'=. x
-if. tac do.
-  rep=. SUBTC (I.y=LF) } y
-  nmc;2$<<rep return.
-end.
-
-NB. ---------------------------------------------------------
-NB. following does not use nmc, but recalculates it, for
-NB. historical reasons. Could they differ?
-hdr=. ;: LF jdb_taketo y
-if. 1 e. , b=. EX0 E."1 hdr do.
-  cls=. >: (+./"1 b) i. 1
-  rep=. }. }: <;._2 y,LF
-elseif. 1 e. , b=. EX1 E."1 hdr do.
-  cls=. >: (+./"1 b) i. 1
-  bgn=. 3 + 1 i.~ +./ b
-  hdr=. bgn }. hdr
-  hdr=. ; (hdr i. <,')') {. hdr
-  try.
-    rep=. ". hdr
-  catch.
-    rep=. hdr
-  end.
-elseif. 1 e. , b=. EX2 E."1 hdr do.
-  cls=. >: (+./"1 b) i. 1
-  ndx=. 2 + 1 i.~ +./ b
-  try.
-    rep=. ". ndx >@{ hdr
-  catch.
-    rep=. }. }: ndx >@{ hdr
-  end.
-elseif. do.
-  cls=. _1
-  rep=. y
-end.
-rep=. jdb_boxxopen rep
-ind=. rep i. < ,':'
-if. ind < #rep do.
-  cls ; (ind {. rep) ; < (1+ind) }. rep
-else.
-  cls ; rep ; < rep
-end.
-)
 
 NB. =========================================================
 NB. jdb_curtail     (truncates only)
@@ -129,9 +67,10 @@ jdb_curtailed=: ]`(j f.) @. (jdb_vSHOWWID < #)
 
 NB. =========================================================
 NB. jdb_getdrep
-NB. jdb_getdrep name;locale
-NB. representation of defined verb/adverb/conjunction
-NB. returns: rep or '' if not found
+NB. Representations of defined verb/adverb/conjunction.
+NB. y is name ; locale.
+NB. Result:
+NB. 3 different representations: 5!:5, 1&(5!:7), 2&(5!:7)
 jdb_getdrep=: 3 : 0
 'name loc'=. y
 
@@ -158,10 +97,12 @@ else.
 end.
 
 cocurrent bloc
-def=. 5!:5 <name
+rep =. 5!:5 < name
+erep0 =. (1) 5!:7 < name
+erep1 =. (2) 5!:7 < name
 cocurrent <'jdebug'
 
-def
+rep ; (< erep0) , (< erep1)
 )
 
 NB. =========================================================
