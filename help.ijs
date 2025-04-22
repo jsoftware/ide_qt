@@ -333,6 +333,7 @@ $: dollarco
 !: bangco
 / slash
 /. slashdot
+/.. slashdot
 /: slashco
 \ bslash
 \. bslashdot
@@ -391,6 +392,12 @@ D: dcapco
 e. edot
 E. ecapdot
 f. fdot
+F. fcap
+F.. fcap
+F.: fcap
+F: fcap
+F:. fcap
+F:: fcap
 H. hcapdot
 i. idot
 i: ico
@@ -398,6 +405,7 @@ I. icapdot
 j. jdot
 L. lcapdot
 L: lcapco
+m. mdot
 M. mcapdot
 o. odot
 p. pdot
@@ -410,8 +418,11 @@ S: scapco
 t. tdot
 t: tco
 T. tcapdot
+u. udot
 u: uco
+v. udot
 x: xco
+Z: zcapco
 )
 
 n=. j i.&> ' '
