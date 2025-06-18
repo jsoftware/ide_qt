@@ -69,9 +69,11 @@ $: dollarco
 {. curlylfdot
 {: curlylfco
 {:: curlylfcoco
+{{ DirectDefinition
 } curlyrt
 }. curlyrtdot
 }: curlyrtco
+}} DirectDefinition
 " quote
 ". quotedot
 ": quoteco

@@ -81,7 +81,7 @@ elseif. 2=#p do.
   p=. 1 0 1 #^:_1 p
 end.
 'title caption text'=. _3 {. p
-wd 'textview *;',title,';',caption,';',flatten text
+wd 'textview *;',(,":title),';',(,":caption),';',flatten text
 )
 echo_z_=: wd ::empty@'msgs'^:2 [ 1!:2&2
 logcat_z_=: (wd ::empty)@('logcat ' , }.@:;@:(LF&,"1)@:":)
