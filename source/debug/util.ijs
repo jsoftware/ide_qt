@@ -3,7 +3,17 @@ NB. utils
 jdb_deb=: #~ (+. (1: |. (> </\)))@(' '&~:)
 jdb_dlb=: }.~ =&' ' i. 0:
 jdb_dtb=: #~ ([: +./\. ' '&~:)
-jdb_isexplicit=: (<,':')"_ -: {.@>@(5!:1)@<
+NB. Check if definition is (noun : any) by looking at atomic representation.
+NB. y is name.
+jdb_isexplicit =: {{)m
+ar =. 5!:1@< y
+if. (, ':') -: (0 ; 0) {:: ::0: ar do.
+  if. (, '0') -: (0 ; 1 ; 0 ; 0) {:: ::0: ar do.
+    1 return.
+  end.
+end.
+0
+}}
 jdb_issparse=: 512&[ < 3!:0
 jdb_splitind=: ('__'&E. i. 1:) ({. ; 2: }. }.) ]
 jdb_takeafter=: [: ] (#@[ + E. i. 1:) }. ]
