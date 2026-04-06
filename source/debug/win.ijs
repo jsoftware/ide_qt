@@ -27,40 +27,46 @@ DTTCURR =. DTTTOGGLE =. 'These functions are defined in the debug/dissect addon,
 DTTCURR =. 'Dissect current/cursor line' [^:(DISSECTSTATUS=1) DTTCURR
 DTTTOGGLE =. 'Automatically dissect on stop' [^:(DISSECTSTATUS=1) DTTTOGGLE
 
+NB. STYLESUFFIX: choose icons according to user's dark or light style
+NB. If wd 'qtstate colorscheme' returns dark, chose icons for dark style
+NB. Otherwise use light style by default, to support any unforeseen return value from wd
+
+STYLESUFFIX=: ('dark' -: 0 1 {:: wd 'qtstate colorscheme') {:: 'light';'dark'
+
 DTTTBAR=: IFDISSECT # 0 : 0 rplc 'DTTCURR';DTTCURR;'DTTTOGGLE';DTTTOGGLE
-set tbar add dissectcurrent "DTTCURR" "DEBUGPATH/dissect-current.png";
-set tbar add dissecttoggleauto "DTTTOGGLE" "DEBUGPATH/dissect-toggle.png";
+set tbar add dissectcurrent "DTTCURR" "DEBUGPATH/graph-fill-STYLESUFFIX.svg";
+set tbar add dissecttoggleauto "DTTTOGGLE" "DEBUGPATH/graph-bold-STYLESUFFIX.svg";
 set tbar checkable dissecttoggleauto;
 set tbar addsep;
 )
 
 NB. =========================================================
-JDEBUG=: (0 : 0 rplc 'DTTTBAR';DTTTBAR) rplc 'DEBUGPATH';(jpath '~addons/ide/qt/images')
+JDEBUG=: (0 : 0 rplc 'DTTTBAR';DTTTBAR) rplc 'STYLESUFFIX';STYLESUFFIX;'DEBUGPATH';jpath '~Addons/images' NB. '~addons/ide/qt/images'
 pc jdebug escclose ptop;pn "Debug - Ctrl+H help";
 menupop "&File";
 menu quit "&Quit" "Ctrl+Q" "" "";
 menupopz;
 cc tbar toolbar 22x22 flush;
-set tbar add run "Run" "DEBUGPATH/run.png";
+set tbar add run "Run" "DEBUGPATH/play-bold-STYLESUFFIX.svg";
 set tbar addsep;
-set tbar add stepinto "Step into" "DEBUGPATH/stepinto.png";
-set tbar add stepover "Step over" "DEBUGPATH/stepover.png";
-set tbar add stepout "Step out" "DEBUGPATH/stepout.png";
+set tbar add stepinto "Step into" "DEBUGPATH/text-indent-bold-STYLESUFFIX.svg";
+set tbar add stepover "Step over" "DEBUGPATH/sort-ascending-bold-STYLESUFFIX.svg";
+set tbar add stepout "Step out" "DEBUGPATH/text-outdent-bold-STYLESUFFIX.svg";
 set tbar addsep;
-set tbar add runcursor "Run to cursor" "DEBUGPATH/runcursor.png";
-set tbar add cutback "Cut back" "DEBUGPATH/cutback.png";
+set tbar add runcursor "Run to cursor" "DEBUGPATH/skip-forward-bold-STYLESUFFIX.svg";
+set tbar add cutback "Cut back" "DEBUGPATH/arrow-u-down-left-bold-STYLESUFFIX.svg";
 set tbar addsep;
-set tbar add back "Back" "DEBUGPATH/goback.png";
-set tbar add refresh "Refresh" "DEBUGPATH/refresh.png";
-set tbar add forward "Forward" "DEBUGPATH/goforward.png";
+set tbar add back "Back" "DEBUGPATH/minus-circle-bold-STYLESUFFIX.svg";
+set tbar add refresh "Refresh" "DEBUGPATH/number-circle-zero-bold-STYLESUFFIX.svg";
+set tbar add forward "Forward" "DEBUGPATH/plus-circle-bold-STYLESUFFIX.svg";
 set tbar addsep;
-set tbar add stopname "Stop name at cursor" "DEBUGPATH/stopname.png";
-set tbar add stopwin "Stop Manager" "DEBUGPATH/stopmanager.png";
-set tbar add watchwin "Watch Manager" "DEBUGPATH/watchmanager.png";
-set tbar add stack "View stack" "DEBUGPATH/stack.png";
+set tbar add stopname "Stop name at cursor" "DEBUGPATH/pause-circle-bold-STYLESUFFIX.svg";
+set tbar add stopwin "Stop Manager" "DEBUGPATH/traffic-signal-bold-STYLESUFFIX.svg";
+set tbar add watchwin "Watch Manager" "DEBUGPATH/binoculars-bold-STYLESUFFIX.svg";
+set tbar add stack "View stack" "DEBUGPATH/stack-bold-STYLESUFFIX.svg";
 set tbar addsep;
 DTTTBAR
-set tbar add clear "Clear" "DEBUGPATH/clear.png";
+set tbar add clear "Clear" "DEBUGPATH/x-bold-STYLESUFFIX.svg";
 )
 jdebug_quit_button=: jdebug_close
 
