@@ -31,7 +31,7 @@ NB. STYLESUFFIX: choose icons according to user's dark or light style
 NB. If wd 'qtstate colorscheme' returns dark, chose icons for dark style
 NB. Otherwise use light style by default, to support any unforeseen return value from wd
 
-STYLESUFFIX=: ('dark' -: 0 1 {:: wd 'qtstate colorscheme') {:: 'light';'dark'
+STYLESUFFIX=. ('dark' -: 0 1 {:: wd 'qtstate colorscheme') {:: 'light';'dark'
 
 DTTTBAR=: IFDISSECT # 0 : 0 rplc 'DTTCURR';DTTCURR;'DTTTOGGLE';DTTTOGGLE
 set tbar add dissectcurrent "DTTCURR" "DEBUGPATH/line-segment-bold-STYLESUFFIX.svg";

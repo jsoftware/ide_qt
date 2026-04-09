@@ -1119,7 +1119,7 @@ end.
 DTTCURR =. DTTTOGGLE =. 'These functions are defined in the debug/dissect addon, use Package Manager to get it'
 DTTCURR =. 'Dissect current/cursor line' [^:(DISSECTSTATUS=1) DTTCURR
 DTTTOGGLE =. 'Automatically dissect on stop' [^:(DISSECTSTATUS=1) DTTTOGGLE
-STYLESUFFIX=: ('dark' -: 0 1 {:: wd 'qtstate colorscheme') {:: 'light';'dark'
+STYLESUFFIX=. ('dark' -: 0 1 {:: wd 'qtstate colorscheme') {:: 'light';'dark'
 
 DTTTBAR=: IFDISSECT # 0 : 0 rplc 'DTTCURR';DTTCURR;'DTTTOGGLE';DTTTOGGLE
 set tbar add dissectcurrent "DTTCURR" "DEBUGPATH/line-segment-bold-STYLESUFFIX.svg";
