@@ -34,14 +34,14 @@ NB. Otherwise use light style by default, to support any unforeseen return value
 STYLESUFFIX=: ('dark' -: 0 1 {:: wd 'qtstate colorscheme') {:: 'light';'dark'
 
 DTTTBAR=: IFDISSECT # 0 : 0 rplc 'DTTCURR';DTTCURR;'DTTTOGGLE';DTTTOGGLE
-set tbar add dissectcurrent "DTTCURR" "DEBUGPATH/graph-fill-STYLESUFFIX.svg";
+set tbar add dissectcurrent "DTTCURR" "DEBUGPATH/line-segment-bold-STYLESUFFIX.svg";
 set tbar add dissecttoggleauto "DTTTOGGLE" "DEBUGPATH/graph-bold-STYLESUFFIX.svg";
 set tbar checkable dissecttoggleauto;
 set tbar addsep;
 )
 
 NB. =========================================================
-JDEBUG=: (0 : 0 rplc 'DTTTBAR';DTTTBAR) rplc 'STYLESUFFIX';STYLESUFFIX;'DEBUGPATH';jpath '~Addons/images' NB. '~addons/ide/qt/images'
+JDEBUG=: (0 : 0 rplc 'DTTTBAR';DTTTBAR) rplc 'STYLESUFFIX';STYLESUFFIX;'DEBUGPATH';jpath '~addons/ide/qt/images'
 pc jdebug escclose ptop;pn "Debug - Ctrl+H help";
 menupop "&File";
 menu quit "&Quit" "Ctrl+Q" "" "";
