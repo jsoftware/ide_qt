@@ -87,14 +87,18 @@ EMPTY
 )
 
 NB. =========================================================
+NB. view data, checking for argument of title;caption;text
 textview=: 3 : 0
 p=. boxopen y
-if. 1<#$p do.
-  p=. <":p
-elseif. 2=#p do.
-  p=. 1 0 1 #^:_1 p
+title=. caption=. ''
+text=. p
+if. 1=#$p do.
+  if. *./ (2=#p), (2 = 3!:0) 0 pick p do.
+    'title text'=. p
+  elseif. *./ (3=#p), (2 = 3!:0) &> 2 {. p do.
+    'title caption text'=. p
+  end.
 end.
-'title caption text'=. _3 {. p
 wd 'textview *;',(,":title),';',(,":caption),';',flatten text
 )
 
