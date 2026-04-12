@@ -289,7 +289,7 @@ ERRORS=: '';(9!:8''),<'Unknown Error'
 ERRORCODES=: (i.#ERRORS) -. 0 18
 
 IFDISSECT=: 'true' -: 0 1&{::@:wd ::0: 'qtstate debugdissect'
-MINWIDTH=: 540 + IFDISSECT * 20
+MINWIDTH=: 520 + (40 * IFDISSECT) + 100 * UNAME -: 'Darwin'
 MINHEIGHT=: 500
 
 MNUV=: ;: 'm n u v m. n. u. v.'
@@ -311,7 +311,7 @@ STOPNONE=: '';0;0;NULL;NULL
 TYPES=: 'acv'
 jdb_debuginit=: 3 : 0
 jdb_stopwrite STOPS=: i.0 5
-DISSECTOPTIONS=:0 5$a:
+DISSECTOPTIONS=: 0 5$a:
 'HWNDP' jdb_default ''
 if. 0>4!:0 <'WINPOS' do.
   WINPOS=: 0 ". (<0 1) >@{ jdb_wd 'qtstate debugpos'
