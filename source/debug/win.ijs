@@ -66,7 +66,6 @@ jdebug_quit_button=: jdebug_close
 
 NB. =========================================================
 JDEBUGP=: 0 : 0
-minwh 540 400;
 cc tabs tab nobar;
 tabnew jdbmain;
 splitv;

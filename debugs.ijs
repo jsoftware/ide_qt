@@ -289,7 +289,7 @@ ERRORS=: '';(9!:8''),<'Unknown Error'
 ERRORCODES=: (i.#ERRORS) -. 0 18
 
 IFDISSECT=: 'true' -: 0 1&{::@:wd ::0: 'qtstate debugdissect'
-MINWIDTH=: 540
+MINWIDTH=: 540 + IFDISSECT * 20
 MINHEIGHT=: 500
 
 MNUV=: ;: 'm n u v m. n. u. v.'
@@ -1155,7 +1155,6 @@ set tbar add clear "Clear" "DEBUGPATH/clear.png";
 )
 jdebug_quit_button=: jdebug_close
 JDEBUGP=: 0 : 0
-minwh 540 400;
 cc tabs tab nobar;
 tabnew jdbmain;
 splitv;

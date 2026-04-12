@@ -17,7 +17,7 @@ ERRORCODES=: (i.#ERRORS) -. 0 18   NB. exclude none and stop
 IFDISSECT=: 'true' -: 0 1&{::@:wd ::0: 'qtstate debugdissect' NB. if include dissect
 
 NB. smallest sizes (MINWIDTH so all buttons are displayed):
-MINWIDTH=: 540
+MINWIDTH=: 540 + IFDISSECT * 20
 MINHEIGHT=: 500
 
 MNUV=: ;: 'm n u v m. n. u. v.'
