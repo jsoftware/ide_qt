@@ -6,7 +6,7 @@ DESCRIPTION=: 0 : 0
 Qt development
 )
 
-VERSION=: '1.1.181'
+VERSION=: '1.1.182'
 
 RELEASE=: 'j907'
 
@@ -26,4 +26,5 @@ qt.ijs
 qtlib.ijs
 config/
 images/
+test/
 )

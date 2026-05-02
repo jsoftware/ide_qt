@@ -40,6 +40,20 @@ end.
 )
 
 NB. =========================================================
+NB.*fixexcel
+NB. fix read of excel file
+NB. convert numeric strings to numbers
+NB. reshape the data
+fixexcel=: 3 : 0
+dat=. <;._2 y
+'shape type'=. 2 {. dat
+dat=. 2 }. dat
+ndx=. I. type='1'
+dat=. (0 ". each ndx{dat) ndx} dat
+(0 ". shape) $ dat
+)
+
+NB. =========================================================
 NB.*flatten v flatten array to a character string
 NB. flattens array to a character string with same display
 flatten=: 3 : 0

@@ -75,11 +75,19 @@ f=. 3 : 0
 )
 
 f 'manifest.ijs'
-f 'history.txt'
 
 NB. =========================================================
 f=. 3 : 0
-cf=. (jpath '~Qt/',y,'/') , ]
+s=. jpath '~Qt/test/'
+t=. jpath '~.Qt/test/'
+(t,y) fcopynew s,y
+)
+
+f each 'xlread.ijs';'xlwrite.ijs';'readme.txt'
+
+NB. =========================================================
+f=. 3 : 0
+cf=. (jpath '~.Qt/',y,'/') , ]
 fl=. {."1[1!:0 cf'*'
 ca=. (jpath '~addons/ide/qt/',y,'/') , ]
 cA=. (jpath '~Addons/ide/qt/',y,'/') , ]
@@ -90,6 +98,7 @@ mkdir_j_ cA''
 )
 
 f 'images'
+f 'test'
 
 NB. generate tag file baselibtags
 NB. not used at the moment

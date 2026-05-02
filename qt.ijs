@@ -41,6 +41,14 @@ else.
   jdb_close_jdebug_ :: ] ''
 end.
 )
+fixexcel=: 3 : 0
+dat=. <;._2 y
+'shape type'=. 2 {. dat
+dat=. 2 }. dat
+ndx=. I. type='1'
+dat=. (0 ". each ndx{dat) ndx} dat
+(0 ". shape) $ dat
+)
 flatten=: 3 : 0
 dat=. ": y
 select. # $ dat
