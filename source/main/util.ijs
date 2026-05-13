@@ -44,11 +44,27 @@ NB.*fixexcel
 NB. fix read of excel file
 NB. convert numeric strings to numbers
 NB. reshape the data
+NB. numeric types supported:
+NB. 1  Bool
+NB. 2  Int
+NB. 3  UInt
+NB. 4  LongLong
+NB. 6  Double
+NB. 14 QDate
+NB. 15 QTime
+NB. 16 QDateTime
+NB. 32 Long
+NB. 38 Float
+NB. 63 Float16
 fixexcel=: 3 : 0
 dat=. <;._2 y
 'shape type'=. 2 {. dat
 dat=. 2 }. dat
-ndx=. I. type='1'
+if. *./ type e. '01' do.
+  ndx=. I. type='1'
+else.
+  ndx=. I. (0 ". type) e. 1 2 3 4 6 14 15 16 32 38 63
+end.
 dat=. (0 ". each ndx{dat) ndx} dat
 (0 ". shape) $ dat
 )

@@ -45,7 +45,11 @@ fixexcel=: 3 : 0
 dat=. <;._2 y
 'shape type'=. 2 {. dat
 dat=. 2 }. dat
-ndx=. I. type='1'
+if. *./ type e. '01' do.
+  ndx=. I. type='1'
+else.
+  ndx=. I. (0 ". type) e. 1 2 3 4 6 14 15 16 32 38 63
+end.
 dat=. (0 ". each ndx{dat) ndx} dat
 (0 ". shape) $ dat
 )
